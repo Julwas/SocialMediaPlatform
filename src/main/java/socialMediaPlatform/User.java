@@ -46,14 +46,8 @@ public class User extends SocialEntity {
         this.age = age;
     }
 
-    public void createUser() {
-        setUsername("Mary");
-        setSurname("Bin");
-        setEmail("m_bin@yahoo.com");
-        setAge(30);
-    }
-
     public void displayInfo() {
-        System.out.println("Username: " + username + ", surname: " + surname + "age: " + age + ", Email: " + email);
+        System.out.println("Username: " + username + ", surname: " + surname + "age: " + age +
+                ", Email: " + email);
     }
 }

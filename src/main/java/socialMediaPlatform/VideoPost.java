@@ -21,5 +21,6 @@ public class VideoPost extends Post{
     @Override
     public void displayPost() {
         super.displayPost();
+        System.out.println(videoUrl);
     }
 }

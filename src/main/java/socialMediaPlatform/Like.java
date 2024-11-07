@@ -1,20 +1,21 @@
 package socialMediaPlatform;
 
 public class Like {
-    private Post post;
+    private String liked;
 
-    public Like(Post post) {
-        this.post = post;
+    public Like( String liked) {
+        this.liked = liked;
     }
 
-    public Post getPost() {
-        return post;
+    public String getLiked() {
+        return liked;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setLiked(String liked) {
+        this.liked = liked;
     }
+
     public void displayLike() {
-        System.out.println("Post liked");
+        System.out.println(liked);
     }
 }

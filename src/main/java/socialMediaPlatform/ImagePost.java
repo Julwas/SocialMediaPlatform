@@ -1,6 +1,6 @@
 package socialMediaPlatform;
 
-import java.util.List;
+
 
 public class ImagePost extends Post{
     private String imageUrl;

@@ -16,4 +16,7 @@ public class SocialEntity {
     public void setId(Long id) {
         this.id = id;
     }
+    public void displayId() {
+        //System.out.println("Username: " + username + id );
+    }
 }

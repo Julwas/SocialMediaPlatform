@@ -1,14 +1,12 @@
 package socialMediaPlatform;
 
-public class Message {
+public class FriendRequest {
     private User sender;
     private User receiver;
-    private String newMessage;
 
-    public Message(User sender, User receiver, String newMessage) {
+    public FriendRequest(User sender, User receiver) {
         this.sender = sender;
         this.receiver = receiver;
-        this.newMessage = newMessage;
     }
 
     public User getSender() {
@@ -26,16 +24,10 @@ public class Message {
     public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
-
-    public String getNewMessage() {
-        return newMessage;
+    public void displayRequest() {
+        System.out.println(sender.getUsername() + " sent a friend request to " + receiver.getUsername());
     }
-
-    public void setNewMessage(String newMessage) {
-        this.newMessage = newMessage;
-    }
-
-    public void displayMessage() {
-        System.out.println(sender.getUsername() + newMessage + receiver.getUsername());
+    public void displayAnswerRequest(){
+        System.out.println(receiver.getUsername() + "   accept a friend request to " + sender.getUsername());
     }
 }
