@@ -1,10 +1,14 @@
-package socialMediaPlatform;
+package social.media.platform.events;
+
+import social.media.platform.users.User;
+
+import java.util.List;
 
 public class PrivateEvent extends Event {
     private String eventAccess;
 
-    public PrivateEvent(String eventName, String eventAccess) {
-        super(eventName);
+    public PrivateEvent(User organizer, String eventName, List<User> participants, String eventAccess) {
+        super(organizer, eventName, participants);
         this.eventAccess = eventAccess;
     }
 

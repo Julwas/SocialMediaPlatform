@@ -1,9 +1,13 @@
-package socialMediaPlatform;
+package social.media.platform.base;
 
-import java.util.List;
+import java.util.Random;
 
-public class SocialEntity {
+public abstract class SocialEntity {
     private Long id;
+
+    public SocialEntity() {
+        this(new Random().nextLong());
+    }
 
     public SocialEntity(Long id) {
         this.id = id;
@@ -16,7 +20,5 @@ public class SocialEntity {
     public void setId(Long id) {
         this.id = id;
     }
-    public void displayId() {
-        //System.out.println("Username: " + username + id );
-    }
+
 }

@@ -1,11 +1,13 @@
-package socialMediaPlatform;
+package social.media.platform.message;
+
+import social.media.platform.users.User;
 
 public class AudioMessage extends Message {
 
     private String audioMessage;
 
-    public AudioMessage(User sender, User receiver, String newMessage, String audioMessage) {
-        super(sender, receiver, newMessage);
+    public AudioMessage(User sender, User receiver, String audioMessage) {
+        super(sender, receiver);
         this.audioMessage = audioMessage;
     }
 

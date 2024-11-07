@@ -1,13 +1,16 @@
-package socialMediaPlatform;
+package social.media.platform.message;
 
-public class VideoMessage extends Message{
+import social.media.platform.users.User;
+
+public class VideoMessage extends Message {
 
     private String videoMessage;
 
-    public VideoMessage(User sender, User receiver, String newMessage, String textMessage) {
-        super(sender, receiver, newMessage);
-        this.videoMessage = textMessage;
+    public VideoMessage(User sender, User receiver, String videoMessage) {
+        super(sender, receiver);
+        this.videoMessage = videoMessage;
     }
+
 
     public String getTextMessage() {
         return videoMessage;

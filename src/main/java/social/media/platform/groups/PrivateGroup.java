@@ -1,10 +1,15 @@
-package socialMediaPlatform;
+package social.media.platform.groups;
+
+import social.media.platform.users.User;
+import social.media.platform.post.Post;
+
+import java.util.List;
 
 public class PrivateGroup extends Group {
     private String groupAccess;
 
-    public PrivateGroup(String groupName, String groupAccess) {
-        super(groupName);
+    public PrivateGroup(User admin, String groupName, List<User> members, List<Post> postContent, String groupAccess) {
+        super(admin, groupName, members, postContent);
         this.groupAccess = groupAccess;
     }
 
@@ -18,7 +23,7 @@ public class PrivateGroup extends Group {
 
     @Override
     public void displayGroup() {
-        System.out.println(groupAccess);
         super.displayGroup();
+        System.out.print(groupAccess);
     }
 }

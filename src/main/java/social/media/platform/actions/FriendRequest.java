@@ -1,4 +1,6 @@
-package socialMediaPlatform;
+package social.media.platform.actions;
+
+import social.media.platform.users.User;
 
 public class FriendRequest {
     private User sender;
@@ -24,10 +26,12 @@ public class FriendRequest {
     public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
+
     public void displayRequest() {
         System.out.println(sender.getUsername() + " sent a friend request to " + receiver.getUsername());
     }
-    public void displayAnswerRequest(){
+
+    public void displayAnswerRequest() {
         System.out.println(receiver.getUsername() + "   accept a friend request to " + sender.getUsername());
     }
 }

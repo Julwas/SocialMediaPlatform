@@ -1,14 +1,16 @@
-package socialMediaPlatform;
+package social.media.platform.message;
 
-public class Message {
+import social.media.platform.base.SocialEntity;
+import social.media.platform.users.User;
+
+public abstract class Message extends SocialEntity {
     private User sender;
     private User receiver;
-    private String newMessage;
 
-    public Message(User sender, User receiver, String newMessage) {
+
+    public Message(User sender, User receiver) {
         this.sender = sender;
         this.receiver = receiver;
-        this.newMessage = newMessage;
     }
 
     public User getSender() {
@@ -27,15 +29,7 @@ public class Message {
         this.receiver = receiver;
     }
 
-    public String getNewMessage() {
-        return newMessage;
-    }
-
-    public void setNewMessage(String newMessage) {
-        this.newMessage = newMessage;
-    }
-
     public void displayMessage() {
-        System.out.println(sender.getUsername() + newMessage + receiver.getUsername());
+        System.out.println(sender.getUsername() + " sent a new message to " + receiver.getUsername());
     }
 }

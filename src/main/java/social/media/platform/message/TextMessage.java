@@ -1,11 +1,14 @@
-package socialMediaPlatform;
+package social.media.platform.message;
+
+import social.media.platform.users.User;
 
 public class TextMessage extends Message {
 
     private String textMessage;
 
-    public TextMessage(User sender, User receiver, String newMessage, String textMessage) {
-        super(sender, receiver, newMessage);
+
+    public TextMessage(User sender, User receiver, String textMessage) {
+        super(sender, receiver);
         this.textMessage = textMessage;
     }
 

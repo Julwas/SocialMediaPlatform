@@ -1,4 +1,6 @@
-package socialMediaPlatform;
+package social.media.platform.users;
+
+import social.media.platform.base.SocialEntity;
 
 public class User extends SocialEntity {
     private String username;
@@ -6,8 +8,7 @@ public class User extends SocialEntity {
     private String surname;
     private int age;
 
-    public User(Long id, String username, String email, String surname, int age) {
-        super(id);
+    public User(String username, String email, String surname, int age) {
         this.username = username;
         this.email = email;
         this.surname = surname;
@@ -18,28 +19,28 @@ public class User extends SocialEntity {
         return username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setAge(int age) {
@@ -47,7 +48,7 @@ public class User extends SocialEntity {
     }
 
     public void displayInfo() {
-        System.out.println("Username: " + username + ", surname: " + surname + "age: " + age +
+        System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
                 ", Email: " + email);
     }
 }

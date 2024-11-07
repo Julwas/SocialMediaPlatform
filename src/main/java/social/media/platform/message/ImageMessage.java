@@ -1,11 +1,13 @@
-package socialMediaPlatform;
+package social.media.platform.message;
+
+import social.media.platform.users.User;
 
 public class ImageMessage extends Message {
 
     private String imageMessage;
 
-    public ImageMessage(User sender, User receiver, String newMessage, String imageMessage) {
-        super(sender, receiver, newMessage);
+    public ImageMessage(User sender, User receiver, String imageMessage) {
+        super(sender, receiver);
         this.imageMessage = imageMessage;
     }
 

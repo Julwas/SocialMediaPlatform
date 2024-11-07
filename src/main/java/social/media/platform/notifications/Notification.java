@@ -1,6 +1,9 @@
-package socialMediaPlatform;
+package social.media.platform.notifications;
 
-public class Notification {
+import social.media.platform.base.SocialEntity;
+import social.media.platform.users.User;
+
+public class Notification extends SocialEntity {
     private User user;
     private String message;
 
@@ -24,6 +27,7 @@ public class Notification {
     public void setMessage(String message) {
         this.message = message;
     }
+
     public void displayNotification() {
         System.out.println("Notification for " + user.getUsername() + " " + user.getSurname() + ":" + message);
     }

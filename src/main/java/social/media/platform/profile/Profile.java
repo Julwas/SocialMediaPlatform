@@ -1,6 +1,9 @@
-package socialMediaPlatform;
+package social.media.platform.profile;
 
-public class Profile {
+import social.media.platform.base.SocialEntity;
+import social.media.platform.users.User;
+
+public class Profile extends SocialEntity {
     private User user;
     private String bio;
 
