@@ -4,15 +4,19 @@ import social.media.platform.base.SocialEntity;
 import social.media.platform.users.User;
 import social.media.platform.post.Post;
 
+import java.util.List;
+
 public class Comment extends SocialEntity {
     private User commenter;
     private String text;
     private Post content;
+    protected List<User> likers;
 
-    public Comment(User commenter, String text, Post content) {
+    public Comment(User commenter, String text, Post content, List<User> likers) {
         this.commenter = commenter;
         this.text = text;
         this.content = content;
+        this.likers = likers;
     }
 
     public String getText() {
@@ -40,10 +44,13 @@ public class Comment extends SocialEntity {
     }
 
     public void displayComment() {
-        commenter.displayInfo();
+        commenter.displayName();
         System.out.print("Comment is : ");
         System.out.println(text + "to");
         getContent().displayPost();
-
+        System.out.println("liked the comment by users : ");
+        for (User user : likers) {
+            user.displayName();
+        }
     }
 }

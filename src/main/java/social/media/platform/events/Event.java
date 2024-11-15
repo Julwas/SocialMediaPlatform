@@ -8,12 +8,24 @@ import java.util.List;
 public class Event extends SocialEntity {
     private User organizer;
     private String eventName;
+    private String data;
     private List<User> participants;
+    private User participant;
 
-    public Event(User organizer, String eventName, List<User> participants) {
+    public Event(User organizer, String eventName, String data, List<User> participants, User participant) {
         this.organizer = organizer;
         this.eventName = eventName;
+        this.data = data;
         this.participants = participants;
+        this.participant = participant;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getEventName() {
@@ -40,13 +52,26 @@ public class Event extends SocialEntity {
         this.participants = participants;
     }
 
+    public void setParticipant(User participant) {
+        this.participant = participant;
+    }
+
+    public User getParticipant() {
+        return participant;
+    }
+
     public void displayEvent() {
-        System.out.println(" Event: " + eventName + ", participants :");
+        System.out.println(" Event: " + eventName + " Data: " + getData() + ", participants :");
         for (User user : participants) {
-            user.displayInfo();
+            user.displayName();
         }
-        System.out.print( "information about the event administrator: ");
-        getOrganizer().displayInfo();
+        System.out.print("information about the event administrator: ");
+        getOrganizer().displayName();
+
+    }
+
+    public void addPartcipant() {
+        System.out.println(organizer.getUsername() + " ad participant " + participant.getUsername());
 
     }
 }

@@ -11,37 +11,16 @@ public abstract class Post extends SocialEntity {
     protected User author;
     protected String content;
     private List<Comment> comments;
+    protected List<User> likers;
 
 
-    public Post(User author, String content, List<Comment> comments) {
+    public Post(User author, String content, List<Comment> comments, List<User> likers) {
         this.author = author;
         this.content = content;
         this.comments = comments;
-    }
-
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+        this.likers = likers;
     }
 
     public abstract void displayPost();
+
 }

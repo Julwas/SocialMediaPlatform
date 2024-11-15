@@ -10,7 +10,7 @@ public class Group extends SocialEntity {
     private User admin;
     private String groupName;
     private List<User> members;
-    private List<Post>posts;
+    private List<Post> posts;
 
     public Group(User admin, String groupName, List<User> members, List<Post> posts) {
         this.admin = admin;
@@ -52,9 +52,9 @@ public class Group extends SocialEntity {
     }
 
     public void displayGroup() {
-        System.out.println(" name of group: " + groupName + "Members of group:" );
+        System.out.println(" name of group: " + groupName + "Members of group:");
         for (User user : members) {
-            user.displayInfo();
+            user.displayName();
         }
         System.out.println(" Posts: ");
 
@@ -62,6 +62,6 @@ public class Group extends SocialEntity {
             post.displayPost();
         }
         System.out.print("information about the group administrator: ");
-        getAdmin().displayInfo();
+        getAdmin().displayName();
     }
 }

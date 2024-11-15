@@ -1,22 +1,20 @@
 package social.media.platform;
 
+import social.media.platform.MediaInfo.AudioInfo;
+import social.media.platform.MediaInfo.ImageInfo;
+import social.media.platform.MediaInfo.VideoInfo;
 import social.media.platform.actions.Comment;
 import social.media.platform.actions.FriendRequest;
-import social.media.platform.actions.Like;
 import social.media.platform.message.AudioMessage;
 import social.media.platform.message.ImageMessage;
 import social.media.platform.message.TextMessage;
 import social.media.platform.message.VideoMessage;
+import social.media.platform.post.*;
 import social.media.platform.users.User;
 import social.media.platform.events.Event;
-import social.media.platform.events.PrivateEvent;
 import social.media.platform.groups.Group;
-import social.media.platform.groups.PrivateGroup;
 
 import social.media.platform.notifications.Notification;
-import social.media.platform.post.ImagePost;
-import social.media.platform.post.TextPost;
-import social.media.platform.post.VideoPost;
 import social.media.platform.profile.Profile;
 
 import java.util.List;
@@ -31,20 +29,27 @@ public class Main {
         User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30);
         Notification not1 = new Notification(user1, " You have a new message!");
         Profile profile2 = new Profile(user2, " I prefer a healthy lifestyle");
-        TextPost textPost1 = new TextPost(user1, "My post ", List.of(), "Hi, everybody!");
-        ImagePost imagePost2 = new ImagePost(user2, " My image :", List.of(), " https://xyz.pl/1.jpg");
-        VideoPost videoPost4 = new VideoPost(user4, " My video : ", List.of(), " https://xyz.pl/4.mp4");
+        TextPost textPost1 = new TextPost(user1, "My post ", List.of(), List.of(user1, user3, user2),
+                "Hi, everybody!");
+        ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
+        ImagePost imagePost2 = new ImagePost(user2, " My image :", List.of(), List.of(user1, user3), imageInfo);
+
+        VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
+        VideoPost videoPost4 = new VideoPost(user4, " My video : ", List.of(), List.of(user4, user3, user5), videoInfo);
+
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going");
-        VideoMessage videoMessage = new VideoMessage(user2, user4, "https://video.pl/4.mp4");
-        AudioMessage audioMessage = new AudioMessage(user3, user5, "https://audio.pl/4.mp3");
-        ImageMessage imageMessage = new ImageMessage(user1, user4, "https://pic.pl/4.jpg");
-        Event event = new Event(user1, " Big Christmas concert", List.of(user5, user3, user1, user2));
-        PrivateEvent privateEvent = new PrivateEvent(user5, "My birthday ", List.of(user4, user1), " private ");
-        Group group = new Group(user3, "News in Warsaw.  ", List.of(user1, user4, user2), List.of(textPost1, videoPost4));
-        PrivateGroup privateGroup = new PrivateGroup(user4, " The little bees.  ", List.of(),
-                List.of(), "Private");
-        Comment comment = new Comment(user5, "  Amazing! ", imagePost2);
-        Like like = new Like(user4, "  liked the post");
+        AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
+
+        VideoMessage videoMessage = new VideoMessage(user2, user4, videoInfo);
+        AudioPost audioPost = new AudioPost(user1, " my Post ", List.of(), List.of(user1, user2), audioInfo);
+        AudioMessage audioMessage = new AudioMessage(user3, user5, audioInfo);
+        ImageMessage imageMessage = new ImageMessage(user1, user4, imageInfo);
+        Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
+                " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2, user3), user5);
+        Group group = new Group(user3, "News in Warsaw.  ", List.of(user1, user4, user2),
+                List.of(textPost1, videoPost4));
+        Comment comment = new Comment(user5, "  Amazing! ", imagePost2, List.of(user1, user5));
+
         FriendRequest friendRequest = new FriendRequest(user1, user3);
 
         user1.displayInfo();
@@ -52,7 +57,7 @@ public class Main {
         System.out.println("The user4 have the surname  :" + user4.getSurname() + " and have ID :" + user4.getId());
         System.out.println();
         System.out.println("Age of the user 3 :" + user3.getAge() + "years.");
-        System.out.println();
+        System.out.println("notification");
         not1.displayNotification();
         System.out.println();
         textPost1.displayPost();
@@ -62,6 +67,8 @@ public class Main {
         videoPost4.displayPost();
         System.out.println();
         System.out.println("Surname of the user2 :" + user2.getSurname() + " Bio :" + profile2.getBio());
+        System.out.println();
+        audioPost.displayPost();
         System.out.println();
         textMessage.displayMessage();
         System.out.println();
@@ -73,18 +80,11 @@ public class Main {
         System.out.println();
         event.displayEvent();
         System.out.println();
-        privateEvent.displayEvent();
+        event.addPartcipant();
         System.out.println();
         group.displayGroup();
         System.out.println();
-        privateGroup.displayGroup();
-        System.out.println();
-        like.displayLike();
-        System.out.println(" image post " + imagePost2.getImageUrl() + like.getLiked());
-        System.out.println();
         comment.displayComment();
-        System.out.println();
-        System.out.println(" image post " + imagePost2.getImageUrl() + comment.getText());
         System.out.println();
         friendRequest.displayRequest();
         System.out.println();

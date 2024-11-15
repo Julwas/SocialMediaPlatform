@@ -9,8 +9,8 @@ public class TextPost extends Post {
 
     private String textContent;
 
-    public TextPost(User author, String content, List<Comment> comments, String textContent) {
-        super(author, content, comments);
+    public TextPost(User author, String content, List<Comment> comments, List<User> likers, String textContent) {
+        super(author, content, comments, likers);
         this.textContent = textContent;
     }
 
@@ -24,6 +24,9 @@ public class TextPost extends Post {
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " posted: " + textContent);
+        System.out.println(author.getUsername() + " posted: " + textContent + "liked the post by users :  ");
+        for (User user : likers) {
+            user.displayName();
+        }
     }
 }

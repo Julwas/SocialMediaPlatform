@@ -1,27 +1,27 @@
 package social.media.platform.message;
 
+import social.media.platform.MediaInfo.AudioInfo;
 import social.media.platform.users.User;
 
 public class AudioMessage extends Message {
+    private AudioInfo audioInfo;
 
-    private String audioMessage;
-
-    public AudioMessage(User sender, User receiver, String audioMessage) {
+    public AudioMessage(User sender, User receiver, AudioInfo audioInfo) {
         super(sender, receiver);
-        this.audioMessage = audioMessage;
+        this.audioInfo = audioInfo;
     }
 
-    public String getAudioMessage() {
-        return audioMessage;
+    public AudioInfo getAudioInfo() {
+        return audioInfo;
     }
 
-    public void setAudioMessage(String audioMessage) {
-        this.audioMessage = audioMessage;
+    public void setAudioInfo(AudioInfo audioInfo) {
+        this.audioInfo = audioInfo;
     }
 
     @Override
     public void displayMessage() {
         super.displayMessage();
-        System.out.println(" : " + audioMessage);
+        System.out.println(" : " + audioInfo.getUrl() + " size: " + audioInfo.getDuration() + "  seconds.");
     }
 }

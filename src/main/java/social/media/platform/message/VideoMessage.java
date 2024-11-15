@@ -1,28 +1,29 @@
 package social.media.platform.message;
 
+import social.media.platform.MediaInfo.VideoInfo;
 import social.media.platform.users.User;
 
 public class VideoMessage extends Message {
+    private VideoInfo videoInfo;
 
-    private String videoMessage;
-
-    public VideoMessage(User sender, User receiver, String videoMessage) {
+    public VideoMessage(User sender, User receiver, VideoInfo videoInfo) {
         super(sender, receiver);
-        this.videoMessage = videoMessage;
+        this.videoInfo = videoInfo;
     }
 
-
-    public String getTextMessage() {
-        return videoMessage;
+    public VideoInfo getMediaInfo() {
+        return videoInfo;
     }
 
-    public void setTextMessage(String textMessage) {
-        this.videoMessage = textMessage;
+    public void setMediaInfo(VideoInfo mediaInfo) {
+        this.videoInfo = videoInfo;
     }
 
     @Override
     public void displayMessage() {
         super.displayMessage();
-        System.out.println( " : " + videoMessage);
+        System.out.println(" : " + videoInfo.getUrl() + " size: " + videoInfo.getWidth() + " x " + videoInfo.getHeight() +
+                " pixels, " + videoInfo.getDuration() +
+                "   seconds.");
     }
 }

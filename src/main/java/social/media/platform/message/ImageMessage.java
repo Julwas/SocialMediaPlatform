@@ -1,28 +1,30 @@
 package social.media.platform.message;
 
+import social.media.platform.MediaInfo.ImageInfo;
 import social.media.platform.users.User;
 
 public class ImageMessage extends Message {
 
-    private String imageMessage;
+    private ImageInfo imageInfo;
 
-    public ImageMessage(User sender, User receiver, String imageMessage) {
+    public ImageMessage(User sender, User receiver, ImageInfo imageInfo) {
         super(sender, receiver);
-        this.imageMessage = imageMessage;
+        this.imageInfo = imageInfo;
     }
 
-    public String getImageMessage() {
-        return imageMessage;
+    public ImageInfo getImageInfo() {
+        return imageInfo;
     }
 
-    public void setImageMessage(String imageMessage) {
-        this.imageMessage = imageMessage;
+    public void setImageInfo(ImageInfo imageInfo) {
+        this.imageInfo = imageInfo;
     }
 
     @Override
     public void displayMessage() {
         super.displayMessage();
-        System.out.println(" : " +imageMessage);
+        System.out.println(" : " + imageInfo.getUrl() + " size: " + imageInfo.getWidth() + " x " + imageInfo.getHeight()
+                + " pixels. ");
     }
 
 }
