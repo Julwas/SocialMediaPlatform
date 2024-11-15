@@ -21,6 +21,10 @@ public class TextPost extends Post {
     public void setTextContent(String textContent) {
         this.textContent = textContent;
     }
+    @Override
+    public String toString(){
+        return author.getUsername() + " posted: " + textContent;
+    }
 
     @Override
     public void displayPost() {

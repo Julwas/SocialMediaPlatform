@@ -54,12 +54,13 @@ public class Group extends SocialEntity {
     public void displayGroup() {
         System.out.println(" name of group: " + groupName + "Members of group:");
         for (User user : members) {
-            user.displayName();
+           user.displayName();
         }
         System.out.println(" Posts: ");
 
         for (Post post : posts) {
-            post.displayPost();
+            //post.displayPost();
+            System.out.println(post);
         }
         System.out.print("information about the group administrator: ");
         getAdmin().displayName();

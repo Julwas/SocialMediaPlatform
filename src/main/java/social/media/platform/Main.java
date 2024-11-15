@@ -19,6 +19,8 @@ import social.media.platform.profile.Profile;
 
 import java.util.List;
 
+import static jdk.internal.org.jline.utils.InfoCmp.Capability.user2;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -29,17 +31,17 @@ public class Main {
         User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30);
         Notification not1 = new Notification(user1, " You have a new message!");
         Profile profile2 = new Profile(user2, " I prefer a healthy lifestyle");
+        Profile profile1 = new Profile(user1, " I prefer a healthy lifestyle");
         TextPost textPost1 = new TextPost(user1, "My post ", List.of(), List.of(user1, user3, user2),
                 "Hi, everybody!");
+        TextPost textPost2 = new TextPost(user2, "My post ", List.of(), List.of(user2, user5),
+                " See you after the vacations");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
         ImagePost imagePost2 = new ImagePost(user2, " My image :", List.of(), List.of(user1, user3), imageInfo);
-
         VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
         VideoPost videoPost4 = new VideoPost(user4, " My video : ", List.of(), List.of(user4, user3, user5), videoInfo);
-
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
-
         VideoMessage videoMessage = new VideoMessage(user2, user4, videoInfo);
         AudioPost audioPost = new AudioPost(user1, " my Post ", List.of(), List.of(user1, user2), audioInfo);
         AudioMessage audioMessage = new AudioMessage(user3, user5, audioInfo);
@@ -47,11 +49,15 @@ public class Main {
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2, user3), user5);
         Group group = new Group(user3, "News in Warsaw.  ", List.of(user1, user4, user2),
-                List.of(textPost1, videoPost4));
+                List.of(textPost1, textPost2));
         Comment comment = new Comment(user5, "  Amazing! ", imagePost2, List.of(user1, user5));
-
         FriendRequest friendRequest = new FriendRequest(user1, user3);
 
+        if (profile1.equals(profile2)) {
+            System.out.println("Profils are Equal ");
+        } else {
+            System.out.println("Profils are not Equal ");
+        }
         user1.displayInfo();
         System.out.println();
         System.out.println("The user4 have the surname  :" + user4.getSurname() + " and have ID :" + user4.getId());
@@ -66,7 +72,9 @@ public class Main {
         System.out.println();
         videoPost4.displayPost();
         System.out.println();
-        System.out.println("Surname of the user2 :" + user2.getSurname() + " Bio :" + profile2.getBio());
+        profile2.displayProfile();
+        System.out.println();
+        profile2.displayProfileHash();
         System.out.println();
         audioPost.displayPost();
         System.out.println();

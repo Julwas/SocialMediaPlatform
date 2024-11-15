@@ -22,6 +22,7 @@ public class VideoPost extends Post {
         this.videoInfo = videoInfo;
     }
 
+
     @Override
     public void displayPost() {
         System.out.println(author.getUsername() + " " + author.getSurname() + " posted: " + videoInfo.getUrl()
@@ -29,6 +30,7 @@ public class VideoPost extends Post {
                 + " seconds. " + " liked the post by users : ");
         for (User user : likers) {
             user.displayName();
+
         }
 
     }
