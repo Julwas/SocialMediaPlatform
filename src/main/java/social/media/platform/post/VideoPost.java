@@ -22,7 +22,6 @@ public class VideoPost extends Post {
         this.videoInfo = videoInfo;
     }
 
-
     @Override
     public void displayPost() {
         System.out.println(author.getUsername() + " " + author.getSurname() + " posted: " + videoInfo.getUrl()

@@ -19,8 +19,6 @@ import social.media.platform.profile.Profile;
 
 import java.util.List;
 
-import static jdk.internal.org.jline.utils.InfoCmp.Capability.user2;
-
 
 public class Main {
     public static void main(String[] args) {

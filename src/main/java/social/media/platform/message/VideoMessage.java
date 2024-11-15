@@ -11,11 +11,11 @@ public class VideoMessage extends Message {
         this.videoInfo = videoInfo;
     }
 
-    public VideoInfo getMediaInfo() {
+    public VideoInfo getVideoInfo() {
         return videoInfo;
     }
 
-    public void setMediaInfo(VideoInfo mediaInfo) {
+    public void setVideoInfo(VideoInfo videoInfo) {
         this.videoInfo = videoInfo;
     }
 
