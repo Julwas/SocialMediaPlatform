@@ -54,12 +54,13 @@ public class User extends SocialEntity {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(getUsername(), user.getUsername());
+        return age == user.age && Objects.equals(username, user.username) && Objects.equals(email, user.email)
+                && Objects.equals(surname, user.surname) && Objects.equals(getId(), user.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername());
+        return Objects.hash(username, email, surname, age, getId());
     }
 
     public void displayInfo() {
