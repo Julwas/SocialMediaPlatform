@@ -1,12 +1,13 @@
 package social.media.platform.post;
 
-import social.media.platform.MediaInfo.VideoInfo;
+import social.media.platform.media.VideoInfo;
 import social.media.platform.actions.Comment;
+import social.media.platform.media.VideoPlayable;
 import social.media.platform.users.User;
 
 import java.util.List;
 
-public class VideoPost extends Post {
+public class VideoPost extends Post implements VideoPlayable {
     private VideoInfo videoInfo;
 
     public VideoPost(User author, String content, List<Comment> comments, List<User> likers, VideoInfo videoInfo) {
@@ -32,5 +33,10 @@ public class VideoPost extends Post {
 
         }
 
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Use your imagination to see " + videoInfo.getUrl());
     }
 }

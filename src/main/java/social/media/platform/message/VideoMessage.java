@@ -1,9 +1,10 @@
 package social.media.platform.message;
 
-import social.media.platform.MediaInfo.VideoInfo;
+import social.media.platform.media.VideoInfo;
+import social.media.platform.media.VideoPlayable;
 import social.media.platform.users.User;
 
-public class VideoMessage extends Message {
+public class VideoMessage extends Message implements VideoPlayable {
     private VideoInfo videoInfo;
 
     public VideoMessage(User sender, User receiver, VideoInfo videoInfo) {
@@ -25,5 +26,10 @@ public class VideoMessage extends Message {
         System.out.println(" : " + videoInfo.getUrl() + " size: " + videoInfo.getWidth() + " x " + videoInfo.getHeight() +
                 " pixels, " + videoInfo.getDuration() +
                 "   seconds.");
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Use your imagination to see " + videoInfo.getUrl());
     }
 }

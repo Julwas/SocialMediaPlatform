@@ -1,8 +1,10 @@
 package social.media.platform;
 
-import social.media.platform.MediaInfo.AudioInfo;
-import social.media.platform.MediaInfo.ImageInfo;
-import social.media.platform.MediaInfo.VideoInfo;
+import social.media.platform.base.EntityWithId;
+import social.media.platform.config.StubConfiguration;
+import social.media.platform.media.AudioInfo;
+import social.media.platform.media.ImageInfo;
+import social.media.platform.media.VideoInfo;
 import social.media.platform.actions.Comment;
 import social.media.platform.actions.FriendRequest;
 import social.media.platform.message.AudioMessage;
@@ -21,8 +23,9 @@ import java.util.List;
 
 
 public class Main {
+
     public static void main(String[] args) {
-        User user1 = new User("Diana", "JulWas@gmail.com", "Wasilewska", 20);
+        final User user1 = new User("Diana", "JulWas@gmail.com", "Wasilewska", 20);
         User user2 = new User("John", "JBin@gmail.com", "Bin", 24);
         User user3 = new User("Mark", "Mark@yahoo.com", "Sokolowski", 34);
         User user4 = new User("Milena", "Mila@wp.com", "Kownacka", 23);
@@ -95,5 +98,13 @@ public class Main {
         friendRequest.displayRequest();
         System.out.println();
         friendRequest.displayAnswerRequest();
+
+        printStringWithId("I have an id: ", imageMessage);
+        printStringWithId("I have an id too: ", group);
+
+    }
+
+    private static void printStringWithId(String str, EntityWithId entity) {
+        System.out.println(str + entity.getId());
     }
 }

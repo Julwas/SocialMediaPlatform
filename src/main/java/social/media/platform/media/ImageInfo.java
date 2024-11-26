@@ -1,4 +1,4 @@
-package social.media.platform.MediaInfo;
+package social.media.platform.media;
 
 public class ImageInfo {
     private String url;

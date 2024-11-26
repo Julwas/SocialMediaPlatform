@@ -1,12 +1,13 @@
 package social.media.platform.post;
 
-import social.media.platform.MediaInfo.AudioInfo;
+import social.media.platform.media.AudioInfo;
 import social.media.platform.actions.Comment;
+import social.media.platform.media.SoundPlayable;
 import social.media.platform.users.User;
 
 import java.util.List;
 
-public class AudioPost extends Post {
+public class AudioPost extends Post implements SoundPlayable {
     private AudioInfo audioInfo;
 
     public AudioInfo getAudioInfo() {
@@ -30,5 +31,10 @@ public class AudioPost extends Post {
             user.displayName();
         }
 
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Use your imagination to hear " + audioInfo.getUrl());
     }
 }

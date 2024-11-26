@@ -1,13 +1,14 @@
 package social.media.platform.post;
 
 
-import social.media.platform.MediaInfo.ImageInfo;
+import social.media.platform.media.ImageInfo;
 import social.media.platform.actions.Comment;
+import social.media.platform.media.ImageViewable;
 import social.media.platform.users.User;
 
 import java.util.List;
 
-public class ImagePost extends Post {
+public class ImagePost extends Post implements ImageViewable {
     private ImageInfo imageInfo;
 
     public ImageInfo getImageInfo() {
@@ -30,5 +31,10 @@ public class ImagePost extends Post {
         for (User user : likers) {
             user.displayName();
         }
+    }
+
+    @Override
+    public void play() {
+        System.out.println( "Use your imagination to see " + imageInfo.getUrl());
     }
 }

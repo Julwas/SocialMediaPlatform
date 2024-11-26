@@ -1,4 +1,4 @@
-package social.media.platform.MediaInfo;
+package social.media.platform.media;
 
 public class AudioInfo {
     private String url;
