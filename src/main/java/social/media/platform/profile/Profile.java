@@ -45,11 +45,10 @@ public class Profile extends SocialEntity {
         return Objects.hash(getUser(), getBio());
     }
 
-    public void displayProfile(){
+    public  void displayProfile(){
         System.out.println("Surname of the user2 :" + user.getUsername() + " Bio :" +getBio());
-    }public void displayProfileHash(){
+    }
+    public void displayProfileHash(){
     System.out.println("HashCod of profile  :" + hashCode());
     }
-
-
 }

@@ -3,6 +3,11 @@ package social.media.platform.actions;
 import social.media.platform.users.User;
 
 public class FriendRequest {
+
+    static {
+        System.out.println("Sorry, FriendRequest doesn't really work now");
+    }
+
     private User sender;
     private User receiver;
 
