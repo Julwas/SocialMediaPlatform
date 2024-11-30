@@ -4,6 +4,7 @@ public class AudioInfo {
     private String url;
     private int duration;
 
+
     public AudioInfo(String url, int duration) {
         this.url = url;
         this.duration = duration;
@@ -20,6 +21,8 @@ public class AudioInfo {
     public int getDuration() {
         return duration;
     }
+
+
 
     public void setDuration(int duration) {
         this.duration = duration;

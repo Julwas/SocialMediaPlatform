@@ -1,7 +1,6 @@
 package social.media.platform;
 
 import social.media.platform.base.EntityWithId;
-import social.media.platform.config.StubConfiguration;
 import social.media.platform.media.AudioInfo;
 import social.media.platform.media.ImageInfo;
 import social.media.platform.media.VideoInfo;
@@ -38,20 +37,24 @@ public class Main {
         TextPost textPost2 = new TextPost(user2, "My post ", List.of(), List.of(user2, user5),
                 " See you after the vacations");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
-        ImagePost imagePost2 = new ImagePost(user2, " My image :", List.of(), List.of(user1, user3), imageInfo);
+        ImagePost imagePost2 = new ImagePost(user2, " My image :", List.of(), List.of(user1, user3),
+                List.of("0x2615 ", " 0x2615"),imageInfo);
         VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
         VideoPost videoPost4 = new VideoPost(user4, " My video : ", List.of(), List.of(user4, user3, user5), videoInfo);
-        TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going");
+        TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going",
+                "https://emoticon/fire.jpg");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
         VideoMessage videoMessage = new VideoMessage(user2, user4, videoInfo);
-        AudioPost audioPost = new AudioPost(user1, " my Post ", List.of(), List.of(user1, user2), audioInfo);
+        AudioPost audioPost = new AudioPost(user1, " my Post ", List.of(), List.of(user1, user2),
+                "https://emoticon/fire.jpg" ,audioInfo);
         AudioMessage audioMessage = new AudioMessage(user3, user5, audioInfo);
         ImageMessage imageMessage = new ImageMessage(user1, user4, imageInfo);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2, user3), user5);
         Group group = new Group(user3, "News in Warsaw.  ", List.of(user1, user4, user2),
                 List.of(textPost1, textPost2));
-        Comment comment = new Comment(user5, "  Amazing! ", imagePost2, List.of(user1, user5));
+        Comment comment = new Comment(user5, "  Amazing! ", imagePost2, List.of(user1, user2),
+                "https://emoticon/fire.jpg " );
         FriendRequest friendRequest = new FriendRequest(user1, user3);
 
         if (profile1.equals(profile2)) {

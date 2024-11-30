@@ -5,6 +5,7 @@ public class ImageInfo {
     private int width;
     private int height;
 
+
     public ImageInfo(String url, int width, int height) {
         this.url = url;
         this.width = width;

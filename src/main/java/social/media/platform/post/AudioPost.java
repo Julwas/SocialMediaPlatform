@@ -2,12 +2,12 @@ package social.media.platform.post;
 
 import social.media.platform.media.AudioInfo;
 import social.media.platform.actions.Comment;
-import social.media.platform.media.SoundPlayable;
+import social.media.platform.interfaces.Playable;
 import social.media.platform.users.User;
 
 import java.util.List;
 
-public class AudioPost extends Post implements SoundPlayable {
+public class AudioPost extends Post implements Playable {
     private AudioInfo audioInfo;
 
     public AudioInfo getAudioInfo() {
@@ -18,7 +18,7 @@ public class AudioPost extends Post implements SoundPlayable {
         this.audioInfo = audioInfo;
     }
 
-    public AudioPost(User author, String content, List<Comment> comments, List<User> likers, AudioInfo audioInfo) {
+    public AudioPost(User author, String content, List<Comment> comments, List<User> likers, String urlEmoticon, AudioInfo audioInfo) {
         super(author, content, comments, likers);
         this.audioInfo = audioInfo;
     }
@@ -36,5 +36,10 @@ public class AudioPost extends Post implements SoundPlayable {
     @Override
     public void play() {
         System.out.println("Use your imagination to hear " + audioInfo.getUrl());
+    }
+
+    @Override
+    public void pause() {
+        System.out.println( audioInfo.getUrl() + "Press pause");
     }
 }

@@ -11,6 +11,7 @@ public class VideoInfo {
         this.width = width;
         this.height = height;
         this.duration = duration;
+
     }
 
     public String getUrl() {
@@ -44,4 +45,6 @@ public class VideoInfo {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+
 }

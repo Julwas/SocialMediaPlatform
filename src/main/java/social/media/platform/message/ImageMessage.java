@@ -1,10 +1,10 @@
 package social.media.platform.message;
 
 import social.media.platform.media.ImageInfo;
-import social.media.platform.media.ImageViewable;
+import social.media.platform.interfaces.Viewable;
 import social.media.platform.users.User;
 
-public class ImageMessage extends Message implements ImageViewable {
+public class ImageMessage extends Message implements Viewable {
 
     private ImageInfo imageInfo;
 
@@ -29,7 +29,7 @@ public class ImageMessage extends Message implements ImageViewable {
     }
 
     @Override
-    public void play() {
+    public void open() {
         System.out.println("Use your imagination to see " + imageInfo.getUrl());
     }
 }

@@ -8,6 +8,7 @@ public abstract class Message extends SocialEntity {
     private User receiver;
 
 
+
     public Message(User sender, User receiver) {
         this.sender = sender;
         this.receiver = receiver;
