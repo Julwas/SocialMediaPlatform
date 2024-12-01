@@ -7,8 +7,8 @@ import social.media.platform.users.User;
 public class VideoMessage extends Message implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoMessage(User sender, User receiver, VideoInfo videoInfo) {
-        super(sender, receiver);
+    public VideoMessage(User sender, User receiver, String date, VideoInfo videoInfo) {
+        super(sender, receiver, date);
         this.videoInfo = videoInfo;
     }
 

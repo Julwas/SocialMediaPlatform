@@ -30,9 +30,12 @@ public class TextPost extends Post implements Viewable {
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " posted: " + textContent + "liked the post by users :  ");
+        System.out.println(author.getUsername() + " posted: " + textContent + "The post, liked  by users  ");
         for (User user : likers) {
             user.displayName();
+        }
+        for(Comment comment : comments){
+            comment.displayComment();
         }
     }
 

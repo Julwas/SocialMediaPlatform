@@ -7,8 +7,8 @@ import social.media.platform.users.User;
 public class AudioMessage extends Message implements Playable {
     private AudioInfo audioInfo;
 
-    public AudioMessage(User sender, User receiver, AudioInfo audioInfo) {
-        super(sender, receiver);
+    public AudioMessage(User sender, User receiver, String date, AudioInfo audioInfo) {
+        super(sender, receiver, date);
         this.audioInfo = audioInfo;
     }
 

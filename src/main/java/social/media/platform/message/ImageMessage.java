@@ -8,8 +8,8 @@ public class ImageMessage extends Message implements Viewable {
 
     private ImageInfo imageInfo;
 
-    public ImageMessage(User sender, User receiver, ImageInfo imageInfo) {
-        super(sender, receiver);
+    public ImageMessage(User sender, User receiver, String date, ImageInfo imageInfo) {
+        super(sender, receiver, date);
         this.imageInfo = imageInfo;
     }
 

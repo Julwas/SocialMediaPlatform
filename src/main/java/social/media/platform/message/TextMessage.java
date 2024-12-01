@@ -9,11 +9,11 @@ public class TextMessage extends Message implements Viewable {
     private String textMessage;
     private String urlEmoticon;
 
-    public TextMessage(User sender, User receiver, String textMessage, String urlEmoticon) {
-        super(sender, receiver);
+    public TextMessage(User sender, User receiver, String date, String textMessage) {
+        super(sender, receiver, date);
         this.textMessage = textMessage;
-        this.urlEmoticon = urlEmoticon;
     }
+
     public String getUrlEmoticon() {
         return urlEmoticon;
     }

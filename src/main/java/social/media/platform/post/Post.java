@@ -10,7 +10,7 @@ public abstract class Post extends SocialEntity {
 
     protected User author;
     protected String content;
-    private List<Comment> comments;
+    protected List<Comment> comments;
     protected List<User> likers;
 
 

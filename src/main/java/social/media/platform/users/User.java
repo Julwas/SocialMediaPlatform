@@ -69,6 +69,6 @@ public class User extends SocialEntity {
     }
 
     public void displayName() {
-        System.out.println("User : " + username + " " + surname);
+        System.out.println("" + username + " " + surname);
     }
 }

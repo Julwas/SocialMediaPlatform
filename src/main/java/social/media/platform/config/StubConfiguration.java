@@ -1,6 +1,6 @@
 package social.media.platform.config;
 
-public class StubConfiguration implements Configuration{
+public class StubConfiguration{
     private static final String password;
 
     static {
@@ -9,8 +9,8 @@ public class StubConfiguration implements Configuration{
     }
 
 
-    @Override
+   /* @Override
     public String getPassword() {
         return password;
-    }
+    }*/
 }

@@ -25,14 +25,15 @@ public class VideoPost extends Post implements Playable {
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " " + author.getSurname() + " posted: " + videoInfo.getUrl()
+        System.out.println(author.getUsername() +" posted the video: " + videoInfo.getUrl()
                 + " size: " + videoInfo.getHeight() + " x " + videoInfo.getWidth() + " pixels " + videoInfo.getDuration()
-                + " seconds. " + " liked the post by users : ");
+                + " seconds. " + " The post, liked  by users ");
         for (User user : likers) {
             user.displayName();
-
         }
-
+        for(Comment comment : comments){
+            comment.displayComment();
+        }
     }
 
     @Override

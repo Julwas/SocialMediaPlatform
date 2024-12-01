@@ -19,19 +19,21 @@ public class ImagePost extends Post implements Viewable {
         this.imageInfo = imageInfo;
     }
 
-    public ImagePost(User author, String content, List<Comment> comments, List<User> likers, List<String> emoticon,
+    public ImagePost(User author, String content, List<Comment> comments, List<User> likers,
                      ImageInfo imageInfo) {
-        super(author, content, comments, likers, emoticon);
+        super(author, content, comments, likers);
         this.imageInfo = imageInfo;
     }
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " posted: " + imageInfo.getUrl() + "  size: " + imageInfo.getWidth()
-                + "x" + imageInfo.getWidth() + " pixels  " + "liked the post by users : ");
+        System.out.println(author.getUsername() + " posted the image : " + imageInfo.getUrl() + " size " + imageInfo.getWidth()
+                + "x" + imageInfo.getWidth() + " pixels.  " + " The post, liked  by users : ");
         for (User user : likers) {
             user.displayName();
-            System.out.println(" add emoticon " );
+        }
+        for(Comment comment : comments){
+            comment.displayComment();
         }
     }
 

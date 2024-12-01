@@ -25,12 +25,14 @@ public class AudioPost extends Post implements Playable {
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " " + author.getSurname() + " posted: " + audioInfo.getUrl()
-                + "size: " + audioInfo.getDuration() + " seconds. " + " liked the post by users : ");
+        System.out.print(author.getUsername() +  " posted: " + audioInfo.getUrl()
+                + "size: " + audioInfo.getDuration() + " seconds. " + " The post, liked  by users : ");
         for (User user : likers) {
             user.displayName();
         }
-
+        for(Comment comment : comments){
+            comment.displayComment();
+        }
     }
 
     @Override
