@@ -56,7 +56,7 @@ public class Comment extends SocialEntity implements ContentReaction{
             user.displayName();
         }
         for(String emoticon : emoticons){
-            sendEmoticon(emoticon);
+            System.out.println(emoticon);
         }
         System.out.print( " sent to the comment by:");
         senterEmoticon.displayName();
@@ -68,7 +68,7 @@ public class Comment extends SocialEntity implements ContentReaction{
 
     @Override
     public String sendEmoticon(String emoticon) {
-       System.out.println(emoticons);
-        return emoticon;
+       emoticons.add(emoticon);
+       return emoticon;
     }
 }
