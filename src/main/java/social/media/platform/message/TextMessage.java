@@ -7,19 +7,10 @@ import social.media.platform.users.User;
 public class TextMessage extends Message implements Viewable {
 
     private String textMessage;
-    private String urlEmoticon;
 
     public TextMessage(User sender, User receiver, String date, String textMessage) {
         super(sender, receiver, date);
         this.textMessage = textMessage;
-    }
-
-    public String getUrlEmoticon() {
-        return urlEmoticon;
-    }
-
-    public void setUrlEmoticon(String urlEmoticon) {
-        this.urlEmoticon = urlEmoticon;
     }
 
     public String getTextMessage() {
@@ -38,7 +29,7 @@ public class TextMessage extends Message implements Viewable {
 
     @Override
     public void open() {
-        System.out.println(" Open the message " + getTextMessage());
+        System.out.println(" Open the text post " + getTextMessage());
     }
 
 }

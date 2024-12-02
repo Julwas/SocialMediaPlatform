@@ -33,12 +33,12 @@ public class ImagePost extends Post implements Viewable {
             user.displayName();
         }
         for(Comment comment : comments){
-            comment.displayComment();
+            comment.addComment();
         }
     }
 
     @Override
     public void open() {
-        System.out.println( "Use your imagination to see " + imageInfo.getUrl());
+        System.out.println( "opened the picture " + imageInfo.getUrl());
     }
 }

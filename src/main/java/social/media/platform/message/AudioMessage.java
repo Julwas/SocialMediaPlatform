@@ -1,5 +1,6 @@
 package social.media.platform.message;
 
+import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.media.AudioInfo;
 import social.media.platform.interfaces.Playable;
 import social.media.platform.users.User;
@@ -29,7 +30,7 @@ public class AudioMessage extends Message implements Playable {
 
     @Override
     public void play() {
-        System.out.println("Use your imagination to hear " + audioInfo.getUrl());
+        System.out.println("is hearing the audio: " + audioInfo.getUrl());
     }
 
     @Override

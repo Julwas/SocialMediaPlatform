@@ -6,20 +6,22 @@ import social.media.platform.users.User;
 import java.util.*;
 import java.util.List;
 
-public class Comment extends SocialEntity implements ContentReaction {
+public class Comment extends SocialEntity implements ContentReaction{
     private User commenter;
+    private User senterEmoticon;
     private String text;
-
     private List<User> likers;
     private List<String> emoticons = new ArrayList<>();
-    final List<String> allowedEmoticons = new ArrayList<String>(  );//возвращать спиок возможных  смайлов.
+     final List<String> allowedEmoticons = new ArrayList<>(Arrays.asList(":)", ":(", "Cry", " poo", "wave", "heart ",
+            "hmm", "O_o", "kiss", ":‑|"));
+    //возвращать спиок возможных  смайлов.
 
-    public Comment(User commenter, String text, List<User> likers) {
+    public Comment(User commenter, String text, List<User> likers, User senterEmoticon) {
         this.commenter = commenter;
         this.text = text;
         this.likers = likers;
+        this.senterEmoticon= senterEmoticon;
     }
-
     public User getCommenter() {
         return commenter;
     }
@@ -49,18 +51,24 @@ public class Comment extends SocialEntity implements ContentReaction {
     public void displayComment() {
         System.out.print(" Comment: " + text + " to the post from ");
         commenter.displayName();
-        System.out.print(" the comment, liked by users : ");
+        System.out.print("liked by users : ");
         for (User user : likers) {
             user.displayName();
         }
         for(String emoticon : emoticons){
-            System.out.println(emoticon);
+            sendEmoticon(emoticon);
         }
+        System.out.print( " sent to the comment by:");
+        senterEmoticon.displayName();
+    }
+
+    public void addComment(){
+        System.out.println( commenter.getUsername() + " commented : " + text);
     }
 
     @Override
-    public void sendEmoticon(String emoticon) {
-        emoticons.add(emoticon);
+    public String sendEmoticon(String emoticon) {
+       System.out.println(emoticons);
+        return emoticon;
     }
-
 }

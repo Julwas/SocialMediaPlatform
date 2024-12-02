@@ -56,7 +56,7 @@ public class FriendRequest {
         }
     }
 
-    public void displayAnswerRequest() {
+   /* public void displayAnswerRequest() {
         System.out.println(receiver.getUsername() + answer + " a friend request to " + sender.getUsername());
-    }
+    }*/
 }

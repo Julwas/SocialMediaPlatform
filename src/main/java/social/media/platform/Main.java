@@ -31,11 +31,11 @@ public class Main {
         User user4 = new User("Milena", "Mila@wp.com", "Kownacka", 23);
         User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30);
 
-        Comment comment = new Comment(user5, " Awesome!!! ", List.of(user1, user2));
-        Comment comment1 = new Comment(user1, "  OMG! ", List.of(user3));
-        Comment comment2 = new Comment(user2, "  Hi! ", List.of(user5));
-        Comment comment3 = new Comment(user4, "  I will miss you! ", List.of(user1));
-        comment3.sendEmoticon("smile");
+        Comment comment = new Comment(user5, " Awesome!!! ", List.of(user1, user2), user1);
+        Comment comment1 = new Comment(user1, "  OMG! ", List.of(user3), user5);
+        Comment comment2 = new Comment(user2, "  Hi! ", List.of(user5), user3);
+        Comment comment3 = new Comment(user4, "  I will miss you! ", List.of(user1), user1);
+
 
         Notification not1 = new Notification(user1, " You have a new message!");
         Profile profile2 = new Profile(user2, " I prefer a healthy lifestyle");
@@ -62,6 +62,11 @@ public class Main {
         Group group = new Group(user3, "News in Warsaw.  ", List.of(user1, user4, user2),
                 List.of(textPost1, textPost2));
 
+        comment1.sendEmoticon("smile");
+        comment2.sendEmoticon("poo");
+
+        comment3.sendEmoticon("heart");
+
 
         FriendRequest friendRequest = new FriendRequest(user1, user3, " 01.12.2024", "accept");
 
@@ -70,15 +75,25 @@ public class Main {
         } else {
             System.out.println("Profils are not Equal ");
         }
+        user1.displayName();
+        imagePost2.open();
+        videoPost4.play();
+        user1.displayName();
+        videoPost4.pause();
         user1.displayInfo();
+        user2.displayName();
+        textPost1.open();
         System.out.println();
         System.out.println("The user4 have the surname  :" + user4.getSurname() + " and have ID :" + user4.getId());
         System.out.println();
         System.out.println("Age of the user 3 :" + user3.getAge() + "years.");
         System.out.println("notification");
         not1.displayNotification();
-        System.out.println();
+        System.out.println("Ttttttttttt");
         textPost1.displayPost();
+        comment2.displayComment();
+        System.out.println();
+
         System.out.println();
         imagePost2.displayPost();
         System.out.println();
@@ -103,12 +118,12 @@ public class Main {
         event.addPartcipant();
         System.out.println();
         group.displayGroup();
-        System.out.println();
-        comment3.displayComment();
+        System.out.println(" COMMENT");
+        comment2.displayComment();
         System.out.println();
         friendRequest.displayRequest();
         System.out.println();
-        friendRequest.displayAnswerRequest();
+        //friendRequest.displayAnswerRequest();
 
         printStringWithId("I have an id: ", imageMessage);
         printStringWithId("I have an id too: ", group);

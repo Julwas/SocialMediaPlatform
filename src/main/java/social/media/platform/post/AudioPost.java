@@ -31,17 +31,17 @@ public class AudioPost extends Post implements Playable {
             user.displayName();
         }
         for(Comment comment : comments){
-            comment.displayComment();
+            comment.addComment();
         }
     }
 
     @Override
     public void play() {
-        System.out.println("Use your imagination to hear " + audioInfo.getUrl());
+        System.out.println("is hearing the audio: " + audioInfo.getUrl());
     }
 
     @Override
     public void pause() {
-        System.out.println( audioInfo.getUrl() + "Press pause");
+        System.out.println("paused the audio: " + audioInfo.getUrl());
     }
 }
