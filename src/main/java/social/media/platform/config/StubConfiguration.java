@@ -10,18 +10,19 @@ public class StubConfiguration implements Configuration {
 
     static {
         readerConfiguration();
+       // password;
     }
 
     public static void readerConfiguration() {
 
         String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
 
-        String password = null;
+        String pas = null;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            password = br.readLine();
-            if (password != null) {
+            pas = br.readLine();
+            if (pas != null) {
                // logger.info
-                       System.out.println (" Password :" + password);
+                       System.out.println (" Password :" + pas);
             } else {
                 logger.info(" File is empty or does not contain a password");
             }
@@ -34,6 +35,7 @@ public class StubConfiguration implements Configuration {
     @Override
     public  String readerPassword() {
       //readerConfiguration();
-        return password;
+
+        return password ;
     }
 }

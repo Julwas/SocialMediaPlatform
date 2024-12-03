@@ -10,8 +10,8 @@ import java.util.List;
 public class VideoPost extends Post implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoPost(User author, String content, List<Comment> comments, List<User> likers, VideoInfo videoInfo) {
-        super(author, content, comments, likers);
+    public VideoPost(User author, List<Comment> comments, List<User> likers, VideoInfo videoInfo) {
+        super(author, comments, likers);
         this.videoInfo = videoInfo;
     }
 

@@ -9,16 +9,33 @@ import java.util.List;
 public abstract class Post extends SocialEntity {
 
     protected User author;
-    protected String content;
+    //protected String content;
     protected List<Comment> comments;
     protected List<User> likers;
 
-    public Post(User author, String content, List<Comment> comments, List<User> likers) {
+    public Post(User author, /*String content,*/ List<Comment> comments, List<User> likers) {
         this.author = author;
-        this.content = content;
+        //this.content = content;
         this.comments = comments;
         this.likers = likers;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+   /* public String getContent() {
+        return content;
+    }
+*/
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public List<User> getLikers() {
+        return likers;
+    }
+
     public abstract void displayPost();
+
 }

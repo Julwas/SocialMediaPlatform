@@ -18,8 +18,8 @@ public class AudioPost extends Post implements Playable {
         this.audioInfo = audioInfo;
     }
 
-    public AudioPost(User author, String content, List<Comment> comments, List<User> likers, String urlEmoticon, AudioInfo audioInfo) {
-        super(author, content, comments, likers);
+    public AudioPost(User author,  List<Comment> comments, List<User> likers, AudioInfo audioInfo) {
+        super(author, comments, likers);
         this.audioInfo = audioInfo;
     }
 

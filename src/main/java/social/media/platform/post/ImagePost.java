@@ -19,9 +19,9 @@ public class ImagePost extends Post implements Viewable {
         this.imageInfo = imageInfo;
     }
 
-    public ImagePost(User author, String content, List<Comment> comments, List<User> likers,
+    public ImagePost(User author,List<Comment> comments, List<User> likers,
                      ImageInfo imageInfo) {
-        super(author, content, comments, likers);
+        super(author, comments, likers);
         this.imageInfo = imageInfo;
     }
 
