@@ -2,11 +2,14 @@ package social.media.platform.actions;
 
 import social.media.platform.users.User;
 
+import java.util.logging.Logger;
+
 public class FriendRequest {
     private User sender;
     private User receiver;
     private String date;
     private String answer;
+    private static final Logger logger = Logger.getLogger(FriendRequest.class.getName());
 
     public FriendRequest(User sender, User receiver, String date, String answer) {
         this.sender = sender;
@@ -50,13 +53,9 @@ public class FriendRequest {
     public void displayRequest() {
         System.out.println(sender.getUsername() + " sent a friend request to " + receiver.getUsername() + getDate());
         if (answer.equals("accept")){
-            System.out.println(" You are friends.");
+            logger.info(" You are friends.");
         }else {
-            System.out.println(" Friend request are not accept.");
+            logger.info(" Friend request are not accept.");
         }
     }
-
-   /* public void displayAnswerRequest() {
-        System.out.println(receiver.getUsername() + answer + " a friend request to " + sender.getUsername());
-    }*/
 }

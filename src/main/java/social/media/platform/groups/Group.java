@@ -7,18 +7,25 @@ import social.media.platform.post.Post;
 import java.util.*;
 
 public class Group extends SocialEntity {
+    private static String groupName;
     private User admin;
-    private String groupName;
     private List<User> members;
     private List<Post> posts;
 
-    public Group(User admin, String groupName, List<User> members, List<Post> posts) {
+    static{
+        groupName = "WarsawNews";
+    }
+    public Group(User admin, List<User> members, List<Post> posts) {
         this.admin = admin;
-        this.groupName = groupName;
         this.members = members;
         this.posts = posts;
     }
-
+    public static String getGroupName() {
+        return groupName;
+    }
+    public static void setGroupName(String groupName) {
+        Group.groupName = groupName;
+    }
     public User getAdmin() {
         return admin;
     }
@@ -27,13 +34,6 @@ public class Group extends SocialEntity {
         this.admin = admin;
     }
 
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
 
     public List<User> getMembers() {
         return members;
@@ -59,7 +59,6 @@ public class Group extends SocialEntity {
         System.out.println(" Posts: ");
 
         for (Post post : posts) {
-            //post.displayPost();
             System.out.println(post);
         }
         System.out.print("information about the group administrator: ");

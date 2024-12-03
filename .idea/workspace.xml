@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment=" HW Interface fixing">
+    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="comment commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/configuration.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/EmoticonNotFoundExeption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/NameContaihsfDigitExeption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/LikeInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/interfaces/ContentReaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/interfaces/ContentReaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/media/SoundPlayable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/AudioMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/AudioMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/ImageMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/ImageMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/TextMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/TextMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/VideoMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/VideoMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/AudioPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/AudioPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/ImagePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/ImagePost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/TextPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/TextPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/VideoPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/VideoPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/emot/emoticons.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/base/SocialEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/base/SocialEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,15 +27,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="interface" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,6 +63,7 @@
       <recent name="C:\Users\Sprzetowo\SolvdLaba\SocialMwdiaPlatform\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="social.media.platform.exeptions" />
       <recent name="social.media.platform.MediaInfo" />
       <recent name="social.media.platform.post" />
       <recent name="socialMediaPlatform" />
@@ -100,6 +98,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.social.media.platform.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.social.media.platform.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -210,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733088525705</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="comment commit">
+      <option name="closed" value="true" />
+      <created>1733153224518</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733153224518</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,6 +242,17 @@
     <MESSAGE value="Added id to override methods" />
     <MESSAGE value=" HW Interface" />
     <MESSAGE value=" HW Interface fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value=" HW Interface fixing" />
+    <MESSAGE value="comment commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
