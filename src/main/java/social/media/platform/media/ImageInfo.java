@@ -4,14 +4,11 @@ public class ImageInfo {
     private String url;
     private int width;
     private int height;
-
-
     public ImageInfo(String url, int width, int height) {
         this.url = url;
         this.width = width;
         this.height = height;
     }
-
     public String getUrl() {
         return url;
     }

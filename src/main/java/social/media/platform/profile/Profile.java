@@ -53,7 +53,7 @@ public class Profile extends SocialEntity {
     public void displayProfile() {
         System.out.println("Profile data: ");
         user.displayInfo();
-        System.out.println(" Bio :" + getBio());
+        System.out.println(" Bio :" + bio);
     }
 
     public void userCreateProfile() {
@@ -64,7 +64,7 @@ public class Profile extends SocialEntity {
             System.out.println("add surname :" + user.getSurname());
             System.out.println("add email :" + user.getEmail());
             System.out.println("add age :" + user.getAge());
-            System.out.println("add Bio :" + getBio());
+            System.out.println("add Bio :" + bio);
             displayProfile();
         } catch (NameContaihsfDigitExeption e) {
             System.err.println(e.getMessage());

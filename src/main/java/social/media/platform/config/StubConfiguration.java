@@ -1,32 +1,39 @@
 package social.media.platform.config;
 
-import java.io.File;
-import java.io.FileInputStream;
-
-import java.io.IOException;
+import java.io.*;
+import java.util.logging.Logger;
 
 
-
-public class StubConfiguration implements Configuration
-{
-    private static final String password;
+public class StubConfiguration implements Configuration {
+    private static final String password = null;
+    private static final Logger logger = Logger.getLogger(StubConfiguration.class.getName());
 
     static {
-        System.out.println("Read configuration:" );
         readerConfiguration();
-        password = "12345";
     }
-    public static String readerConfiguration(){
-        try{
-            File text = new File("src\\main\\java\\social\\media\\platform\\configuration.txt");
-            FileInputStream file = new FileInputStream(text);
-        }catch (IOException e){
-            System.out.println(e);
+
+    public static void readerConfiguration() {
+
+        String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
+
+        String password = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            password = br.readLine();
+            if (password != null) {
+               // logger.info
+                       System.out.println (" Password :" + password);
+            } else {
+                logger.info(" File is empty or does not contain a password");
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
     @Override
-    public String readerPassword() {
+    public  String readerPassword() {
+      //readerConfiguration();
         return password;
     }
 }

@@ -17,7 +17,6 @@ public class FriendRequest {
         this.date = date;
         this.answer = answer;
     }
-
     public String getAnswer() {
         return answer;
     }

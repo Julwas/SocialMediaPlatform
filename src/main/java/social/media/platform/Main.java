@@ -1,6 +1,5 @@
 package social.media.platform;
 
-import social.media.platform.base.EntityWithId;
 
 import social.media.platform.config.StubConfiguration;
 import social.media.platform.exeptions.EmoticonNotFoundExeption;
@@ -39,13 +38,12 @@ public class Main {
         Comment comment2 = new Comment(user2, "  Hi! ", List.of(user4), user3);
         Comment comment3 = new Comment(user4, "  I will miss you! ", List.of(user1), user1);
 
-
         Notification not1 = new Notification(user1, " You have a new message!");
-       Profile profile1 = new Profile(user1,"");
-       Profile profile2 = new Profile(user2,"");
-       Profile profile3 = new Profile(user3,"");
-       Profile profile4 = new Profile(user4,"");
-       Profile profile5 = new Profile(user5,"");
+        Profile profile1 = new Profile(user1, "I prefer a healthy lifestyle");
+        Profile profile2 = new Profile(user2, "There is no description");
+        Profile profile3 = new Profile(user3, "family photographer");
+        Profile profile4 = new Profile(user4, "There is no description");
+        Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
         TextPost textPost1 = new TextPost(user1, "My post ", List.of(comment2), List.of(user1, user3, user2),
                 "Hi, everybody!");
@@ -68,9 +66,10 @@ public class Main {
         ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
-        Group group = new Group(user3,  List.of(user1, user4, user2), List.of(textPost1, textPost2));
+        Group group = new Group(user3, List.of(user1, user4, user2), List.of(textPost1, textPost2));
 
-
+        StubConfiguration.readerConfiguration();
+        //StubConfiguration.readerPassword();
         System.out.println();
         user5.setUsername("Olga2");
         profile5.userCreateProfile();
@@ -96,9 +95,9 @@ public class Main {
         FriendRequest friendRequest = new FriendRequest(user1, user2, " 01.12.2024", "accept");
 
         if (profile1.equals(profile2)) {
-            System.out.println("Profils are Equal ");
+            System.out.println("Profiles are Equal ");
         } else {
-            System.out.println("Profils are not Equal ");
+            System.out.println("Profiles are not Equal ");
         }
         user1.getUsername();
         user1.displayName();
@@ -143,30 +142,20 @@ public class Main {
         event.addPartcipant();
         System.out.println();
         group.displayGroup();
-        System.out.println("--------------------");
+        System.out.println();
         comment1.displayComment();
         System.out.println();
         friendRequest.displayRequest();
         System.out.println();
-        System.out.println("User create profil ");
+        System.out.println(" User create profile:");
         user5.setUsername("Olga2");
         profile1.userCreateProfile();
-        //friendRequest.displayAnswerRequest();
-
-        printStringWithId("I have an id: ", imageMessage);
-        printStringWithId("I have an id too: ", group);
         LocalDate myObj = LocalDate.now();
         System.out.println(myObj);
-
         System.out.println();
         user2.setUsername("Bob");
         profile2.userCreateProfile();
         System.out.println();
         profile3.userCreateProfile();
-
-    }
-
-    private static void printStringWithId(String str, EntityWithId entity) {
-        System.out.println(str + entity.getId());
     }
 }
