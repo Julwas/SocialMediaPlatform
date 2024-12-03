@@ -68,6 +68,8 @@ public class Main {
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
         Group group = new Group(user3, List.of(user1, user4, user2), List.of(textPost1, textPost2));
 
+        StubConfiguration.readerConfiguration();
+        //StubConfiguration.readerPassword();
         System.out.println();
         user5.setUsername("Olga2");
         profile5.userCreateProfile();

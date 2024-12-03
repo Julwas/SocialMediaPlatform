@@ -67,9 +67,7 @@ public class Event extends SocialEntity {
         }
         System.out.print("information about the event administrator: ");
         getOrganizer().displayName();
-
     }
-
     public void addPartcipant() {
         System.out.println(organizer.getUsername() + " ad participant " + participant.getUsername());
 

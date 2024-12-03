@@ -13,17 +13,12 @@ public abstract class Post extends SocialEntity {
     protected List<Comment> comments;
     protected List<User> likers;
 
-
-
-
     public Post(User author, String content, List<Comment> comments, List<User> likers) {
         this.author = author;
         this.content = content;
         this.comments = comments;
         this.likers = likers;
-        //this.emoticon = emoticon;
     }
 
     public abstract void displayPost();
-
 }

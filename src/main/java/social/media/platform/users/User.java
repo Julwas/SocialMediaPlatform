@@ -88,15 +88,5 @@ public class User extends SocialEntity {
             System.out.println(" The name was added");
         }
     }
-    /*public void userCreateProfile(){
-        System.out.println(" User add name :" + username);
-        try{
-        addName();
-        }catch (NameContaihsfDigitExeption e) {
-            System.err.println(e.getMessage());
-        }
-        System.out.println(" User add surname :" + surname);
-        System.out.println(" User add email :" + email);
-        System.out.println(" User add age :" + age);
-    }*/
+
 }

@@ -4,32 +4,36 @@ import java.io.*;
 import java.util.logging.Logger;
 
 
-public class StubConfiguration implements Configuration{
-    private static final String password;
+public class StubConfiguration implements Configuration {
+    private static final String password = null;
     private static final Logger logger = Logger.getLogger(StubConfiguration.class.getName());
 
     static {
-        System.out.println("Read configuration:" );
         readerConfiguration();
-        password = "12345";
     }
 
-    public static void readerConfiguration(){
+    public static void readerConfiguration() {
 
         String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
 
-        try (BufferedReader br = new BufferedReader(
-                new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                logger.info(line);
+        String password = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            password = br.readLine();
+            if (password != null) {
+               // logger.info
+                       System.out.println (" Password :" + password);
+            } else {
+                logger.info(" File is empty or does not contain a password");
             }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
     @Override
-    public String readerPassword() {
+    public  String readerPassword() {
+      //readerConfiguration();
         return password;
     }
 }

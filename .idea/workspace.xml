@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="comment commit">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_12_2024_16_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_12_2024_16_21__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2024_16_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2024_16_34__Changes_.xml" afterDir="false" />
+    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/base/EntityWithId.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/configuration.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/configuration.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/events/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/media/ImageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/media/ImageInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/media/VideoInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/media/VideoInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/AudioMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/AudioMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/ImageMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/ImageMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733153224518</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="commit">
+      <option name="closed" value="true" />
+      <created>1733233514096</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733233514096</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -238,7 +253,8 @@
     <MESSAGE value=" HW Interface" />
     <MESSAGE value=" HW Interface fixing" />
     <MESSAGE value="comment commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment commit" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

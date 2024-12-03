@@ -16,8 +16,6 @@ public class Comment extends SocialEntity implements ContentReaction{
     private List<String> emoticons = new ArrayList<>();
      final List<String> allowedEmoticons = new ArrayList<>(Arrays.asList(":)", ":(", "Cry", "poo", "wave", "heart",
             "hmm", "O_o", "kiss", ":‑|"));
-    //возвращать спиок возможных  смайлов.
-
     public Comment(User commenter, String text, List<User> likers, User senderEmoticon) {
         this.commenter = commenter;
         this.text = text;
@@ -49,7 +47,6 @@ public class Comment extends SocialEntity implements ContentReaction{
         this.likers = likers;
     }
 
-
     public void displayComment(){
         System.out.print(" Comment: " + text + " to the post from ");
         commenter.displayName();
@@ -66,7 +63,6 @@ public class Comment extends SocialEntity implements ContentReaction{
         System.out.print( " sent to the comment by:");
         senderEmoticon.displayName();
     }
-
     public void addComment(){
         System.out.println( commenter.getUsername() + " commented : " + text);
     }

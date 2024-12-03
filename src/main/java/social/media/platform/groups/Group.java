@@ -34,7 +34,6 @@ public class Group extends SocialEntity {
         this.admin = admin;
     }
 
-
     public List<User> getMembers() {
         return members;
     }
