@@ -1,6 +1,8 @@
 package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.exeptions.EmoticonNotFoundExeption;
+import social.media.platform.exeptions.NameContaihsfDigitExeption;
 
 import java.util.Objects;
 
@@ -69,6 +71,33 @@ public class User extends SocialEntity {
     }
 
     public void displayName() {
-        System.out.println("User : " + username + " " + surname);
+        System.out.println("" + username + " " + surname);
     }
+    public static boolean containsDigits(String username){
+        for (char digit: username.toCharArray()){
+            if(Character.isDigit(digit)){
+                return true;
+            }
+        }return false;
+    }
+    public void addName()throws NameContaihsfDigitExeption {
+
+        if(containsDigits(username))
+        {
+            throw new NameContaihsfDigitExeption("The name cannot contain digits, the name has not been added");
+        }else {
+            System.out.println(" The name was added");
+        }
+    }
+    /*public void userCreateProfile(){
+        System.out.println(" User add name :" + username);
+        try{
+        addName();
+        }catch (NameContaihsfDigitExeption e) {
+            System.err.println(e.getMessage());
+        }
+        System.out.println(" User add surname :" + surname);
+        System.out.println(" User add email :" + email);
+        System.out.println(" User add age :" + age);
+    }*/
 }

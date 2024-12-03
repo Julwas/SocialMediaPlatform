@@ -1,11 +1,11 @@
 package social.media.platform.profile;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.exeptions.NameContaihsfDigitExeption;
 import social.media.platform.users.User;
 
 import java.util.Objects;
-
-import static jdk.internal.org.jline.utils.InfoCmp.Capability.user2;
+import java.util.logging.Logger;
 
 public class Profile extends SocialEntity {
     private User user;
@@ -45,10 +45,29 @@ public class Profile extends SocialEntity {
         return Objects.hash(getUser(), getBio());
     }
 
-    public  void displayProfile(){
-        System.out.println("Surname of the user2 :" + user.getUsername() + " Bio :" +getBio());
+
+    public void displayProfileHash() {
+        System.out.println("HashCod of profile  :" + hashCode());
     }
-    public void displayProfileHash(){
-    System.out.println("HashCod of profile  :" + hashCode());
+
+    public void displayProfile() {
+        System.out.println("Profile data: ");
+        user.displayInfo();
+        System.out.println(" Bio :" + getBio());
+    }
+
+    public void userCreateProfile() {
+        System.out.print("User create profil: ");
+        System.out.println(" add name :" + user.getUsername());
+        try {
+            user.addName();
+            System.out.println("add surname :" + user.getSurname());
+            System.out.println("add email :" + user.getEmail());
+            System.out.println("add age :" + user.getAge());
+            System.out.println("add Bio :" + getBio());
+            displayProfile();
+        } catch (NameContaihsfDigitExeption e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

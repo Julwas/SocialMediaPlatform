@@ -1,22 +1,35 @@
 package social.media.platform.actions;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.exeptions.EmoticonNotFoundExeption;
+import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.users.User;
-import social.media.platform.post.Post;
-
+import java.util.*;
 import java.util.List;
 
-public class Comment extends SocialEntity {
-    private User commenter;
-    private String text;
-    private Post content;
-    protected List<User> likers;
 
-    public Comment(User commenter, String text, Post content, List<User> likers) {
+public class Comment extends SocialEntity implements ContentReaction{
+    private User commenter;
+    private User senderEmoticon;
+    private String text;
+    private List<User> likers;
+    private List<String> emoticons = new ArrayList<>();
+     final List<String> allowedEmoticons = new ArrayList<>(Arrays.asList(":)", ":(", "Cry", "poo", "wave", "heart",
+            "hmm", "O_o", "kiss", ":‑|"));
+    //возвращать спиок возможных  смайлов.
+
+    public Comment(User commenter, String text, List<User> likers, User senderEmoticon) {
         this.commenter = commenter;
         this.text = text;
-        this.content = content;
         this.likers = likers;
+        this.senderEmoticon= senderEmoticon;
+    }
+    public User getCommenter() {
+        return commenter;
+    }
+
+    public void setCommenter(User commenter) {
+        this.commenter = commenter;
     }
 
     public String getText() {
@@ -27,30 +40,44 @@ public class Comment extends SocialEntity {
         this.text = text;
     }
 
-    public User getCommenter() {
-        return commenter;
+
+    public List<User> getLikers() {
+        return likers;
     }
 
-    public void setCommenter(User commenter) {
-        this.commenter = commenter;
+    public void setLikers(List<User> likers) {
+        this.likers = likers;
     }
 
-    public Post getContent() {
-        return content;
-    }
 
-    public void setContent(Post content) {
-        this.content = content;
-    }
-
-    public void displayComment() {
+    public void displayComment(){
+        System.out.print(" Comment: " + text + " to the post from ");
         commenter.displayName();
-        System.out.print("Comment is : ");
-        System.out.println(text + "to");
-        getContent().displayPost();
-        System.out.println("liked the comment by users : ");
+        System.out.print("liked by users : ");
         for (User user : likers) {
             user.displayName();
         }
+        for(String emoticon : emoticons){
+            try{
+            //if(allowedEmoticons.contains(emoticon)){
+                System.out.println(emoticon);
+            //}else {throw new EmoticonNotFoundExeption();}
+        }catch (EmoticonNotFoundExeption e){throw new RuntimeException(e.getMessage());
+            }
+        }
+        System.out.print( " sent to the comment by:");
+        senderEmoticon.displayName();
+    }
+
+    public void addComment(){
+        System.out.println( commenter.getUsername() + " commented : " + text);
+    }
+
+    @Override
+    public String sendEmoticon(String emoticon)throws EmoticonNotFoundExeption  {
+        if(allowedEmoticons.contains(emoticon)){
+       emoticons.add(emoticon);
+            return emoticon;
+       } else {throw new EmoticonNotFoundExeption("Emoticon not found");}
     }
 }

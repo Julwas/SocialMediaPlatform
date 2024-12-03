@@ -6,11 +6,20 @@ import social.media.platform.users.User;
 public abstract class Message extends SocialEntity {
     private User sender;
     private User receiver;
+    private String date;
 
 
-    public Message(User sender, User receiver) {
+    public Message(User sender, User receiver, String date) {
         this.sender = sender;
         this.receiver = receiver;
+        this.date = date;
+    }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public User getSender() {
@@ -30,6 +39,6 @@ public abstract class Message extends SocialEntity {
     }
 
     public void displayMessage() {
-        System.out.println(sender.getUsername() + " sent a new message to " + receiver.getUsername());
+        System.out.println(sender.getUsername() + " sent a new message to " + receiver.getUsername() + getDate());
     }
 }

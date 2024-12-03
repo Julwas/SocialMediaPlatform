@@ -1,11 +1,13 @@
 package social.media.platform.post;
 
 import social.media.platform.actions.Comment;
+import social.media.platform.interfaces.ContentReaction;
+import social.media.platform.interfaces.Viewable;
 import social.media.platform.users.User;
 
 import java.util.List;
 
-public class TextPost extends Post {
+public class TextPost extends Post implements Viewable {
 
     private String textContent;
 
@@ -28,9 +30,19 @@ public class TextPost extends Post {
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " posted: " + textContent + "liked the post by users :  ");
+        System.out.println(author.getUsername() + " posted: " + textContent + "The post, liked  by users:");
         for (User user : likers) {
             user.displayName();
         }
+        for(Comment comment : comments){
+            comment.addComment();
+        }
     }
+
+    @Override
+    public void open() {
+        System.out.println(" Open the text post " + getTextContent());
+    }
+
+
 }

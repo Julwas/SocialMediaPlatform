@@ -10,8 +10,10 @@ public abstract class Post extends SocialEntity {
 
     protected User author;
     protected String content;
-    private List<Comment> comments;
+    protected List<Comment> comments;
     protected List<User> likers;
+
+
 
 
     public Post(User author, String content, List<Comment> comments, List<User> likers) {
@@ -19,6 +21,7 @@ public abstract class Post extends SocialEntity {
         this.content = content;
         this.comments = comments;
         this.likers = likers;
+        //this.emoticon = emoticon;
     }
 
     public abstract void displayPost();

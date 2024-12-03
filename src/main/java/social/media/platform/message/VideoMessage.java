@@ -1,14 +1,14 @@
 package social.media.platform.message;
 
+import social.media.platform.interfaces.Playable;
 import social.media.platform.media.VideoInfo;
-import social.media.platform.media.VideoPlayable;
 import social.media.platform.users.User;
 
-public class VideoMessage extends Message implements VideoPlayable {
+public class VideoMessage extends Message implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoMessage(User sender, User receiver, VideoInfo videoInfo) {
-        super(sender, receiver);
+    public VideoMessage(User sender, User receiver, String date, VideoInfo videoInfo) {
+        super(sender, receiver, date);
         this.videoInfo = videoInfo;
     }
 
@@ -30,6 +30,11 @@ public class VideoMessage extends Message implements VideoPlayable {
 
     @Override
     public void play() {
-        System.out.println("Use your imagination to see " + videoInfo.getUrl());
+        System.out.println("is watching the video " + videoInfo.getUrl());
+    }
+
+    @Override
+    public void pause() {
+        System.out.println( "paused the video: " + videoInfo.getUrl());
     }
 }

@@ -1,14 +1,15 @@
 package social.media.platform.message;
 
+import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.media.AudioInfo;
-import social.media.platform.media.SoundPlayable;
+import social.media.platform.interfaces.Playable;
 import social.media.platform.users.User;
 
-public class AudioMessage extends Message implements SoundPlayable {
+public class AudioMessage extends Message implements Playable {
     private AudioInfo audioInfo;
 
-    public AudioMessage(User sender, User receiver, AudioInfo audioInfo) {
-        super(sender, receiver);
+    public AudioMessage(User sender, User receiver, String date, AudioInfo audioInfo) {
+        super(sender, receiver, date);
         this.audioInfo = audioInfo;
     }
 
@@ -29,6 +30,12 @@ public class AudioMessage extends Message implements SoundPlayable {
 
     @Override
     public void play() {
-        System.out.println("Use your imagination to hear " + audioInfo.getUrl());
+        System.out.println("is hearing the audio: " + audioInfo.getUrl());
     }
+
+    @Override
+    public void pause() {
+        System.out.println( audioInfo.getUrl() + "Press pause");
+    }
+
 }

@@ -4,25 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="Added id to override methods">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/base/EntityWithId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/media/SoundPlayable.java" afterDir="false" />
+    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="comment commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/configuration.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/EmoticonNotFoundExeption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/NameContaihsfDigitExeption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/MediaInfo/AudioInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/media/AudioInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/MediaInfo/ImageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/media/ImageInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/MediaInfo/VideoInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/media/VideoInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Like.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/base/SocialEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/base/SocialEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/events/PrivateEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/PrivateGroup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/AudioMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/AudioMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/ImageMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/ImageMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/message/VideoMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/message/VideoMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/AudioPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/AudioPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/ImagePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/ImagePost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/VideoPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/VideoPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +27,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="interface" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2oQjOqq76YDjAZwZMzI9iAF9bX3" />
@@ -46,19 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Sprzetowo/QA/Lesson 11 (05.06.2023)/scr/CollectionClass/ListClass (1).java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;interface&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sprzetowo/MyVocabulary/src/main/java/com/example/myvocabulary/HelloController.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sprzetowo\SolvdLaba\SocialMwdiaPlatform\src\main\resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="social.media.platform.exeptions" />
       <recent name="social.media.platform.MediaInfo" />
       <recent name="social.media.platform.post" />
       <recent name="socialMediaPlatform" />
@@ -91,21 +96,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="SocialMediaPlatform" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="SocialMediaPlatform" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.social.media.platform.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.social.media.platform.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -176,7 +170,55 @@
       <option name="project" value="LOCAL" />
       <updated>1731866185302</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=" HW Interface">
+      <option name="closed" value="true" />
+      <created>1732619710114</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732619710114</updated>
+    </task>
+    <task id="LOCAL-00009" summary=" HW Interface">
+      <option name="closed" value="true" />
+      <created>1732634199379</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732634199379</updated>
+    </task>
+    <task id="LOCAL-00010" summary=" HW Interface">
+      <option name="closed" value="true" />
+      <created>1732635055470</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732635055470</updated>
+    </task>
+    <task id="LOCAL-00011" summary=" HW Interface fixing">
+      <option name="closed" value="true" />
+      <created>1732993815073</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732993815073</updated>
+    </task>
+    <task id="LOCAL-00012" summary=" HW Interface fixing">
+      <option name="closed" value="true" />
+      <created>1733088525705</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733088525705</updated>
+    </task>
+    <task id="LOCAL-00013" summary="comment commit">
+      <option name="closed" value="true" />
+      <created>1733153224518</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733153224518</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,6 +240,19 @@
     <MESSAGE value="Commit homework with override metods from class Object" />
     <MESSAGE value="Commit push  VideoInfo class" />
     <MESSAGE value="Added id to override methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added id to override methods" />
+    <MESSAGE value=" HW Interface" />
+    <MESSAGE value=" HW Interface fixing" />
+    <MESSAGE value="comment commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

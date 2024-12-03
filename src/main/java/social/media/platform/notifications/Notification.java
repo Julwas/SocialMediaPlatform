@@ -3,7 +3,7 @@ package social.media.platform.notifications;
 import social.media.platform.base.SocialEntity;
 import social.media.platform.users.User;
 
-public class Notification extends SocialEntity {
+public class Notification {
     private User user;
     private String message;
 
