@@ -1,7 +1,6 @@
 package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.EmoticonNotFoundExeption;
 import social.media.platform.exeptions.NameContaihsfDigitExeption;
 
 import java.util.Objects;

@@ -1,7 +1,5 @@
 package social.media.platform.config;
 
-import social.media.platform.actions.FriendRequest;
-
 import java.io.*;
 import java.util.logging.Logger;
 
@@ -17,8 +15,11 @@ public class StubConfiguration implements Configuration{
     }
 
     public static void readerConfiguration(){
+
+        String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
+
         try (BufferedReader br = new BufferedReader(
-                new FileReader("src\\main\\java\\social\\media\\platform\\configuration.txt"))) {
+                new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 logger.info(line);

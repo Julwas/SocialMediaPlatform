@@ -53,7 +53,7 @@ public class Profile extends SocialEntity {
     public void displayProfile() {
         System.out.println("Profile data: ");
         user.displayInfo();
-        System.out.println(" Bio :" + getBio());
+        System.out.println(" Bio :" + bio);
     }
 
     public void userCreateProfile() {

@@ -38,13 +38,12 @@ public class Main {
         Comment comment2 = new Comment(user2, "  Hi! ", List.of(user4), user3);
         Comment comment3 = new Comment(user4, "  I will miss you! ", List.of(user1), user1);
 
-
         Notification not1 = new Notification(user1, " You have a new message!");
-       Profile profile1 = new Profile(user1,"");
-       Profile profile2 = new Profile(user2,"");
-       Profile profile3 = new Profile(user3,"");
-       Profile profile4 = new Profile(user4,"");
-       Profile profile5 = new Profile(user5,"");
+        Profile profile1 = new Profile(user1, "I prefer a healthy lifestyle");
+        Profile profile2 = new Profile(user2, "There is no description");
+        Profile profile3 = new Profile(user3, "family photographer");
+        Profile profile4 = new Profile(user4, "There is no description");
+        Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
         TextPost textPost1 = new TextPost(user1, "My post ", List.of(comment2), List.of(user1, user3, user2),
                 "Hi, everybody!");
@@ -67,7 +66,7 @@ public class Main {
         ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
-        Group group = new Group(user3,  List.of(user1, user4, user2), List.of(textPost1, textPost2));
+        Group group = new Group(user3, List.of(user1, user4, user2), List.of(textPost1, textPost2));
 
         System.out.println();
         user5.setUsername("Olga2");

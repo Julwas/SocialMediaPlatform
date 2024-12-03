@@ -59,9 +59,7 @@ public class Comment extends SocialEntity implements ContentReaction{
         }
         for(String emoticon : emoticons){
             try{
-            //if(allowedEmoticons.contains(emoticon)){
                 System.out.println(emoticon);
-            //}else {throw new EmoticonNotFoundExeption();}
         }catch (EmoticonNotFoundExeption e){throw new RuntimeException(e.getMessage());
             }
         }

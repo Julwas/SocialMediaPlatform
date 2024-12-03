@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="comment commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/configuration.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/EmoticonNotFoundExeption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/NameContaihsfDigitExeption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_12_2024_16_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_12_2024_16_21__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2024_16_34__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_11_2024_16_34__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/FriendRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/base/SocialEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/base/SocialEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/base/EntityWithId.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/config/StubConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
