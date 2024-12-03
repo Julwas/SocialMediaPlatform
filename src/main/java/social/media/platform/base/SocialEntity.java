@@ -2,8 +2,7 @@ package social.media.platform.base;
 
 import java.util.Random;
 
-public abstract class SocialEntity implements  EntityWithId
-{
+public abstract class SocialEntity{
     private Long id;
 
     public SocialEntity() {

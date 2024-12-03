@@ -1,29 +1,31 @@
 package social.media.platform.config;
 
-import java.io.File;
-import java.io.FileInputStream;
+import social.media.platform.actions.FriendRequest;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.logging.Logger;
 
 
-
-public class StubConfiguration implements Configuration
-{
+public class StubConfiguration implements Configuration{
     private static final String password;
+    private static final Logger logger = Logger.getLogger(StubConfiguration.class.getName());
 
     static {
         System.out.println("Read configuration:" );
         readerConfiguration();
         password = "12345";
     }
-    public static String readerConfiguration(){
-        try{
-            File text = new File("src\\main\\java\\social\\media\\platform\\configuration.txt");
-            FileInputStream file = new FileInputStream(text);
-        }catch (IOException e){
-            System.out.println(e);
+
+    public static void readerConfiguration(){
+        try (BufferedReader br = new BufferedReader(
+                new FileReader("src\\main\\java\\social\\media\\platform\\configuration.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                logger.info(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null;
     }
     @Override
     public String readerPassword() {

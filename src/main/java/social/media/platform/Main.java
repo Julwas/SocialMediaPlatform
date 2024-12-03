@@ -1,6 +1,5 @@
 package social.media.platform;
 
-import social.media.platform.base.EntityWithId;
 
 import social.media.platform.config.StubConfiguration;
 import social.media.platform.exeptions.EmoticonNotFoundExeption;
@@ -70,7 +69,6 @@ public class Main {
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
         Group group = new Group(user3,  List.of(user1, user4, user2), List.of(textPost1, textPost2));
 
-
         System.out.println();
         user5.setUsername("Olga2");
         profile5.userCreateProfile();
@@ -96,9 +94,9 @@ public class Main {
         FriendRequest friendRequest = new FriendRequest(user1, user2, " 01.12.2024", "accept");
 
         if (profile1.equals(profile2)) {
-            System.out.println("Profils are Equal ");
+            System.out.println("Profiles are Equal ");
         } else {
-            System.out.println("Profils are not Equal ");
+            System.out.println("Profiles are not Equal ");
         }
         user1.getUsername();
         user1.displayName();
@@ -143,30 +141,20 @@ public class Main {
         event.addPartcipant();
         System.out.println();
         group.displayGroup();
-        System.out.println("--------------------");
+        System.out.println();
         comment1.displayComment();
         System.out.println();
         friendRequest.displayRequest();
         System.out.println();
-        System.out.println("User create profil ");
+        System.out.println(" User create profile:");
         user5.setUsername("Olga2");
         profile1.userCreateProfile();
-        //friendRequest.displayAnswerRequest();
-
-        printStringWithId("I have an id: ", imageMessage);
-        printStringWithId("I have an id too: ", group);
         LocalDate myObj = LocalDate.now();
         System.out.println(myObj);
-
         System.out.println();
         user2.setUsername("Bob");
         profile2.userCreateProfile();
         System.out.println();
         profile3.userCreateProfile();
-
-    }
-
-    private static void printStringWithId(String str, EntityWithId entity) {
-        System.out.println(str + entity.getId());
     }
 }
