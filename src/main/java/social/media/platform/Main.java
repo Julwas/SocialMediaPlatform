@@ -3,6 +3,7 @@ package social.media.platform;
 
 import social.media.platform.config.StubConfiguration;
 import social.media.platform.exeptions.EmoticonNotFoundExeption;
+import social.media.platform.exeptions.LimitPostsExeption;
 import social.media.platform.media.AudioInfo;
 import social.media.platform.media.ImageInfo;
 import social.media.platform.media.VideoInfo;
@@ -45,34 +46,46 @@ public class Main {
         Profile profile4 = new Profile(user4, "There is no description");
         Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
-        TextPost textPost1 = new TextPost(user1, "My post ", List.of(comment2), List.of(user1, user3, user2),
+        TextPost textPost1 = new TextPost(user1,  List.of(comment2), List.of(user1, user3, user2),
                 "Hi, everybody!");
-        TextPost textPost2 = new TextPost(user2, "My post ", List.of(comment3), List.of(user2, user4),
+        TextPost textPost2 = new TextPost(user2,  List.of(comment3), List.of(user2, user4),
                 " See you after the vacations");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
-        ImagePost imagePost2 = new ImagePost(user2, " My image :",
-                List.of(comment, comment1), List.of(user1, user3), imageInfo);
+        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), imageInfo);
 
         VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
-        VideoPost videoPost4 = new VideoPost(user4, " My video : ", List.of(comment),
+        VideoPost videoPost4 = new VideoPost(user4,  List.of(comment),
                 List.of(user4, user3, user1), videoInfo);
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going",
                 "https://emoticon/fire.jpg");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
         VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo);
-        AudioPost audioPost = new AudioPost(user1, " my Post ", List.of(comment1), List.of(user1, user2),
-                "https://emoticon/fire.jpg", audioInfo);
+        AudioPost audioPost = new AudioPost(user1, List.of(comment1), List.of(user1, user2),
+                 audioInfo);
         AudioMessage audioMessage = new AudioMessage(user3, user5, " 01.08.2024", audioInfo);
         ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
-        Group group = new Group(user3, List.of(user1, user4, user2), List.of(textPost1, textPost2));
+
+        User admin = new User("Helen", "monro@gmail.com", "Monro", 30);
+        Group group = new Group("News of Warsaw ", admin, 3);
+        group.addMember(admin);
+        group.addMember(user1);
+        group.addMember(user2);
+        group.addMember(user3);
+        try {
+        group.addPost(textPost1);
+        group.addPost(textPost2);
+        group.addPost(videoPost4);
+      // group.addPost(imagePost2);
+        } catch(LimitPostsExeption e){
+            System.err.println(e.getMessage());
+        }
+        group.allPosts();
 
         StubConfiguration.readerConfiguration();
-        //StubConfiguration.readerPassword();
+
         System.out.println();
-        user5.setUsername("Olga2");
-        profile5.userCreateProfile();
 
         try {
             comment1.sendEmoticon("heart ");
@@ -99,6 +112,9 @@ public class Main {
         } else {
             System.out.println("Profiles are not Equal ");
         }
+        user5.setUsername("Olga2");
+        profile5.userCreateProfile();
+
         user1.getUsername();
         user1.displayName();
         imagePost2.open();
