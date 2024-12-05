@@ -1,7 +1,7 @@
 package social.media.platform;
 
 
-import social.media.platform.config.StubConfiguration;
+import social.media.platform.config.TextFileConfiguration;
 import social.media.platform.exeptions.EmoticonNotFoundExeption;
 import social.media.platform.exeptions.LimitPostsExeption;
 import social.media.platform.media.AudioInfo;
@@ -83,7 +83,7 @@ public class Main {
         }
         group.allPosts();
 
-        StubConfiguration.readerConfiguration();
+        TextFileConfiguration.readConfiguration();
 
         System.out.println();
 

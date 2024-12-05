@@ -13,5 +13,22 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+<dependencies>
+</dependencies>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.1.2</version>
+            <configuration>
+                <!--suiteXmlFiles>
+                    <suiteXmlFile>${testng.xml.path}</suiteXmlFile>
+                </suiteXmlFiles-->
+                <forkCount>5</forkCount>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
 </project>
