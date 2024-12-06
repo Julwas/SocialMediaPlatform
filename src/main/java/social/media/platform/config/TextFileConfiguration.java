@@ -4,12 +4,10 @@ import social.media.platform.exeptions.FatalException;
 import social.media.platform.interfaces.Configuration;
 
 import java.io.*;
-import java.util.logging.Logger;
 
 
 public class TextFileConfiguration implements Configuration {
     private static String password = null;
-    private static final Logger logger = Logger.getLogger(TextFileConfiguration.class.getName());
     private static final String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
 
     static {
@@ -24,11 +22,15 @@ public class TextFileConfiguration implements Configuration {
             if (password != null) {
                 System.out.println(" Password :" + password);
             } else {
-                throw new FatalException("Critical error! ");
+                throw new FatalException("Critical error!" +
+                        "File is empty or does not contain a password. Program termination ");
             }
-        } catch (FatalException e) {
-            System.err.println("Critical error! File is empty or does not contain a password. Program termination");
-        } catch (IOException e) {
+        }
+        /*catch (FatalException e) {
+            System.err.println("Critical error!File is empty or does not contain a password. Program termination ");
+        }*/
+
+         catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -72,6 +72,7 @@ public class User extends SocialEntity {
     public void displayName() {
         System.out.println("" + username + " " + surname);
     }
+
     public static boolean containsDigits(String username){
         for (char digit: username.toCharArray()){
             if(Character.isDigit(digit)){

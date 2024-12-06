@@ -161,7 +161,7 @@ public class Main {
         System.out.println();
         comment1.displayComment();
         System.out.println();
-        friendRequest.displayRequest();
+        friendRequest.sendRequest();
         System.out.println();
         System.out.println(" User create profile:");
         user5.setUsername("Olga2");

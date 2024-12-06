@@ -49,7 +49,7 @@ public class FriendRequest {
         this.date = date;
     }
 
-    public void displayRequest() {
+    public void sendRequest() {
         System.out.println(sender.getUsername() + " sent a friend request to " + receiver.getUsername() + getDate());
         if (answer.equals("accept")){
             logger.info(" You are friends.");
