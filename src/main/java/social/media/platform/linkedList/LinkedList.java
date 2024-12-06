@@ -150,7 +150,7 @@ public class LinkedList<T> {
         Node<T> newNode = new Node<>(data);
 
         if (index == 0) {
-            if (head == null) { // Список пуст
+            if (head == null) {
                 head = tail = newNode;
             } else {
                 newNode.next = head;
@@ -175,7 +175,7 @@ public class LinkedList<T> {
 
         if (current.next != null) {
             current.next.prev = newNode;
-        } else { // Если вставка в конец
+        } else {
             tail = newNode;
         }
         current.next = newNode;
