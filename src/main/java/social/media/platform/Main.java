@@ -4,6 +4,7 @@ package social.media.platform;
 import social.media.platform.config.TextFileConfiguration;
 import social.media.platform.exeptions.EmoticonNotFoundExeption;
 import social.media.platform.exeptions.LimitPostsExeption;
+import social.media.platform.interfaces.Configuration;
 import social.media.platform.media.AudioInfo;
 import social.media.platform.media.ImageInfo;
 import social.media.platform.media.VideoInfo;
@@ -33,7 +34,7 @@ public class Main {
         User user3 = new User("Mark", "Mark@yahoo.com", "Sokolowski", 34);
         User user4 = new User("Milena", "Mila@wp.com", "Kownacka", 23);
         User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30);
-
+        Configuration config = new TextFileConfiguration();
         Comment comment = new Comment(user5, " Awesome!!! ", List.of(user1, user2), user1);
         Comment comment1 = new Comment(user1, "  OMG! ", List.of(user3), user4);
         Comment comment2 = new Comment(user2, "  Hi! ", List.of(user4), user3);
@@ -68,7 +69,9 @@ public class Main {
                 " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
 
         User admin = new User("Helen", "monro@gmail.com", "Monro", 30);
-        Group group = new Group("News of Warsaw ", admin, 3);
+
+
+        Group group = new Group("News of Warsaw ", admin, config );
         group.addMember(admin);
         group.addMember(user1);
         group.addMember(user2);
@@ -77,7 +80,7 @@ public class Main {
         group.addPost(textPost1);
         group.addPost(textPost2);
         group.addPost(videoPost4);
-      // group.addPost(imagePost2);
+       //group.addPost(imagePost2);
         } catch(LimitPostsExeption e){
             System.err.println(e.getMessage());
         }
