@@ -42,7 +42,7 @@ public class TextFileConfiguration implements Configuration {
     }
 
     @Override
-    public String givePassword() {
+    public String getPassword() {
         return password;
     }
 
