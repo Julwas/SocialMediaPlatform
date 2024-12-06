@@ -14,14 +14,12 @@ public class Group extends SocialEntity  {
     private User admin;
     private List<User> members;
     private List<Post> posts;
-    //private int maxPosts;
     private final Configuration configuration;
 
 
-    public Group(String groupName, User admin, /*int maxPosts,*/ Configuration configuration) {
+    public Group(String groupName, User admin, Configuration configuration) {
         Group.groupName = groupName;
         this.admin = admin;
-       // this.maxPosts = maxPosts;
         this.members = new ArrayList<>();
         this.posts = new ArrayList<>();
         this.members.add(admin);

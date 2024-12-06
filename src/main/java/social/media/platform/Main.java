@@ -143,7 +143,7 @@ public class Main {
         System.out.println();
         profile2.displayProfile();
         System.out.println();
-        profile2.displayProfileHash();
+        profile4.displayProfileHash();
         System.out.println();
         audioPost.displayPost();
         comment3.displayComment();
