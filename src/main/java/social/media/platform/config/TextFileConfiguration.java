@@ -8,6 +8,7 @@ import java.io.*;
 
 public class TextFileConfiguration implements Configuration {
     private static String password = null;
+    private static int maxPosts ;
     private static final String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
 
     static {
@@ -21,15 +22,20 @@ public class TextFileConfiguration implements Configuration {
             password = br.readLine();
             if (password != null) {
                 System.out.println(" Password :" + password);
-            } else {
-                throw new FatalException("Critical error!" +
-                        "File is empty or does not contain a password. Program termination ");
+            }
+            if (password == null || password.isBlank()) {
+                throw new FatalException("Critical error!File is empty or does not contain a password. Program termination ");
+            }
+            String maxPostsLine = br.readLine();
+            if (maxPostsLine == null || maxPostsLine.isBlank()) {
+                throw new FatalException("Critical error! Missing maxPosts in the configuration file. Program termination.");
+            }
+            try {
+                maxPosts = Integer.parseInt(maxPostsLine);
+            } catch (NumberFormatException e) {
+                throw new FatalException("Critical error! maxPosts is not a valid number. Program termination.");
             }
         }
-        /*catch (FatalException e) {
-            System.err.println("Critical error!File is empty or does not contain a password. Program termination ");
-        }*/
-
          catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -38,5 +44,10 @@ public class TextFileConfiguration implements Configuration {
     @Override
     public String givePassword() {
         return password;
+    }
+
+    @Override
+    public int getMaxPosts() {
+        return maxPosts;
     }
 }

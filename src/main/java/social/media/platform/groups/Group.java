@@ -2,25 +2,30 @@ package social.media.platform.groups;
 
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exeptions.LimitPostsExeption;
+import social.media.platform.interfaces.Configuration;
 import social.media.platform.users.User;
 import social.media.platform.post.Post;
 
+
 import java.util.*;
 
-public class Group extends SocialEntity {
+public class Group extends SocialEntity  {
     private static String groupName;
     private User admin;
     private List<User> members;
     private List<Post> posts;
-    private int maxPosts;
+    //private int maxPosts;
+    private final Configuration configuration;
 
-    public Group(String groupName, User admin, int maxPosts) {
+
+    public Group(String groupName, User admin, /*int maxPosts,*/ Configuration configuration) {
         Group.groupName = groupName;
         this.admin = admin;
-        this.maxPosts = maxPosts;
+       // this.maxPosts = maxPosts;
         this.members = new ArrayList<>();
-        this.posts = new ArrayList<>(3);
+        this.posts = new ArrayList<>();
         this.members.add(admin);
+        this.configuration = configuration;
     }
 
     public static String getGroupName() {
@@ -76,7 +81,7 @@ public class Group extends SocialEntity {
     }
 
     public boolean addPost(Post post) throws LimitPostsExeption {
-        if (posts.size() < maxPosts) {
+        if (posts.size() < configuration.getMaxPosts()) {
         posts.add(post);
         System.out.println("Post added to group: " + groupName);
         post.displayPost();
