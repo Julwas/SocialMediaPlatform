@@ -1,6 +1,5 @@
 package social.media.platform.message;
 
-import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.interfaces.Viewable;
 import social.media.platform.users.User;
 
