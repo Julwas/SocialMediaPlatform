@@ -1,4 +1,4 @@
-package social.media.platform.WordsCounter;
+package social.media.platform.wordsCounter;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
