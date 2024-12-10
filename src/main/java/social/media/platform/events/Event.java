@@ -3,7 +3,9 @@ package social.media.platform.events;
 import social.media.platform.base.SocialEntity;
 import social.media.platform.users.User;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class Event extends SocialEntity {
     private User organizer;
@@ -12,12 +14,12 @@ public class Event extends SocialEntity {
     private List<User> participants;
     private User participant;
 
-    public Event(User organizer, String eventName, String data, List<User> participants, User participant) {
+    public Event(User organizer, String eventName, String data) {
         this.organizer = organizer;
         this.eventName = eventName;
         this.data = data;
-        this.participants = participants;
-        this.participant = participant;
+        this.participants = new ArrayList<>();
+        this.participants.add(organizer);
     }
 
     public String getData() {
@@ -68,8 +70,8 @@ public class Event extends SocialEntity {
         System.out.print("information about the event administrator: ");
         getOrganizer().displayName();
     }
-    public void addPartcipant() {
-        System.out.println(organizer.getUsername() + " ad participant " + participant.getUsername());
-
+    public void addParticipant(User user) {
+        participants.add(user);
     }
+
 }

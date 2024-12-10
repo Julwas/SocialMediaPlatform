@@ -11,7 +11,7 @@ import social.media.platform.post.Post;
 import java.util.*;
 
 public class Group extends SocialEntity  implements Summarizable {
-    private static String groupName;
+    private  String groupName;
     private User admin;
     private List<User> members;
     private List<Post> posts;
@@ -19,7 +19,7 @@ public class Group extends SocialEntity  implements Summarizable {
 
 
     public Group(String groupName, User admin, Configuration configuration) {
-        Group.groupName = groupName;
+        this.groupName = groupName;
         this.admin = admin;
         this.members = new ArrayList<>();
         this.posts = new ArrayList<>();
@@ -27,13 +27,11 @@ public class Group extends SocialEntity  implements Summarizable {
         this.configuration = configuration;
     }
 
-    public static String getGroupName() {
+    public  String getGroupName() {
         return groupName;
     }
 
-    public static void setGroupName(String groupName) {
-        Group.groupName = groupName;
-    }
+
 
     public User getAdmin() {
         return admin;

@@ -47,41 +47,41 @@ public class Main {
         Profile profile4 = new Profile(user4, "There is no description");
         Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
-        TextPost textPost1 = new TextPost(user1,  List.of(comment2), List.of(user1, user3, user2),
+        TextPost textPost1 = new TextPost(user1, List.of(comment2), List.of(user1, user3, user2),
                 "Hi, everybody!");
-        TextPost textPost2 = new TextPost(user2,  List.of(comment3), List.of(user2, user4),
+        TextPost textPost2 = new TextPost(user2, List.of(comment3), List.of(user2, user4),
                 " See you after the vacations");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
         ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), imageInfo);
 
         VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
-        VideoPost videoPost4 = new VideoPost(user4,  List.of(comment),
+        VideoPost videoPost4 = new VideoPost(user4, List.of(comment),
                 List.of(user4, user3, user1), videoInfo);
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going",
                 "https://emoticon/fire.jpg");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
         VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo);
         AudioPost audioPost = new AudioPost(user1, List.of(comment1), List.of(user1, user2),
-                 audioInfo);
+                audioInfo);
         AudioMessage audioMessage = new AudioMessage(user3, user5, " 01.08.2024", audioInfo);
         ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
-                " Szwedzka 2/4 Warsaw ", List.of(user1, user4, user2), user4);
+                " Szwedzka 2/4 Warsaw ");
 
         User admin = new User("Helen", "monro@gmail.com", "Monro", 30);
+        User organizer = new User("Hanna", "organizer.big.concert@yahoo.com", "Bishop", 30);
 
-
-        Group group = new Group("News of Warsaw ", admin, config );
+        Group group = new Group("News of Warsaw ", admin, config);
         group.addMember(admin);
         group.addMember(user1);
         group.addMember(user2);
         group.addMember(user3);
         try {
-        group.addPost(textPost1);
-        group.addPost(textPost2);
-        group.addPost(videoPost4);
-       //group.addPost(imagePost2);
-        } catch(LimitPostsExeption e){
+            group.addPost(textPost1);
+            group.addPost(textPost2);
+            group.addPost(videoPost4);
+            //group.addPost(imagePost2);
+        } catch (LimitPostsExeption e) {
             System.err.println(e.getMessage());
         }
         group.allPosts();
@@ -124,7 +124,7 @@ public class Main {
         videoPost4.play();
         user1.displayName();
         videoPost4.pause();
-        user1.displayInfo();
+        user1.displaySummaryInfo();
         user2.displayName();
         textPost1.open();
         System.out.println();
@@ -141,7 +141,7 @@ public class Main {
         System.out.println();
         videoPost4.displayPost();
         System.out.println();
-        profile2.displayProfile();
+        profile2.displaySummaryInfo();
         System.out.println();
         profile4.displayProfileHash();
         System.out.println();
@@ -156,11 +156,15 @@ public class Main {
         System.out.println();
         imageMessage.displayMessage();
         System.out.println();
+        System.out.println();
+        event.addParticipant(organizer);
+        event.addParticipant(user2);
+        event.addParticipant(user3);
+        event.addParticipant(user1);
+
         event.displayEvent();
         System.out.println();
-        event.addPartcipant();
-        System.out.println();
-        group.displayGroup();
+        group.displaySummaryInfo();
         System.out.println();
         comment1.displayComment();
         System.out.println();
