@@ -2,10 +2,11 @@ package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exeptions.NameContaihsfDigitExeption;
+import social.media.platform.interfaces.Summarizable;
 
 import java.util.Objects;
 
-public class User extends SocialEntity {
+public class User extends SocialEntity implements Summarizable {
     private String username;
     private String email;
     private String surname;
@@ -64,10 +65,10 @@ public class User extends SocialEntity {
         return Objects.hash(username, email, surname, age, getId());
     }
 
-    public void displayInfo() {
+   /* public void displayInfo() {
         System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
                 ", Email: " + email);
-    }
+    }*/
 
     public void displayName() {
         System.out.println("" + username + " " + surname);
@@ -90,4 +91,9 @@ public class User extends SocialEntity {
         }
     }
 
+    @Override
+    public void displaySummaryInfo() {
+        System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
+                ", Email: " + email);
+    }
 }

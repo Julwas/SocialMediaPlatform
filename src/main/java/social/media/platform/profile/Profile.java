@@ -2,12 +2,13 @@ package social.media.platform.profile;
 
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exeptions.NameContaihsfDigitExeption;
+import social.media.platform.interfaces.Summarizable;
 import social.media.platform.users.User;
 
 import java.util.Objects;
 import java.util.logging.Logger;
 
-public class Profile extends SocialEntity {
+public class Profile extends SocialEntity implements Summarizable {
     private User user;
     private String bio;
 
@@ -50,11 +51,7 @@ public class Profile extends SocialEntity {
         System.out.println("HashCod of profile  :" + hashCode());
     }
 
-    public void displayProfile() {
-        System.out.println("Profile data: ");
-        user.displayInfo();
-        System.out.println(" Bio :" + bio);
-    }
+    //public void displayProfile() {}
 
     public void userCreateProfile() {
         System.out.print("User create profil: ");
@@ -65,9 +62,16 @@ public class Profile extends SocialEntity {
             System.out.println("add email :" + user.getEmail());
             System.out.println("add age :" + user.getAge());
             System.out.println("add Bio :" + bio);
-            displayProfile();
+            displaySummaryInfo();
         } catch (NameContaihsfDigitExeption e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    @Override
+    public void displaySummaryInfo() {
+        System.out.println("Profile data: ");
+        user.displaySummaryInfo();
+        System.out.println(" Bio :" + bio);
     }
 }

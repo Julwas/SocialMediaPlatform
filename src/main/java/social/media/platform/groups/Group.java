@@ -3,13 +3,14 @@ package social.media.platform.groups;
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exeptions.LimitPostsExeption;
 import social.media.platform.interfaces.Configuration;
+import social.media.platform.interfaces.Summarizable;
 import social.media.platform.users.User;
 import social.media.platform.post.Post;
 
 
 import java.util.*;
 
-public class Group extends SocialEntity  {
+public class Group extends SocialEntity  implements Summarizable {
     private static String groupName;
     private User admin;
     private List<User> members;
@@ -58,7 +59,7 @@ public class Group extends SocialEntity  {
         this.posts = posts;
     }
 
-    public void displayGroup() {
+    /*public void displayGroup() {
         System.out.println(" name of group: " + groupName + "Members of group:");
         for (User user : members) {
             user.displayName();
@@ -66,7 +67,8 @@ public class Group extends SocialEntity  {
         allPosts();
         System.out.print("information about the group administrator: ");
         getAdmin().displayName();
-    }
+    }*/
+
     public  void allPosts(){
         System.out.println( "All group posts: ");
         for(Post post : posts){
@@ -89,5 +91,16 @@ public class Group extends SocialEntity  {
                     "The post limit in the group has been exceeded.");
         }
         return false;
+    }
+
+    @Override
+    public void displaySummaryInfo() {
+        System.out.println(" name of group: " + groupName + "Members of group:");
+        for (User user : members) {
+            user.displayName();
+        }
+        allPosts();
+        System.out.print("information about the group administrator: ");
+        getAdmin().displayName();
     }
 }

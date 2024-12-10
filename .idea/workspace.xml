@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/WordsCounter/UniqueWordsCounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/WordsCounter/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/WordsCounter/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_12_2024_16_21_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_12_2024_16_21__Changes_.xml" beforeDir="false" />
+    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="commit hw8">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/events/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/AudioPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/AudioPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,7 +68,7 @@
       <recent name="socialMediaPlatform" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.UniqueWordsCounter">
+  <component name="RunManager" selected="Application.social.media.platform.Main">
     <configuration name="LinkedList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="social.media.platform.linkedList.LinkedList" />
       <module name="SocialMediaPlatform" />
@@ -96,11 +96,11 @@
       </method>
     </configuration>
     <configuration name="UniqueWordsCounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="social.media.platform.WordsCounter.UniqueWordsCounter" />
+      <option name="MAIN_CLASS_NAME" value="social.media.platform.wordsCounter.UniqueWordsCounter" />
       <module name="SocialMediaPlatform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="social.media.platform.WordsCounter.*" />
+          <option name="PATTERN" value="social.media.platform.wordsCounter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,7 +113,7 @@
       <module name="SocialMediaPlatform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="social.media.platform.WordsCounter.*" />
+          <option name="PATTERN" value="social.media.platform.wordsCounter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,8 +123,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UniqueWordsCounter" />
         <item itemvalue="Application.social.media.platform.Main" />
+        <item itemvalue="Application.UniqueWordsCounter" />
         <item itemvalue="Application.LinkedList" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.social.media.platform.Main" />
@@ -364,7 +364,39 @@
       <option name="project" value="LOCAL" />
       <updated>1733497123464</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="commit hw8">
+      <option name="closed" value="true" />
+      <created>1733788584795</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1733788584795</updated>
+    </task>
+    <task id="LOCAL-00030" summary="commit hw8">
+      <option name="closed" value="true" />
+      <created>1733788615600</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1733788615600</updated>
+    </task>
+    <task id="LOCAL-00031" summary="commit hw8">
+      <option name="closed" value="true" />
+      <created>1733788699803</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1733788699803</updated>
+    </task>
+    <task id="LOCAL-00032" summary="commit hw8">
+      <option name="closed" value="true" />
+      <created>1733788710305</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1733788710305</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -390,7 +422,8 @@
     <MESSAGE value=" HW Interface fixing" />
     <MESSAGE value="comment commit" />
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="commit hw8" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit hw8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
