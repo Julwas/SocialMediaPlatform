@@ -124,7 +124,7 @@ public class Main {
         videoPost4.play();
         user1.displayName();
         videoPost4.pause();
-        user1.displaySummaryInfo();
+        user1.displaySummary();
         user2.displayName();
         textPost1.open();
         System.out.println();
@@ -141,7 +141,7 @@ public class Main {
         System.out.println();
         videoPost4.displayPost();
         System.out.println();
-        profile2.displaySummaryInfo();
+        profile2.displaySummary();
         System.out.println();
         profile4.displayProfileHash();
         System.out.println();
@@ -164,7 +164,7 @@ public class Main {
 
         event.displayEvent();
         System.out.println();
-        group.displaySummaryInfo();
+        group.displaySummary();
         System.out.println();
         comment1.displayComment();
         System.out.println();

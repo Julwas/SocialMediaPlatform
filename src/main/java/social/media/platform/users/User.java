@@ -92,7 +92,7 @@ public class User extends SocialEntity implements Summarizable {
     }
 
     @Override
-    public void displaySummaryInfo() {
+    public void displaySummary() {
         System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
                 ", Email: " + email);
     }

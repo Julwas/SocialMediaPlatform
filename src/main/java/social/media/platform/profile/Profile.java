@@ -62,16 +62,16 @@ public class Profile extends SocialEntity implements Summarizable {
             System.out.println("add email :" + user.getEmail());
             System.out.println("add age :" + user.getAge());
             System.out.println("add Bio :" + bio);
-            displaySummaryInfo();
+            displaySummary();
         } catch (NameContaihsfDigitExeption e) {
             System.err.println(e.getMessage());
         }
     }
 
     @Override
-    public void displaySummaryInfo() {
+    public void displaySummary() {
         System.out.println("Profile data: ");
-        user.displaySummaryInfo();
+        user.displaySummary();
         System.out.println(" Bio :" + bio);
     }
 }

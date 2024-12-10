@@ -92,7 +92,7 @@ public class Group extends SocialEntity  implements Summarizable {
     }
 
     @Override
-    public void displaySummaryInfo() {
+    public void displaySummary() {
         System.out.println(" name of group: " + groupName + "Members of group:");
         for (User user : members) {
             user.displayName();
