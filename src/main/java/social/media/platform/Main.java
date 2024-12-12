@@ -23,11 +23,10 @@ import social.media.platform.groups.Group;
 import social.media.platform.notifications.Notification;
 import social.media.platform.profile.Profile;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import static social.media.platform.profile.AccessLevel.*;
+
 
 
 public class Main {
@@ -182,19 +181,19 @@ public class Main {
         event.addParticipant(user2);
         event.addParticipant(user3);
         event.addParticipant(user1);
-        try{
-        event.createPost(organizer, videoPost4);
-       // event.createPost(user2,textPost2);
-        event.createPost(organizer, imagePost2);
+        try {
+            event.createPost(organizer, videoPost4);
+            // event.createPost(user2,textPost2);
+            event.createPost(organizer, imagePost2);
         } catch (LimitationOfAuthorityExeption e) {
             System.err.println(e.getMessage());
         }
         System.out.println();
         event.allPosts();
-        try{
-        event.deletePost(organizer, videoPost4);
-        //event.deletePost(user3, imagePost2);
-        }catch (LimitationOfAuthorityExeption e) {
+        try {
+            event.deletePost(organizer, videoPost4);
+            //event.deletePost(user3, imagePost2);
+        } catch (LimitationOfAuthorityExeption e) {
             System.err.println(e.getMessage());
         }
         System.out.println();
@@ -206,7 +205,7 @@ public class Main {
         comment1.displayComment();
         System.out.println();
 
-       // friendRequest.addFriend(user1, user2);
+        // friendRequest.addFriend(user1, user2);
 
         System.out.println();
         System.out.println(" User create profile:");
@@ -226,7 +225,7 @@ public class Main {
         System.out.println(" viewing post: " + videoPost4);
         videoPost4.canView(user1);
         user5.displayName();
-        System.out.println( " viewing post: " + videoPost4);
+        System.out.println(" viewing post: " + videoPost4);
         videoPost4.canView(user5);
     }
-    }
+}
