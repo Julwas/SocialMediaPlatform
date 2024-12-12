@@ -1,7 +1,7 @@
 package social.media.platform.profile;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.NameContaihsfDigitExeption;
+import social.media.platform.exeptions.NameContainsOfDigitExeption;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;
 import social.media.platform.post.Post;
@@ -66,7 +66,7 @@ public class Profile extends SocialEntity implements Summarizable, ContentManage
             System.out.println("add age :" + user.getAge());
             System.out.println("add Bio :" + bio);
             displaySummary();
-        } catch (NameContaihsfDigitExeption e) {
+        } catch (NameContainsOfDigitExeption e) {
             System.err.println(e.getMessage());
         }
     }

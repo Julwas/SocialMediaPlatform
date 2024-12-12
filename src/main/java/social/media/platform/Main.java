@@ -132,7 +132,6 @@ public class Main {
         profile3.userCreateProfile();
         profile3.createPost(user3, videoPost4);
 
-        user1.getUsername();
         user1.displayName();
         imagePost2.open();
         videoPost4.play();
@@ -226,7 +225,7 @@ public class Main {
         user1.displayName();
         System.out.println(" viewing post: " + videoPost4);
         videoPost4.canView(user1);
-        user5.getUsername();
+        user5.displayName();
         System.out.println( " viewing post: " + videoPost4);
         videoPost4.canView(user5);
     }
