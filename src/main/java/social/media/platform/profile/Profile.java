@@ -10,14 +10,11 @@ import social.media.platform.users.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Logger;
 
 public class Profile extends SocialEntity implements Summarizable, ContentManager {
     private User user;
     private String bio;
     private List<Post> posts;
-
-
 
     public Profile(User user, String bio) {
         this.user = user;
@@ -82,13 +79,13 @@ public class Profile extends SocialEntity implements Summarizable, ContentManage
     }
 
     @Override
-    public  void createPost(User user, Post post) {
+    public void createPost(User author, Post post) {
         posts.add(post);
 
     }
 
     @Override
-    public void deletePost(User user,Post post) {
+    public void deletePost(User user, Post post) {
         posts.remove(post);
         System.out.println("Post deleted ");
     }

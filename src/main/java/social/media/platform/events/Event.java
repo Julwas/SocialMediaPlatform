@@ -69,9 +69,10 @@ public class Event extends SocialEntity implements ContentManager {
     public User getParticipant() {
         return participant;
     }
-    public  void allPosts(){
-        System.out.println( "All event posts: ");
-        for(Post post : posts){
+
+    public void allPosts() {
+        System.out.println("All event posts: ");
+        for (Post post : posts) {
             post.displayPost();
         }
     }
@@ -84,13 +85,14 @@ public class Event extends SocialEntity implements ContentManager {
         System.out.print("information about the event administrator: ");
         getOrganizer().displayName();
     }
+
     public void addParticipant(User user) {
         participants.add(user);
     }
 
     @Override
-    public void createPost(User user, Post post) throws LimitationOfAuthorityExeption {
-        if (user.equals(organizer)) {
+    public void createPost(User author, Post post) throws LimitationOfAuthorityExeption {
+        if (author.equals(organizer)) {
             posts.add(post);
         } else {
             throw new LimitationOfAuthorityExeption("Failed to add a post. Only the organizer can add posts.");
@@ -99,12 +101,12 @@ public class Event extends SocialEntity implements ContentManager {
     }
 
     @Override
-    public void deletePost(User user,Post post) throws LimitationOfAuthorityExeption {
+    public void deletePost(User user, Post post) throws LimitationOfAuthorityExeption {
         if (user.equals(organizer)) {
-        posts.remove(post);
-        System.out.println("Post removed ");
-    }else {
+            posts.remove(post);
+            System.out.println("Post removed ");
+        } else {
             throw new LimitationOfAuthorityExeption("Failed to delete a post. Only the organizer can delete posts.");
         }
-}
+    }
 }

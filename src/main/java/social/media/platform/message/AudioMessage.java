@@ -25,6 +25,7 @@ public class AudioMessage extends Message implements Playable {
         super.displayMessage();
         System.out.println(" : " + audioInfo.getUrl() + " size: " + audioInfo.getDuration() + "  seconds.");
     }
+
     @Override
     public void play() {
         System.out.println("is hearing the audio: " + audioInfo.getUrl());
@@ -32,7 +33,7 @@ public class AudioMessage extends Message implements Playable {
 
     @Override
     public void pause() {
-        System.out.println( audioInfo.getUrl() + "Press pause");
+        System.out.println(audioInfo.getUrl() + "Press pause");
     }
 
 }

@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,8 +18,16 @@ public class UniqueWordsCounter {
 
        String content = FileUtils.readFileToString(inputFile, "UTF-8");
 
-        Set<String> uniqueWords = Arrays.stream(StringUtils.split(content, " \n\r\t.,!?;: "))
-                .map(String::toLowerCase).collect(Collectors.toSet());
+        String[] words = StringUtils.split(content, " \n\r\t.,!?;: ");
+        Set<String> uniqueWords = new HashSet<>();
+
+        for (String word : words) {
+            uniqueWords.add(word.toLowerCase());
+        }
+
+        /*Set<String> uniqueWords = Arrays.stream(StringUtils.split(content, " \n\r\t.,!?;: "))
+                .map(String::toLowerCase).collect(Collectors.toSet());*/
+
         FileUtils.writeStringToFile(outputFile, " Number of unique words: " + uniqueWords.size(), "UTF-8" );
 
         System.out.println("The result is written to a file: " + outputFile.getAbsolutePath());

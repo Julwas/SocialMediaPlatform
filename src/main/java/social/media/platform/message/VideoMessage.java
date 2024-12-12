@@ -35,6 +35,6 @@ public class VideoMessage extends Message implements Playable {
 
     @Override
     public void pause() {
-        System.out.println( "paused the video: " + videoInfo.getUrl());
+        System.out.println("paused the video: " + videoInfo.getUrl());
     }
 }

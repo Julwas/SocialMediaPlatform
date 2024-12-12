@@ -1,22 +1,27 @@
 package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.NameContaihsfDigitExeption;
+import social.media.platform.exeptions.NameContainsOfDigitExeption;
 import social.media.platform.interfaces.Summarizable;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 
 public class User extends SocialEntity implements Summarizable {
-    private String username;
+    protected String username;
     private String email;
     private String surname;
     private int age;
+    public Set<User> friends;
 
     public User(String username, String email, String surname, int age) {
         this.username = username;
         this.email = email;
         this.surname = surname;
         this.age = age;
+        this.friends = new HashSet<>();
     }
 
     public String getUsername() {
@@ -76,11 +81,11 @@ public class User extends SocialEntity implements Summarizable {
             }
         }return false;
     }
-    public void addName()throws NameContaihsfDigitExeption {
+    public void addName()throws NameContainsOfDigitExeption {
 
         if(containsDigits(username))
         {
-            throw new NameContaihsfDigitExeption("The name cannot contain digits, the name has not been added");
+            throw new NameContainsOfDigitExeption("The name cannot contain digits, the name has not been added");
         }else {
             System.out.println(" The name was added");
         }
@@ -90,5 +95,20 @@ public class User extends SocialEntity implements Summarizable {
     public void displaySummary() {
         System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
                 ", Email: " + email);
+    }
+
+    public boolean isFriend(User user) {
+        return friends.contains(user);
+    }
+    public Set<User> getFriends() {
+        return friends;
+    }
+    public void addFriend(User friend) {
+        if (friends.add(friend)) {
+            friend.friends.add(this);
+            System.out.println(username + " and " + friend.getUsername() + " are now friends.");
+        } else {
+            System.out.println(username + " and " + friend.getUsername() + " are already friends.");
+        }
     }
 }

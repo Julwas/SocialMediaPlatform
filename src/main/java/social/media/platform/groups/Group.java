@@ -11,10 +11,10 @@ import social.media.platform.post.Post;
 
 import java.util.*;
 
-public class Group extends SocialEntity  implements Summarizable, ContentManager {
-    private  String groupName;
+public class Group extends SocialEntity implements Summarizable, ContentManager {
+    private String groupName;
     private User admin;
-    private List<User> members;
+    public static List<User> members;
     private List<Post> posts;
     private final Configuration configuration;
 
@@ -28,10 +28,9 @@ public class Group extends SocialEntity  implements Summarizable, ContentManager
         this.configuration = configuration;
     }
 
-    public  String getGroupName() {
+    public String getGroupName() {
         return groupName;
     }
-
 
 
     public User getAdmin() {
@@ -58,9 +57,9 @@ public class Group extends SocialEntity  implements Summarizable, ContentManager
         this.posts = posts;
     }
 
-    public  void allPosts(){
-        System.out.println( "All group posts: ");
-        for(Post post : posts){
+    public void allPosts() {
+        System.out.println("All group posts: ");
+        for (Post post : posts) {
             post.displayPost();
         }
     }
@@ -68,20 +67,6 @@ public class Group extends SocialEntity  implements Summarizable, ContentManager
     public void addMember(User user) {
         members.add(user);
     }
-
-    /*public boolean addPost(Post post) throws LimitPostsExeption {
-        if (posts.size() < configuration.getMaxPosts()) {
-        posts.add(post);
-        System.out.println("Post added to group: " + groupName);
-        post.displayPost();
-        }
-        else{
-            throw new LimitPostsExeption("Failed to add a post. " +
-                    "The post limit in the group has been exceeded.");
-        }
-        return false;
-    }*/
-
 
     @Override
     public void displaySummary() {
@@ -95,20 +80,20 @@ public class Group extends SocialEntity  implements Summarizable, ContentManager
     }
 
     @Override
-    public void createPost(User user,Post post)throws LimitPostsExeption {
+    public void createPost(User author, Post post) throws LimitPostsExeption {
         if (posts.size() < configuration.getMaxPosts()) {
             posts.add(post);
             System.out.println("Post added to group: " + groupName);
             post.displayPost();
-        }
-        else{
+        } else {
             throw new LimitPostsExeption("Failed to add a post. The post limit in the group has been exceeded");
         }
     }
 
     @Override
-    public void deletePost(User user,Post post) {
+    public void deletePost(User user, Post post) {
         posts.remove(post);
         System.out.println("Post deleted ");
     }
+
 }

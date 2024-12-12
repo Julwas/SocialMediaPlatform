@@ -27,6 +27,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import static social.media.platform.profile.AccessLevel.*;
+
 
 public class Main {
 
@@ -49,22 +51,22 @@ public class Main {
         Profile profile4 = new Profile(user4, "There is no description");
         Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
-        TextPost textPost1 = new TextPost(List.of(comment2), List.of(user1, user3, user2),
-                "Hi, everybody!");
-        TextPost textPost2 = new TextPost(List.of(comment3), List.of(user2, user4),
-                " See you after the vacations");
+        TextPost textPost1 = new TextPost(user1, List.of(comment2), List.of(user1, user3, user2),
+                PUBLIC, "Hi, everybody!");
+        TextPost textPost2 = new TextPost(user2, List.of(comment3), List.of(user2, user4),
+                MEMBERS, " See you after the vacations");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
-        ImagePost imagePost2 = new ImagePost(List.of(comment, comment1), List.of(user1, user3), imageInfo);
+        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), imageInfo, PUBLIC);
 
         VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
-        VideoPost videoPost4 = new VideoPost(List.of(comment),
-                List.of(user4, user3, user1), videoInfo);
+        VideoPost videoPost4 = new VideoPost(user4, List.of(comment),
+                List.of(user4, user3, user1), videoInfo, FRIENDS);
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going",
                 "https://emoticon/fire.jpg");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
         VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo);
-        AudioPost audioPost = new AudioPost(List.of(comment1), List.of(user1, user2),
-                audioInfo);
+        AudioPost audioPost = new AudioPost(user3, List.of(comment1), List.of(user1, user2),
+                audioInfo, PUBLIC);
         AudioMessage audioMessage = new AudioMessage(user3, user5, " 01.08.2024", audioInfo);
         ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
@@ -74,6 +76,7 @@ public class Main {
         User organizer = new User("Hanna", "organizer.big.concert@yahoo.com", "Bishop", 30);
 
         Group group = new Group("News of Warsaw ", admin, config);
+
         group.addMember(admin);
         group.addMember(user1);
         group.addMember(user2);
@@ -114,8 +117,6 @@ public class Main {
         } catch (EmoticonNotFoundExeption e) {
             System.err.println(e.getMessage());
         }
-        Date currentDate = new Date();
-        FriendRequest friendRequest = new FriendRequest(user1, user2, currentDate, "accept");
 
         if (profile1.equals(profile2)) {
             System.out.println("Profiles are Equal ");
@@ -123,7 +124,13 @@ public class Main {
             System.out.println("Profiles are not Equal ");
         }
         user5.setUsername("Olga2");
+
+        user1.addFriend(user2);
+        user2.addFriend(user3);
+        user1.addFriend(user3);
         profile5.userCreateProfile();
+        profile3.userCreateProfile();
+        profile3.createPost(user3, videoPost4);
 
         user1.getUsername();
         user1.displayName();
@@ -134,12 +141,15 @@ public class Main {
         user1.displaySummary();
         user2.displayName();
         textPost1.open();
+
         System.out.println();
         System.out.println("The user4 have the surname  :" + user4.getSurname() + " and have ID :" + user4.getId());
         System.out.println();
         System.out.println("Age of the user 3 :" + user3.getAge() + "years.");
-        System.out.println("notification");
+
+        System.out.println();
         not1.displayNotification();
+
         System.out.println();
         textPost1.displayPost();
         comment2.displayComment();
@@ -147,14 +157,18 @@ public class Main {
         imagePost2.displayPost();
         System.out.println();
         videoPost4.displayPost();
+
         System.out.println();
         profile2.displaySummary();
         System.out.println();
         profile4.displayProfileHash();
+
         System.out.println();
         audioPost.displayPost();
+
         comment3.displayComment();
         System.out.println();
+
         textMessage.displayMessage();
         System.out.println();
         videoMessage.displayMessage();
@@ -163,8 +177,8 @@ public class Main {
         System.out.println();
         imageMessage.displayMessage();
         System.out.println();
-        System.out.println("EVENT");
 
+        System.out.println();
         event.addParticipant(organizer);
         event.addParticipant(user2);
         event.addParticipant(user3);
@@ -176,7 +190,7 @@ public class Main {
         } catch (LimitationOfAuthorityExeption e) {
             System.err.println(e.getMessage());
         }
-        System.out.println("EVENT posts");
+        System.out.println();
         event.allPosts();
         try{
         event.deletePost(organizer, videoPost4);
@@ -184,7 +198,7 @@ public class Main {
         }catch (LimitationOfAuthorityExeption e) {
             System.err.println(e.getMessage());
         }
-        System.out.println("EVENT posts");
+        System.out.println();
         event.allPosts();
         event.displayEvent();
         System.out.println();
@@ -192,17 +206,28 @@ public class Main {
         System.out.println();
         comment1.displayComment();
         System.out.println();
-        friendRequest.sendRequest();
+
+       // friendRequest.addFriend(user1, user2);
+
         System.out.println();
         System.out.println(" User create profile:");
         user5.setUsername("Olga2");
         profile1.userCreateProfile();
-        LocalDate myObj = LocalDate.now();
-        System.out.println(myObj);
         System.out.println();
         user2.setUsername("Bob");
-        profile2.userCreateProfile();
         System.out.println();
+        profile2.userCreateProfile();
         profile3.userCreateProfile();
+
+        System.out.println();
+        user3.displayName();
+        System.out.print(" viewing  post: " + textPost2);
+        textPost2.canView(user3);
+        user1.displayName();
+        System.out.println(" viewing post: " + videoPost4);
+        videoPost4.canView(user1);
+        user5.getUsername();
+        System.out.println( " viewing post: " + videoPost4);
+        videoPost4.canView(user5);
     }
-}
+    }

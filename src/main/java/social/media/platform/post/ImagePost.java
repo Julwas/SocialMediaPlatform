@@ -4,6 +4,7 @@ package social.media.platform.post;
 import social.media.platform.media.ImageInfo;
 import social.media.platform.actions.Comment;
 import social.media.platform.interfaces.Viewable;
+import social.media.platform.profile.AccessLevel;
 import social.media.platform.users.User;
 
 import java.util.List;
@@ -19,19 +20,19 @@ public class ImagePost extends Post implements Viewable {
         this.imageInfo = imageInfo;
     }
 
-    public ImagePost(/*User author,*/ List<Comment> comments, List<User> likers, ImageInfo imageInfo) {
-        super(/*author,*/ comments, likers);
+    public ImagePost(User author, List<Comment> comments, List<User> likers, ImageInfo imageInfo, AccessLevel accessLevel) {
+        super(author, comments, likers, accessLevel);
         this.imageInfo = imageInfo;
     }
 
     @Override
     public void displayPost() {
-        System.out.println(/*author.getUsername() + " posted the image : " +*/ imageInfo.getUrl() + " size " + imageInfo.getWidth()
+        System.out.println(author.getUsername() + " posted the image : " + imageInfo.getUrl() + " size " + imageInfo.getWidth()
                 + "x" + imageInfo.getWidth() + " pixels.  " + " The post, liked  by users : ");
         for (User user : likers) {
             user.displayName();
         }
-        for(Comment comment : comments){
+        for (Comment comment : comments) {
             comment.addComment();
         }
     }
@@ -39,6 +40,6 @@ public class ImagePost extends Post implements Viewable {
 
     @Override
     public void open() {
-        System.out.println( "opened the picture " + imageInfo.getUrl());
+        System.out.println("opened the picture " + imageInfo.getUrl());
     }
 }

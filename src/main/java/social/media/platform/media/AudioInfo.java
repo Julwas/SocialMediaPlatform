@@ -23,7 +23,6 @@ public class AudioInfo {
     }
 
 
-
     public void setDuration(int duration) {
         this.duration = duration;
     }

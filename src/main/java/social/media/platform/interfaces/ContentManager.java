@@ -4,6 +4,6 @@ import social.media.platform.post.Post;
 import social.media.platform.users.User;
 
 public interface ContentManager {
-    void createPost(User user, Post post);
+    void createPost(User author, Post post);
     void deletePost(User user, Post post);
 }

@@ -3,6 +3,7 @@ package social.media.platform.post;
 import social.media.platform.interfaces.Playable;
 import social.media.platform.media.VideoInfo;
 import social.media.platform.actions.Comment;
+import social.media.platform.profile.AccessLevel;
 import social.media.platform.users.User;
 
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.List;
 public class VideoPost extends Post implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoPost(/*User author, */List<Comment> comments, List<User> likers, VideoInfo videoInfo) {
-        super(/*author,*/ comments, likers);
+    public VideoPost(User author, List<Comment> comments, List<User> likers, VideoInfo videoInfo, AccessLevel accessLevel) {
+        super(author, comments, likers, accessLevel);
         this.videoInfo = videoInfo;
     }
 
@@ -31,7 +32,7 @@ public class VideoPost extends Post implements Playable {
         for (User user : likers) {
             user.displayName();
         }
-        for(Comment comment : comments){
+        for (Comment comment : comments) {
             comment.addComment();
         }
     }
@@ -39,11 +40,11 @@ public class VideoPost extends Post implements Playable {
 
     @Override
     public void play() {
-        System.out.println( "is watching the video " + videoInfo.getUrl());
+        System.out.println("is watching the video " + videoInfo.getUrl());
     }
 
     @Override
     public void pause() {
-        System.out.println( "paused the video: " + videoInfo.getUrl());
+        System.out.println("paused the video: " + videoInfo.getUrl());
     }
 }

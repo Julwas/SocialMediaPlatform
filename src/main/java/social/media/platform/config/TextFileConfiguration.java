@@ -8,7 +8,7 @@ import java.io.*;
 
 public class TextFileConfiguration implements Configuration {
     private static String password = null;
-    private static int maxPosts ;
+    private static int maxPosts;
     private static final String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
 
     static {
@@ -35,8 +35,7 @@ public class TextFileConfiguration implements Configuration {
             } catch (NumberFormatException e) {
                 throw new FatalException("Critical error! maxPosts is not a valid number. Program termination.");
             }
-        }
-         catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

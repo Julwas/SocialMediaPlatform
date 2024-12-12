@@ -12,6 +12,7 @@ public class ImageMessage extends Message implements Viewable {
         super(sender, receiver, date);
         this.imageInfo = imageInfo;
     }
+
     public ImageInfo getImageInfo() {
         return imageInfo;
     }
@@ -26,8 +27,9 @@ public class ImageMessage extends Message implements Viewable {
         System.out.println(" : " + imageInfo.getUrl() + " size: " + imageInfo.getWidth() + " x " + imageInfo.getHeight()
                 + " pixels. ");
     }
+
     @Override
     public void open() {
-        System.out.println( "opened the picture " + imageInfo.getUrl());
+        System.out.println("opened the picture " + imageInfo.getUrl());
     }
 }

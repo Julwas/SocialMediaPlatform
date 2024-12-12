@@ -14,6 +14,7 @@ public abstract class Message extends SocialEntity {
         this.receiver = receiver;
         this.date = date;
     }
+
     public String getDate() {
         return date;
     }
