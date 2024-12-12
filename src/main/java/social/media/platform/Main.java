@@ -23,6 +23,7 @@ import social.media.platform.notifications.Notification;
 import social.media.platform.profile.Profile;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 
@@ -107,8 +108,8 @@ public class Main {
         } catch (EmoticonNotFoundExeption e) {
             System.err.println(e.getMessage());
         }
-
-        FriendRequest friendRequest = new FriendRequest(user1, user2, " 01.12.2024", "accept");
+Date currentDate = new Date();
+        FriendRequest friendRequest = new FriendRequest(user1, user2,currentDate , "accept");
 
         if (profile1.equals(profile2)) {
             System.out.println("Profiles are Equal ");

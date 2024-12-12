@@ -2,6 +2,7 @@ package social.media.platform.post;
 
 import social.media.platform.actions.Comment;
 import social.media.platform.base.SocialEntity;
+import social.media.platform.profile.AccessLevel;
 import social.media.platform.users.User;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public abstract class Post extends SocialEntity {
         this.author = author;
         this.comments = comments;
         this.likers = likers;
+
     }
 
     public User getAuthor() {
@@ -32,5 +34,6 @@ public abstract class Post extends SocialEntity {
     }
 
     public abstract void displayPost();
+
 
 }

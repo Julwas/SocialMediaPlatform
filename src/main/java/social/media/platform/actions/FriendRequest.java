@@ -2,16 +2,17 @@ package social.media.platform.actions;
 
 import social.media.platform.users.User;
 
+import java.util.Date;
 import java.util.logging.Logger;
 
 public class FriendRequest {
     private User sender;
     private User receiver;
-    private String date;
+    private Date date;
     private String answer;
     private static final Logger logger = Logger.getLogger(FriendRequest.class.getName());
 
-    public FriendRequest(User sender, User receiver, String date, String answer) {
+    public FriendRequest(User sender, User receiver, Date date, String answer) {
         this.sender = sender;
         this.receiver = receiver;
         this.date = date;
@@ -41,12 +42,9 @@ public class FriendRequest {
         this.receiver = receiver;
     }
 
-    public String getDate() {
-        return date;
-    }
 
-    public void setDate(String date) {
-        this.date = date;
+    public Date getDate() {
+        return date;
     }
 
     public void sendRequest() {

@@ -65,11 +65,6 @@ public class User extends SocialEntity implements Summarizable {
         return Objects.hash(username, email, surname, age, getId());
     }
 
-   /* public void displayInfo() {
-        System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
-                ", Email: " + email);
-    }*/
-
     public void displayName() {
         System.out.println("" + username + " " + surname);
     }

@@ -1,11 +1,10 @@
 package social.media.platform.post;
-
 import social.media.platform.actions.Comment;
-import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.interfaces.Viewable;
 import social.media.platform.users.User;
-
 import java.util.List;
+
+
 
 public class TextPost extends Post implements Viewable {
 
@@ -43,6 +42,4 @@ public class TextPost extends Post implements Viewable {
     public void open() {
         System.out.println(" Open the text post " + getTextContent());
     }
-
-
 }

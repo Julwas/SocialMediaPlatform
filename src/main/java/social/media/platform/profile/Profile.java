@@ -12,6 +12,7 @@ public class Profile extends SocialEntity implements Summarizable {
     private User user;
     private String bio;
 
+
     public Profile(User user, String bio) {
         this.user = user;
         this.bio = bio;
