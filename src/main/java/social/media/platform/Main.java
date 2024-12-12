@@ -10,7 +10,7 @@ import social.media.platform.media.AudioInfo;
 import social.media.platform.media.ImageInfo;
 import social.media.platform.media.VideoInfo;
 import social.media.platform.actions.Comment;
-import social.media.platform.actions.FriendRequest;
+
 import social.media.platform.message.AudioMessage;
 import social.media.platform.message.ImageMessage;
 import social.media.platform.message.TextMessage;
