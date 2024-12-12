@@ -10,8 +10,8 @@ public class TextPost extends Post implements Viewable {
 
     private String textContent;
 
-    public TextPost(User author, List<Comment> comments, List<User> likers, String textContent) {
-        super(author, comments, likers);
+    public TextPost( List<Comment> comments, List<User> likers, String textContent) {
+        super(comments, likers);
         this.textContent = textContent;
     }
 
@@ -22,14 +22,14 @@ public class TextPost extends Post implements Viewable {
     public void setTextContent(String textContent) {
         this.textContent = textContent;
     }
-    @Override
+    /*@Override
     public String toString(){
         return author.getUsername() + " posted: " + textContent;
-    }
+    }*/
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " posted: " + textContent + "The post, liked  by users:");
+        System.out.println(/*author.getUsername() + " posted: " +*/ textContent + "The post, liked  by users:");
         for (User user : likers) {
             user.displayName();
         }
@@ -37,6 +37,8 @@ public class TextPost extends Post implements Viewable {
             comment.addComment();
         }
     }
+
+
 
     @Override
     public void open() {

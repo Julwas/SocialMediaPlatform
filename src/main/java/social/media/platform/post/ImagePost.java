@@ -19,15 +19,14 @@ public class ImagePost extends Post implements Viewable {
         this.imageInfo = imageInfo;
     }
 
-    public ImagePost(User author,List<Comment> comments, List<User> likers,
-                     ImageInfo imageInfo) {
-        super(author, comments, likers);
+    public ImagePost(/*User author,*/ List<Comment> comments, List<User> likers, ImageInfo imageInfo) {
+        super(/*author,*/ comments, likers);
         this.imageInfo = imageInfo;
     }
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() + " posted the image : " + imageInfo.getUrl() + " size " + imageInfo.getWidth()
+        System.out.println(/*author.getUsername() + " posted the image : " +*/ imageInfo.getUrl() + " size " + imageInfo.getWidth()
                 + "x" + imageInfo.getWidth() + " pixels.  " + " The post, liked  by users : ");
         for (User user : likers) {
             user.displayName();
@@ -36,6 +35,7 @@ public class ImagePost extends Post implements Viewable {
             comment.addComment();
         }
     }
+
 
     @Override
     public void open() {

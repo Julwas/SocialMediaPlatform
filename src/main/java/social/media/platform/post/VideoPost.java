@@ -10,8 +10,8 @@ import java.util.List;
 public class VideoPost extends Post implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoPost(User author, List<Comment> comments, List<User> likers, VideoInfo videoInfo) {
-        super(author, comments, likers);
+    public VideoPost(/*User author, */List<Comment> comments, List<User> likers, VideoInfo videoInfo) {
+        super(/*author,*/ comments, likers);
         this.videoInfo = videoInfo;
     }
 
@@ -25,7 +25,7 @@ public class VideoPost extends Post implements Playable {
 
     @Override
     public void displayPost() {
-        System.out.println(author.getUsername() +" posted the video: " + videoInfo.getUrl()
+        System.out.println(/*author.getUsername() +" posted the video: " + */videoInfo.getUrl()
                 + " size: " + videoInfo.getHeight() + " x " + videoInfo.getWidth() + " pixels " + videoInfo.getDuration()
                 + " seconds. " + " The post, liked  by users ");
         for (User user : likers) {
@@ -35,6 +35,7 @@ public class VideoPost extends Post implements Playable {
             comment.addComment();
         }
     }
+
 
     @Override
     public void play() {

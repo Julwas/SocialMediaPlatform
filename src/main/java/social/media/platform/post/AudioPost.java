@@ -19,14 +19,14 @@ public class AudioPost extends Post implements Playable {
         this.audioInfo = audioInfo;
     }
 
-    public AudioPost(User author,  List<Comment> comments, List<User> likers, AudioInfo audioInfo) {
-        super(author, comments, likers);
+    public AudioPost(/*User author, */ List<Comment> comments, List<User> likers, AudioInfo audioInfo) {
+        super(/*author,*/ comments, likers);
         this.audioInfo = audioInfo;
     }
 
     @Override
     public void displayPost() {
-        System.out.print(author.getUsername() +  " posted: " + audioInfo.getUrl()
+        System.out.print(/*author.getUsername() +  " posted: " +*/ audioInfo.getUrl()
                 + "size: " + audioInfo.getDuration() + " seconds. " + " The post, liked  by users : ");
         for (User user : likers) {
             user.displayName();
@@ -35,6 +35,7 @@ public class AudioPost extends Post implements Playable {
             comment.addComment();
         }
     }
+
 
     @Override
     public void play() {

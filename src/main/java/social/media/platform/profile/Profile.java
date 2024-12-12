@@ -2,20 +2,27 @@ package social.media.platform.profile;
 
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exeptions.NameContaihsfDigitExeption;
+import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;
+import social.media.platform.post.Post;
 import social.media.platform.users.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
 
-public class Profile extends SocialEntity implements Summarizable {
+public class Profile extends SocialEntity implements Summarizable, ContentManager {
     private User user;
     private String bio;
+    private List<Post> posts;
+
 
 
     public Profile(User user, String bio) {
         this.user = user;
         this.bio = bio;
+        this.posts = new ArrayList<>();
     }
 
     public User getUser() {
@@ -52,10 +59,8 @@ public class Profile extends SocialEntity implements Summarizable {
         System.out.println("HashCod of profile  :" + hashCode());
     }
 
-    //public void displayProfile() {}
-
     public void userCreateProfile() {
-        System.out.print("User create profil: ");
+        System.out.print("User create profile: ");
         System.out.println(" add name :" + user.getUsername());
         try {
             user.addName();
@@ -74,5 +79,17 @@ public class Profile extends SocialEntity implements Summarizable {
         System.out.println("Profile data: ");
         user.displaySummary();
         System.out.println(" Bio :" + bio);
+    }
+
+    @Override
+    public  void createPost(User user, Post post) {
+        posts.add(post);
+
+    }
+
+    @Override
+    public void deletePost(User user,Post post) {
+        posts.remove(post);
+        System.out.println("Post deleted ");
     }
 }

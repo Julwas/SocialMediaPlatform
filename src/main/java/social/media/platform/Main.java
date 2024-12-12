@@ -4,6 +4,7 @@ package social.media.platform;
 import social.media.platform.config.TextFileConfiguration;
 import social.media.platform.exeptions.EmoticonNotFoundExeption;
 import social.media.platform.exeptions.LimitPostsExeption;
+import social.media.platform.exeptions.LimitationOfAuthorityExeption;
 import social.media.platform.interfaces.Configuration;
 import social.media.platform.media.AudioInfo;
 import social.media.platform.media.ImageInfo;
@@ -48,21 +49,21 @@ public class Main {
         Profile profile4 = new Profile(user4, "There is no description");
         Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
-        TextPost textPost1 = new TextPost(user1, List.of(comment2), List.of(user1, user3, user2),
+        TextPost textPost1 = new TextPost(List.of(comment2), List.of(user1, user3, user2),
                 "Hi, everybody!");
-        TextPost textPost2 = new TextPost(user2, List.of(comment3), List.of(user2, user4),
+        TextPost textPost2 = new TextPost(List.of(comment3), List.of(user2, user4),
                 " See you after the vacations");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
-        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), imageInfo);
+        ImagePost imagePost2 = new ImagePost(List.of(comment, comment1), List.of(user1, user3), imageInfo);
 
         VideoInfo videoInfo = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
-        VideoPost videoPost4 = new VideoPost(user4, List.of(comment),
+        VideoPost videoPost4 = new VideoPost(List.of(comment),
                 List.of(user4, user3, user1), videoInfo);
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going",
                 "https://emoticon/fire.jpg");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
         VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo);
-        AudioPost audioPost = new AudioPost(user1, List.of(comment1), List.of(user1, user2),
+        AudioPost audioPost = new AudioPost(List.of(comment1), List.of(user1, user2),
                 audioInfo);
         AudioMessage audioMessage = new AudioMessage(user3, user5, " 01.08.2024", audioInfo);
         ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
@@ -77,14 +78,19 @@ public class Main {
         group.addMember(user1);
         group.addMember(user2);
         group.addMember(user3);
+        System.out.println(" ADD POSTS");
         try {
-            group.addPost(textPost1);
-            group.addPost(textPost2);
-            group.addPost(videoPost4);
-            //group.addPost(imagePost2);
+            group.createPost(user1, textPost1);
+            group.createPost(user2, textPost2);
+            group.createPost(user1, videoPost4);
+            //group.createPost(imagePost2);
         } catch (LimitPostsExeption e) {
             System.err.println(e.getMessage());
         }
+        System.out.println(" All posts in grope: ");
+        group.allPosts();
+        group.deletePost(user1, textPost1);
+        System.out.println(" All posts since deletede: ");
         group.allPosts();
 
         TextFileConfiguration.readConfiguration();
@@ -108,8 +114,8 @@ public class Main {
         } catch (EmoticonNotFoundExeption e) {
             System.err.println(e.getMessage());
         }
-Date currentDate = new Date();
-        FriendRequest friendRequest = new FriendRequest(user1, user2,currentDate , "accept");
+        Date currentDate = new Date();
+        FriendRequest friendRequest = new FriendRequest(user1, user2, currentDate, "accept");
 
         if (profile1.equals(profile2)) {
             System.out.println("Profiles are Equal ");
@@ -157,12 +163,29 @@ Date currentDate = new Date();
         System.out.println();
         imageMessage.displayMessage();
         System.out.println();
-        System.out.println();
+        System.out.println("EVENT");
+
         event.addParticipant(organizer);
         event.addParticipant(user2);
         event.addParticipant(user3);
         event.addParticipant(user1);
-
+        try{
+        event.createPost(organizer, videoPost4);
+       // event.createPost(user2,textPost2);
+        event.createPost(organizer, imagePost2);
+        } catch (LimitationOfAuthorityExeption e) {
+            System.err.println(e.getMessage());
+        }
+        System.out.println("EVENT posts");
+        event.allPosts();
+        try{
+        event.deletePost(organizer, videoPost4);
+        //event.deletePost(user3, imagePost2);
+        }catch (LimitationOfAuthorityExeption e) {
+            System.err.println(e.getMessage());
+        }
+        System.out.println("EVENT posts");
+        event.allPosts();
         event.displayEvent();
         System.out.println();
         group.displaySummary();

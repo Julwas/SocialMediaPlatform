@@ -3,6 +3,7 @@ package social.media.platform.groups;
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exeptions.LimitPostsExeption;
 import social.media.platform.interfaces.Configuration;
+import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;
 import social.media.platform.users.User;
 import social.media.platform.post.Post;
@@ -10,7 +11,7 @@ import social.media.platform.post.Post;
 
 import java.util.*;
 
-public class Group extends SocialEntity  implements Summarizable {
+public class Group extends SocialEntity  implements Summarizable, ContentManager {
     private  String groupName;
     private User admin;
     private List<User> members;
@@ -57,16 +58,6 @@ public class Group extends SocialEntity  implements Summarizable {
         this.posts = posts;
     }
 
-    /*public void displayGroup() {
-        System.out.println(" name of group: " + groupName + "Members of group:");
-        for (User user : members) {
-            user.displayName();
-        }
-        allPosts();
-        System.out.print("information about the group administrator: ");
-        getAdmin().displayName();
-    }*/
-
     public  void allPosts(){
         System.out.println( "All group posts: ");
         for(Post post : posts){
@@ -78,7 +69,7 @@ public class Group extends SocialEntity  implements Summarizable {
         members.add(user);
     }
 
-    public boolean addPost(Post post) throws LimitPostsExeption {
+    /*public boolean addPost(Post post) throws LimitPostsExeption {
         if (posts.size() < configuration.getMaxPosts()) {
         posts.add(post);
         System.out.println("Post added to group: " + groupName);
@@ -89,7 +80,8 @@ public class Group extends SocialEntity  implements Summarizable {
                     "The post limit in the group has been exceeded.");
         }
         return false;
-    }
+    }*/
+
 
     @Override
     public void displaySummary() {
@@ -100,5 +92,23 @@ public class Group extends SocialEntity  implements Summarizable {
         allPosts();
         System.out.print("information about the group administrator: ");
         getAdmin().displayName();
+    }
+
+    @Override
+    public void createPost(User user,Post post)throws LimitPostsExeption {
+        if (posts.size() < configuration.getMaxPosts()) {
+            posts.add(post);
+            System.out.println("Post added to group: " + groupName);
+            post.displayPost();
+        }
+        else{
+            throw new LimitPostsExeption("Failed to add a post. The post limit in the group has been exceeded");
+        }
+    }
+
+    @Override
+    public void deletePost(User user,Post post) {
+        posts.remove(post);
+        System.out.println("Post deleted ");
     }
 }
