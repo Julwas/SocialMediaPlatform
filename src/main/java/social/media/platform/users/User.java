@@ -1,7 +1,7 @@
 package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.NameContainsOfDigitExeption;
+import social.media.platform.exeptions.NameContainsOfDigitException;
 import social.media.platform.interfaces.Summarizable;
 
 import java.util.HashSet;
@@ -81,11 +81,11 @@ public class User extends SocialEntity implements Summarizable {
             }
         }return false;
     }
-    public void addName()throws NameContainsOfDigitExeption {
+    public void addName()throws NameContainsOfDigitException {
 
         if(containsDigits(username))
         {
-            throw new NameContainsOfDigitExeption("The name cannot contain digits, the name has not been added");
+            throw new NameContainsOfDigitException("The name cannot contain digits, the name has not been added");
         }else {
             System.out.println(" The name was added");
         }
@@ -103,6 +103,7 @@ public class User extends SocialEntity implements Summarizable {
     public Set<User> getFriends() {
         return friends;
     }
+
     public void addFriend(User friend) {
         if (friends.add(friend)) {
             friend.friends.add(this);

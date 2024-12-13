@@ -37,7 +37,6 @@ public class ImagePost extends Post implements Viewable {
         }
     }
 
-
     @Override
     public void open() {
         System.out.println("opened the picture " + imageInfo.getUrl());

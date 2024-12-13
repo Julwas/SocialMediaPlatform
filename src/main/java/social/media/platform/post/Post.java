@@ -16,6 +16,7 @@ public abstract class Post extends SocialEntity {
     private AccessLevel accessLevel;
     protected User author;
     protected User user;
+    private Group group;
 
 
     public Post(User author, List<Comment> comments, List<User> likers, AccessLevel accessLevel) {
@@ -37,32 +38,34 @@ public abstract class Post extends SocialEntity {
 
     public abstract void displayPost();
 
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
     public boolean canView(User viewer) {
         switch (accessLevel) {
             case PUBLIC:
-                System.out.println("Access granted");
+                System.out.println("  Access granted");
                 return true;
             case FRIENDS:
                 if (author.isFriend(viewer)) {
-                    System.out.println("Access granted: You are a friend of the author.");
+                    System.out.println("  Access granted: You are a friend of the author.");
                     return true;
                 } else {
-                    System.out.println("Access denied: This post is only for friends.");
+                    System.out.println("  Access denied: This post is only for friends.");
                     return false;
                 }
             case MEMBERS:
-                if (Group.members.contains(viewer)) {
-                    System.out.println("Access granted: You are the members.");
+                if (group.getMembers().contains(viewer)) {
+                    System.out.println("  Access granted: You are the members.");
                     return true;
                 } else {
-                    System.out.println("Access denied: This post is only available to members of the group.");
+                    System.out.println("  Access denied: This post is only available to members of the group.");
                     return false;
                 }
             default:
-                System.out.println("Access denied: Unknown access level.");
+                System.out.println("  Access denied: Unknown access level.");
                 return false;
         }
     }
-
-
 }

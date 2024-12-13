@@ -1,7 +1,7 @@
 package social.media.platform.groups;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.LimitPostsExeption;
+import social.media.platform.exeptions.LimitPostsException;
 import social.media.platform.interfaces.Configuration;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;
@@ -14,7 +14,7 @@ import java.util.*;
 public class Group extends SocialEntity implements Summarizable, ContentManager {
     private String groupName;
     private User admin;
-    public static List<User> members;
+    private List<User> members;
     private List<Post> posts;
     private final Configuration configuration;
 
@@ -80,13 +80,14 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
     }
 
     @Override
-    public void createPost(User author, Post post) throws LimitPostsExeption {
+    public void createPost(User author, Post post) throws LimitPostsException {
         if (posts.size() < configuration.getMaxPosts()) {
+           post.setGroup(this);
             posts.add(post);
             System.out.println("Post added to group: " + groupName);
             post.displayPost();
         } else {
-            throw new LimitPostsExeption("Failed to add a post. The post limit in the group has been exceeded");
+            throw new LimitPostsException("Failed to add a post. The post limit in the group has been exceeded");
         }
     }
 

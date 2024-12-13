@@ -1,8 +1,7 @@
 package social.media.platform.events;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.LimitPostsExeption;
-import social.media.platform.exeptions.LimitationOfAuthorityExeption;
+import social.media.platform.exeptions.LimitationOfAuthorityException;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.post.Post;
 import social.media.platform.users.User;
@@ -91,22 +90,22 @@ public class Event extends SocialEntity implements ContentManager {
     }
 
     @Override
-    public void createPost(User author, Post post) throws LimitationOfAuthorityExeption {
+    public void createPost(User author, Post post) throws LimitationOfAuthorityException {
         if (author.equals(organizer)) {
             posts.add(post);
         } else {
-            throw new LimitationOfAuthorityExeption("Failed to add a post. Only the organizer can add posts.");
+            throw new LimitationOfAuthorityException("Failed to add a post. Only the organizer can add posts.");
         }
 
     }
 
     @Override
-    public void deletePost(User user, Post post) throws LimitationOfAuthorityExeption {
+    public void deletePost(User user, Post post) throws LimitationOfAuthorityException {
         if (user.equals(organizer)) {
             posts.remove(post);
             System.out.println("Post removed ");
         } else {
-            throw new LimitationOfAuthorityExeption("Failed to delete a post. Only the organizer can delete posts.");
+            throw new LimitationOfAuthorityException("Failed to delete a post. Only the organizer can delete posts.");
         }
     }
 }

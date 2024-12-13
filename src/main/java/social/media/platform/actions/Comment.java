@@ -1,7 +1,7 @@
 package social.media.platform.actions;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.EmoticonNotFoundExeption;
+import social.media.platform.exeptions.EmoticonNotFoundException;
 import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.users.User;
 
@@ -60,7 +60,7 @@ public class Comment extends SocialEntity implements ContentReaction {
         for (String emoticon : emoticons) {
             try {
                 System.out.println(emoticon);
-            } catch (EmoticonNotFoundExeption e) {
+            } catch (EmoticonNotFoundException e) {
                 throw new RuntimeException(e.getMessage());
             }
         }
@@ -73,12 +73,12 @@ public class Comment extends SocialEntity implements ContentReaction {
     }
 
     @Override
-    public String sendEmoticon(String emoticon) throws EmoticonNotFoundExeption {
+    public String sendEmoticon(String emoticon) throws EmoticonNotFoundException {
         if (allowedEmoticons.contains(emoticon)) {
             emoticons.add(emoticon);
             return emoticon;
         } else {
-            throw new EmoticonNotFoundExeption("Emoticon not found");
+            throw new EmoticonNotFoundException("Emoticon not found");
         }
     }
 }
