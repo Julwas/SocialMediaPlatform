@@ -18,7 +18,7 @@ public class LinkedList<T> {
     private Node<T> tail;
 
     public static void main(String[] args) {
-        // LinkedList<String> list = new LinkedList<>();
+       // LinkedList<String> list = new LinkedList<>();
         LinkedList<Integer> list = new LinkedList<>();
 
        /*list.addFirst("T1");
@@ -143,7 +143,7 @@ public class LinkedList<T> {
 
     }
 
-    public void add(int index, T data) {
+    public void add(int index, T data) { //Declaration of the add method that adds a data element of type T to the list at the position with index index.
         if (index < 0) {
             throw new IndexOutOfBoundsException("The index cannot be negative.");
         }

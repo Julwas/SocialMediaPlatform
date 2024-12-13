@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="commit  interface ContentManager+ enum">
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/EmoticonNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/LimitPostsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/LimitationOfAuthorityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/NameContainsOfDigitException.java" afterDir="false" />
+    <list default="true" id="800503c2-f808-4533-a16d-62cd8069d74b" name="Changes" comment="commit rename">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/actions/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/events/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/EmoticonNotFoundExeption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/LimitPostsExeption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/LimitationOfAuthorityExeption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/exeptions/NameContainsOfDigitExeption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/groups/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/ImagePost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/ImagePost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/post/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/post/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/profile/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/social/media/platform/linkedList/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/social/media/platform/linkedList/LinkedList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +30,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -87,7 +76,7 @@
       <recent name="socialMediaPlatform" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.social.media.platform.Main">
+  <component name="RunManager" selected="Application.UniqueWordsCounter">
     <configuration name="LinkedList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="social.media.platform.linkedList.LinkedList" />
       <module name="SocialMediaPlatform" />
@@ -153,8 +142,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.social.media.platform.Main" />
         <item itemvalue="Application.UniqueWordsCounter" />
+        <item itemvalue="Application.social.media.platform.Main" />
         <item itemvalue="Application.LinkedList" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.social.media.platform.Main" />
@@ -490,7 +479,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734029308135</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="commit rename">
+      <option name="closed" value="true" />
+      <created>1734084613472</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1734084613472</updated>
+    </task>
+    <task id="LOCAL-00042" summary="commit rename">
+      <option name="closed" value="true" />
+      <created>1734084735743</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1734084735743</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +526,8 @@
     <MESSAGE value="commit pre interface ContentManager" />
     <MESSAGE value="commit  interface ContentManager" />
     <MESSAGE value="commit  interface ContentManager+ enum" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit  interface ContentManager+ enum" />
+    <MESSAGE value="commit rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit rename" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
