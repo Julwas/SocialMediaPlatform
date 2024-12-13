@@ -110,7 +110,7 @@ public class User extends SocialEntity implements Summarizable {
         if (friends.add(friend)) {
             friend.friends.add(this);
             logger.info("You are now friends.");
-            System.out.println(username + " and " + friend.getUsername() + " are now friends.");
+            //System.out.println(username + " and " + friend.getUsername() + " are now friends.");
         } else {
             System.out.println(username + " and " + friend.getUsername() + " are already friends.");
         }
