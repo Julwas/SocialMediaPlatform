@@ -13,8 +13,10 @@ import java.util.stream.Collectors;
 
 public class UniqueWordsCounter {
     public static void main(String[] args) throws IOException {
-        File inputFile = new File("src/main/java/social/media/platform/WordsCounter/input.txt");
-        File outputFile = new File("src/main/java/social/media/platform/WordsCounter/output.txt");
+        //File inputFile = new File("src/main/java/social/media/platform/WordsCounter/input.txt");
+        //File outputFile = new File("src/main/java/social/media/platform/WordsCounter/output.txt");
+File inputFile = new File("C:\\Users\\Sprzetowo\\Laba\\SocialMediaPlatform\\src\\main\\java\\social\\media\\platform\\wordsCounter\\input.txt");
+      File outputFile = new File("C:\\Users\\Sprzetowo\\Laba\\SocialMediaPlatform\\src\\main\\java\\social\\media\\platform\\wordsCounter\\output.txt");
 
        String content = FileUtils.readFileToString(inputFile, "UTF-8");
 

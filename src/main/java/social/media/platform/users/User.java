@@ -7,9 +7,11 @@ import social.media.platform.interfaces.Summarizable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.logging.Logger;
 
 
 public class User extends SocialEntity implements Summarizable {
+    private static final Logger logger = Logger.getLogger(User.class.getName());
     protected String username;
     private String email;
     private String surname;
@@ -107,6 +109,7 @@ public class User extends SocialEntity implements Summarizable {
     public void addFriend(User friend) {
         if (friends.add(friend)) {
             friend.friends.add(this);
+            logger.info("You are now friends.");
             System.out.println(username + " and " + friend.getUsername() + " are now friends.");
         } else {
             System.out.println(username + " and " + friend.getUsername() + " are already friends.");
