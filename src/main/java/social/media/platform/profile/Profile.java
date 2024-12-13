@@ -1,7 +1,7 @@
 package social.media.platform.profile;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.NameContainsOfDigitException;
+import social.media.platform.exceptions.NameContainsOfDigitException;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;
 import social.media.platform.post.Post;

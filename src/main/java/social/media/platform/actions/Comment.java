@@ -1,7 +1,7 @@
 package social.media.platform.actions;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.EmoticonNotFoundException;
+import social.media.platform.exceptions.EmoticonNotFoundException;
 import social.media.platform.interfaces.ContentReaction;
 import social.media.platform.users.User;
 

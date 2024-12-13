@@ -1,7 +1,7 @@
 package social.media.platform.groups;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.LimitPostsException;
+import social.media.platform.exceptions.LimitPostsException;
 import social.media.platform.interfaces.Configuration;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;

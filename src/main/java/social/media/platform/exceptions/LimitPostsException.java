@@ -1,4 +1,4 @@
-package social.media.platform.exeptions;
+package social.media.platform.exceptions;
 
 public class LimitPostsException extends RuntimeException{
     public LimitPostsException(String message){

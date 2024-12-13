@@ -1,7 +1,7 @@
 package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.NameContainsOfDigitException;
+import social.media.platform.exceptions.NameContainsOfDigitException;
 import social.media.platform.interfaces.Summarizable;
 
 import java.util.HashSet;

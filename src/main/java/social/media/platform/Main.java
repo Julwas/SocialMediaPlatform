@@ -2,9 +2,9 @@ package social.media.platform;
 
 
 import social.media.platform.config.TextFileConfiguration;
-import social.media.platform.exeptions.EmoticonNotFoundException;
-import social.media.platform.exeptions.LimitPostsException;
-import social.media.platform.exeptions.LimitationOfAuthorityException;
+import social.media.platform.exceptions.EmoticonNotFoundException;
+import social.media.platform.exceptions.LimitPostsException;
+import social.media.platform.exceptions.LimitationOfAuthorityException;
 import social.media.platform.interfaces.Configuration;
 import social.media.platform.media.AudioInfo;
 import social.media.platform.media.ImageInfo;

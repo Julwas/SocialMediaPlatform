@@ -1,6 +1,6 @@
 package social.media.platform.config;
 
-import social.media.platform.exeptions.FatalException;
+import social.media.platform.exceptions.FatalException;
 import social.media.platform.interfaces.Configuration;
 
 import java.io.*;

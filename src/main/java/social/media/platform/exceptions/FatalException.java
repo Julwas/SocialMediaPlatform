@@ -1,4 +1,4 @@
-package social.media.platform.exeptions;
+package social.media.platform.exceptions;
 
 public class FatalException extends RuntimeException{
     public FatalException(String message){

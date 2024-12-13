@@ -1,7 +1,7 @@
 package social.media.platform.events;
 
 import social.media.platform.base.SocialEntity;
-import social.media.platform.exeptions.LimitationOfAuthorityException;
+import social.media.platform.exceptions.LimitationOfAuthorityException;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.post.Post;
 import social.media.platform.users.User;
