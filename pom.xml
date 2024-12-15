@@ -12,7 +12,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--maven.plugin.validation>BRIEF</maven.plugin.validationclea-->
     </properties>
+
 <dependencies>
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
     <dependency>
@@ -31,9 +33,8 @@
     <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
-        <version>1.3.2</version>
+        <version>2.4</version>
     </dependency>
-
 
 </dependencies>
     <build>
@@ -43,14 +44,17 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.11.0</version>
             <configuration>
-                <source>maven.compiler.source</source>
-                <target>maven.compiler.target</target>
+                <source>11</source> <!-- Здесь укажите вашу версию Java -->
+                <target>11</target> <!-- Здесь укажите вашу версию Java -->
+                <!--source>maven.compiler.source</source>
+                <target>maven.compiler.target</target-->
             </configuration>
         </plugin>
+
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
-            <version>3.3.0</version>
+            <version>3.4.1</version>
 
         </plugin>
     </plugins>
