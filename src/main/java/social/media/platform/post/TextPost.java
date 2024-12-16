@@ -15,6 +15,7 @@ public class TextPost extends Post implements Viewable {
     public TextPost(User author, List<Comment> comments, List<User> likers, AccessLevel accessLevel, String textContent) {
         super(author, comments, likers, accessLevel);
         this.textContent = textContent;
+
     }
 
     public String getTextContent() {

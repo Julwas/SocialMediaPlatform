@@ -23,17 +23,19 @@ import social.media.platform.groups.Group;
 import social.media.platform.notifications.Notification;
 import social.media.platform.profile.Profile;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.*;
+import java.util.stream.Collectors;
 
 import static social.media.platform.profile.AccessLevel.*;
-
 
 
 public class Main {
 
     public static void main(String[] args) {
         User user1 = new User("Diana", "JulWas@gmail.com", "Wasilewska", 20);
-        User user2 = new User("John", "JBin@gmail.com", "Bin", 24);
+        User user2 = new User("John", "JBin@gmail.com", "Bin", 25);
         User user3 = new User("Mark", "Mark@yahoo.com", "Sokolowski", 34);
         User user4 = new User("Milena", "Mila@wp.com", "Kownacka", 23);
         User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30);
@@ -54,13 +56,15 @@ public class Main {
                 PUBLIC, "Hi, everybody!");
         TextPost textPost2 = new TextPost(user2, List.of(comment3), List.of(user2, user4),
                 MEMBERS, " See you after the vacations");
+        TextPost textPost3 = new TextPost(user2, List.of(comment2), List.of(user1, user3, user2),
+                PUBLIC, "Traveling to Europe!");
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
         ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), imageInfo, PUBLIC);
 
         VideoInfo videoInfo4 = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
         VideoPost videoPost4 = new VideoPost(user4, List.of(comment), List.of(user4, user3, user4), videoInfo4, PUBLIC);
         VideoInfo videoInfo1 = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 10);
-        VideoPost videoPost1 = new VideoPost(user1, List.of(comment),List.of(user2),videoInfo1,FRIENDS);
+        VideoPost videoPost1 = new VideoPost(user1, List.of(comment), List.of(user2), videoInfo1, FRIENDS);
         TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going", "https://emoticon/fire.jpg");
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
         VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo4);
@@ -132,6 +136,10 @@ public class Main {
         profile3.userCreateProfile();
         profile3.createPost(user3, videoPost4);
         profile1.createPost(user1, videoPost1);
+        profile1.createPost(user1, textPost1);
+        profile2.createPost(user2, textPost2);
+        profile2.createPost(user2, textPost3);
+
 
         user1.displayName();
         imagePost2.open();
@@ -231,5 +239,47 @@ public class Main {
         System.out.print(" viewing post: ");
         videoPost4.displayPost();
         videoPost4.canView(user5);
+        System.out.println();
+
+        //lambda usage
+        System.out.println(" -------------------------------------------");
+        List<User> users = Arrays.asList(user1, user2, user3);
+
+        // 1. Predicate: Filter users over 24 years old
+
+        Predicate<User> isOlderThan24 = user -> user.getAge() > 24;
+        List<User> olderUsers = users.stream().filter(isOlderThan24).collect(Collectors.toList());
+        System.out.println("Users older than 24: " + olderUsers);
+
+        // 2. Consumer: Display the name of each user
+
+        Consumer<User> printUsername = user -> System.out.println("Username: " + user.getUsername());
+        users.forEach(printUsername);
+
+        // 3. Function: Преобразуем пользователя в список его постов
+        List<Profile> profiles = Arrays.asList(profile1, profile2);
+
+        Function<Profile, List<Post>> extractPosts = Profile::getPosts;
+
+        List<Post> allPosts = profiles.stream()
+                .flatMap(profile -> extractPosts.apply(profile).stream())
+                .collect(Collectors.toList());
+        System.out.println("All posts: " + allPosts);
+
+        // 4. Supplier:
+
+        Supplier<User> newUserSupplier = () -> new User("Agnieszka", "a.m@gmail.com",
+                "Majewska", 20);
+        User newUser = newUserSupplier.get();
+        System.out.println("New User: " + newUser);
+
+        // 5. BiFunction:  takes two parameters (name and email) and returns a User object
+
+        BiFunction<String, String, User> createUser = (name, email) -> new User(name, email,
+                "DefaultSurname", 18);
+        User user10 = createUser.apply("Moly", "1@gmail.com");
+        User user11 = createUser.apply("Morti", "2@gmail.com");
+        System.out.println(user10);
+        System.out.println(user11);
     }
 }

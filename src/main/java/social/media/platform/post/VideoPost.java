@@ -23,6 +23,10 @@ public class VideoPost extends Post implements Playable {
     public void setVideoInfo(VideoInfo videoInfo) {
         this.videoInfo = videoInfo;
     }
+    @Override
+    public String toString() {
+        return author.getUsername() + " posted: " + videoInfo.getUrl();
+    }
 
     @Override
     public void displayPost() {

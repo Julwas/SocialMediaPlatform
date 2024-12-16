@@ -19,12 +19,12 @@ public abstract class Post extends SocialEntity {
     private Group group;
 
 
+
     public Post(User author, List<Comment> comments, List<User> likers, AccessLevel accessLevel) {
         this.comments = comments;
         this.likers = likers;
         this.author = author;
         this.accessLevel = accessLevel;
-
 
     }
 
@@ -42,7 +42,8 @@ public abstract class Post extends SocialEntity {
         this.group = group;
     }
 
-    public boolean canView(User viewer) {
+
+        public boolean canView(User viewer) {
         switch (accessLevel) {
             case PUBLIC:
                 System.out.println("  Access granted");

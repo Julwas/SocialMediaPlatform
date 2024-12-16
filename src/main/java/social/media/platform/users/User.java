@@ -68,6 +68,15 @@ public class User extends SocialEntity implements Summarizable {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "name='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", lastName='" + surname + '\'' +
+                ", age=" + age +
+                '}';
+    }
+    @Override
     public int hashCode() {
         return Objects.hash(username, email, surname, age, getId());
     }

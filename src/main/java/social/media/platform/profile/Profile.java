@@ -16,6 +16,10 @@ public class Profile extends SocialEntity implements Summarizable, ContentManage
     private String bio;
     private List<Post> posts;
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
     public Profile(User user, String bio) {
         this.user = user;
         this.bio = bio;
