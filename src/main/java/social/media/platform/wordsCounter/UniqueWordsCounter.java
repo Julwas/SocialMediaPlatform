@@ -5,20 +5,19 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
+
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 
 
 public class UniqueWordsCounter {
     public static void main(String[] args) throws IOException {
-        //File inputFile = new File("src/main/java/social/media/platform/WordsCounter/input.txt");
-        //File outputFile = new File("src/main/java/social/media/platform/WordsCounter/output.txt");
-File inputFile = new File("C:\\Users\\Sprzetowo\\Laba\\SocialMediaPlatform\\src\\main\\java\\social\\media\\platform\\wordsCounter\\input.txt");
-      File outputFile = new File("C:\\Users\\Sprzetowo\\Laba\\SocialMediaPlatform\\src\\main\\java\\social\\media\\platform\\wordsCounter\\output.txt");
+        File inputFile = new File("src/main/java/social/media/platform/wordsCounter/input.txt");
+        File outputFile = new File("src/main/java/social/media/platform/wordsCounter/output.txt");
 
-       String content = FileUtils.readFileToString(inputFile, "UTF-8");
+
+       String content =  FileUtils.readFileToString(inputFile, "UTF-8");
 
         String[] words = StringUtils.split(content, " \n\r\t.,!?;: ");
         Set<String> uniqueWords = new HashSet<>();

@@ -9,8 +9,8 @@ import java.io.*;
 public class TextFileConfiguration implements Configuration {
     private static String password = null;
     private static int maxPosts;
-    //private static final String filePath = "src\\main\\java\\social\\media\\platform\\configuration.txt";
-    private static final String filePath = "C:\\Users\\Sprzetowo\\Laba\\SocialMediaPlatform\\src\\main\\java\\social\\media\\platform\\configuration.txt";
+    private static final String filePath = "src/main/java/social/media/platform/configuration.txt";
+
     static {
         readConfiguration();
 
