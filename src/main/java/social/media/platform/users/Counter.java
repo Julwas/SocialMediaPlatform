@@ -1,7 +1,7 @@
 package social.media.platform.users;
 
 @FunctionalInterface
-public interface CustomFunction<T, R> {
-    R apply(T t);
+public interface Counter<T> {
+    long count(T t);
 }
 

@@ -17,7 +17,9 @@ import social.media.platform.message.AudioMessage;
 import social.media.platform.message.ImageMessage;
 import social.media.platform.message.VideoMessage;
 import social.media.platform.post.*;
-import social.media.platform.users.CustomFunction;
+import social.media.platform.users.Counter;
+import social.media.platform.users.Transformer;
+import social.media.platform.users.Sorter;
 import social.media.platform.users.User;
 import social.media.platform.events.Event;
 import social.media.platform.groups.Group;
@@ -300,34 +302,33 @@ public class Main {
 
         // 1: Counter to count friends of a user
 
-        CustomFunction<User, Long> countFriends = user -> {
+        Counter<User> countFriends = user -> {
             long count = 0;
             for (User friend : user.getFriends()) {
                 count++;
             }
             return count;
         };
-        System.out.println("Number of friends for user1: " + countFriends.apply(user1));
+
+        System.out.println("Number of friends for user1: " + countFriends.count(user1));
 
 
         // 2 : Sorter to sort users by age
 
-        CustomFunction<List<User>, List<User>> sortByAge = userList -> {
-            return userList.stream()
-                    .sorted(Comparator.comparingInt(User::getAge))
-                    .collect(Collectors.toList());
-        };
+        Sorter<User> sortByAge = usersList -> usersList.stream()
+                .sorted(Comparator.comparingInt(User::getAge))
+                .collect(Collectors.toList());
 
-        List<User> sortedUsers = sortByAge.apply(users);
+        List<User> sortedUsers = sortByAge.sort(users);
         sortedUsers.forEach(user -> System.out.println("Sorted User: " + user));
 
         // 3 : Transformer to uppercase usernames
 
-        CustomFunction<User, String> transformUsername = user -> user.getUsername().toUpperCase();
+        Transformer<User, String> transformUsername = user -> user.getUsername().toUpperCase();
 
         System.out.println("Uppercased Usernames:");
         for (User user : users) {
-            System.out.println(transformUsername.apply(user));
+            System.out.println(transformUsername.transform(user));
         }
 
         //stream
