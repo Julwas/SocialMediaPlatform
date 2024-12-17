@@ -17,6 +17,7 @@ import social.media.platform.message.AudioMessage;
 import social.media.platform.message.ImageMessage;
 import social.media.platform.message.VideoMessage;
 import social.media.platform.post.*;
+import social.media.platform.users.CustomFunction;
 import social.media.platform.users.User;
 import social.media.platform.events.Event;
 import social.media.platform.groups.Group;
@@ -299,7 +300,7 @@ public class Main {
 
         // 1: Counter to count friends of a user
 
-        Function<User, Long> countFriends = user -> {
+        CustomFunction<User, Long> countFriends = user -> {
             long count = 0;
             for (User friend : user.getFriends()) {
                 count++;
@@ -311,19 +312,23 @@ public class Main {
 
         // 2 : Sorter to sort users by age
 
-        List<User> sortByAge = users.stream()
-                .sorted(Comparator.comparingInt(User::getAge))
-                .collect(Collectors.toList());
-        sortByAge.forEach(user -> System.out.println("Sorted User: " + user));
+        CustomFunction<List<User>, List<User>> sortByAge = userList -> {
+            return userList.stream()
+                    .sorted(Comparator.comparingInt(User::getAge))
+                    .collect(Collectors.toList());
+        };
+
+        List<User> sortedUsers = sortByAge.apply(users);
+        sortedUsers.forEach(user -> System.out.println("Sorted User: " + user));
 
         // 3 : Transformer to uppercase usernames
 
-        Function<User, String> transformUsername = user -> user.getUsername().toUpperCase();
+        CustomFunction<User, String> transformUsername = user -> user.getUsername().toUpperCase();
+
         System.out.println("Uppercased Usernames:");
         for (User user : users) {
             System.out.println(transformUsername.apply(user));
         }
-        System.out.println();
 
         //stream
 
