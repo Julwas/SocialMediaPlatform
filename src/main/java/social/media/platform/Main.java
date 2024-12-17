@@ -31,6 +31,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
@@ -268,7 +269,7 @@ public class Main {
         Consumer<User> printUsername = user -> System.out.println("Username: " + user.getUsername());
         users.forEach(printUsername);
 
-        // 3. Function:
+        // 3. Function: extract and combine all Post objects from a list of Profile objects
         List<Profile> profiles = Arrays.asList(profile1, profile2);
 
         Function<Profile, List<Post>> extractPosts = Profile::getPosts;
@@ -323,6 +324,25 @@ public class Main {
             System.out.println(transformUsername.apply(user));
         }
         System.out.println();
+
+        //stream
+
+        // max. Finding the Oldest User
+
+        Optional<User> oldestUser = users.stream().max(Comparator.comparingInt(User::getAge));
+        oldestUser.ifPresent(user ->
+                System.out.println("Oldest User: " + user.getUsername() + ", Age: " + user.getAge()));
+
+        //min. Finding the Youngest User
+
+        Optional<User> youngestUser = users.stream().min(Comparator.comparingInt(User::getAge));
+        youngestUser.ifPresent(user ->
+                System.out.println("Youngest User: " + user.getUsername() + ", Age: " + user.getAge()));
+
+        //map. Extracting Usernames
+
+        List<String> usernames = users.stream().map(User::getUsername).collect(Collectors.toList());
+        System.out.println("Usernames: " + usernames);
 
         //reflection
 
