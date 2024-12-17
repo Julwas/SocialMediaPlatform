@@ -2,13 +2,14 @@ package social.media.platform.message;
 
 import social.media.platform.interfaces.Playable;
 import social.media.platform.media.VideoInfo;
+import social.media.platform.notifications.Notification;
 import social.media.platform.users.User;
 
 public class VideoMessage extends Message implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoMessage(User sender, User receiver, String date, VideoInfo videoInfo) {
-        super(sender, receiver, date);
+    public VideoMessage(User sender, User receiver, String date, VideoInfo videoInfo, Notification notification) {
+        super(sender, receiver, date, notification);
         this.videoInfo = videoInfo;
     }
 

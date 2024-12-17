@@ -1,6 +1,8 @@
 package social.media.platform.profile;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.enams.ContentType;
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.NameContainsOfDigitException;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.interfaces.Summarizable;
@@ -82,10 +84,10 @@ public class Profile extends SocialEntity implements Summarizable, ContentManage
         System.out.println(" Bio :" + bio);
     }
 
-    @Override
-    public void createPost(User author, Post post) {
-        posts.add(post);
 
+    @Override
+    public void createPost(User author, Post post, ContentType contentType, PostPopularity postPopularity) {
+        posts.add(post);
     }
 
     @Override

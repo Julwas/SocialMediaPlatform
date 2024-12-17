@@ -1,6 +1,9 @@
 package social.media.platform.groups;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.enams.ContentType;
+import social.media.platform.enams.GroupPrivacyLevel;
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.LimitPostsException;
 import social.media.platform.interfaces.Configuration;
 import social.media.platform.interfaces.ContentManager;
@@ -17,15 +20,17 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
     private List<User> members;
     private List<Post> posts;
     private final Configuration configuration;
+    private  Map<Post, ContentType> postContentTypes = new HashMap<>();
+    private GroupPrivacyLevel privacyLevel;
 
-
-    public Group(String groupName, User admin, Configuration configuration) {
+    public Group(String groupName, User admin, Configuration configuration, GroupPrivacyLevel privacyLevel) {
         this.groupName = groupName;
-        this.admin = admin;
+       this.admin = admin;
         this.members = new ArrayList<>();
         this.posts = new ArrayList<>();
         this.members.add(admin);
         this.configuration = configuration;
+        this.privacyLevel = privacyLevel;
     }
 
     public String getGroupName() {
@@ -65,7 +70,31 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
     }
 
     public void addMember(User user) {
+        if (privacyLevel == GroupPrivacyLevel.OPEN || privacyLevel == GroupPrivacyLevel.CLOSED) {
+            if (!members.contains(user)) {
         members.add(user);
+                System.out.println(user.getUsername() + " has joined the group: " + groupName);
+
+            } else {
+                System.out.println(user.getUsername() + " is already a member of the group: " + groupName);
+
+            }
+        } else {
+            System.out.println("This is a SECRET group. Invitation is required to join.");
+
+        }
+    }
+    public boolean isGroupVisible() {
+        return privacyLevel.isDiscoverable();
+    }
+
+    public GroupPrivacyLevel getPrivacyLevel() {
+        return privacyLevel;
+    }
+
+    public void setPrivacyLevel(GroupPrivacyLevel privacyLevel) {
+        this.privacyLevel = privacyLevel;
+        System.out.println("Group privacy level has been updated to: " + privacyLevel.getName());
     }
 
     @Override
@@ -74,15 +103,21 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
         for (User user : members) {
             user.displayName();
         }
+        privacyLevel.displayPrivacyInfo();
         allPosts();
         System.out.print("information about the group administrator: ");
         getAdmin().displayName();
     }
 
     @Override
-    public void createPost(User author, Post post) throws LimitPostsException {
+    public void createPost(User author, Post post, ContentType contentType,
+                           PostPopularity postPopularity) throws LimitPostsException {
         if (posts.size() < configuration.getMaxPosts()) {
            post.setGroup(this);
+            postContentTypes.put(post, contentType);
+            post.setPostPopularity(postPopularity);
+           contentType.displayContentInfo();
+            postPopularity.displayPopularityInfo();
             posts.add(post);
             System.out.println("Post added to group: " + groupName);
             post.displayPost();

@@ -3,7 +3,9 @@ package social.media.platform.post;
 import social.media.platform.actions.Comment;
 import social.media.platform.base.SocialEntity;
 
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.groups.Group;
+import social.media.platform.notifications.Notification;
 import social.media.platform.profile.AccessLevel;
 import social.media.platform.users.User;
 
@@ -17,15 +19,22 @@ public abstract class Post extends SocialEntity {
     protected User author;
     protected User user;
     private Group group;
+    private Notification notification;
+    private PostPopularity postPopularity;
 
 
-
-    public Post(User author, List<Comment> comments, List<User> likers, AccessLevel accessLevel) {
+    public Post(User author, List<Comment> comments, List<User> likers, AccessLevel accessLevel,
+                Notification notification, PostPopularity postPopularity) {
         this.comments = comments;
         this.likers = likers;
         this.author = author;
         this.accessLevel = accessLevel;
+        this.notification = notification;
+        this.postPopularity = postPopularity;
+    }
 
+    public void setPostPopularity(PostPopularity postPopularity) {
+        this.postPopularity = postPopularity;
     }
 
     public List<Comment> getComments() {
@@ -36,7 +45,11 @@ public abstract class Post extends SocialEntity {
         return likers;
     }
 
-    public abstract void displayPost();
+    public  void displayPost(){
+        notification.displayNotification();
+        postPopularity.displayPopularityInfo();
+    }
+    public abstract void displayPostInfo();
 
     public void setGroup(Group group) {
         this.group = group;

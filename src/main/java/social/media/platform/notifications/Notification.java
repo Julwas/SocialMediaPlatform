@@ -1,14 +1,17 @@
 package social.media.platform.notifications;
 
+import social.media.platform.enams.NotificationType;
 import social.media.platform.users.User;
 
-public class Notification {
+public class Notification  {
     private User user;
-    private String message;
+   // private String message;
+    private NotificationType notificationType;
 
-    public Notification(User user, String message) {
+    public Notification(User user, NotificationType notificationType) {
         this.user = user;
-        this.message = message;
+       // this.message = message;
+        this.notificationType = notificationType;
     }
 
     public User getUser() {
@@ -19,15 +22,16 @@ public class Notification {
         this.user = user;
     }
 
-    public String getMessage() {
+   /* public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
-    }
+    }*/
 
     public void displayNotification() {
-        System.out.println("Notification for " + user.getUsername() + " " + user.getSurname() + ":" + message);
+        System.out.println( user.getUsername() + " " + user.getSurname() + "got  ");
+        notificationType.showNotification();
     }
 }

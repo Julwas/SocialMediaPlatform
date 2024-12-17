@@ -1,8 +1,10 @@
 package social.media.platform.post;
 
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.interfaces.Playable;
 import social.media.platform.media.VideoInfo;
 import social.media.platform.actions.Comment;
+import social.media.platform.notifications.Notification;
 import social.media.platform.profile.AccessLevel;
 import social.media.platform.users.User;
 
@@ -11,8 +13,9 @@ import java.util.List;
 public class VideoPost extends Post implements Playable {
     private VideoInfo videoInfo;
 
-    public VideoPost(User author, List<Comment> comments, List<User> likers, VideoInfo videoInfo, AccessLevel accessLevel) {
-        super(author, comments, likers, accessLevel);
+    public VideoPost(User author, List<Comment> comments, List<User> likers, AccessLevel accessLevel,
+                     Notification notification, VideoInfo videoInfo, PostPopularity postPopularity) {
+        super(author, comments, likers, accessLevel, notification, postPopularity);
         this.videoInfo = videoInfo;
     }
 
@@ -30,15 +33,21 @@ public class VideoPost extends Post implements Playable {
 
     @Override
     public void displayPost() {
-        System.out.println(/*author.getUsername() +" posted the video: " + */videoInfo.getUrl()
-                + " size: " + videoInfo.getHeight() + " x " + videoInfo.getWidth() + " pixels " + videoInfo.getDuration()
-                + " seconds. " + " The post, liked  by users ");
+        System.out.println(videoInfo.getUrl());
+        super.displayPost();
         for (User user : likers) {
             user.displayName();
         }
         for (Comment comment : comments) {
             comment.addComment();
         }
+    }
+
+    @Override
+    public void displayPostInfo() {
+        System.out.println(videoInfo.getUrl()
+                + " size: " + videoInfo.getHeight() + " x " + videoInfo.getWidth() + " pixels " + videoInfo.getDuration()
+                + " seconds. ");
     }
 
 

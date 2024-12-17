@@ -2,14 +2,15 @@ package social.media.platform.message;
 
 import social.media.platform.media.ImageInfo;
 import social.media.platform.interfaces.Viewable;
+import social.media.platform.notifications.Notification;
 import social.media.platform.users.User;
 
 public class ImageMessage extends Message implements Viewable {
 
     private ImageInfo imageInfo;
 
-    public ImageMessage(User sender, User receiver, String date, ImageInfo imageInfo) {
-        super(sender, receiver, date);
+    public ImageMessage(User sender, User receiver, String date, ImageInfo imageInfo, Notification notification) {
+        super(sender, receiver, date, notification);
         this.imageInfo = imageInfo;
     }
 

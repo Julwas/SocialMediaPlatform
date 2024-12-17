@@ -2,13 +2,14 @@ package social.media.platform.message;
 
 import social.media.platform.media.AudioInfo;
 import social.media.platform.interfaces.Playable;
+import social.media.platform.notifications.Notification;
 import social.media.platform.users.User;
 
 public class AudioMessage extends Message implements Playable {
     private AudioInfo audioInfo;
 
-    public AudioMessage(User sender, User receiver, String date, AudioInfo audioInfo) {
-        super(sender, receiver, date);
+    public AudioMessage(User sender, User receiver, String date, AudioInfo audioInfo, Notification notification) {
+        super(sender, receiver, date, notification);
         this.audioInfo = audioInfo;
     }
 

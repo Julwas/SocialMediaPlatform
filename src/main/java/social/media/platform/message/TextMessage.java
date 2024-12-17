@@ -1,14 +1,15 @@
 package social.media.platform.message;
 
 import social.media.platform.interfaces.Viewable;
+import social.media.platform.notifications.Notification;
 import social.media.platform.users.User;
 
 public class TextMessage extends Message implements Viewable {
 
     private String textMessage;
 
-    public TextMessage(User sender, User receiver, String date, String textMessage) {
-        super(sender, receiver, date);
+    public TextMessage(User sender, User receiver, String date, String textMessage, Notification notification) {
+        super(sender, receiver, date, notification);
         this.textMessage = textMessage;
     }
 
@@ -28,7 +29,7 @@ public class TextMessage extends Message implements Viewable {
 
     @Override
     public void open() {
-        System.out.println(" Open the text post " + getTextMessage());
+        System.out.println(" Open the text message " + getTextMessage());
     }
 
 }

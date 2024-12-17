@@ -1,6 +1,8 @@
 package social.media.platform.events;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.enams.ContentType;
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.LimitationOfAuthorityException;
 import social.media.platform.interfaces.ContentManager;
 import social.media.platform.post.Post;
@@ -27,6 +29,7 @@ public class Event extends SocialEntity implements ContentManager {
         this.participants = new ArrayList<>();
         this.participants.add(organizer);
         this.posts = new ArrayList<>();
+       // this.postPopularity = postPopularity;
     }
 
     public String getData() {
@@ -90,8 +93,10 @@ public class Event extends SocialEntity implements ContentManager {
     }
 
     @Override
-    public void createPost(User author, Post post) throws LimitationOfAuthorityException {
+    public void createPost(User author, Post post, ContentType contentType, PostPopularity postPopularity) throws LimitationOfAuthorityException {
         if (author.equals(organizer)) {
+            contentType.displayContentInfo();
+            postPopularity.displayPopularityInfo();
             posts.add(post);
         } else {
             throw new LimitationOfAuthorityException("Failed to add a post. Only the organizer can add posts.");

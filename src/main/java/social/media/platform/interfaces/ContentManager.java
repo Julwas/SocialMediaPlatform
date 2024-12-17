@@ -1,9 +1,11 @@
 package social.media.platform.interfaces;
 
+import social.media.platform.enams.ContentType;
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.post.Post;
 import social.media.platform.users.User;
 
 public interface ContentManager {
-    void createPost(User author, Post post);
+    void createPost(User author, Post post, ContentType contentType, PostPopularity postPopularity);
     void deletePost(User user, Post post);
 }

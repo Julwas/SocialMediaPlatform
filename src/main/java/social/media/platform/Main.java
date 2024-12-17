@@ -2,6 +2,8 @@ package social.media.platform;
 
 
 import social.media.platform.config.TextFileConfiguration;
+import social.media.platform.enams.ContentType;
+import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.EmoticonNotFoundException;
 import social.media.platform.exceptions.LimitPostsException;
 import social.media.platform.exceptions.LimitationOfAuthorityException;
@@ -13,7 +15,6 @@ import social.media.platform.actions.Comment;
 
 import social.media.platform.message.AudioMessage;
 import social.media.platform.message.ImageMessage;
-import social.media.platform.message.TextMessage;
 import social.media.platform.message.VideoMessage;
 import social.media.platform.post.*;
 import social.media.platform.users.User;
@@ -24,10 +25,17 @@ import social.media.platform.notifications.Notification;
 import social.media.platform.profile.Profile;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
+import static social.media.platform.enams.ContentType.*;
+
+import static social.media.platform.enams.GroupPrivacyLevel.CLOSED;
+import static social.media.platform.enams.GroupPrivacyLevel.OPEN;
+import static social.media.platform.enams.NotificationType.*;
+import static social.media.platform.enams.PostPopularity.*;
 import static social.media.platform.profile.AccessLevel.*;
 
 
@@ -45,7 +53,10 @@ public class Main {
         Comment comment2 = new Comment(user2, "  Hi! ", List.of(user4), user3);
         Comment comment3 = new Comment(user4, "  I will miss you! ", List.of(user1), user1);
 
-        Notification not1 = new Notification(user1, " You have a new message!");
+        Notification not1 = new Notification(user1, MESSAGE );
+        Notification not2 = new Notification(user2, SHARE );
+        Notification not3 = new Notification(user3, LIKE );
+
         Profile profile1 = new Profile(user1, "I prefer a healthy lifestyle");
         Profile profile2 = new Profile(user2, "There is no description");
         Profile profile3 = new Profile(user3, "family photographer");
@@ -53,42 +64,44 @@ public class Main {
         Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
         TextPost textPost1 = new TextPost(user1, List.of(comment2), List.of(user1, user3, user2),
-                PUBLIC, "Hi, everybody!");
+                PUBLIC, not3,"Hi, everybody!", LOW);
         TextPost textPost2 = new TextPost(user2, List.of(comment3), List.of(user2, user4),
-                MEMBERS, " See you after the vacations");
+                MEMBERS, not3," See you after the vacations", HIGH);
         TextPost textPost3 = new TextPost(user2, List.of(comment2), List.of(user1, user3, user2),
-                PUBLIC, "Traveling to Europe!");
+                PUBLIC, not3,"Traveling to Europe!", LOW);
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
-        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), imageInfo, PUBLIC);
+        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3),PUBLIC,
+                not3, imageInfo, MEDIUM);
 
         VideoInfo videoInfo4 = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
-        VideoPost videoPost4 = new VideoPost(user4, List.of(comment), List.of(user4, user3, user4), videoInfo4, PUBLIC);
+        VideoPost videoPost4 = new VideoPost(user4, List.of(comment), List.of(user4, user3), PUBLIC, not3,videoInfo4, LOW);
         VideoInfo videoInfo1 = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 10);
-        VideoPost videoPost1 = new VideoPost(user1, List.of(comment), List.of(user2), videoInfo1, FRIENDS);
-        TextMessage textMessage = new TextMessage(user5, user1, "Hi, how is going", "https://emoticon/fire.jpg");
+        VideoPost videoPost1 = new VideoPost(user1, List.of(comment), List.of(user2), FRIENDS, not3, videoInfo1, MEDIUM);
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
-        VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo4);
-        AudioPost audioPost = new AudioPost(user3, List.of(comment1), List.of(user1, user2), audioInfo, PUBLIC);
-        AudioMessage audioMessage = new AudioMessage(user3, user5, " 01.08.2024", audioInfo);
-        ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo);
+        VideoMessage videoMessage = new VideoMessage(user2, user4, "12.07.2024", videoInfo4, not1);
+        AudioPost audioPost = new AudioPost(user3, List.of(comment1), List.of(user1, user2), audioInfo, PUBLIC, not3, LOW);
+        AudioMessage audioMessage = new AudioMessage(user3, user5, " 01.08.2024", audioInfo, not1);
+        ImageMessage imageMessage = new ImageMessage(user1, user4, "12.07.2024", imageInfo, not2);
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ");
 
         User admin = new User("Helen", "monro@gmail.com", "Monro", 30);
         User organizer = new User("Hanna", "organizer.big.concert@yahoo.com", "Bishop", 30);
 
-        Group group = new Group("News of Warsaw ", admin, config);
-
+        Group group = new Group("News of Warsaw ", admin, config, OPEN);
+        Group closedGroup = new Group( "Closed group", admin, config, CLOSED);
+        not1.displayNotification();
         group.addMember(admin);
+        closedGroup.setAdmin(admin);
         group.addMember(user1);
         group.addMember(user2);
         group.addMember(user3);
         System.out.println(" ADD POSTS");
         try {
-            group.createPost(user1, textPost1);
-            group.createPost(user2, textPost2);
-            group.createPost(user1, videoPost4);
-            //group.createPost(imagePost2);
+            group.createPost(user1, textPost1, TEXT, LOW);
+            group.createPost(user2, textPost2, TEXT, HIGH);
+            group.createPost(user1, videoPost4,TEXT, LOW);
+            group.createPost(user5,imagePost2, IMAGE, MEDIUM);
         } catch (LimitPostsException e) {
             System.err.println(e.getMessage());
         }
@@ -134,11 +147,11 @@ public class Main {
         profile1.userCreateProfile();
         profile5.userCreateProfile();
         profile3.userCreateProfile();
-        profile3.createPost(user3, videoPost4);
-        profile1.createPost(user1, videoPost1);
-        profile1.createPost(user1, textPost1);
-        profile2.createPost(user2, textPost2);
-        profile2.createPost(user2, textPost3);
+        profile3.createPost(user3, videoPost4, VIDEO, LOW);
+        profile1.createPost(user1, videoPost1, VIDEO,MEDIUM);
+        profile1.createPost(user1, textPost1, TEXT,LOW);
+        profile2.createPost(user2, textPost2, TEXT,HIGH);
+        profile2.createPost(user2, textPost3, TEXT, LOW);
 
 
         user1.displayName();
@@ -158,7 +171,7 @@ public class Main {
         System.out.println();
         not1.displayNotification();
 
-        System.out.println();
+        System.out.println("----------------------------POST--------------");
         textPost1.displayPost();
         comment2.displayComment();
         System.out.println();
@@ -175,9 +188,7 @@ public class Main {
         audioPost.displayPost();
 
         comment3.displayComment();
-        System.out.println();
-
-        textMessage.displayMessage();
+        System.out.println("-------------------MESSAGE---------------------");
         System.out.println();
         videoMessage.displayMessage();
         System.out.println();
@@ -192,9 +203,9 @@ public class Main {
         event.addParticipant(user3);
         event.addParticipant(user1);
         try {
-            event.createPost(organizer, videoPost4);
-            // event.createPost(user2,textPost2);
-            event.createPost(organizer, imagePost2);
+            event.createPost(organizer, videoPost4, VIDEO, LOW);
+           //event.createPost(user2,textPost2, TEXT);
+            event.createPost(organizer, imagePost2, IMAGE, MEDIUM);
         } catch (LimitationOfAuthorityException e) {
             System.err.println(e.getMessage());
         }
@@ -242,7 +253,7 @@ public class Main {
         System.out.println();
 
         //lambda usage
-        System.out.println(" -------------------------------------------");
+        System.out.println("----------------lambda usage-------------");
         List<User> users = Arrays.asList(user1, user2, user3);
 
         // 1. Predicate: Filter users over 24 years old
@@ -281,5 +292,40 @@ public class Main {
         User user11 = createUser.apply("Morti", "2@gmail.com");
         System.out.println(user10);
         System.out.println(user11);
+        System.out.println();
+
+
+        // 1: Counter to count friends of a user
+
+        Function<User, Long> countFriends = user -> {
+            long count = 0;
+            for (User friend : user.getFriends()) {
+                count++;
+            }
+            return count;
+        };
+        System.out.println("Number of friends for user1: " + countFriends.apply(user1));
+
+
+        // 2 : Sorter to sort users by age
+
+        Comparator<User> sortByAge = Comparator.comparingInt(User::getAge);
+        users.sort(sortByAge);
+        for (User user : users) {
+            System.out.println("Sorted User: " + user);
+        }
+
+        // 3 : Transformer to uppercase usernames
+
+        Function<User, String> transformUsername = user -> user.getUsername().toUpperCase();
+        System.out.println("Uppercased Usernames:");
+        for (User user : users) {
+            System.out.println(transformUsername.apply(user));
+        }
+
+        // Пример использования Enum для типа контента
+        ContentType vidieoPost1 = ContentType.VIDEO;
+        vidieoPost1 .displayContentInfo();
+
     }
 }
