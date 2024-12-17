@@ -2,8 +2,7 @@ package social.media.platform;
 
 
 import social.media.platform.config.TextFileConfiguration;
-import social.media.platform.enams.ContentType;
-import social.media.platform.enams.PostPopularity;
+
 import social.media.platform.enams.Sex;
 import social.media.platform.exceptions.EmoticonNotFoundException;
 import social.media.platform.exceptions.LimitPostsException;
@@ -25,6 +24,10 @@ import social.media.platform.groups.Group;
 import social.media.platform.notifications.Notification;
 import social.media.platform.profile.Profile;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -260,12 +263,12 @@ public class Main {
         List<User> olderUsers = users.stream().filter(isOlderThan24).collect(Collectors.toList());
         System.out.println("Users older than 24: " + olderUsers);
 
-        // 2. Consumer: Display the name of each user
+        // 2. Consumer: Convert a user to a list of their posts
 
         Consumer<User> printUsername = user -> System.out.println("Username: " + user.getUsername());
         users.forEach(printUsername);
 
-        // 3. Function: Преобразуем пользователя в список его постов
+        // 3. Function:
         List<Profile> profiles = Arrays.asList(profile1, profile2);
 
         Function<Profile, List<Post>> extractPosts = Profile::getPosts;
@@ -307,11 +310,10 @@ public class Main {
 
         // 2 : Sorter to sort users by age
 
-        Comparator<User> sortByAge = Comparator.comparingInt(User::getAge);
-        users.sort(sortByAge);
-        for (User user : users) {
-            System.out.println("Sorted User: " + user);
-        }
+        List<User> sortByAge = users.stream()
+                .sorted(Comparator.comparingInt(User::getAge))
+                .collect(Collectors.toList());
+        sortByAge.forEach(user -> System.out.println("Sorted User: " + user));
 
         // 3 : Transformer to uppercase usernames
 
@@ -320,5 +322,59 @@ public class Main {
         for (User user : users) {
             System.out.println(transformUsername.apply(user));
         }
+        System.out.println();
+
+        //reflection
+
+        try {
+
+            Class<?> userClass = User.class;
+
+            System.out.println("Class Name: " + userClass.getName());
+
+            System.out.println("\nFields:");
+            for (Field field : userClass.getDeclaredFields()) {
+                field.setAccessible(true);
+                System.out.println("  Name: " + field.getName() +
+                        ", Type: " + field.getType() +
+                        ", Modifiers: " + Modifier.toString(field.getModifiers()));
+            }
+
+            System.out.println("\nConstructors:");
+            for (Constructor<?> constructor : userClass.getDeclaredConstructors()) {
+                System.out.println("  Constructor: " + constructor +
+                        ", Parameter count: " + constructor.getParameterCount());
+                for (Class<?> paramType : constructor.getParameterTypes()) {
+                    System.out.println("    Parameter Type: " + paramType.getName());
+                }
+            }
+
+            // Information on methods
+            System.out.println("\nMethods:");
+            for (Method method : userClass.getDeclaredMethods()) {
+                System.out.println("  Name: " + method.getName() +
+                        ", Return Type: " + method.getReturnType() +
+                        ", Modifiers: " + Modifier.toString(method.getModifiers()));
+                for (Class<?> paramType : method.getParameterTypes()) {
+                    System.out.println("    Parameter Type: " + paramType.getName());
+                }
+            }
+
+            // Creating an object through reflection
+            System.out.println("\nCreating an object using reflection...");
+            Constructor<?> userConstructor = userClass.getDeclaredConstructor(String.class, String.class, String.class, int.class, Sex.class);
+            User user = (User) userConstructor.newInstance("Helga", "helga@gmail.com", "Kiper", 20, Sex.FEMALE);
+            System.out.println("Created User: " + user);
+
+            // Method invocation through reflection
+            System.out.println("\nInvoking method 'displayName'...");
+            Method displayNameMethod = userClass.getDeclaredMethod("displayName");
+            displayNameMethod.invoke(user);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+
