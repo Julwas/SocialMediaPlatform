@@ -1,6 +1,7 @@
 package social.media.platform.users;
 
 import social.media.platform.base.SocialEntity;
+import social.media.platform.enams.Sex;
 import social.media.platform.exceptions.NameContainsOfDigitException;
 import social.media.platform.interfaces.Summarizable;
 
@@ -17,15 +18,24 @@ public class User extends SocialEntity implements Summarizable {
     private String surname;
     private int age;
     public Set<User> friends;
+    private Sex sex;
 
-    public User(String username, String email, String surname, int age) {
+    public User(String username, String email, String surname, int age, Sex sex) {
         this.username = username;
         this.email = email;
         this.surname = surname;
         this.age = age;
         this.friends = new HashSet<>();
+        this.sex = sex;
+    }
+    public Sex getSex() {
+        return sex;
     }
 
+    public void setSex(Sex sex) {
+        this.sex = sex;
+        logger.info("User " + username + " updated their sex to " + sex.getDescription());
+    }
     public String getUsername() {
         return username;
     }
@@ -106,8 +116,10 @@ public class User extends SocialEntity implements Summarizable {
 
     @Override
     public void displaySummary() {
+        sex.displaySexSalutation();
         System.out.println("Username: " + username + ", surname: " + surname + ",  age:  " + age +
-                ", Email: " + email);
+                ", Email: " + email );
+        sex.displaySexInfo();
     }
 
     public boolean isFriend(User user) {

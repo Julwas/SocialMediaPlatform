@@ -4,6 +4,7 @@ package social.media.platform;
 import social.media.platform.config.TextFileConfiguration;
 import social.media.platform.enams.ContentType;
 import social.media.platform.enams.PostPopularity;
+import social.media.platform.enams.Sex;
 import social.media.platform.exceptions.EmoticonNotFoundException;
 import social.media.platform.exceptions.LimitPostsException;
 import social.media.platform.exceptions.LimitationOfAuthorityException;
@@ -36,17 +37,18 @@ import static social.media.platform.enams.GroupPrivacyLevel.CLOSED;
 import static social.media.platform.enams.GroupPrivacyLevel.OPEN;
 import static social.media.platform.enams.NotificationType.*;
 import static social.media.platform.enams.PostPopularity.*;
+import static social.media.platform.enams.Sex.*;
 import static social.media.platform.profile.AccessLevel.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        User user1 = new User("Diana", "JulWas@gmail.com", "Wasilewska", 20);
-        User user2 = new User("John", "JBin@gmail.com", "Bin", 25);
-        User user3 = new User("Mark", "Mark@yahoo.com", "Sokolowski", 34);
-        User user4 = new User("Milena", "Mila@wp.com", "Kownacka", 23);
-        User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30);
+        User user1 = new User("Diana", "JulWas@gmail.com", "Wasilewska", 20, FEMALE);
+        User user2 = new User("John", "JBin@gmail.com", "Bin", 25, MALE);
+        User user3 = new User("Mark", "Mark@yahoo.com", "Sokolowski", 34, MALE);
+        User user4 = new User("Milena", "Mila@wp.com", "Kownacka", 23, FEMALE);
+        User user5 = new User("Roman", "romeo@gmail.com", "Kipier", 30, MALE);
         Configuration config = new TextFileConfiguration();
         Comment comment = new Comment(user5, " Awesome!!! ", List.of(user1, user2), user1);
         Comment comment1 = new Comment(user1, "  OMG! ", List.of(user3), user4);
@@ -85,8 +87,8 @@ public class Main {
         Event event = new Event(user3, " Big Christmas concert", " 23.12.2024  location: Prga Centrum," +
                 " Szwedzka 2/4 Warsaw ");
 
-        User admin = new User("Helen", "monro@gmail.com", "Monro", 30);
-        User organizer = new User("Hanna", "organizer.big.concert@yahoo.com", "Bishop", 30);
+        User admin = new User("Helen", "monro@gmail.com", "Monro", 30, FEMALE);
+        User organizer = new User("Hanna", "organizer.big.concert@yahoo.com", "Bishop", 30, FEMALE);
 
         Group group = new Group("News of Warsaw ", admin, config, OPEN);
         Group closedGroup = new Group("Closed group", admin, config, CLOSED);
@@ -276,14 +278,14 @@ public class Main {
         // 4. Supplier:
 
         Supplier<User> newUserSupplier = () -> new User("Agnieszka", "a.m@gmail.com",
-                "Majewska", 20);
+                "Majewska", 20, FEMALE);
         User newUser = newUserSupplier.get();
         System.out.println("New User: " + newUser);
 
         // 5. BiFunction:  takes two parameters (name and email) and returns a User object
 
         BiFunction<String, String, User> createUser = (name, email) -> new User(name, email,
-                "DefaultSurname", 18);
+                "DefaultSurname", 18, OTHER);
         User user10 = createUser.apply("Moly", "1@gmail.com");
         User user11 = createUser.apply("Morti", "2@gmail.com");
         System.out.println(user10);
