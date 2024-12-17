@@ -4,7 +4,7 @@ import social.media.platform.base.SocialEntity;
 import social.media.platform.enams.ContentType;
 import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.NameContainsOfDigitException;
-import social.media.platform.interfaces.ContentManager;
+import social.media.platform.interfaces.ContentManageable;
 import social.media.platform.interfaces.Summarizable;
 import social.media.platform.post.Post;
 import social.media.platform.users.User;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Profile extends SocialEntity implements Summarizable, ContentManager {
+public class Profile extends SocialEntity implements Summarizable, ContentManageable {
     private User user;
     private String bio;
     private List<Post> posts;
@@ -83,7 +83,6 @@ public class Profile extends SocialEntity implements Summarizable, ContentManage
         user.displaySummary();
         System.out.println(" Bio :" + bio);
     }
-
 
     @Override
     public void createPost(User author, Post post, ContentType contentType, PostPopularity postPopularity) {

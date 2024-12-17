@@ -6,7 +6,7 @@ import social.media.platform.enams.GroupPrivacyLevel;
 import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.LimitPostsException;
 import social.media.platform.interfaces.Configuration;
-import social.media.platform.interfaces.ContentManager;
+import social.media.platform.interfaces.ContentManageable;
 import social.media.platform.interfaces.Summarizable;
 import social.media.platform.users.User;
 import social.media.platform.post.Post;
@@ -14,18 +14,18 @@ import social.media.platform.post.Post;
 
 import java.util.*;
 
-public class Group extends SocialEntity implements Summarizable, ContentManager {
+public class Group extends SocialEntity implements Summarizable, ContentManageable {
     private String groupName;
     private User admin;
     private List<User> members;
     private List<Post> posts;
     private final Configuration configuration;
-    private  Map<Post, ContentType> postContentTypes = new HashMap<>();
+    private Map<Post, ContentType> postContentTypes = new HashMap<>();
     private GroupPrivacyLevel privacyLevel;
 
     public Group(String groupName, User admin, Configuration configuration, GroupPrivacyLevel privacyLevel) {
         this.groupName = groupName;
-       this.admin = admin;
+        this.admin = admin;
         this.members = new ArrayList<>();
         this.posts = new ArrayList<>();
         this.members.add(admin);
@@ -72,7 +72,7 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
     public void addMember(User user) {
         if (privacyLevel == GroupPrivacyLevel.OPEN || privacyLevel == GroupPrivacyLevel.CLOSED) {
             if (!members.contains(user)) {
-        members.add(user);
+                members.add(user);
                 System.out.println(user.getUsername() + " has joined the group: " + groupName);
 
             } else {
@@ -84,6 +84,7 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
 
         }
     }
+
     public boolean isGroupVisible() {
         return privacyLevel.isDiscoverable();
     }
@@ -113,10 +114,10 @@ public class Group extends SocialEntity implements Summarizable, ContentManager 
     public void createPost(User author, Post post, ContentType contentType,
                            PostPopularity postPopularity) throws LimitPostsException {
         if (posts.size() < configuration.getMaxPosts()) {
-           post.setGroup(this);
+            post.setGroup(this);
             postContentTypes.put(post, contentType);
             post.setPostPopularity(postPopularity);
-           contentType.displayContentInfo();
+            contentType.displayContentInfo();
             postPopularity.displayPopularityInfo();
             posts.add(post);
             System.out.println("Post added to group: " + groupName);

@@ -1,6 +1,6 @@
 package social.media.platform.interfaces;
 
-public interface ContentReaction {
+public interface Reactiable {
 
     String sendEmoticon(String emoticon);
 

@@ -1,7 +1,5 @@
 package social.media.platform.post;
 
-
-import social.media.platform.enams.NotificationType;
 import social.media.platform.enams.PostPopularity;
 import social.media.platform.media.ImageInfo;
 import social.media.platform.actions.Comment;
@@ -14,7 +12,6 @@ import java.util.List;
 
 public class ImagePost extends Post implements Viewable {
     private ImageInfo imageInfo;
-
 
 
     public ImageInfo getImageInfo() {
@@ -30,11 +27,12 @@ public class ImagePost extends Post implements Viewable {
         super(author, comments, likers, accessLevel, notification, postPopularity);
         this.imageInfo = imageInfo;
     }
-@Override
-public void displayPostInfo(){
-    System.out.println(imageInfo.getUrl() + " size " + imageInfo.getWidth()
-            + "x" + imageInfo.getWidth() + " pixels.  ");
-}
+
+    @Override
+    public void displayPostInfo() {
+        System.out.println(imageInfo.getUrl() + " size " + imageInfo.getWidth()
+                + "x" + imageInfo.getWidth() + " pixels.  ");
+    }
 
     @Override
     public void displayPost() {

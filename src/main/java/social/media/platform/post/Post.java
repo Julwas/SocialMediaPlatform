@@ -45,10 +45,11 @@ public abstract class Post extends SocialEntity {
         return likers;
     }
 
-    public  void displayPost(){
+    public void displayPost() {
         notification.displayNotification();
         postPopularity.displayPopularityInfo();
     }
+
     public abstract void displayPostInfo();
 
     public void setGroup(Group group) {
@@ -56,7 +57,7 @@ public abstract class Post extends SocialEntity {
     }
 
 
-        public boolean canView(User viewer) {
+    public boolean canView(User viewer) {
         switch (accessLevel) {
             case PUBLIC:
                 System.out.println("  Access granted");

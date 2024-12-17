@@ -53,9 +53,9 @@ public class Main {
         Comment comment2 = new Comment(user2, "  Hi! ", List.of(user4), user3);
         Comment comment3 = new Comment(user4, "  I will miss you! ", List.of(user1), user1);
 
-        Notification not1 = new Notification(user1, MESSAGE );
-        Notification not2 = new Notification(user2, SHARE );
-        Notification not3 = new Notification(user3, LIKE );
+        Notification not1 = new Notification(user1, MESSAGE);
+        Notification not2 = new Notification(user2, SHARE);
+        Notification not3 = new Notification(user3, LIKE);
 
         Profile profile1 = new Profile(user1, "I prefer a healthy lifestyle");
         Profile profile2 = new Profile(user2, "There is no description");
@@ -64,17 +64,17 @@ public class Main {
         Profile profile5 = new Profile(user5, "I like to read and listen to the sea");
 
         TextPost textPost1 = new TextPost(user1, List.of(comment2), List.of(user1, user3, user2),
-                PUBLIC, not3,"Hi, everybody!", LOW);
+                PUBLIC, not3, "Hi, everybody!", LOW);
         TextPost textPost2 = new TextPost(user2, List.of(comment3), List.of(user2, user4),
-                MEMBERS, not3," See you after the vacations", HIGH);
+                MEMBERS, not3, " See you after the vacations", HIGH);
         TextPost textPost3 = new TextPost(user2, List.of(comment2), List.of(user1, user3, user2),
-                PUBLIC, not3,"Traveling to Europe!", LOW);
+                PUBLIC, not3, "Traveling to Europe!", LOW);
         ImageInfo imageInfo = new ImageInfo("https://pic.pl/4.jpg", 120, 80);
-        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3),PUBLIC,
+        ImagePost imagePost2 = new ImagePost(user2, List.of(comment, comment1), List.of(user1, user3), PUBLIC,
                 not3, imageInfo, MEDIUM);
 
         VideoInfo videoInfo4 = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 15);
-        VideoPost videoPost4 = new VideoPost(user4, List.of(comment), List.of(user4, user3), PUBLIC, not3,videoInfo4, LOW);
+        VideoPost videoPost4 = new VideoPost(user4, List.of(comment), List.of(user4, user3), PUBLIC, not3, videoInfo4, LOW);
         VideoInfo videoInfo1 = new VideoInfo(" https://xyz.pl/4.mp4", 180, 70, 10);
         VideoPost videoPost1 = new VideoPost(user1, List.of(comment), List.of(user2), FRIENDS, not3, videoInfo1, MEDIUM);
         AudioInfo audioInfo = new AudioInfo("https://audio.pl/4.mp3", 120);
@@ -89,7 +89,7 @@ public class Main {
         User organizer = new User("Hanna", "organizer.big.concert@yahoo.com", "Bishop", 30);
 
         Group group = new Group("News of Warsaw ", admin, config, OPEN);
-        Group closedGroup = new Group( "Closed group", admin, config, CLOSED);
+        Group closedGroup = new Group("Closed group", admin, config, CLOSED);
         not1.displayNotification();
         group.addMember(admin);
         closedGroup.setAdmin(admin);
@@ -100,8 +100,8 @@ public class Main {
         try {
             group.createPost(user1, textPost1, TEXT, LOW);
             group.createPost(user2, textPost2, TEXT, HIGH);
-            group.createPost(user1, videoPost4,TEXT, LOW);
-            group.createPost(user5,imagePost2, IMAGE, MEDIUM);
+            group.createPost(user1, videoPost4, TEXT, LOW);
+            group.createPost(user5, imagePost2, IMAGE, MEDIUM);
         } catch (LimitPostsException e) {
             System.err.println(e.getMessage());
         }
@@ -148,11 +148,10 @@ public class Main {
         profile5.userCreateProfile();
         profile3.userCreateProfile();
         profile3.createPost(user3, videoPost4, VIDEO, LOW);
-        profile1.createPost(user1, videoPost1, VIDEO,MEDIUM);
-        profile1.createPost(user1, textPost1, TEXT,LOW);
-        profile2.createPost(user2, textPost2, TEXT,HIGH);
+        profile1.createPost(user1, videoPost1, VIDEO, MEDIUM);
+        profile1.createPost(user1, textPost1, TEXT, LOW);
+        profile2.createPost(user2, textPost2, TEXT, HIGH);
         profile2.createPost(user2, textPost3, TEXT, LOW);
-
 
         user1.displayName();
         imagePost2.open();
@@ -171,7 +170,7 @@ public class Main {
         System.out.println();
         not1.displayNotification();
 
-        System.out.println("----------------------------POST--------------");
+        System.out.println();
         textPost1.displayPost();
         comment2.displayComment();
         System.out.println();
@@ -188,7 +187,7 @@ public class Main {
         audioPost.displayPost();
 
         comment3.displayComment();
-        System.out.println("-------------------MESSAGE---------------------");
+        System.out.println();
         System.out.println();
         videoMessage.displayMessage();
         System.out.println();
@@ -204,7 +203,7 @@ public class Main {
         event.addParticipant(user1);
         try {
             event.createPost(organizer, videoPost4, VIDEO, LOW);
-           //event.createPost(user2,textPost2, TEXT);
+            //event.createPost(user2,textPost2, TEXT);
             event.createPost(organizer, imagePost2, IMAGE, MEDIUM);
         } catch (LimitationOfAuthorityException e) {
             System.err.println(e.getMessage());
@@ -226,9 +225,6 @@ public class Main {
         comment1.displayComment();
         System.out.println();
 
-        // friendRequest.addFriend(user1, user2);
-
-        System.out.println();
         System.out.println(" User create profile:");
         user5.setUsername("Olga2");
         profile1.userCreateProfile();
@@ -253,7 +249,7 @@ public class Main {
         System.out.println();
 
         //lambda usage
-        System.out.println("----------------lambda usage-------------");
+        System.out.println();
         List<User> users = Arrays.asList(user1, user2, user3);
 
         // 1. Predicate: Filter users over 24 years old
@@ -322,10 +318,5 @@ public class Main {
         for (User user : users) {
             System.out.println(transformUsername.apply(user));
         }
-
-        // Пример использования Enum для типа контента
-        ContentType vidieoPost1 = ContentType.VIDEO;
-        vidieoPost1 .displayContentInfo();
-
     }
 }

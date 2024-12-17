@@ -28,9 +28,10 @@ public class AudioPost extends Post implements Playable {
     }
 
     @Override
-    public void displayPostInfo(){
+    public void displayPostInfo() {
         System.out.println(audioInfo.getUrl() + "size: " + audioInfo.getDuration() + " seconds. ");
     }
+
     @Override
     public void displayPost() {
         System.out.print(author.getUsername() + " posted: " + audioInfo.getUrl());

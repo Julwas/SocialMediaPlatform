@@ -2,14 +2,14 @@ package social.media.platform.actions;
 
 import social.media.platform.base.SocialEntity;
 import social.media.platform.exceptions.EmoticonNotFoundException;
-import social.media.platform.interfaces.ContentReaction;
+import social.media.platform.interfaces.Reactiable;
 import social.media.platform.users.User;
 
 import java.util.*;
 import java.util.List;
 
 
-public class Comment extends SocialEntity implements ContentReaction {
+public class Comment extends SocialEntity implements Reactiable {
     private User commenter;
     private User senderEmoticon;
     private String text;

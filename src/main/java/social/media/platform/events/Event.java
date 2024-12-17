@@ -4,7 +4,7 @@ import social.media.platform.base.SocialEntity;
 import social.media.platform.enams.ContentType;
 import social.media.platform.enams.PostPopularity;
 import social.media.platform.exceptions.LimitationOfAuthorityException;
-import social.media.platform.interfaces.ContentManager;
+import social.media.platform.interfaces.ContentManageable;
 import social.media.platform.post.Post;
 import social.media.platform.users.User;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Event extends SocialEntity implements ContentManager {
+public class Event extends SocialEntity implements ContentManageable {
     private User organizer;
     private String eventName;
     private String data;
@@ -29,7 +29,7 @@ public class Event extends SocialEntity implements ContentManager {
         this.participants = new ArrayList<>();
         this.participants.add(organizer);
         this.posts = new ArrayList<>();
-       // this.postPopularity = postPopularity;
+        // this.postPopularity = postPopularity;
     }
 
     public String getData() {
@@ -93,7 +93,8 @@ public class Event extends SocialEntity implements ContentManager {
     }
 
     @Override
-    public void createPost(User author, Post post, ContentType contentType, PostPopularity postPopularity) throws LimitationOfAuthorityException {
+    public void createPost(User author, Post post, ContentType contentType, PostPopularity postPopularity)
+            throws LimitationOfAuthorityException {
         if (author.equals(organizer)) {
             contentType.displayContentInfo();
             postPopularity.displayPopularityInfo();

@@ -76,6 +76,7 @@ public class User extends SocialEntity implements Summarizable {
                 ", age=" + age +
                 '}';
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(username, email, surname, age, getId());
@@ -85,19 +86,20 @@ public class User extends SocialEntity implements Summarizable {
         System.out.println("" + username + " " + surname);
     }
 
-    public static boolean containsDigits(String username){
-        for (char digit: username.toCharArray()){
-            if(Character.isDigit(digit)){
+    public static boolean containsDigits(String username) {
+        for (char digit : username.toCharArray()) {
+            if (Character.isDigit(digit)) {
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
-    public void addName()throws NameContainsOfDigitException {
 
-        if(containsDigits(username))
-        {
+    public void addName() throws NameContainsOfDigitException {
+
+        if (containsDigits(username)) {
             throw new NameContainsOfDigitException("The name cannot contain digits, the name has not been added");
-        }else {
+        } else {
             System.out.println(" The name was added");
         }
     }
@@ -111,6 +113,7 @@ public class User extends SocialEntity implements Summarizable {
     public boolean isFriend(User user) {
         return friends.contains(user);
     }
+
     public Set<User> getFriends() {
         return friends;
     }
