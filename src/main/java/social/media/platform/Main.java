@@ -1,6 +1,7 @@
 package social.media.platform;
 
 
+import social.media.platform.Threads.ConnectionTask;
 import social.media.platform.config.TextFileConfiguration;
 
 import social.media.platform.enams.Sex;
@@ -35,6 +36,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
@@ -50,7 +55,7 @@ import static social.media.platform.profile.AccessLevel.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         User user1 = new User("Diana", "JulWas@gmail.com", "Wasilewska", 20, FEMALE);
         User user2 = new User("John", "JBin@gmail.com", "Bin", 25, MALE);
         User user3 = new User("Mark", "Mark@yahoo.com", "Sokolowski", 34, MALE);
@@ -401,6 +406,28 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println();
+
+
+        //Using Threads
+        for (int i = 1; i <= 7; i++) {
+            new Thread(new ConnectionTask(i)).start();
+        }
+        //Using Thread Pool
+        System.out.println();
+        ExecutorService executorService = Executors.newFixedThreadPool(7);
+        for (int i = 8; i <= 14; i++) {
+            executorService.submit(new ConnectionTask(i));
+        }
+        executorService.shutdown();
+        executorService.awaitTermination(1, TimeUnit.MINUTES);
+
+        System.out.println("=== Using CompletableFuture ===");
+        for (int i = 15; i <= 21; i++) {
+            CompletableFuture.runAsync(new ConnectionTask(i));
+        }
     }
 }
+
 
