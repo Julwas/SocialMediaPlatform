@@ -8,7 +8,7 @@ public class ConnectionTask implements  Runnable{
     @Override
     public void run() {
         try {
-            ConnectionPool pool = new ConnectionPool(5);
+            ConnectionPool pool = ConnectionPool.getInstance();
             System.out.println("Thread-" + threadId + " is waiting for a connection...");
             ConnectionImage connection = pool.getConnection();
             System.out.println("Thread-" + threadId + " acquired connection: " + connection.getUrl());

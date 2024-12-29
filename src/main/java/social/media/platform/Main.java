@@ -423,7 +423,7 @@ public class Main {
         executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.MINUTES);
 
-        System.out.println("=== Using CompletableFuture ===");
+        System.out.println("Using CompletableFuture");
         for (int i = 15; i <= 21; i++) {
             CompletableFuture.runAsync(new ConnectionTask(i));
         }

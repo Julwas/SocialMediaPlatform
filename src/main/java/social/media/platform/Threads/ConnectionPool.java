@@ -13,6 +13,12 @@ class ConnectionPool {
             pool.add(new ConnectionImage("Image_" + i + ".jpg"));
         }
     }
+    private static class Holder {
+        private static final ConnectionPool INSTANCE = new ConnectionPool(5);
+    }
+    public static ConnectionPool getInstance() {
+        return Holder.INSTANCE;
+    }
 
     public ConnectionImage getConnection() throws InterruptedException {
         return pool.take();
@@ -21,5 +27,6 @@ class ConnectionPool {
     public void releaseConnection(ConnectionImage connection) {
         pool.offer(connection);
     }
-}
+    }
+
 
