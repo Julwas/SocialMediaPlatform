@@ -8,7 +8,6 @@ public enum GroupPrivacyLevel {
     private final boolean isJoinableByAnyone;
     private final boolean isDiscoverable;
 
-    // Конструктор
     GroupPrivacyLevel(String name, String description, boolean isJoinableByAnyone, boolean isDiscoverable) {
         this.name = name;
         this.description = description;
