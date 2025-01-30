@@ -39,4 +39,9 @@ public class PatientServiceImpl implements PatientService {
     public Boolean deletePatientById(Long id) throws SQLException {
         return patientDAO.deleteById(id);
     }
+
+    @Override
+    public void addPatient(Patient newPatient) {
+
+    }
 }
