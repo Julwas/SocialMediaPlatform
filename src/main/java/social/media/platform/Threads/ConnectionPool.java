@@ -4,7 +4,7 @@ package social.media.platform.Threads;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-class ConnectionPool {
+public class ConnectionPool {
     private final BlockingQueue<ConnectionImage> pool;
 
     public ConnectionPool(int size) {
