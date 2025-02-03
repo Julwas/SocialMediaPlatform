@@ -12,7 +12,8 @@ public class Prescription {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    public Prescription(Long id, Long patientId, Long doctorId, Long medicationId, String dosage, String frequency, LocalDate startDate, LocalDate endDate) {
+    public Prescription(Long id, Long patientId, Long doctorId, Long medicationId, String dosage, String frequency,
+                        LocalDate startDate, LocalDate endDate) {
         this.id = id;
         this.patientId = patientId;
         this.doctorId = doctorId;

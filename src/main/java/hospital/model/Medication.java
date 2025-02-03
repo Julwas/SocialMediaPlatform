@@ -1,6 +1,7 @@
 package hospital.model;
 
-public class Medication {private Long id;
+public class Medication {
+    private Long id;
     private String name;
     private String description;
     private String manufacturer;

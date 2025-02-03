@@ -86,6 +86,7 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
                             rs.getString("lastName"),
                             rs.getLong("assigned_id_department")
                     );
+                    nurses.add(nurse);
                 }
             }
         } catch (SQLException e) {
