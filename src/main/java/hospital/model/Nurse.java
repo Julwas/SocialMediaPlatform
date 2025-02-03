@@ -1,22 +1,23 @@
 package hospital.model;
 
 public class Nurse {
+    private  long assignedIdDepartment;
     private Long id;
     private String firstName;
     private String lastName;
     private int experienceYears;
-    private Long departmentId;
+
 
     public Nurse(Long id, String firstName, String lastName, long assignedIdDepartment) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
 
-        this.departmentId = departmentId;
+        this.assignedIdDepartment = assignedIdDepartment;
     }
 
-    public Nurse(String firstName, String lastName, int experienceYears, Long departmentId) {
-        this(null, firstName, lastName, rs.getLong("assigned_id_department"));
+    public Nurse(String firstName, String lastName,  Long assignedIdDepartment) {
+        this(null, firstName, lastName,  assignedIdDepartment);
     }
 
     // Getters and setters
@@ -50,10 +51,10 @@ public class Nurse {
 
 
     public Long getDepartmentId() {
-        return departmentId;
+        return assignedIdDepartment;
     }
 
     public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
+        this.assignedIdDepartment = assignedIdDepartment;
     }
 }
