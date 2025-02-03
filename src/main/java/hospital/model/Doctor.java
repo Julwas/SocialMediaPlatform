@@ -8,7 +8,8 @@ public class Doctor {
     private int experienceYears;
     private Long departmentId;
 
-    public Doctor(Long id, String firstName, String lastName, String specialization, int experienceYears, Long departmentId) {
+    public Doctor(Long id, String firstName, String lastName, String specialization,
+                  Long departmentId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,7 +19,7 @@ public class Doctor {
     }
 
     public Doctor(String firstName, String lastName, String specialization, int experienceYears, Long departmentId) {
-        this(null, firstName, lastName, specialization, experienceYears, departmentId);
+        this(null, firstName, lastName, specialization, departmentId);
     }
 
     // Getters and setters

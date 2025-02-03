@@ -7,16 +7,16 @@ public class Nurse {
     private int experienceYears;
     private Long departmentId;
 
-    public Nurse(Long id, String firstName, String lastName, int experienceYears, Long departmentId) {
+    public Nurse(Long id, String firstName, String lastName, long assignedIdDepartment) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.experienceYears = experienceYears;
+
         this.departmentId = departmentId;
     }
 
     public Nurse(String firstName, String lastName, int experienceYears, Long departmentId) {
-        this(null, firstName, lastName, experienceYears, departmentId);
+        this(null, firstName, lastName, rs.getLong("assigned_id_department"));
     }
 
     // Getters and setters
@@ -48,9 +48,6 @@ public class Nurse {
         return experienceYears;
     }
 
-    public void setExperienceYears(int experienceYears) {
-        this.experienceYears = experienceYears;
-    }
 
     public Long getDepartmentId() {
         return departmentId;

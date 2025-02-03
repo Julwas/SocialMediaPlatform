@@ -1,5 +1,7 @@
 package hospital.model;
 
+import javax.xml.crypto.Data;
+
 public class TestResult {
     private Long id;
     private Long labTestId;
