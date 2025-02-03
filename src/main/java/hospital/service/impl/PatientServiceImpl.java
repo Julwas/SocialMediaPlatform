@@ -15,17 +15,30 @@ public class PatientServiceImpl implements PatientService {
     }
   @Override
   public Optional<Patient> getPatient(Long id) {
-      return patientDAO.read(id);
+      if (id != null) {
+          return patientDAO.read(id);
+      } else {
+          throw new IllegalArgumentException("ID cannot be null");
+      }
   }
 
     @Override
     public void updatePatient(Patient patient) {
-        patientDAO.update(patient);
+        if (patient != null && patient.getId() != null) {
+            patientDAO.update(patient);
+        } else {
+            throw new IllegalArgumentException("Patientor ID cannot be null");
+        }
     }
 
     @Override
     public void deletePatient(Long id) {
-        patientDAO.delete(id);
+
+        if (id != null) {
+            patientDAO.delete(id);
+        } else {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
     }
 
     @Override
