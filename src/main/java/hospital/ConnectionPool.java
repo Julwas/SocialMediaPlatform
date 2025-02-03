@@ -9,7 +9,7 @@ import java.util.Queue;
 public class ConnectionPool {
     private static final String URL = "jdbc:mysql://localhost:3306/hospital";
     private static final String USER = "root";
-    private static final String PASSWORD = "password";
+    private static final String PASSWORD = "12345";
     private static final int INITIAL_POOL_SIZE = 5;
 
     private static final Queue<Connection> connectionPool = new LinkedList<>();

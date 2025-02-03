@@ -12,7 +12,8 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
 
   @Override
     public  void create(Patient patient) {
-        String sql = "INSERT INTO patients (firstName, lastName, dateOfBirth, gender, address, contactNumber) VALUES (?, ?, ?, ?, ?, ?)";
+
+        String sql = "INSERT INTO patients (first_name, last_name, date_of_birth, gender, address, contact_number) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, patient.getFirstName());
@@ -28,19 +29,19 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
     }
     @Override
     public Optional<Patient> read(Long id) {
-        String sql = "SELECT * FROM patients WHERE id = ?";
+        String sql = "SELECT * FROM patients WHERE patients_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Patient patient = new Patient(
                         rs.getLong("id"),
-                        rs.getString("firstName"),
-                        rs.getString("lastName"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getDate("dateOfBirth").toLocalDate(),
                         rs.getString("gender"),
                         rs.getString("address"),
-                        rs.getLong("contactNumber")
+                        rs.getLong("contact_number")
                 );
                 return Optional.of(patient);
             }
@@ -51,8 +52,9 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
     }
     @Override
     public void update(Patient patient) {
-        String sql = "UPDATE patients SET firstName = ?, lastName = ?, dateOfBirth = ?, gender = ?, address = ?," +
-                " contactNumber = ? WHERE id = ?";
+
+        String sql = "UPDATE patients SET first_name = ?, last_name = ?, date_of_birth = ?, gender = ?, address = ?," +
+                " contact_number = ? WHERE patients_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, patient.getFirstName());
             ps.setString(2, patient.getLastName());
@@ -68,7 +70,7 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
     }
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM patients WHERE id = ?";
+        String sql = "DELETE FROM patients WHERE patients_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -84,13 +86,13 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Patient patient = new Patient(
-                        rs.getLong("id"),
-                        rs.getString("firstName"),
-                        rs.getString("lastName"),
+                        rs.getLong("patients_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getDate("dateOfBirth").toLocalDate(),
                         rs.getString("gender"),
                         rs.getString("address"),
-                        rs.getLong("contactNumber")
+                        rs.getLong("contact_number")
                 );
                 patients.add(patient);
             }
