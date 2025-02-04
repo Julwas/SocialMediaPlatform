@@ -76,4 +76,18 @@ public class Patient {
     public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", contactNumber=" + contactNumber +
+                '}';
+    }
 }
+

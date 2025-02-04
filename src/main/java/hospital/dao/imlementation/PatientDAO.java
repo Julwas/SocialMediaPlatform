@@ -35,10 +35,10 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Patient patient = new Patient(
-                        rs.getLong("id"),
+                        rs.getLong("patients_id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
-                        rs.getDate("dateOfBirth").toLocalDate(),
+                        rs.getDate("date_of_birth").toLocalDate(),
                         rs.getString("gender"),
                         rs.getString("address"),
                         rs.getLong("contact_number")
@@ -89,7 +89,7 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
                         rs.getLong("patients_id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
-                        rs.getDate("dateOfBirth").toLocalDate(),
+                        rs.getDate("date_of_birth").toLocalDate(),
                         rs.getString("gender"),
                         rs.getString("address"),
                         rs.getLong("contact_number")
