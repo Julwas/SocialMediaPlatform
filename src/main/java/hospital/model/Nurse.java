@@ -5,7 +5,7 @@ public class Nurse {
     private Long id;
     private String firstName;
     private String lastName;
-    private int experienceYears;
+
 
 
     public Nurse(Long id, String firstName, String lastName, long assignedIdDepartment) {
@@ -16,11 +16,6 @@ public class Nurse {
         this.assignedIdDepartment = assignedIdDepartment;
     }
 
-    public Nurse(String firstName, String lastName,  Long assignedIdDepartment) {
-        this(null, firstName, lastName,  assignedIdDepartment);
-    }
-
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -45,16 +40,20 @@ public class Nurse {
         this.lastName = lastName;
     }
 
-    public int getExperienceYears() {
-        return experienceYears;
-    }
-
-
     public Long getDepartmentId() {
         return assignedIdDepartment;
     }
 
     public void setDepartmentId(Long departmentId) {
         this.assignedIdDepartment = assignedIdDepartment;
+    }
+    @Override
+    public String toString() {
+        return "Nurse{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", assignedIdDepartment=" + assignedIdDepartment +
+                '}';
     }
 }

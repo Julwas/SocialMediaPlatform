@@ -17,7 +17,7 @@ public class LabTest {
         this(null, name, description, cost);
     }
 
-    // Getters and setters
+
     public Long getId() {
         return id;
     }
@@ -48,5 +48,14 @@ public class LabTest {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+    @Override
+    public String toString() {
+        return "LabTest{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", cost=" + cost +
+                '}';
     }
 }

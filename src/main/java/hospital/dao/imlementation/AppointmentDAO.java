@@ -1,8 +1,6 @@
 package hospital.dao.imlementation;
 
 import hospital.dao.AbstractDAO;
-import hospital.dao.IAppointmentDAO;
-import hospital.model.Admission;
 import hospital.model.Appointment;
 
 import java.sql.*;
@@ -14,7 +12,9 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public void create(Appointment appointment) {
-        String sql = "INSERT INTO appointments (patientId, doctorId, appointmentDate, status) VALUES (?, ?, ?, ?)";
+       // patient_id_appointments`, `doctor_id_appointments`, `appointment_date`, `status
+        String sql = "INSERT INTO appointments (patient_id_appointments, doctor_id_appointments, " +
+                "appointment_date, status) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, appointment.getPatientId());
             ps.setLong(2, appointment.getDoctorId());
@@ -28,16 +28,16 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public Optional<Appointment> read(Long id) {
-        String sql = "SELECT * FROM appointments WHERE id = ?";
+        String sql = "SELECT * FROM appointments WHERE appointment_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new Appointment(
-                        rs.getLong("id"),
-                        rs.getLong("patientId"),
-                        rs.getLong("doctorId"),
-                        rs.getTimestamp("appointmentDate").toLocalDateTime(),
+                        rs.getLong("appointment_id"),
+                        rs.getLong("patient_id_appointments"),
+                        rs.getLong("doctor_id_appointments"),
+                        rs.getTimestamp("appointment_date").toLocalDateTime(),
                         rs.getString("status")
                 ));
             }
@@ -49,7 +49,8 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public void update(Appointment appointment) {
-        String sql = "UPDATE appointments SET patientId = ?, doctorId = ?, appointmentDate = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE appointments SET patient_id_appointments = ?, doctor_id_appointments = ?, appointment_date = ?, status = ?" +
+                " WHERE appointment_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, appointment.getPatientId());
             ps.setLong(2, appointment.getDoctorId());
@@ -64,7 +65,7 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM appointments WHERE id = ?";
+        String sql = "DELETE FROM appointments WHERE appointment_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -77,13 +78,14 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
     public List<Appointment> findAll() {
         String sql = "SELECT * FROM appointments";
         List<Appointment> appointments = new ArrayList<>();
-        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 appointments.add(new Appointment(
-                        rs.getLong("id"),
-                        rs.getLong("patientId"),
-                        rs.getLong("doctorId"),
-                        rs.getTimestamp("appointmentDate").toLocalDateTime(),
+                        rs.getLong("appointment_id"),
+                        rs.getLong("patient_id_appointments"),
+                        rs.getLong("doctor_id_appointments"),
+                        rs.getTimestamp("appointment_date").toLocalDateTime(),
                         rs.getString("status")
                 ));
             }

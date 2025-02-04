@@ -14,7 +14,8 @@ import static hospital.ConnectionPool.getConnection;
 public class AdmissionDAO implements IGenericDAO<Admission, Long> {
     @Override
     public void create(Admission admission) {
-        String sql = "INSERT INTO admissions (id, patientId, roomId, admissionDate, dischargeDate) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO admissions (admissions_id, patient_id_admissions, room_id_admissions, admission_date, " +
+                "discharge_date) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, admission.getId());
             ps.setLong(2, admission.getPatientId());
@@ -29,17 +30,17 @@ public class AdmissionDAO implements IGenericDAO<Admission, Long> {
 
     @Override
     public Optional<Admission> read(Long id) {
-        String sql = "SELECT * FROM admissions WHERE id = ?";
+        String sql = "SELECT * FROM admissions WHERE admissions_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new Admission(
-                        rs.getLong("id"),
-                        rs.getLong("patientId"),
-                        rs.getLong("roomId"),
-                        rs.getDate("admissionDate").toLocalDate(),
-                        rs.getDate("dischargeDate").toLocalDate()
+                        rs.getLong("admissions_id"),
+                        rs.getLong("patient_id_admissions"),
+                        rs.getLong("room_id_admissions"),
+                        rs.getDate("admission_date").toLocalDate(),
+                        rs.getDate("discharge_date").toLocalDate()
                 ));
             }
         } catch (SQLException e) {
@@ -50,7 +51,8 @@ public class AdmissionDAO implements IGenericDAO<Admission, Long> {
 
     @Override
     public void update(Admission admission) {
-        String sql = "UPDATE admissions SET patientId = ?, roomId = ?, admissionDate = ?, dischargeDate = ? WHERE id = ?";
+        String sql = "UPDATE admissions SET patient_id_admissions = ?, room_id_admissions = ?, admission_date = ?, " +
+                "discharge_date = ? WHERE admissions_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, admission.getPatientId());
             ps.setLong(2, admission.getRoomId());
@@ -65,7 +67,7 @@ public class AdmissionDAO implements IGenericDAO<Admission, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM admissions WHERE id = ?";
+        String sql = "DELETE FROM admissions WHERE admissions_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -81,11 +83,11 @@ public class AdmissionDAO implements IGenericDAO<Admission, Long> {
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 admissions.add(new Admission(
-                        rs.getLong("id"),
-                        rs.getLong("patientId"),
-                        rs.getLong("roomId"),
-                        rs.getDate("admissionDate").toLocalDate(),
-                        rs.getDate("dischargeDate").toLocalDate()
+                        rs.getLong("admissions_id"),
+                        rs.getLong("patient_id_admissions"),
+                        rs.getLong("room_id_admissions"),
+                        rs.getDate("admission_date").toLocalDate(),
+                        rs.getDate("discharge_date").toLocalDate()
                 ));
             }
         } catch (SQLException e) {

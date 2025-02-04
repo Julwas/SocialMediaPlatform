@@ -1,27 +1,38 @@
 package hospital.model;
 
-import javax.xml.crypto.Data;
+
+import java.sql.Date;
 
 public class TestResult {
+    //patient_id_test_result`, `lab_test_id_test_result`, `test_date`, `doctor_id_test_result`, `result
     private Long id;
     private Long labTestId;
     private Long patientId;
+    private Long doctorId;
     private String result;
-    private String date;
+    private Date date;
 
-    public TestResult(Long id, Long labTestId, Long patientId, String result, String date) {
+    public TestResult(Long id, Long labTestId, Long patientId,Long doctorId, String result, Date date) {
         this.id = id;
         this.labTestId = labTestId;
         this.patientId = patientId;
         this.result = result;
         this.date = date;
+        this.doctorId = doctorId;
     }
 
-    public TestResult(Long labTestId, Long patientId, String result, String date) {
-        this(null, labTestId, patientId, result, date);
+    public TestResult(Long labTestId, Long patientId,Long doctorId, String result, Date date) {
+        this(null, labTestId, patientId,doctorId, result, date);
     }
 
-    // Getters and setters
+    public Long getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
+    }
+
     public Long getId() {
         return id;
     }
@@ -54,11 +65,11 @@ public class TestResult {
         this.result = result;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

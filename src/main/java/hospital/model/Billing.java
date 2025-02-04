@@ -1,22 +1,29 @@
 package hospital.model;
 
+import java.sql.Date;
+
 public class Billing {
+   //patient_id_billing`, `admission_id_billing`, `total_amount`, `paid_amount`, `billing_date`, `payment_status`,
+   //`labtest_id_billing`
     private Long id;
     private Long patientId;
-    private Double amount;
-    private String billingDate;
-    private Boolean paid;
+    private Long admissionId;
+    private Boolean totalAmount;
+    private Boolean paidAmount;
+    private Date billingDate;
+    private Boolean paymentStatus;
+    private Long labtestId;
 
-    public Billing(Long id, Long patientId, Double amount, String billingDate, Boolean paid) {
+    public Billing(Long id, Long patientId, Long admissionId, boolean totalAmount, boolean paidAmount,
+                   Date billingDate, Boolean paymentStatus, Long labtestId) {
         this.id = id;
         this.patientId = patientId;
-        this.amount = amount;
+        this.admissionId = admissionId;
+        this.totalAmount = totalAmount;
+        this.paidAmount = paidAmount;
         this.billingDate = billingDate;
-        this.paid = paid;
-    }
-
-    public Billing(Long patientId, Double amount, String billingDate, Boolean paid) {
-        this(null, patientId, amount, billingDate, paid);
+        this.paymentStatus = paymentStatus;
+        this.labtestId = labtestId;
     }
 
     // Getters and setters
@@ -36,27 +43,53 @@ public class Billing {
         this.patientId = patientId;
     }
 
-    public Double getAmount() {
-        return amount;
-    }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
 
-    public String getBillingDate() {
+    public Date getBillingDate() {
         return billingDate;
     }
 
-    public void setBillingDate(String billingDate) {
+    public void setBillingDate(Date billingDate) {
         this.billingDate = billingDate;
     }
 
-    public Boolean getPaid() {
-        return paid;
+    public Long getAdmissionId() {
+        return admissionId;
     }
 
-    public void setPaid(Boolean paid) {
-        this.paid = paid;
+    public void setAdmissionId(Long admissionId) {
+        this.admissionId = admissionId;
+    }
+
+    public Boolean getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Boolean totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public boolean getPaidAmount() {
+        return paidAmount;
+    }
+
+    public void setPaidAmount(Boolean paidAmount) {
+        this.paidAmount = paidAmount;
+    }
+
+    public Boolean getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(Boolean paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public Long getLabtestId() {
+        return labtestId;
+    }
+
+    public void setLabtestId(Long labtestId) {
+        this.labtestId = labtestId;
     }
 }

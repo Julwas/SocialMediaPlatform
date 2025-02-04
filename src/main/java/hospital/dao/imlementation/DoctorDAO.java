@@ -15,7 +15,7 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
 
     @Override
     public void create(Doctor doctor) {
-        String sql = "INSERT INTO doctors (doctors_id, firstName, lastName, specialization, department_id) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO doctors (doctors_id, first_name, last_name, specialization, department_id) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, doctor.getId());
             ps.setString(2, doctor.getFirstName());
@@ -36,10 +36,10 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Doctor doctor = new Doctor(
-                        rs.getLong("id"),
-                        rs.getString("firstName"),
-                        rs.getString("lastName"),
-                        rs.getString("spiecialization"),
+                        rs.getLong("doctors_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("specialization"),
                         rs.getLong("department_id")
                 );
                 return Optional.of(doctor);
@@ -52,7 +52,7 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
 
     @Override
     public void update(Doctor doctor) {
-        String sql ="UPDATE doctors SET firstName = ?, lastName = ?, specialization - ?,  department_id - ? ";
+        String sql ="UPDATE doctors SET first_name = ?, last_name = ?, specialization - ?,  department_id - ? ";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, doctor.getId());
             ps.setString(2, doctor.getFirstName());
@@ -67,7 +67,7 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM doctors WHERE id = ?";
+        String sql = "DELETE FROM doctors WHERE doctors_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -84,9 +84,9 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Doctor doctor = new Doctor(
-                        rs.getLong("id"),
-                        rs.getString("firstName"),
-                        rs.getString("lastName"),
+                        rs.getLong("doctors_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getString("specialization"),
                         rs.getLong("department_id")
                 );

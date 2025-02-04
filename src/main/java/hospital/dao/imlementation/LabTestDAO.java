@@ -1,7 +1,6 @@
 package hospital.dao.imlementation;
 
 import hospital.dao.IGenericDAO;
-import hospital.model.Admission;
 import hospital.model.LabTest;
 
 import java.sql.*;
@@ -14,7 +13,7 @@ import static hospital.ConnectionPool.getConnection;
 public class LabTestDAO implements IGenericDAO<LabTest, Long> {
     @Override
     public void create(LabTest labTest) {
-        String sql = "INSERT INTO lab_tests (id, name, description, cost) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO LabTest (labTest_id, name, description, cost) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, labTest.getId());
             ps.setString(2, labTest.getName());
@@ -28,13 +27,13 @@ public class LabTestDAO implements IGenericDAO<LabTest, Long> {
 
     @Override
     public Optional<LabTest> read(Long id) {
-        String sql = "SELECT * FROM lab_tests WHERE id = ?";
+        String sql = "SELECT * FROM LabTest WHERE labTest_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new LabTest(
-                        rs.getLong("id"),
+                        rs.getLong("labTest_id"),
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getDouble("cost")
@@ -48,7 +47,7 @@ public class LabTestDAO implements IGenericDAO<LabTest, Long> {
 
     @Override
     public void update(LabTest labTest) {
-        String sql = "UPDATE lab_tests SET name = ?, description = ?, cost = ? WHERE id = ?";
+        String sql = "UPDATE LabTest SET name = ?, description = ?, cost = ? WHERE labTest_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, labTest.getName());
             ps.setString(2, labTest.getDescription());
@@ -62,7 +61,7 @@ public class LabTestDAO implements IGenericDAO<LabTest, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM lab_tests WHERE id = ?";
+        String sql = "DELETE FROM LabTest WHERE labTest_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -73,12 +72,13 @@ public class LabTestDAO implements IGenericDAO<LabTest, Long> {
 
     @Override
     public List<LabTest> findAll() {
-        String sql = "SELECT * FROM lab_tests";
+        String sql = "SELECT * FROM LabTest";
         List<LabTest> labTests = new ArrayList<>();
-        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 labTests.add(new LabTest(
-                        rs.getLong("id"),
+                        rs.getLong("labTest_id"),
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getDouble("cost")

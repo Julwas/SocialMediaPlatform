@@ -1,8 +1,6 @@
 package hospital.dao.imlementation;
 
-import hospital.ConnectionPool;
 import hospital.dao.AbstractDAO;
-import hospital.dao.IDepartmentDAO;
 import hospital.model.Department;
 
 import java.sql.Connection;
@@ -19,11 +17,11 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
 
     @Override
     public void create(Department department) {
-        String sql = "INSERT INTO department (name, location) VALUES (?, ?)";
+        String sql = "INSERT INTO departments (name, description) VALUES (?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, department.getName());
-            ps.setString(2, department.getLocation());
+            ps.setString(2, department.getDescription());
             ps.executeUpdate();
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -37,16 +35,16 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
 
     @Override
     public Optional<Department> read(Long id) {
-        String sql = "SELECT * FROM department WHERE id = ?";
+        String sql = "SELECT * FROM departments WHERE department_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             try (ResultSet resultSet = ps.executeQuery()) {
                 if (resultSet.next()) {
                     return Optional.of(new Department(
-                            resultSet.getLong("id"),
+                            resultSet.getLong("department_id"),
                             resultSet.getString("name"),
-                            resultSet.getString("location")
+                            resultSet.getString("description")
                     ));
                 }
             }
@@ -58,11 +56,11 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
 
     @Override
     public void update(Department department) {
-        String sql = "UPDATE department SET name = ?, location = ? WHERE id = ?";
+        String sql = "UPDATE departments SET name = ?, description = ? WHERE department_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, department.getName());
-            ps.setString(2, department.getLocation());
+            ps.setString(2, department.getDescription());
             ps.setLong(3, department.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -72,7 +70,7 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM department WHERE id = ?";
+        String sql = "DELETE FROM departments WHERE department_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
@@ -84,7 +82,7 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
 
     @Override
     public List<Department> findAll() {
-        String sql = "SELECT * FROM department";
+        String sql = "SELECT * FROM departments";
         List<Department> departments = new ArrayList<>();
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql);
@@ -93,7 +91,7 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
                 departments.add(new Department(
                         resultSet.getLong("id"),
                         resultSet.getString("name"),
-                        resultSet.getString("location")
+                        resultSet.getString("description")
                 ));
             }
         } catch (SQLException e) {

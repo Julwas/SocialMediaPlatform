@@ -14,7 +14,7 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
 
     @Override
     public void create(Nurse nurse) {
-        String sql = "INSERT INTO nurses (firstName, lastName, assigned_id_department) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO nurses (first_name, last_name, assigned_id_department) VALUES (?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, nurse.getFirstName());
@@ -28,16 +28,16 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
 
     @Override
     public Optional<Nurse> read(Long id) {
-        String sql = "SELECT * FROM nurses WHERE id = ?";
+        String sql = "SELECT * FROM nurses WHERE nurses_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Nurse nurse = new Nurse(
-                        rs.getLong("id"),
-                        rs.getString("firstName"),
-                        rs.getString("lastName"),
+                        rs.getLong("nurses_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
                         rs.getLong("assigned_id_department")
                 );
             }
@@ -49,7 +49,7 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
 
     @Override
     public void update(Nurse nurse) {
-        String sql = "UPDATE nurses SET firstName = ?,lastName = ?, assigned_id_department = ? WHERE id = ?";
+        String sql = "UPDATE nurses SET first_name = ?,last_name = ?, assigned_id_department = ? WHERE nurses_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, nurse.getFirstName());
             ps.setString(2, nurse.getLastName());
@@ -63,7 +63,7 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM nurses WHERE id = ?";
+        String sql = "DELETE FROM nurses WHERE nurses_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -81,9 +81,9 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
             while (rs.next()) {
                 if (rs.next()) {
                     Nurse nurse = new Nurse(
-                            rs.getLong("id"),
-                            rs.getString("firstName"),
-                            rs.getString("lastName"),
+                            rs.getLong("nurses_id"),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
                             rs.getLong("assigned_id_department")
                     );
                     nurses.add(nurse);

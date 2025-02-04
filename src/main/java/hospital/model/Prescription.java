@@ -91,4 +91,15 @@ public class Prescription {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+    @Override
+    public String toString() {
+        return "Prescription{" +
+                "id=" + id +
+                ", patientId='" + patientId + '\'' +
+                ", doctorId='" + doctorId + '\'' +
+                ", medicationId=" + medicationId +
+                ", dosage='" + dosage + '\'' +
+                ", frequency='" + frequency + '\'' +
+                '}';
+    }
 }

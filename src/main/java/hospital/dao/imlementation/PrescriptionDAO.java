@@ -13,7 +13,8 @@ public class PrescriptionDAO extends AbstractDAO<Prescription, Long> {
 
     @Override
     public void create(Prescription prescription) {
-        String sql = "INSERT INTO patients (patientId, doctorId, medicationId, dosage, frequency, startDate, endDate) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO prescriptions (patient_id_prescriptions, doctor_id_prescriptions, " +
+                "medication_id_prescriptions, dosage, frequency, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, prescription.getPatientId());
@@ -32,19 +33,19 @@ public class PrescriptionDAO extends AbstractDAO<Prescription, Long> {
 
     @Override
     public Optional<Prescription> read(Long id) {
-        String sql = "SELECT * FROM patients WHERE id = ?";
+        String sql = "SELECT * FROM patients WHERE prescriptions_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Prescription prescription = new Prescription(
-                        rs.getLong("patientId"),
-                rs.getLong( "doctorId"),
-                rs.getLong("medicationId"),
+                        rs.getLong("patient_id_prescriptions"),
+                rs.getLong( "doctor_id_prescriptions"),
+                rs.getLong("medication_id_prescriptions"),
                 rs.getString("dosage"),
                 rs.getString( "frequency"),
-                        rs.getDate("startDate").toLocalDate(),
-                        rs.getDate( "endDate").toLocalDate()
+                        rs.getDate("start_date").toLocalDate(),
+                        rs.getDate( "end_date").toLocalDate()
                 );
                 return Optional.of(prescription);
             }
@@ -56,8 +57,9 @@ public class PrescriptionDAO extends AbstractDAO<Prescription, Long> {
 
     @Override
     public void update(Prescription prescription) {
-        String sql = "UPDATE prescription SET patientId = ?, doctorId = ?, medicationId = ?, dosage = ?," +
-                " frequency =?, startDate = ?, endDate= ? WHERE id = ?";
+        String sql = "UPDATE prescription SET patient_id_prescriptions = ?, doctor_id_prescriptions = ?," +
+                " medication_id_prescriptions = ?, dosage = ?," +
+                " frequency =?, start_date = ?, end_date= ? WHERE prescriptions_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, prescription.getPatientId());
@@ -75,7 +77,7 @@ public class PrescriptionDAO extends AbstractDAO<Prescription, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM prescription WHERE id = ?";
+        String sql = "DELETE FROM prescription WHERE prescriptions_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -87,18 +89,18 @@ public class PrescriptionDAO extends AbstractDAO<Prescription, Long> {
     @Override
     public List<Prescription> findAll() {
         List<Prescription> prescriptions = new ArrayList<>();
-        String sql = "SELECT * FROM prescription";
+        String sql = "SELECT * FROM prescriptions";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Prescription prescription = new Prescription(
-                        rs.getLong("patientId"),
-                        rs.getLong( "doctorId"),
-                        rs.getLong("medicationId"),
+                        rs.getLong("patient_id_prescriptions"),
+                        rs.getLong( "doctor_id_prescriptions"),
+                        rs.getLong("medication_id_prescriptions"),
                         rs.getString("dosage"),
                         rs.getString( "frequency"),
-                        rs.getDate("startDate").toLocalDate(),
-                        rs.getDate( "endDate").toLocalDate()
+                        rs.getDate("start_date").toLocalDate(),
+                        rs.getDate( "end_date").toLocalDate()
                 );
                 prescriptions.add(prescription);
             }

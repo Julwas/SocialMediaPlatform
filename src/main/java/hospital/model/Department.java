@@ -3,16 +3,16 @@ package hospital.model;
 public class Department {
     private Long id;
     private String name;
-    private String location;
+    private String description;
 
-    public Department(Long id, String name, String location) {
+    public Department(Long id, String name, String description) {
         this.id = id;
         this.name = name;
-        this.location = location;
+        this.description = description;
     }
 
-    public Department(String name, String location) {
-        this(null, name, location);
+    public Department(String name, String description) {
+        this(null, name, description);
     }
 
     // Getters and setters
@@ -32,11 +32,19 @@ public class Department {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setDescription(String location) {
+        this.description = description;
+    }
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

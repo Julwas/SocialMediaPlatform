@@ -50,4 +50,13 @@ public class Medication {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+    @Override
+    public String toString() {
+        return "Medications{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", manufacturer=" + manufacturer +
+                '}';
+    }
 }

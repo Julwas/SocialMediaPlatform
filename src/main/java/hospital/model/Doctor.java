@@ -5,7 +5,6 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String specialization;
-    private int experienceYears;
     private Long departmentId;
 
     public Doctor(Long id, String firstName, String lastName, String specialization,
@@ -14,11 +13,10 @@ public class Doctor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.specialization = specialization;
-        this.experienceYears = experienceYears;
         this.departmentId = departmentId;
     }
 
-    public Doctor(String firstName, String lastName, String specialization, int experienceYears, Long departmentId) {
+    public Doctor(String firstName, String lastName, String specialization, Long departmentId) {
         this(null, firstName, lastName, specialization, departmentId);
     }
 
@@ -55,14 +53,6 @@ public class Doctor {
         this.specialization = specialization;
     }
 
-    public int getExperienceYears() {
-        return experienceYears;
-    }
-
-    public void setExperienceYears(int experienceYears) {
-        this.experienceYears = experienceYears;
-    }
-
     public Long getDepartmentId() {
         return departmentId;
     }
@@ -70,4 +60,15 @@ public class Doctor {
     public void setDepartmentId(Long departmentId) {
         this.departmentId = departmentId;
     }
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", specialization=" + specialization +
+                ", departmentId='" + departmentId + '\'' +
+                '}';
+    }
+
 }

@@ -89,7 +89,8 @@ VALUES
 (15, 2005, 15, '250mg', 'Every 6 hours', '2025-01-05', '2025-01-15');
 
 INSERT INTO `Hospital`.`Billing` 
-(`patient_id_billing`, `admission_id_billing`, `total_amount`, `paid_amount`, `billing_date`, `payment_status`, `labtest_id_billing`) 
+(`patient_id_billing`, `admission_id_billing`, `total_amount`, `paid_amount`, `billing_date`, `payment_status`,
+`labtest_id_billing`)
 VALUES
 (11, 11, 500.00, 500.00, '2025-01-11', 'Paid', 1),
 (12, 12, 300.00, 150.00, '2025-01-12', 'Partial', 2),

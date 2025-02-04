@@ -30,14 +30,14 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
 
     @Override
     public Optional<Medication> read(Long id) {
-        String sql = "SELECT * FROM medication WHERE id = ?";
+        String sql = "SELECT * FROM medication WHERE medications_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Medication medication = new Medication(
-                        rs.getLong("id"),
+                        rs.getLong("medications_id"),
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getString("manufacturer")
@@ -51,7 +51,7 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
 
     @Override
     public void update(Medication medication) {
-        String sql = "UPDATE medication SET name = ?,description = ?, manufacturer = ? WHERE id = ?";
+        String sql = "UPDATE medication SET name = ?,description = ?, manufacturer = ? WHERE medications_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, medication.getName());
             ps.setString(2, medication.getDescription());
@@ -65,7 +65,7 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM medication WHERE id = ?";
+        String sql = "DELETE FROM medication WHERE medications_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -76,7 +76,7 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
 
     @Override
     public List<Medication> findAll() {
-        String sql = "SELECT * FROM medication";
+        String sql = "SELECT * FROM medications";
         List<Medication> medications = new ArrayList<>();
 
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql);
@@ -84,7 +84,7 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
             while (rs.next()) {
                 if (rs.next()) {
                     Medication medication= new Medication(
-                            rs.getLong("id"),
+                            rs.getLong("medications_id"),
                             rs.getString("name"),
                             rs.getString("description"),
                             rs.getString("manufacturer")
