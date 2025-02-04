@@ -9,8 +9,8 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        PatientService patientService = new PatientServiceImpl();
 
+        /*PatientService patientService = new PatientServiceImpl();
 
         Patient patient = new Patient(null, "John", "Doe", LocalDate.of(1990, 1, 1), "Male", "123 Street", 1234567890L);
         patientService.addPatient(patient);
@@ -29,6 +29,18 @@ public class Main {
             System.out.println("Patient data has been updated.");
         } else {
             System.out.println("The patient for the update was not found.");
+        }*/
+        String xmlFilePath = "src/main/java/hospital/hospital.xml";
+        String xsdFilePath = "src/main/java/hospital/hospital.xsd";
+
+        // Проверка валидации XML
+        if (XMLParser.validateXML(xmlFilePath, xsdFilePath)) {
+            System.out.println("XML is valid.");
+            // Парсинг XML
+            XMLParser.parseXML(xmlFilePath);
+        } else {
+            System.out.println("XML is not valid.");
         }
+
     }
 }

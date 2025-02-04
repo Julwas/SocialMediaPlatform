@@ -5,7 +5,7 @@ public class Medication {
     private String name;
     private String description;
     private String manufacturer;
-    private int Dosage;
+
 
     public Medication(Long id, String name, String description, String manufacturer) {
         this.id = id;
