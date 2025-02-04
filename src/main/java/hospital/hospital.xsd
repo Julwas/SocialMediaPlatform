@@ -1,65 +1,90 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    <xsd:element name="hospital">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="patient" type="PatientType" minOccurs="0" maxOccurs="unbounded"/>
-                <xsd:element name="nurse" type="NurseType" minOccurs="0" maxOccurs="unbounded"/>
-                <xsd:element name="department" type="DepartmentType" minOccurs="0" maxOccurs="unbounded"/>
-                <xsd:element name="medication" type="MedicationType" minOccurs="0" maxOccurs="unbounded"/>
-                <xsd:element name="labTest" type="LabTestType" minOccurs="0" maxOccurs="unbounded"/>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
-
-    <!-- Patient -->
-    <xsd:complexType name="PatientType">
-        <xsd:sequence>
-            <xsd:element name="id" type="xsd:long"/>
-            <xsd:element name="firstName" type="xsd:string"/>
-            <xsd:element name="lastName" type="xsd:string"/>
-            <xsd:element name="dateOfBirth" type="xsd:date"/>
-            <xsd:element name="gender" type="xsd:string"/>
-            <xsd:element name="address" type="xsd:string"/>
-            <xsd:element name="contactNumber" type="xsd:long"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <!-- Nurse -->
-    <xsd:complexType name="NurseType">
-        <xsd:sequence>
-            <xsd:element name="id" type="xsd:long"/>
-            <xsd:element name="firstName" type="xsd:string"/>
-            <xsd:element name="lastName" type="xsd:string"/>
-            <xsd:element name="assignedIdDepartment" type="xsd:long"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <!-- Department -->
-    <xsd:complexType name="DepartmentType">
-        <xsd:sequence>
-            <xsd:element name="id" type="xsd:long"/>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="description" type="xsd:string"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <!-- Medication -->
-    <xsd:complexType name="MedicationType">
-        <xsd:sequence>
-            <xsd:element name="id" type="xsd:long"/>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="manufacturer" type="xsd:string"/>
-        </xsd:sequence>
-    </xsd:complexType>
-
-    <!-- Lab Test -->
-    <xsd:complexType name="LabTestType">
-        <xsd:sequence>
-            <xsd:element name="id" type="xsd:long"/>
-            <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="cost" type="xsd:double"/>
-        </xsd:sequence>
-    </xsd:complexType>
-</xsd:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="hospital">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="patients" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="patient" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:long"/>
+                                        <xs:element name="firstName" type="xs:string"/>
+                                        <xs:element name="lastName" type="xs:string"/>
+                                        <xs:element name="dateOfBirth" type="xs:date"/>
+                                        <xs:element name="gender" type="xs:string"/>
+                                        <xs:element name="address" type="xs:string"/>
+                                        <xs:element name="contactNumber" type="xs:long"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="nurses" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nurse" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:long"/>
+                                        <xs:element name="firstName" type="xs:string"/>
+                                        <xs:element name="lastName" type="xs:string"/>
+                                        <xs:element name="assignedIdDepartment" type="xs:long"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="departments" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="department" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:long"/>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="description" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="medications" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="medication" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:long"/>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="description" type="xs:string"/>
+                                        <xs:element name="manufacturer" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="labTests" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="labTest" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:long"/>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="description" type="xs:string"/>
+                                        <xs:element name="cost" type="xs:double"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,34 +1,44 @@
 <hospital>
-    <patient>
-        <id>1</id>
-        <firstName>John</firstName>
-        <lastName>Doe</lastName>
-        <dateOfBirth>1990-01-01</dateOfBirth>
-        <gender>Male</gender>
-        <address>123 Main St</address>
-        <contactNumber>1234567890</contactNumber>
-    </patient>
-    <nurse>
-        <id>1</id>
-        <firstName>Mary</firstName>
-        <lastName>Smith</lastName>
-        <assignedIdDepartment>2</assignedIdDepartment>
-    </nurse>
-    <department>
-        <id>1</id>
-        <name>Cardiology</name>
-        <description>Heart-related treatments</description>
-    </department>
-    <medication>
-        <id>1</id>
-        <name>Aspirin</name>
-        <description>Pain reliever</description>
-        <manufacturer>Bayer</manufacturer>
-    </medication>
-    <labTest>
-        <id>1</id>
-        <name>Blood Test</name>
-        <description>Basic blood analysis</description>
-        <cost>50.0</cost>
-    </labTest>
+    <patients>
+        <patient>
+            <id>1</id>
+            <firstName>John</firstName>
+            <lastName>Doe</lastName>
+            <dateOfBirth>1990-01-01</dateOfBirth>
+            <gender>Male</gender>
+            <address>123 Main Street</address>
+            <contactNumber>1234567890</contactNumber>
+        </patient>
+    </patients>
+    <nurses>
+        <nurse>
+            <id>1</id>
+            <firstName>Jane</firstName>
+            <lastName>Smith</lastName>
+            <assignedIdDepartment>2</assignedIdDepartment>
+        </nurse>
+    </nurses>
+    <departments>
+        <department>
+            <id>2</id>
+            <name>Cardiology</name>
+            <description>Heart-related treatments</description>
+        </department>
+    </departments>
+    <medications>
+        <medication>
+            <id>1</id>
+            <name>Aspirin</name>
+            <description>Pain reliever</description>
+            <manufacturer>Bayer</manufacturer>
+        </medication>
+    </medications>
+    <labTests>
+        <labTest>
+            <id>1</id>
+            <name>Blood Test</name>
+            <description>Checks blood composition</description>
+            <cost>50.0</cost>
+        </labTest>
+    </labTests>
 </hospital>
