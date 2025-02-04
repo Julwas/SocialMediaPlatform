@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class XMLParser {
-    // Метод для проверки XML на основе XSD
+
     public static boolean validateXML(String xmlFilePath, String xsdFilePath) {
         try {
             SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
@@ -30,7 +30,6 @@ public class XMLParser {
         }
     }
 
-    // Метод для парсинга XML с использованием DOM
     public static void parseXML(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
