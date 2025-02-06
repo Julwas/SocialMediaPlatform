@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <patient>
+            <patients_id>1</patients_id>
+            <first_name>John</first_name>
+            <last_name>Doe</last_name>
+            <date_of_birth>1990-01-01</date_of_birth>
+            <gender>Male</gender>
+            <address>123 Main Street</address>
+            <contact_number>1234567890</contact_number>
+        </patient>

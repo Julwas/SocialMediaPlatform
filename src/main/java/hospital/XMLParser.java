@@ -45,9 +45,10 @@ public class XMLParser {
                 Node patientNode = patients.item(i);
                 if (patientNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element patient = (Element) patientNode;
-                    System.out.println("Patient ID: " + patient.getElementsByTagName("id").item(0).getTextContent());
-                    System.out.println("First Name: " + patient.getElementsByTagName("firstName").item(0).getTextContent());
-                    System.out.println("Last Name: " + patient.getElementsByTagName("lastName").item(0).getTextContent());
+                    System.out.println("Patient ID: " + patient.getElementsByTagName("patients_id").item(0).getTextContent());
+                    System.out.println("First Name: " + patient.getElementsByTagName("first_name").item(0).getTextContent());
+                    System.out.println("Last Name: " + patient.getElementsByTagName("last_name").item(0).getTextContent());
+
                 }
             }
         } catch (Exception e) {
