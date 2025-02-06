@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.imlementation.BillingDAO;
+import hospital.dao.mySQL.BillingDAO;
 import hospital.model.Billing;
 import hospital.service.BillingService;
 

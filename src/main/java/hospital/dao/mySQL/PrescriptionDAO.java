@@ -1,7 +1,6 @@
-package hospital.dao.imlementation;
+package hospital.dao.mySQL;
 
 import hospital.dao.AbstractDAO;
-import hospital.model.Patient;
 import hospital.model.Prescription;
 
 import java.sql.*;

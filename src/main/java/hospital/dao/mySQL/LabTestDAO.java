@@ -1,4 +1,4 @@
-package hospital.dao.imlementation;
+package hospital.dao.mySQL;
 
 import hospital.dao.IGenericDAO;
 import hospital.model.LabTest;

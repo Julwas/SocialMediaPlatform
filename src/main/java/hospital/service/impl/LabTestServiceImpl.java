@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.imlementation.LabTestDAO;
+import hospital.dao.mySQL.LabTestDAO;
 import hospital.model.LabTest;
 import hospital.service.LabTestService;
 

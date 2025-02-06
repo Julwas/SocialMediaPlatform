@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.imlementation.PatientDAO;
+import hospital.dao.mySQL.PatientDAO;
 import hospital.model.Patient;
 import hospital.service.PatientService;
 

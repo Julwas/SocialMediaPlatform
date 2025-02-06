@@ -1,4 +1,4 @@
-package hospital.dao.imlementation;
+package hospital.dao.mySQL;
 
 import hospital.dao.AbstractDAO;
 import hospital.model.Patient;

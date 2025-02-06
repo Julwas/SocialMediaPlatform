@@ -1,10 +1,7 @@
-package hospital.dao.imlementation;
+package hospital.dao.mySQL;
 
 import hospital.dao.AbstractDAO;
-import hospital.dao.IMedicationsDAO;
-import hospital.model.Medication;
 import hospital.model.Nurse;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,15 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MedicationsDAO extends AbstractDAO<Medication, Long> {
+public class NurseDAO extends AbstractDAO<Nurse, Long> {
+
     @Override
-    public void create(Medication medication) {
-        String sql = "INSERT INTO medication (name, description, manufacturer) VALUES (?, ?, ?)";
+    public void create(Nurse nurse) {
+        String sql = "INSERT INTO nurses (first_name, last_name, assigned_id_department) VALUES (?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, medication.getName());
-            ps.setString(2, medication.getDescription());
-            ps.setString(3, medication.getManufacturer());
+            ps.setString(1, nurse.getFirstName());
+            ps.setString(2, nurse.getLastName());
+            ps.setLong(3, nurse.getDepartmentId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,18 +27,18 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
     }
 
     @Override
-    public Optional<Medication> read(Long id) {
-        String sql = "SELECT * FROM medication WHERE medications_id = ?";
+    public Optional<Nurse> read(Long id) {
+        String sql = "SELECT * FROM nurses WHERE nurses_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Medication medication = new Medication(
-                        rs.getLong("medications_id"),
-                        rs.getString("name"),
-                        rs.getString("description"),
-                        rs.getString("manufacturer")
+                Nurse nurse = new Nurse(
+                        rs.getLong("nurses_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getLong("assigned_id_department")
                 );
             }
         } catch (SQLException e) {
@@ -50,13 +48,13 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
     }
 
     @Override
-    public void update(Medication medication) {
-        String sql = "UPDATE medication SET name = ?,description = ?, manufacturer = ? WHERE medications_id = ?";
+    public void update(Nurse nurse) {
+        String sql = "UPDATE nurses SET first_name = ?,last_name = ?, assigned_id_department = ? WHERE nurses_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, medication.getName());
-            ps.setString(2, medication.getDescription());
-            ps.setString(3, medication.getManufacturer());
-            ps.setLong(4, medication.getId());
+            ps.setString(1, nurse.getFirstName());
+            ps.setString(2, nurse.getLastName());
+            ps.setLong(3, nurse.getDepartmentId());
+            ps.setLong(4, nurse.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +63,7 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM medication WHERE medications_id = ?";
+        String sql = "DELETE FROM nurses WHERE nurses_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
             ps.executeUpdate();
@@ -75,26 +73,26 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
     }
 
     @Override
-    public List<Medication> findAll() {
-        String sql = "SELECT * FROM medications";
-        List<Medication> medications = new ArrayList<>();
-
+    public List<Nurse> findAll() {
+        String sql = "SELECT * FROM nurses";
+        List<Nurse> nurses = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 if (rs.next()) {
-                    Medication medication= new Medication(
-                            rs.getLong("medications_id"),
-                            rs.getString("name"),
-                            rs.getString("description"),
-                            rs.getString("manufacturer")
+                    Nurse nurse = new Nurse(
+                            rs.getLong("nurses_id"),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
+                            rs.getLong("assigned_id_department")
                     );
-                    medications.add(medication);
+                    nurses.add(nurse);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return medications;
+        return nurses;
     }
-}
+    }
+
