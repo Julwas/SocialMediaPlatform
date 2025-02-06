@@ -7,7 +7,7 @@ import hospital.service.LabTestService;
 import java.util.List;
 import java.util.Optional;
 
-public class LabTestServiceImpl implements LabTestService {
+public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
     private final LabTestDAO labTestDAO;
 
     public LabTestServiceImpl(LabTestDAO labTestDAO) {
@@ -15,7 +15,7 @@ public class LabTestServiceImpl implements LabTestService {
     }
 
     @Override
-    public void createLabTest(LabTest labTest) {
+    public void add(LabTest labTest) {
         if (labTest != null) {
             labTestDAO.create(labTest);
         } else {
@@ -24,7 +24,7 @@ public class LabTestServiceImpl implements LabTestService {
     }
 
     @Override
-    public Optional<LabTest> getLabTestById(Long id) {
+    public Optional<LabTest> getById(Long id) {
         if (id != null) {
             return labTestDAO.read(id);
         } else {
@@ -33,7 +33,7 @@ public class LabTestServiceImpl implements LabTestService {
     }
 
     @Override
-    public void updateLabTest(LabTest labTest) {
+    public void update(LabTest labTest) {
         if (labTest != null && labTest.getId() != null) {
             labTestDAO.update(labTest);
         } else {
@@ -42,7 +42,7 @@ public class LabTestServiceImpl implements LabTestService {
     }
 
     @Override
-    public void removeLabTest(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             labTestDAO.delete(id);
         } else {
@@ -51,7 +51,7 @@ public class LabTestServiceImpl implements LabTestService {
     }
 
     @Override
-    public List<LabTest> getAllLabTests() {
+    public List<LabTest> getAll() {
         return labTestDAO.findAll();
     }
 }

@@ -7,7 +7,7 @@ import hospital.service.DepartmentService;
 import java.util.List;
 import java.util.Optional;
 
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentServiceImpl implements DepartmentService<Department , Long> {
     private final DepartmentDAO departmentDAO;
 
     public DepartmentServiceImpl(DepartmentDAO departmentDAO) {
@@ -15,7 +15,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void addDepartment(Department department) {
+    public void add(Department department) {
         if (department != null) {
             departmentDAO.create(department);
         } else {
@@ -24,25 +24,19 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Optional<Department> getDepartmentById(Long id) {
-        if (id != null) {
+    public Optional <Department> getById(Long id) {
             return departmentDAO.read(id);
-        } else {
-            throw new IllegalArgumentException("ID cannot be null");
-        }
+
     }
 
     @Override
-    public void updateDepartment(Department department) {
-        if (department != null && department.getId() != null) {
+    public void update(Department department) {
             departmentDAO.update(department);
-        } else {
-            throw new IllegalArgumentException("Department or ID cannot be null");
-        }
+
     }
 
     @Override
-    public void removeDepartment(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             departmentDAO.delete(id);
         } else {
@@ -51,7 +45,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Department> getAllDepartments() {
+    public List<Department> getAll() {
         return departmentDAO.findAll();
     }
 }

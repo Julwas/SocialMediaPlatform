@@ -8,7 +8,7 @@ import hospital.service.MedicationService;
 import java.util.List;
 import java.util.Optional;
 
-public class MedicationServiceImpl implements MedicationService {
+public class MedicationServiceImpl implements MedicationService<Medication, Long> {
     private final MedicationsDAO medicationsDAO;
 
     public MedicationServiceImpl(MedicationsDAO medicationsDAO) {
@@ -16,7 +16,7 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public void addMedication(Medication medication) {
+    public void add(Medication medication) {
         if (medication != null) {
             medicationsDAO.create(medication);
         } else {
@@ -25,7 +25,7 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public Optional<Medication> getMedication(Long id) {
+    public Optional<Medication> getById(Long id) {
         if (id != null) {
             return medicationsDAO.read(id);
         } else {
@@ -34,7 +34,7 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public void updateMedication(Medication medication) {
+    public void update(Medication medication) {
         if (medication != null && medication.getId() != null) {
             medicationsDAO.update(medication);
         } else {
@@ -43,7 +43,7 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public void deleteMedication(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             medicationsDAO.delete(id);
         } else {
@@ -52,7 +52,7 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public List<Medication> getAllMedications() {
+    public List<Medication> getAll() {
         return medicationsDAO.findAll();
     }
 }

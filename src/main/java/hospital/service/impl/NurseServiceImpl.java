@@ -7,7 +7,7 @@ import hospital.service.NurseService;
 import java.util.List;
 import java.util.Optional;
 
-public class NurseServiceImpl implements NurseService {
+public class NurseServiceImpl implements NurseService<Nurse, Long> {
     private final NurseDAO nurseDAO;
 
     public NurseServiceImpl(NurseDAO nurseDAO) {
@@ -15,7 +15,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public void addNurse(Nurse nurse) {
+    public void add(Nurse nurse) {
         if (nurse != null) {
             nurseDAO.create(nurse);
         } else {
@@ -24,7 +24,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public Optional<Nurse> getNurseById(Long id) {
+    public Optional<Nurse> getById(Long id) {
         if (id != null) {
             return nurseDAO.read(id);
         } else {
@@ -33,7 +33,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public void updateNurse(Nurse nurse) {
+    public void update(Nurse nurse) {
         if (nurse != null && nurse.getId() != null) {
             nurseDAO.update(nurse);
         } else {
@@ -42,7 +42,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public void removeNurse(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             nurseDAO.delete(id);
         } else {
@@ -51,7 +51,7 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public List<Nurse> getAllNurses() {
+    public List<Nurse> getAll() {
         return nurseDAO.findAll();
     }
 }

@@ -7,14 +7,14 @@ import hospital.service.AdmissionService;
 import java.util.List;
 import java.util.Optional;
 
-public class AdmissionServiceImpl implements AdmissionService {
+public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
     private final AdmissionDAO admissionDAO;
     public AdmissionServiceImpl(AdmissionDAO admissionDAO) {
         this.admissionDAO = admissionDAO;
     }
 
     @Override
-    public void addAdmission(Admission admission) {
+    public void add(Admission admission) {
         if (admission != null) {
             admissionDAO.create(admission);
         } else {
@@ -23,23 +23,26 @@ public class AdmissionServiceImpl implements AdmissionService {
     }
 
     @Override
-    public Optional<Optional<Admission>> getAdmissionById(Long id) {
-        Optional<Admission> admission = admissionDAO.read(id);
-        return Optional.ofNullable(admission);
+    public Optional<Admission> getById(Long id) {
+        if (id != null) {
+            return admissionDAO.read(id);
+        } else {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
     }
 
     @Override
-    public void updateAdmission(Admission admission) {
+    public void update(Admission admission) {
         admissionDAO.update(admission);
     }
 
     @Override
-    public void removeAdmission(Long id) {
+    public void remove(Long id) {
         admissionDAO.delete(id);
     }
 
     @Override
-    public List<Admission> getAllAdmissions() {
+    public List<Admission> getAll() {
         return admissionDAO.findAll();
     }
 }

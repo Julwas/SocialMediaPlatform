@@ -7,30 +7,33 @@ import hospital.service.PatientService;
 import java.util.List;
 import java.util.Optional;
 
-public class PatientServiceImpl implements PatientService {
+
+public class PatientServiceImpl implements PatientService <Patient, Long> {
     private final PatientDAO patientDAO = new PatientDAO();
+
+
     @Override
-    public void addPatient(Patient patient) {
+    public void add(Patient patient) {
         patientDAO.create(patient);
     }
-  @Override
-  public Optional<Patient> getPatient(Long id) {
-          return patientDAO.read(id);
-
-  }
 
     @Override
-    public void updatePatient(Patient patient) {
-            patientDAO.update(patient);
+    public Optional<Patient> getById(Long id) {
+        return patientDAO.read(id);
     }
 
     @Override
-    public void deletePatient(Long id) {
-            patientDAO.delete(id);
+    public void update(Patient patient) {
+        patientDAO.update(patient);
     }
 
     @Override
-    public List<Patient> getAllPatients() {
+    public void remove(Long id) {
+        patientDAO.delete(id);
+    }
+
+    @Override
+    public List<Patient> getAll() {
         return patientDAO.findAll();
     }
 }

@@ -7,13 +7,13 @@ import hospital.service.DoctorService;
 import java.util.List;
 import java.util.Optional;
 
-public class DoctorServiceImpl implements DoctorService {
+public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
     private final DoctorDAO doctorDAO;
     public DoctorServiceImpl(DoctorDAO doctorDAO) {
         this.doctorDAO = doctorDAO;
     }
     @Override
-    public void addDoctor(Doctor doctor) {
+    public void add(Doctor doctor) {
         if (doctor != null) {
             doctorDAO.create(doctor);
         } else {
@@ -21,8 +21,10 @@ public class DoctorServiceImpl implements DoctorService {
         }
     }
 
+
+
     @Override
-    public Optional<Doctor> getDoctorById(Long id) {
+    public Optional<Doctor> getById(Long id) {
         if (id != null) {
             return doctorDAO.read(id);
         } else {
@@ -31,7 +33,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public void updateDoctor(Doctor doctor) {
+    public void update(Doctor doctor) {
         if (doctor != null && doctor.getId() != null) {
             doctorDAO.update(doctor);
         } else {
@@ -39,8 +41,10 @@ public class DoctorServiceImpl implements DoctorService {
         }
     }
 
+
+
     @Override
-    public void removeDoctor(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             doctorDAO.delete(id);
         } else {
@@ -49,7 +53,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public List<Doctor> getAllDoctors() {
+    public List<Doctor> getAll() {
         return doctorDAO.findAll();
     }
 }

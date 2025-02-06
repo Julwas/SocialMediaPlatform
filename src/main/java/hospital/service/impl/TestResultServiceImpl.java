@@ -7,14 +7,15 @@ import hospital.service.TestResultService;
 import java.util.List;
 import java.util.Optional;
 
-public class TestResultServiceImpl implements TestResultService {
+public class TestResultServiceImpl implements TestResultService<TestResult, Long> {
     private final TestResultDAO testResultDAO;
 
     public TestResultServiceImpl(TestResultDAO testResultDAO) {
         this.testResultDAO = testResultDAO;
     }
+
     @Override
-    public void createTestResult(TestResult testResult) {
+    public void add(TestResult testResult) {
         if (testResult != null) {
             testResultDAO.create(testResult);
         } else {
@@ -23,7 +24,7 @@ public class TestResultServiceImpl implements TestResultService {
     }
 
     @Override
-    public Optional<TestResult> getTestResultById(Long id) {
+    public Optional<TestResult> getById(Long id) {
         if (id != null) {
             return testResultDAO.read(id);
         } else {
@@ -32,7 +33,7 @@ public class TestResultServiceImpl implements TestResultService {
     }
 
     @Override
-    public void updateTestResut(TestResult testResult) {
+    public void update(TestResult testResult) {
         if (testResult != null && testResult.getId() != null) {
             testResultDAO.update(testResult);
         } else {
@@ -41,7 +42,7 @@ public class TestResultServiceImpl implements TestResultService {
     }
 
     @Override
-    public void removeTestResut(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             testResultDAO.delete(id);
         } else {
@@ -50,7 +51,7 @@ public class TestResultServiceImpl implements TestResultService {
     }
 
     @Override
-    public List<TestResult> getAllTestResults() {
+    public List<TestResult> getAll() {
         return testResultDAO.findAll();
     }
 }

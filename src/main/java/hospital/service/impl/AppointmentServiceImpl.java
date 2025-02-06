@@ -7,15 +7,14 @@ import hospital.service.AppointmentService;
 import java.util.List;
 import java.util.Optional;
 
-public class AppointmentServiceImpl implements AppointmentService {
+public class AppointmentServiceImpl implements AppointmentService<Appointment, Long> {
     private final AppointmentDAO appointmentDAO;
     public AppointmentServiceImpl(AppointmentDAO appointmentDAO) {
-
         this.appointmentDAO = appointmentDAO;
     }
 
     @Override
-    public void addAppointment(Appointment appointment) {
+    public void add(Appointment appointment) {
         if (appointment != null) {
             appointmentDAO.create(appointment);
         } else {
@@ -24,7 +23,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> getAppointment(Long id) {
+    public Optional<Appointment> getById(Long id) {
         if (id != null) {
             return appointmentDAO.read(id);
         } else {
@@ -32,9 +31,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }
 
-
     @Override
-    public void updateAppointment(Appointment appointment) {
+    public void update(Appointment appointment) {
         if (appointment != null && appointment.getId() != null) {
             appointmentDAO.update(appointment);
         } else {
@@ -43,15 +41,13 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointment(Long id) {
-        if (id != null) {
-            appointmentDAO.delete(id);
-        } else {
-            throw new IllegalArgumentException("ID cannot be null");
-        }
+    public void remove(Long id) {
+        appointmentDAO.delete(id);
     }
+
+
     @Override
-    public List<Appointment> getAllAppointments() {
+    public List<Appointment> getAll() {
         return appointmentDAO.findAll();
     }
 

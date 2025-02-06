@@ -7,7 +7,7 @@ import hospital.service.BillingService;
 import java.util.List;
 import java.util.Optional;
 
-public class BillingServiceImpl implements BillingService {
+public class BillingServiceImpl implements BillingService<Billing, Long> {
     private final BillingDAO billingDAO;
 
     public BillingServiceImpl(BillingDAO billingDAO) {
@@ -15,7 +15,7 @@ public class BillingServiceImpl implements BillingService {
     }
 
     @Override
-    public void addBilling(Billing billing) {
+    public void add(Billing billing) {
         if (billing != null) {
             billingDAO.create(billing);
         } else {
@@ -24,7 +24,7 @@ public class BillingServiceImpl implements BillingService {
     }
 
     @Override
-    public Optional<Billing> getBillingById(Long id) {
+    public Optional<Billing> getById(Long id) {
         if (id != null) {
             return billingDAO.read(id);
         } else {
@@ -33,7 +33,7 @@ public class BillingServiceImpl implements BillingService {
     }
 
     @Override
-    public void updateBilling(Billing billing) {
+    public void update(Billing billing) {
         if (billing != null && billing.getId() != null) {
             billingDAO.update(billing);
         } else {
@@ -42,7 +42,7 @@ public class BillingServiceImpl implements BillingService {
     }
 
     @Override
-    public void removeBilling(Long id) {
+    public void remove(Long id) {
         if (id != null) {
             billingDAO.delete(id);
         } else {
@@ -51,7 +51,7 @@ public class BillingServiceImpl implements BillingService {
     }
 
     @Override
-    public List<Billing> getAllBillings() {
+    public List<Billing> getAll() {
         return billingDAO.findAll();
     }
 }
