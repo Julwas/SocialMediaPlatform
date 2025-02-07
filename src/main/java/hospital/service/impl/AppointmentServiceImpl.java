@@ -4,6 +4,7 @@ import hospital.dao.mySQL.AppointmentDAO;
 import hospital.model.Appointment;
 import hospital.service.AppointmentService;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class AppointmentServiceImpl implements AppointmentService<Appointment, L
     }
 
     @Override
-    public Optional<Appointment> getById(Long id) {
+    public Optional<Appointment> getById(Long id) throws SQLException {
         if (id != null) {
             return appointmentDAO.read(id);
         } else {

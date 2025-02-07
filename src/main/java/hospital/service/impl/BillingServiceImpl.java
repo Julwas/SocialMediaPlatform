@@ -4,6 +4,7 @@ import hospital.dao.mySQL.BillingDAO;
 import hospital.model.Billing;
 import hospital.service.BillingService;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class BillingServiceImpl implements BillingService<Billing, Long> {
     }
 
     @Override
-    public Optional<Billing> getById(Long id) {
+    public Optional<Billing> getById(Long id) throws SQLException {
         if (id != null) {
             return billingDAO.read(id);
         } else {

@@ -4,6 +4,7 @@ import hospital.dao.mySQL.LabTestDAO;
 import hospital.model.LabTest;
 import hospital.service.LabTestService;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
     }
 
     @Override
-    public Optional<LabTest> getById(Long id) {
+    public Optional<LabTest> getById(Long id) throws SQLException {
         if (id != null) {
             return labTestDAO.read(id);
         } else {

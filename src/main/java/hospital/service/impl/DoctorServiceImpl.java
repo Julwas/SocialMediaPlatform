@@ -4,6 +4,7 @@ import hospital.dao.mySQL.DoctorDAO;
 import hospital.model.Doctor;
 import hospital.service.DoctorService;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
 
 
     @Override
-    public Optional<Doctor> getById(Long id) {
+    public Optional<Doctor> getById(Long id) throws SQLException {
         if (id != null) {
             return doctorDAO.read(id);
         } else {
