@@ -12,7 +12,6 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public void create(Appointment appointment) {
-       // patient_id_appointments`, `doctor_id_appointments`, `appointment_date`, `status
         String sql = "INSERT INTO appointments (patient_id_appointments, doctor_id_appointments, " +
                 "appointment_date, status) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -27,11 +26,12 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
     }
 
     @Override
-    public Optional<Appointment> read(Long id) {
+    public Optional<Appointment> read(Long id) throws SQLException {
         String sql = "SELECT * FROM appointments WHERE appointment_id = ?";
+        ResultSet rs = null;
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new Appointment(
                         rs.getLong("appointment_id"),
@@ -43,6 +43,8 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            rs.close();
         }
         return Optional.empty();
     }

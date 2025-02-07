@@ -26,11 +26,12 @@ public class LabTestDAO implements IGenericDAO<LabTest, Long> {
     }
 
     @Override
-    public Optional<LabTest> read(Long id) {
+    public Optional<LabTest> read(Long id) throws SQLException {
         String sql = "SELECT * FROM LabTest WHERE labTest_id = ?";
+        ResultSet rs = null;
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new LabTest(
                         rs.getLong("labTest_id"),
@@ -41,6 +42,8 @@ public class LabTestDAO implements IGenericDAO<LabTest, Long> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            rs.close();
         }
         return Optional.empty();
     }

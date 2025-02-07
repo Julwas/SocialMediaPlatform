@@ -33,11 +33,12 @@ public class BillingDAO  extends AbstractDAO<Billing, Long>{
     }
 
     @Override
-    public Optional<Billing> read(Long id) {
+    public Optional<Billing> read(Long id) throws SQLException {
         String sql = "SELECT * FROM billing WHERE billing_id = ?";
+        ResultSet rs = null;
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new Billing(
                         rs.getLong("billing_id"),
@@ -52,6 +53,8 @@ public class BillingDAO  extends AbstractDAO<Billing, Long>{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            rs.close();
         }
         return Optional.empty();
     }

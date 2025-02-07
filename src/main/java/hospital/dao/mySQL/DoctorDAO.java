@@ -28,11 +28,12 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
     }
 
     @Override
-    public Optional<Doctor> read(Long id) {
+    public Optional<Doctor> read(Long id) throws SQLException {
         String sql = "SELECT * FROM doctors WHERE id = ?";
+        ResultSet rs = null;
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (rs.next()) {
                 Doctor doctor = new Doctor(
                         rs.getLong("doctors_id"),
@@ -45,6 +46,8 @@ public class DoctorDAO extends AbstractDAO<Doctor, Long>  {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            rs.close();
         }
         return Optional.empty();
     }

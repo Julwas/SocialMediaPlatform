@@ -29,11 +29,12 @@ public class AdmissionDAO implements IGenericDAO<Admission, Long> {
     }
 
     @Override
-    public Optional<Admission> read(Long id) {
+    public Optional<Admission> read(Long id) throws SQLException {
         String sql = "SELECT * FROM admissions WHERE admissions_id = ?";
+        ResultSet rs = null;
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if (rs.next()) {
                 return Optional.of(new Admission(
                         rs.getLong("admissions_id"),
@@ -45,6 +46,8 @@ public class AdmissionDAO implements IGenericDAO<Admission, Long> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            rs.close();
         }
         return Optional.empty();
     }
