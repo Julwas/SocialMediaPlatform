@@ -4,11 +4,12 @@ import hospital.model.Patient;
 import hospital.service.PatientService;
 import hospital.service.impl.PatientServiceImpl;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         PatientService patientService = new PatientServiceImpl();
 
