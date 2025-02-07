@@ -13,7 +13,8 @@ public class Main {
 
         PatientService patientService = new PatientServiceImpl();
 
-        Patient patient = new Patient(null, "John", "Doe", LocalDate.of(1990, 1, 1), "Male", "123 Street", 1234567890L);
+        Patient patient = new Patient(null, "John", "Doe", LocalDate.of(1990, 1,
+                1), "Male", "123 Street", 1234567890L);
         patientService.add(patient);
         System.out.println("Patient added successfully.");
 
