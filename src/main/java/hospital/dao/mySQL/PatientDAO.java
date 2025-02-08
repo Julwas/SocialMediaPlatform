@@ -13,7 +13,8 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
   @Override
     public  void create(Patient patient) {
 
-        String sql = "INSERT INTO patients (patients_id, first_name, last_name, date_of_birth, gender, address, contact_number) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO patients (patients_id, first_name, last_name, date_of_birth, gender, " +
+                "address, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, patient.getId());
@@ -57,13 +58,14 @@ public class PatientDAO extends AbstractDAO<Patient, Long> {
         String sql = "UPDATE patients SET first_name = ?, last_name = ?, date_of_birth = ?, gender = ?, address = ?," +
                 " contact_number = ? WHERE patients_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, patient.getId());
-            ps.setString(2, patient.getFirstName());
-            ps.setString(3, patient.getLastName());
-            ps.setDate(4, Date.valueOf(patient.getDateOfBirth()));
-            ps.setString(5, patient.getGender());
-            ps.setString(6, patient.getAddress());
-            ps.setLong(7, patient.getContactNumber());
+
+            ps.setString(1, patient.getFirstName());
+            ps.setString(2, patient.getLastName());
+            ps.setDate(3, Date.valueOf(patient.getDateOfBirth()));
+            ps.setString(4, patient.getGender());
+            ps.setString(5, patient.getAddress());
+            ps.setLong(6, patient.getContactNumber());
+            ps.setLong(7, patient.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

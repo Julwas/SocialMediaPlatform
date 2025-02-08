@@ -13,9 +13,9 @@ public class Main {
 
         PatientService patientService = new PatientServiceImpl();
 
-        Patient patient = new Patient(null, "John", "Doe", LocalDate.of(1990, 1,
-                1), "Male", "123 Street", 1234567890L);
-        patientService.create(patient);
+        Patient patient = new Patient(150L, "Jack", "Smith", LocalDate.of(1980, 5,
+                15), "Male", "123 Palm Street", 125454321L);
+            patientService.create(patient);
         System.out.println("Patient added successfully.");
 
 
