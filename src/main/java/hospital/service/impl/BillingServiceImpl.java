@@ -16,7 +16,7 @@ public class BillingServiceImpl implements BillingService<Billing, Long> {
     }
 
     @Override
-    public void add(Billing billing) {
+    public void create(Billing billing) {
         if (billing != null) {
             billingDAO.create(billing);
         } else {
@@ -25,7 +25,7 @@ public class BillingServiceImpl implements BillingService<Billing, Long> {
     }
 
     @Override
-    public Optional<Billing> getById(Long id) throws SQLException {
+    public Optional<Billing> read(Long id) throws SQLException {
         if (id != null) {
             return billingDAO.read(id);
         } else {
@@ -43,7 +43,7 @@ public class BillingServiceImpl implements BillingService<Billing, Long> {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             billingDAO.delete(id);
         } else {

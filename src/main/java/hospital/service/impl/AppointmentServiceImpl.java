@@ -15,7 +15,7 @@ public class AppointmentServiceImpl implements AppointmentService<Appointment, L
     }
 
     @Override
-    public void add(Appointment appointment) {
+    public void create(Appointment appointment) {
         if (appointment != null) {
             appointmentDAO.create(appointment);
         } else {
@@ -24,7 +24,7 @@ public class AppointmentServiceImpl implements AppointmentService<Appointment, L
     }
 
     @Override
-    public Optional<Appointment> getById(Long id) throws SQLException {
+    public Optional<Appointment> read(Long id) throws SQLException {
         if (id != null) {
             return appointmentDAO.read(id);
         } else {
@@ -42,7 +42,7 @@ public class AppointmentServiceImpl implements AppointmentService<Appointment, L
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         appointmentDAO.delete(id);
     }
 

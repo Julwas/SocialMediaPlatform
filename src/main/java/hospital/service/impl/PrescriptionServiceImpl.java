@@ -11,12 +11,12 @@ public class PrescriptionServiceImpl implements PrescriptionService<Prescription
     private final PrescriptionDAO prescriptionDAO = new PrescriptionDAO();
 
     @Override
-    public void add(Prescription prescription) {
+    public void create(Prescription prescription) {
         prescriptionDAO.create(prescription);
     }
 
     @Override
-    public Optional<Prescription> getById(Long id) {
+    public Optional<Prescription> read(Long id) {
         if (id != null) {
             return prescriptionDAO.read(id);
         } else {
@@ -34,7 +34,7 @@ public class PrescriptionServiceImpl implements PrescriptionService<Prescription
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
 
         if (id != null) {
             prescriptionDAO.delete(id);

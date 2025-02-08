@@ -39,7 +39,6 @@ public class XMLParser {
 
             System.out.println("Root Element: " + document.getDocumentElement().getNodeName());
 
-            // Пример парсинга пациентов
             NodeList patients = document.getElementsByTagName("patient");
             for (int i = 0; i < patients.getLength(); i++) {
                 Node patientNode = patients.item(i);

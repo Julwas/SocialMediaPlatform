@@ -15,7 +15,7 @@ public class TestResultServiceImpl implements TestResultService<TestResult, Long
     }
 
     @Override
-    public void add(TestResult testResult) {
+    public void create(TestResult testResult) {
         if (testResult != null) {
             testResultDAO.create(testResult);
         } else {
@@ -24,7 +24,7 @@ public class TestResultServiceImpl implements TestResultService<TestResult, Long
     }
 
     @Override
-    public Optional<TestResult> getById(Long id) {
+    public Optional<TestResult> read(Long id) {
         if (id != null) {
             return testResultDAO.read(id);
         } else {
@@ -42,7 +42,7 @@ public class TestResultServiceImpl implements TestResultService<TestResult, Long
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             testResultDAO.delete(id);
         } else {

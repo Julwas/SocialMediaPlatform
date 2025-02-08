@@ -15,9 +15,8 @@ public class TestResultDAO extends AbstractDAO<TestResult, Long> {
 
     @Override
     public void create(TestResult testResult) {
-        //patient_id_test_result`, `lab_test_id_test_result`, `test_date`, `doctor_id_test_result`, `result
-            String sql = "INSERT INTO test_results (patient_id_test_result, lab_test_id_test_result, test_date," +
-                    " doctor_id_test_result, result) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO test_results (test_results_id, patient_id_test_result, lab_test_id_test_result, test_date," +
+                    " doctor_id_test_result, result) VALUES (?, ?, ?, ?, ?, ?)";
             try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setLong(1, testResult.getId());
                 ps.setLong(2, testResult.getLabTestId());
@@ -29,7 +28,7 @@ public class TestResultDAO extends AbstractDAO<TestResult, Long> {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-    }
+            }
 
     @Override
     public Optional<TestResult> read(Long id) {
@@ -55,7 +54,8 @@ public class TestResultDAO extends AbstractDAO<TestResult, Long> {
 
     @Override
     public void update(TestResult testResult) {
-        String sql = "UPDATE test_results SET labTestId = ?, patientId = ?, result = ?, date = ? WHERE test_results_id = ?";
+        String sql = "UPDATE test_results SET lab_test_id_test_result = ?, patient_id_test_result = ?," +
+                "doctor_id_test_result = ?, test_date = ?, result = ?, WHERE test_results_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, testResult.getId());
             ps.setLong(2, testResult.getLabTestId());

@@ -15,7 +15,7 @@ public class DepartmentServiceImpl implements DepartmentService<Department , Lon
     }
 
     @Override
-    public void add(Department department) {
+    public void create(Department department) {
         if (department != null) {
             departmentDAO.create(department);
         } else {
@@ -24,7 +24,7 @@ public class DepartmentServiceImpl implements DepartmentService<Department , Lon
     }
 
     @Override
-    public Optional <Department> getById(Long id) {
+    public Optional <Department> read(Long id) {
             return departmentDAO.read(id);
 
     }
@@ -36,7 +36,7 @@ public class DepartmentServiceImpl implements DepartmentService<Department , Lon
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             departmentDAO.delete(id);
         } else {

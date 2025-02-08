@@ -15,15 +15,15 @@ public class Main {
 
         Patient patient = new Patient(null, "John", "Doe", LocalDate.of(1990, 1,
                 1), "Male", "123 Street", 1234567890L);
-        patientService.add(patient);
+        patientService.create(patient);
         System.out.println("Patient added successfully.");
 
 
-        Optional<Patient> retrievedPatient = patientService.getById(11L);
+        Optional<Patient> retrievedPatient = patientService.read(11L);
         retrievedPatient.ifPresentOrElse(System.out::println,
                 () -> System.out.println("Patient with ID was not found."));
 
-        Optional<Patient> patientToUpdate = patientService.getById(12L);
+        Optional<Patient> patientToUpdate = patientService.read(12L);
         if (patientToUpdate.isPresent()) {
             Patient updatedPatient = patientToUpdate.get();
             updatedPatient.setAddress("789 New Street");

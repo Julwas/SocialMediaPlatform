@@ -3,8 +3,6 @@ package hospital.model;
 import java.sql.Date;
 
 public class Billing {
-   //patient_id_billing`, `admission_id_billing`, `total_amount`, `paid_amount`, `billing_date`, `payment_status`,
-   //`labtest_id_billing`
     private Long id;
     private Long patientId;
     private Long admissionId;

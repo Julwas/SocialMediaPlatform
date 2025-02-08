@@ -12,13 +12,14 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public void create(Appointment appointment) {
-        String sql = "INSERT INTO appointments (patient_id_appointments, doctor_id_appointments, " +
+        String sql = "INSERT INTO appointments (appointments_id, patient_id_appointments, doctor_id_appointments, " +
                 "appointment_date, status) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, appointment.getPatientId());
-            ps.setLong(2, appointment.getDoctorId());
-            ps.setTimestamp(3, Timestamp.valueOf(appointment.getAppointmentDate()));
-            ps.setString(4, appointment.getStatus());
+            ps.setLong(1, appointment.getId());
+            ps.setLong(2, appointment.getPatientId());
+            ps.setLong(3, appointment.getDoctorId());
+            ps.setTimestamp(4, Timestamp.valueOf(appointment.getAppointmentDate()));
+            ps.setString(5, appointment.getStatus());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,11 +55,11 @@ public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
         String sql = "UPDATE appointments SET patient_id_appointments = ?, doctor_id_appointments = ?, appointment_date = ?, status = ?" +
                 " WHERE appointment_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, appointment.getPatientId());
-            ps.setLong(2, appointment.getDoctorId());
-            ps.setTimestamp(3, Timestamp.valueOf(appointment.getAppointmentDate()));
-            ps.setString(4, appointment.getStatus());
-            ps.setLong(5, appointment.getId());
+            ps.setLong(1, appointment.getId());
+            ps.setLong(2, appointment.getPatientId());
+            ps.setLong(3, appointment.getDoctorId());
+            ps.setTimestamp(4, Timestamp.valueOf(appointment.getAppointmentDate()));
+            ps.setString(5, appointment.getStatus());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

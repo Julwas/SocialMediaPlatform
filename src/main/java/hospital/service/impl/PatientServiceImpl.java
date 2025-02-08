@@ -13,12 +13,12 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
 
 
     @Override
-    public void add(Patient patient) {
+    public void create(Patient patient) {
         patientDAO.create(patient);
     }
 
     @Override
-    public Optional<Patient> getById(Long id) {
+    public Optional<Patient> read(Long id) {
         return patientDAO.read(id);
     }
 
@@ -28,7 +28,7 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         patientDAO.delete(id);
     }
 

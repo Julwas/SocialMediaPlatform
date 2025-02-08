@@ -15,7 +15,7 @@ public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
     }
 
     @Override
-    public void add(Admission admission) {
+    public void create(Admission admission) {
         if (admission != null) {
             admissionDAO.create(admission);
         } else {
@@ -24,7 +24,7 @@ public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
     }
 
     @Override
-    public Optional<Admission> getById(Long id) throws SQLException {
+    public Optional<Admission> read(Long id) throws SQLException {
         if (id != null) {
             return admissionDAO.read(id);
         } else {
@@ -38,7 +38,7 @@ public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         admissionDAO.delete(id);
     }
 

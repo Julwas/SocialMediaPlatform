@@ -17,11 +17,12 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
 
     @Override
     public void create(Department department) {
-        String sql = "INSERT INTO departments (name, description) VALUES (?, ?)";
+        String sql = "INSERT INTO departments (department_id, name, description) VALUES (?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, department.getName());
-            ps.setString(2, department.getDescription());
+            ps.setLong(1, department.getId());
+            ps.setString(2, department.getName());
+            ps.setString(3, department.getDescription());
             ps.executeUpdate();
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -59,9 +60,9 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
         String sql = "UPDATE departments SET name = ?, description = ? WHERE department_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, department.getName());
-            ps.setString(2, department.getDescription());
-            ps.setLong(3, department.getId());
+            ps.setLong(1, department.getId());
+            ps.setString(2, department.getName());
+            ps.setString(3, department.getDescription());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error updating department", e);
@@ -89,7 +90,7 @@ public class DepartmentDAO extends AbstractDAO<Department, Long> {
              ResultSet resultSet = ps.executeQuery()) {
             while (resultSet.next()) {
                 departments.add(new Department(
-                        resultSet.getLong("id"),
+                        resultSet.getLong("department_id"),
                         resultSet.getString("name"),
                         resultSet.getString("description")
                 ));

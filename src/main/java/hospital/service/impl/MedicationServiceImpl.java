@@ -16,7 +16,7 @@ public class MedicationServiceImpl implements MedicationService<Medication, Long
     }
 
     @Override
-    public void add(Medication medication) {
+    public void create(Medication medication) {
         if (medication != null) {
             medicationsDAO.create(medication);
         } else {
@@ -25,7 +25,7 @@ public class MedicationServiceImpl implements MedicationService<Medication, Long
     }
 
     @Override
-    public Optional<Medication> getById(Long id) {
+    public Optional<Medication> read(Long id) {
         if (id != null) {
             return medicationsDAO.read(id);
         } else {
@@ -43,7 +43,7 @@ public class MedicationServiceImpl implements MedicationService<Medication, Long
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             medicationsDAO.delete(id);
         } else {

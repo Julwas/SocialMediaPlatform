@@ -15,7 +15,7 @@ public class NurseServiceImpl implements NurseService<Nurse, Long> {
     }
 
     @Override
-    public void add(Nurse nurse) {
+    public void create(Nurse nurse) {
         if (nurse != null) {
             nurseDAO.create(nurse);
         } else {
@@ -24,7 +24,7 @@ public class NurseServiceImpl implements NurseService<Nurse, Long> {
     }
 
     @Override
-    public Optional<Nurse> getById(Long id) {
+    public Optional<Nurse> read(Long id) {
         if (id != null) {
             return nurseDAO.read(id);
         } else {
@@ -42,7 +42,7 @@ public class NurseServiceImpl implements NurseService<Nurse, Long> {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             nurseDAO.delete(id);
         } else {

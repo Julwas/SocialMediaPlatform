@@ -16,7 +16,7 @@ public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
     }
 
     @Override
-    public void add(LabTest labTest) {
+    public void create(LabTest labTest) {
         if (labTest != null) {
             labTestDAO.create(labTest);
         } else {
@@ -25,7 +25,7 @@ public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
     }
 
     @Override
-    public Optional<LabTest> getById(Long id) throws SQLException {
+    public Optional<LabTest> read(Long id) throws SQLException {
         if (id != null) {
             return labTestDAO.read(id);
         } else {
@@ -43,7 +43,7 @@ public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             labTestDAO.delete(id);
         } else {

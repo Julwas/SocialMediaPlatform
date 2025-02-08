@@ -1,50 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <hospital>
-
-    <patient>
-        <patients_id>11</patients_id>
-        <first_name>James</first_name>
-        <last_name>Smith</last_name>
-        <date_of_birth>1980-05-15</date_of_birth>
-        <gender>Male</gender>
-        <address>100 Elm Street</address>
-        <contact_number>987654321</contact_number>
-    </patient>
-
-
-       <nurse>
-    <nurses_id>1</nurses_id>
-    <first_name>Jane</first_name>
-    <last_name>Smith</last_name>
-    <assigned_id_department>2</assigned_id_department>
-</nurse>
-
-
-
-<department>
-    <department_id>2</department_id>
-    <name>Cardiology</name>
-    <description>Heart-related treatments</description>
-</department>
-
-
-
-<medication>
-    <medication_id>1</medication_id>
-    <name>Aspirin</name>
-    <description>Pain reliever</description>
-    <manufacturer>Bayer</manufacturer>
-</medication>
-
-
-
-<labTest>
-    <labTest_id>1</labTest_id>
-    <name>Blood Test</name>
-    <description>Checks blood composition</description>
-    <cost>50.0</cost>
-</labTest>
-
-
-        </hospital>
+<hospital>
+    <patients>
+        <patient>
+            <patients_id>11</patients_id>
+            <first_name>James</first_name>
+            <last_name>Smith</last_name>
+            <date_of_birth>1980-05-15</date_of_birth>
+            <gender>Male</gender>
+            <address>100 Elm Street</address>
+            <contact_number>987654321</contact_number>
+        </patient>
+    </patients>
+    <nurses>
+        <nurse>
+            <nurses_id>1</nurses_id>
+            <first_name>Jane</first_name>
+            <last_name>Smith</last_name>
+            <assigned_id_department>2</assigned_id_department>
+        </nurse>
+    </nurses>
+    <departments>
+        <department>
+            <department_id>2</department_id>
+            <name>Cardiology</name>
+            <description>Heart-related treatments</description>
+        </department>
+    </departments>
+    <medications>
+        <medication>
+            <medication_id>1</medication_id>
+            <name>Aspirin</name>
+            <description>Pain reliever</description>
+            <manufacturer>Bayer</manufacturer>
+        </medication>
+    </medications>
+    <labTests>
+        <labTest>
+            <labTest_id>1</labTest_id>
+            <name>Blood Test</name>
+            <description>Checks blood composition</description>
+            <cost>50.0</cost>
+        </labTest>
+    </labTests>
+</hospital>

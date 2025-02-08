@@ -14,7 +14,7 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
         this.doctorDAO = doctorDAO;
     }
     @Override
-    public void add(Doctor doctor) {
+    public void create(Doctor doctor) {
         if (doctor != null) {
             doctorDAO.create(doctor);
         } else {
@@ -25,7 +25,7 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
 
 
     @Override
-    public Optional<Doctor> getById(Long id) throws SQLException {
+    public Optional<Doctor> read(Long id) throws SQLException {
         if (id != null) {
             return doctorDAO.read(id);
         } else {
@@ -45,7 +45,7 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
 
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         if (id != null) {
             doctorDAO.delete(id);
         } else {

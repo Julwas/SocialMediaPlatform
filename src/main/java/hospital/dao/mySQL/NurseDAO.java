@@ -14,12 +14,12 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
 
     @Override
     public void create(Nurse nurse) {
-        String sql = "INSERT INTO nurses (first_name, last_name, assigned_id_department) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO nurses (nurses_id, first_name, last_name, assigned_id_department) VALUES (?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, nurse.getFirstName());
-            ps.setString(2, nurse.getLastName());
-            ps.setLong(3, nurse.getDepartmentId());
+            ps.setLong(1, nurse.getDepartmentId());
+            ps.setString(2, nurse.getFirstName());
+            ps.setString(3, nurse.getLastName());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,10 +51,10 @@ public class NurseDAO extends AbstractDAO<Nurse, Long> {
     public void update(Nurse nurse) {
         String sql = "UPDATE nurses SET first_name = ?,last_name = ?, assigned_id_department = ? WHERE nurses_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, nurse.getFirstName());
-            ps.setString(2, nurse.getLastName());
-            ps.setLong(3, nurse.getDepartmentId());
-            ps.setLong(4, nurse.getId());
+            ps.setLong(1, nurse.getId());
+            ps.setString(2, nurse.getFirstName());
+            ps.setString(3, nurse.getLastName());
+            ps.setLong(4, nurse.getDepartmentId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

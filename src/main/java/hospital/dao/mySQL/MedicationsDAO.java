@@ -14,12 +14,13 @@ import java.util.Optional;
 public class MedicationsDAO extends AbstractDAO<Medication, Long> {
     @Override
     public void create(Medication medication) {
-        String sql = "INSERT INTO medication (name, description, manufacturer) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO medication (medications_id, name, description, manufacturer) VALUES (?, ?, ?)";
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, medication.getName());
-            ps.setString(2, medication.getDescription());
-            ps.setString(3, medication.getManufacturer());
+            ps.setLong(1, medication.getId());
+            ps.setString(2, medication.getName());
+            ps.setString(3, medication.getDescription());
+            ps.setString(4, medication.getManufacturer());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,10 +52,10 @@ public class MedicationsDAO extends AbstractDAO<Medication, Long> {
     public void update(Medication medication) {
         String sql = "UPDATE medication SET name = ?,description = ?, manufacturer = ? WHERE medications_id = ?";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, medication.getName());
-            ps.setString(2, medication.getDescription());
-            ps.setString(3, medication.getManufacturer());
-            ps.setLong(4, medication.getId());
+            ps.setLong(1, medication.getId());
+            ps.setString(2, medication.getName());
+            ps.setString(3, medication.getDescription());
+            ps.setString(4, medication.getManufacturer());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
