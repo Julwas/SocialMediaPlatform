@@ -1,0 +1,46 @@
+{
+  "hospital": {
+    "patients": {
+      "patient": {
+        "patients_id": 11,
+        "first_name": "James",
+        "last_name": "Smith",
+        "date_of_birth": "1980-05-15",
+        "gender": "Male",
+        "address": "100 Elm Street",
+        "contact_number": 987654321
+      }
+    },
+    "nurses": {
+      "nurse": {
+        "nurses_id": 1,
+        "first_name": "Jane",
+        "last_name": "Smith",
+        "assigned_id_department": 2
+      }
+    },
+    "departments": {
+      "department": {
+        "department_id": 2,
+        "name": "Cardiology",
+        "description": "Heart-related treatments"
+      }
+    },
+    "medications": {
+      "medication": {
+        "medication_id": 1,
+        "name": "Aspirin",
+        "description": "Pain reliever",
+        "manufacturer": "Bayer"
+      }
+    },
+    "labTests": {
+      "labTest": {
+        "labTest_id": 1,
+        "name": "Blood Test",
+        "description": "Checks blood composition",
+        "cost": 50
+      }
+    }
+  }
+}
