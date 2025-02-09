@@ -1,25 +1,38 @@
 package hospital.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
-
+@JsonRootName("hospital")
+@JsonPropertyOrder({"patients", "nurses", "departments", "medications", "labTests"})
 @XmlRootElement(name = "hospital")
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Hospital {
+    @JsonProperty("patients")
     @XmlElementWrapper(name = "patients")
     @XmlElement(name = "patient")
     private List<Patient> patients;
+
+    @JsonProperty("nurses")
     @XmlElementWrapper(name = "nurses")
     @XmlElement(name = "nurse")
     private List<Nurse> nurses;
+
+    @JsonProperty("departments")
     @XmlElementWrapper(name = "departments")
     @XmlElement(name = "department")
     private List<Department> departments;
+
+    @JsonProperty("medications")
     @XmlElementWrapper(name = "medications")
     @XmlElement(name = "medication")
     private List<Medication> medications;
+
+    @JsonProperty("labTests")
     @XmlElementWrapper(name = "labTests")
     @XmlElement(name = "labTest")
     private List<LabTest> labTests;

@@ -1,6 +1,7 @@
 package hospital.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -8,12 +9,19 @@ import jakarta.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class LabTest {
+    @JsonProperty("labTest_id")
     @XmlElement(name = "labTest_id")
     private Long id;
+
+    @JsonProperty("name")
     @XmlElement(name = "name")
     private String name;
+
+    @JsonProperty("description")
     @XmlElement(name = "description")
     private String description;
+
+    @JsonProperty("cost")
     @XmlElement(name = "cost")
     private Double cost;
 

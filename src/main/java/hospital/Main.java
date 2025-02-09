@@ -1,5 +1,8 @@
 package hospital;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 import hospital.model.*;
 import hospital.service.PatientService;
@@ -16,9 +19,9 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        PatientService patientService = new PatientServiceImpl();
+       PatientService patientService = new PatientServiceImpl();
 
-        Patient patient = new Patient(152L, "Jack", "Smith", LocalDate.of(1980, 5,
+        Patient patient = new Patient(153L, "Jack", "Smith", LocalDate.of(1980, 5,
                 15), "Male", "123 Palm Street", 125454321L);
         patientService.create(patient);
         System.out.println("Patient added successfully.");
@@ -67,5 +70,25 @@ public class Main {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+       //JASON
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
+            objectMapper.registerModule(new JavaTimeModule());
+
+            Hospital hospital = objectMapper.readValue(new File("src/main/java/resources/hospital.jason"),
+                    Hospital.class);
+
+            System.out.println(hospital);
+
+            /*
+            objectMapper.writerWithDefaultPrettyPrinter()
+                    .writeValue(new File("src/main/java/resources/output_hospital.json"), hospital);*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
+    }
+

@@ -1,46 +1,78 @@
 {
   "hospital": {
-    "patients": {
-      "patient": {
-        "patients_id": 11,
-        "first_name": "James",
-        "last_name": "Smith",
-        "date_of_birth": "1980-05-15",
-        "gender": "Male",
-        "address": "100 Elm Street",
-        "contact_number": 987654321
-      }
-    },
-    "nurses": {
-      "nurse": {
-        "nurses_id": 1,
-        "first_name": "Jane",
-        "last_name": "Smith",
-        "assigned_id_department": 2
-      }
-    },
-    "departments": {
-      "department": {
-        "department_id": 2,
-        "name": "Cardiology",
-        "description": "Heart-related treatments"
-      }
-    },
-    "medications": {
-      "medication": {
-        "medication_id": 1,
-        "name": "Aspirin",
-        "description": "Pain reliever",
-        "manufacturer": "Bayer"
-      }
-    },
-    "labTests": {
-      "labTest": {
-        "labTest_id": 1,
-        "name": "Blood Test",
-        "description": "Checks blood composition",
-        "cost": 50
-      }
-    }
-  }
+                "patients": [
+                  {
+                    "patients_id": 11,
+                    "first_name": "James",
+                    "last_name": "Smith",
+                    "date_of_birth": "1980-05-15",
+                    "gender": "Male",
+                    "address": "100 Elm Street",
+                    "contact_number": 987654321
+                  },
+                  {
+                    "patients_id": 12,
+                    "first_name": "Emily",
+                    "last_name": "Johnson",
+                    "date_of_birth": "1992-03-22",
+                    "gender": "Female",
+                    "address": "200 Pine Avenue",
+                    "contact_number": 123456789
+                  }
+                ],
+                "nurses": [
+                  {
+                    "nurses_id": 1,
+                    "first_name": "Jane",
+                    "last_name": "Smith",
+                    "assigned_id_department": 2
+                  },
+                  {
+                    "nurses_id": 2,
+                    "first_name": "John",
+                    "last_name": "Doe",
+                    "assigned_id_department": 3
+                  }
+                ],
+                "departments": [
+                  {
+                    "department_id": 2,
+                    "name": "Cardiology",
+                    "description": "Heart-related treatments"
+                  },
+                  {
+                    "department_id": 3,
+                    "name": "Neurology",
+                    "description": "Brain and nervous system treatments"
+                  }
+                ],
+                "medications": [
+                  {
+                    "medication_id": 1,
+                    "name": "Aspirin",
+                    "description": "Pain reliever",
+                    "manufacturer": "Bayer"
+                  },
+                  {
+                    "medication_id": 2,
+                    "name": "Ibuprofen",
+                    "description": "Anti-inflammatory drug",
+                    "manufacturer": "Advil"
+                  }
+                ],
+                "labTests": [
+                  {
+                    "labTest_id": 1,
+                    "name": "Blood Test",
+                    "description": "Checks blood composition",
+                    "cost": 50.0
+                  },
+                  {
+                    "labTest_id": 2,
+                    "name": "MRI",
+                    "description": "Magnetic resonance imaging scan",
+                    "cost": 200.0
+                  }
+                ]
+              }
 }
