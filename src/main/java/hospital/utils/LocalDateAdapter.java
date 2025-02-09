@@ -1,4 +1,4 @@
-package hospital;
+package hospital.utils;
 
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
