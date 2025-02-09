@@ -1,9 +1,14 @@
 package hospital;
 
-import hospital.model.Patient;
+import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
+import hospital.model.*;
 import hospital.service.PatientService;
 import hospital.service.impl.PatientServiceImpl;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -13,9 +18,9 @@ public class Main {
 
         PatientService patientService = new PatientServiceImpl();
 
-        Patient patient = new Patient(150L, "Jack", "Smith", LocalDate.of(1980, 5,
+        Patient patient = new Patient(152L, "Jack", "Smith", LocalDate.of(1980, 5,
                 15), "Male", "123 Palm Street", 125454321L);
-            patientService.create(patient);
+        patientService.create(patient);
         System.out.println("Patient added successfully.");
 
 
@@ -34,6 +39,7 @@ public class Main {
         }
 
         //XML validation check and parsing
+        System.out.println();
 
         String xmlFilePath = "src/main/java/resources/hospital.xml";
         String xsdFilePath = "src/main/java/resources/hospital.xsd";
@@ -45,6 +51,21 @@ public class Main {
             XMLParser.parseXML(xmlFilePath);
         } else {
             System.out.println("XML is not valid.");
+        }
+
+        //JAXB
+        System.out.println();
+
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Hospital.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+            Hospital hospital = (Hospital) unmarshaller
+                    .unmarshal(new File("src/main/java/resources/hospital.xml"));
+            System.out.println("Parsed hospital data: " + hospital);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
         }
     }
 }

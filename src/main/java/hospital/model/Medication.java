@@ -1,11 +1,24 @@
 package hospital.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Medication {
+    @XmlElement(name = "medication_id")
     private Long id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "description")
     private String description;
+    @XmlElement(name = "manufacturer")
     private String manufacturer;
 
+    public Medication() {
+
+    }
 
     public Medication(Long id, String name, String description, String manufacturer) {
         this.id = id;
@@ -18,7 +31,6 @@ public class Medication {
         this(null, name, description, manufacturer);
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -50,6 +62,7 @@ public class Medication {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
     @Override
     public String toString() {
         return "Medications{" +

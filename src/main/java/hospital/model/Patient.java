@@ -1,17 +1,39 @@
 package hospital.model;
 
+
+import hospital.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import java.time.LocalDate;
 
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Patient {
+    @XmlElement(name = "patients_id")
     private Long id;
+    @XmlElement(name = "first_name")
     private String firstName;
+    @XmlElement(name = "last_name")
     private String lastName;
+    @XmlElement(name = "date_of_birth")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dateOfBirth;
+    @XmlElement(name = "gender")
     private String gender;
+    @XmlElement(name = "address")
     private String address;
+    @XmlElement(name = "contact_number")
     private Long contactNumber;
 
-    public Patient(Long id, String firstName, String lastName, LocalDate dateOfBirth, String gender, String address, Long contactNumber) {
+    public Patient() {
+    }
+
+    public Patient(Long id, String firstName, String lastName, LocalDate dateOfBirth, String gender,
+                   String address, Long contactNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

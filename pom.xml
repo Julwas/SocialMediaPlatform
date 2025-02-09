@@ -43,15 +43,16 @@
     </dependency>
     <!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
     <dependency>
-        <groupId>jakarta.xml.bind</groupId>
-        <artifactId>jakarta.xml.bind-api</artifactId>
-        <version>4.0.2</version>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-core</artifactId>
+        <version>4.0.4</version>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jaxb</groupId>
         <artifactId>jaxb-runtime</artifactId>
         <version>4.0.5</version>
     </dependency>
+
 
 </dependencies>
     <build>
@@ -67,15 +68,11 @@
                 <target>maven.compiler.target</target-->
             </configuration>
         </plugin>
-
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
             <version>3.4.1</version>
-
         </plugin>
     </plugins>
-
 </build>
-
 </project>

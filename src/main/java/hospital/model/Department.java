@@ -1,9 +1,21 @@
 package hospital.model;
 
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Department {
+    @XmlElement(name = "department_id")
     private Long id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "description")
     private String description;
+
+    public Department() {
+    }
 
     public Department(Long id, String name, String description) {
         this.id = id;
@@ -15,7 +27,6 @@ public class Department {
         this(null, name, description);
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -39,6 +50,7 @@ public class Department {
     public void setDescription(String location) {
         this.description = description;
     }
+
     @Override
     public String toString() {
         return "Department{" +
