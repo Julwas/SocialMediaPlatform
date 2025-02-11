@@ -17,7 +17,11 @@ public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
     @Override
     public void create(Admission admission) {
         if (admission != null) {
-            admissionDAO.create(admission);
+            try {
+                admissionDAO.create(admission);
+            } catch (SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Admission cannot be null");
         }

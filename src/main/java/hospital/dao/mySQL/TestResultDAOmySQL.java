@@ -3,10 +3,7 @@ package hospital.dao.mySQL;
 import hospital.dao.AbstractDAO;
 import hospital.model.TestResult;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,20 +11,27 @@ import java.util.Optional;
 public class TestResultDAOmySQL extends AbstractDAO<TestResult, Long> {
 
     @Override
-    public void create(TestResult testResult) {
-            String sql = "INSERT INTO test_results (test_results_id, patient_id_test_result, lab_test_id_test_result, test_date," +
-                    " doctor_id_test_result, result) VALUES (?, ?, ?, ?, ?, ?)";
-            try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setLong(1, testResult.getId());
-                ps.setLong(2, testResult.getLabTestId());
-                ps.setLong(3, testResult.getPatientId());
-                ps.setLong(4, testResult.getDoctorId());
-                ps.setString(5, testResult.getResult());
-                ps.setDate(6, testResult.getDate());
-                ps.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
+    public Long create(TestResult testResult) throws SQLException {
+        String sql = "INSERT INTO test_results (patient_id_test_result, lab_test_id_test_result, test_date, " +
+                "doctor_id_test_result, result) VALUES (?, ?, ?, ?, ?)";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setLong(1, testResult.getPatientId());
+            ps.setLong(2, testResult.getLabTestId());
+            ps.setDate(3, testResult.getDate());
+            ps.setLong(4, testResult.getDoctorId());
+            ps.setString(5, testResult.getResult());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                    }
+                }
             }
+            throw new SQLException("Creating test result failed, no ID obtained.");
+        }
             }
 
     @Override

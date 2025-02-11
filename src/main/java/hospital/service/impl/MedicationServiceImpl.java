@@ -18,7 +18,11 @@ public class MedicationServiceImpl implements MedicationService<Medication, Long
     @Override
     public void create(Medication medication) {
         if (medication != null) {
-            medicationsDAO.create(medication);
+            try {
+                medicationsDAO.create(medication);
+            } catch (java.sql.SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Medication cannot be null");
         }

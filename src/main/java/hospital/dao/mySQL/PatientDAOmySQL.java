@@ -11,23 +11,34 @@ import java.util.Optional;
 public class PatientDAOmySQL extends AbstractDAO<Patient, Long> {
 
   @Override
-    public  void create(Patient patient) {
+    public Long create(Patient patient) throws SQLException {
 
-        String sql = "INSERT INTO patients (patients_id, first_name, last_name, date_of_birth, gender, " +
-                "address, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, patient.getId());
-            ps.setString(2, patient.getFirstName());
-            ps.setString(3, patient.getLastName());
-            ps.setDate(4, Date.valueOf(patient.getDateOfBirth()));
-            ps.setString(5, patient.getGender());
-            ps.setString(6, patient.getAddress());
-            ps.setLong(7, patient.getContactNumber());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+      String sql = "INSERT INTO patients (first_name, last_name, date_of_birth, gender, address, contact_number) " +
+              "VALUES (?, ?, ?, ?, ?, ?)";
+      try (Connection connection = getConnection();
+           PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+          ps.setString(1, patient.getFirstName());
+          ps.setString(2, patient.getLastName());
+          ps.setDate(3, Date.valueOf(patient.getDateOfBirth()));
+          ps.setString(4, patient.getGender());
+          ps.setString(5, patient.getAddress());
+          ps.setLong(6, patient.getContactNumber());
+
+          int rowsAffected = ps.executeUpdate();
+
+          if (rowsAffected > 0) {
+              try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                  if (generatedKeys.next()) {
+                      return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                  } else {
+                      throw new SQLException("Creating patient failed, no ID obtained.");
+                  }
+              }
+          } else {
+              throw new SQLException("Creating patient failed, no rows affected.");
+          }
+      }
     }
     @Override
     public Optional<Patient> read(Long id) {

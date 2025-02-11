@@ -17,7 +17,11 @@ public class AppointmentServiceImpl implements AppointmentService<Appointment, L
     @Override
     public void create(Appointment appointment) {
         if (appointment != null) {
-            appointmentDAO.create(appointment);
+            try {
+                appointmentDAO.create(appointment);
+            } catch (SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Appointment cannot be null");
         }

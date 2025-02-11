@@ -14,7 +14,11 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
 
     @Override
     public void create(Patient patient) {
-        patientDAO.create(patient);
+        try {
+            patientDAO.create(patient);
+        } catch (java.sql.SQLException throwables) {
+            throw new RuntimeException(throwables);
+        }
     }
 
     @Override

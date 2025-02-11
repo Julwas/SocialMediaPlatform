@@ -12,7 +12,11 @@ public class PrescriptionServiceImpl implements PrescriptionService<Prescription
 
     @Override
     public void create(Prescription prescription) {
-        prescriptionDAO.create(prescription);
+        try {
+            prescriptionDAO.create(prescription);
+        } catch (java.sql.SQLException throwables) {
+            throw new RuntimeException(throwables);
+        }
     }
 
     @Override

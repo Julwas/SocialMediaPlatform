@@ -18,7 +18,11 @@ public class BillingServiceImpl implements BillingService<Billing, Long> {
     @Override
     public void create(Billing billing) {
         if (billing != null) {
-            billingDAO.create(billing);
+            try {
+                billingDAO.create(billing);
+            } catch (SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Billing cannot be null");
         }

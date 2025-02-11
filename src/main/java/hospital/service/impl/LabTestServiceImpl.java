@@ -18,7 +18,11 @@ public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
     @Override
     public void create(LabTest labTest) {
         if (labTest != null) {
-            labTestDAO.create(labTest);
+            try {
+                labTestDAO.create(labTest);
+            } catch (SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("LabTest cannot be null");
         }

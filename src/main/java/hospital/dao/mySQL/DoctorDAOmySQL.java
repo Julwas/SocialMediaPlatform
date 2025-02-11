@@ -13,17 +13,24 @@ public class DoctorDAOmySQL extends AbstractDAO<Doctor, Long>  {
 
 
     @Override
-    public void create(Doctor doctor) {
-        String sql = "INSERT INTO doctors (doctors_id, first_name, last_name, specialization, department_id) VALUES (?, ?, ?, ?, ?)";
-        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, doctor.getId());
-            ps.setString(2, doctor.getFirstName());
-            ps.setString(3, doctor.getLastName());
-            ps.setString(4, doctor.getSpecialization());
-            ps.setLong(5, doctor.getDepartmentId());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Long create(Doctor doctor) throws SQLException {
+        String sql = "INSERT INTO doctors (first_name, last_name, specialization, department_id) VALUES (?, ?, ?, ?)";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, doctor.getFirstName());
+            ps.setString(2, doctor.getLastName());
+            ps.setString(3, doctor.getSpecialization());
+            ps.setLong(4, doctor.getDepartmentId());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                    }
+                }
+            }
+            throw new SQLException("Creating doctor failed, no ID obtained.");
         }
     }
 

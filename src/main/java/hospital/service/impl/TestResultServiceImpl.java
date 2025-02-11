@@ -17,7 +17,11 @@ public class TestResultServiceImpl implements TestResultService<TestResult, Long
     @Override
     public void create(TestResult testResult) {
         if (testResult != null) {
-            testResultDAO.create(testResult);
+            try {
+                testResultDAO.create(testResult);
+            } catch (java.sql.SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("LabTest cannot be null");
         }

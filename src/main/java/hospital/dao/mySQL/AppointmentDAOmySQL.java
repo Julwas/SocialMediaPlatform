@@ -11,18 +11,31 @@ import java.util.Optional;
 public class AppointmentDAOmySQL extends AbstractDAO<Appointment, Long>  {
 
     @Override
-    public void create(Appointment appointment) {
-        String sql = "INSERT INTO appointments (appointments_id, patient_id_appointments, doctor_id_appointments, " +
+    public Long create(Appointment appointment) throws SQLException {
+        String sql = "INSERT INTO appointments (patient_id_appointments, doctor_id_appointments, " +
                 "appointment_date, status) VALUES (?, ?, ?, ?)";
-        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, appointment.getId());
-            ps.setLong(2, appointment.getPatientId());
-            ps.setLong(3, appointment.getDoctorId());
-            ps.setTimestamp(4, Timestamp.valueOf(appointment.getAppointmentDate()));
-            ps.setString(5, appointment.getStatus());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            // Устанавливаем параметры для PreparedStatement
+            ps.setLong(1, appointment.getPatientId());
+            ps.setLong(2, appointment.getDoctorId());
+            ps.setTimestamp(3, Timestamp.valueOf(appointment.getAppointmentDate()));
+            ps.setString(4, appointment.getStatus());
+
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1);
+                    } else {
+                        throw new SQLException("Creating appointment failed, no ID obtained.");
+                    }
+                }
+            } else {
+                throw new SQLException("Creating appointment failed, no rows affected.");
+            }
         }
     }
 

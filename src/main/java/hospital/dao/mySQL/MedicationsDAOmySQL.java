@@ -3,27 +3,30 @@ package hospital.dao.mySQL;
 import hospital.dao.AbstractDAO;
 import hospital.model.Medication;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class MedicationsDAOmySQL extends AbstractDAO<Medication, Long> {
     @Override
-    public void create(Medication medication) {
-        String sql = "INSERT INTO medication (medications_id, name, description, manufacturer) VALUES (?, ?, ?)";
+    public Long create(Medication medication) throws SQLException {
+        String sql = "INSERT INTO medication (name, description, manufacturer) VALUES (?, ?, ?)";
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, medication.getId());
-            ps.setString(2, medication.getName());
-            ps.setString(3, medication.getDescription());
-            ps.setString(4, medication.getManufacturer());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, medication.getName());
+            ps.setString(2, medication.getDescription());
+            ps.setString(3, medication.getManufacturer());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                    }
+                }
+            }
+            throw new SQLException("Creating medication failed, no ID obtained.");
         }
     }
 

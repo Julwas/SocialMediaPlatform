@@ -6,7 +6,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import hospital.model.*;
 import hospital.service.PatientService;
 import hospital.service.impl.PatientServiceImpl;
-import hospital.utils.XMLParser;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;

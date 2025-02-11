@@ -11,24 +11,29 @@ import java.util.Optional;
 public class PrescriptionDAOmySQL extends AbstractDAO<Prescription, Long> {
 
     @Override
-    public void create(Prescription prescription) {
-        String sql = "INSERT INTO prescriptions (prescriptions_id, patient_id_prescriptions, doctor_id_prescriptions, " +
+    public Long create(Prescription prescription) throws SQLException {
+        String sql = "INSERT INTO prescriptions (patient_id_prescriptions, doctor_id_prescriptions, " +
                 "medication_id_prescriptions, dosage, frequency, start_date, end_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setLong(1, prescription.getPatientId());
-            ps.setLong(2, prescription.getId());
-            ps.setLong(3, prescription.getDoctorId());
-            ps.setLong(4, prescription.getMedicationId());
-            ps.setString(5, prescription.getDosage());
-            ps.setString(6, prescription.getFrequency());
-            ps.setDate(7, Date.valueOf(prescription.getStartDate()));
-            ps.setDate(8, Date.valueOf(prescription.getEndDate()));
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            ps.setLong(2, prescription.getDoctorId());
+            ps.setLong(3, prescription.getMedicationId());
+            ps.setString(4, prescription.getDosage());
+            ps.setString(5, prescription.getFrequency());
+            ps.setDate(6, Date.valueOf(prescription.getStartDate()));
+            ps.setDate(7, Date.valueOf(prescription.getEndDate()));
 
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                    }
+                }
+            }
+            throw new SQLException("Creating prescription failed, no ID obtained.");
+        }
     }
 
     @Override

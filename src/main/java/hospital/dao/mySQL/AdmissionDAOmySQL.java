@@ -13,18 +13,28 @@ import static hospital.ConnectionPool.getConnection;
 
 public class AdmissionDAOmySQL implements IGenericDAO<Admission, Long> {
     @Override
-    public void create(Admission admission) {
-        String sql = "INSERT INTO admissions (admissions_id, patient_id_admissions, room_id_admissions, admission_date, " +
-                "discharge_date) VALUES (?, ?, ?, ?, ?)";
-        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, admission.getId());
-            ps.setLong(2, admission.getPatientId());
-            ps.setLong(3, admission.getRoomId());
-            ps.setDate(4, Date.valueOf(admission.getAdmissionDate()));
-            ps.setDate(5, Date.valueOf(admission.getDischargeDate()));
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Long create(Admission admission) throws SQLException {
+        String sql = "INSERT INTO admissions (patient_id_admissions, room_id_admissions, admission_date, discharge_date) " +
+                "VALUES (?, ?, ?, ?)";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setLong(1, admission.getPatientId());
+            ps.setLong(2, admission.getRoomId());
+            ps.setDate(3, Date.valueOf(admission.getAdmissionDate()));
+            ps.setDate(4, Date.valueOf(admission.getDischargeDate()));
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1);
+                    } else {
+                        throw new SQLException("Creating admission failed, no ID obtained.");
+                    }
+                }
+            } else {
+                throw new SQLException("Creating admission failed, no rows affected.");
+            }
         }
     }
 

@@ -12,16 +12,23 @@ import static hospital.ConnectionPool.getConnection;
 
 public class LabTestDAOmySQL implements IGenericDAO<LabTest, Long> {
     @Override
-    public void create(LabTest labTest) {
-        String sql = "INSERT INTO LabTest (labTest_id, name, description, cost) VALUES (?, ?, ?, ?)";
-        try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, labTest.getId());
-            ps.setString(2, labTest.getName());
-            ps.setString(3, labTest.getDescription());
-            ps.setDouble(4, labTest.getCost());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Long create(LabTest labTest) throws SQLException {
+        String sql = "INSERT INTO lab_test (name, description, cost) VALUES (?, ?, ?)";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, labTest.getName());
+            ps.setString(2, labTest.getDescription());
+            ps.setDouble(3, labTest.getCost());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                    }
+                }
+            }
+            throw new SQLException("Creating lab test failed, no ID obtained.");
         }
     }
 

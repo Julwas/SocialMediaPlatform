@@ -17,7 +17,11 @@ public class DepartmentServiceImpl implements DepartmentService<Department , Lon
     @Override
     public void create(Department department) {
         if (department != null) {
-            departmentDAO.create(department);
+            try {
+                departmentDAO.create(department);
+            } catch (java.sql.SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Department cannot be null");
         }

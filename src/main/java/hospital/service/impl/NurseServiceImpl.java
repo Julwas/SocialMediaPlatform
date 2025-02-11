@@ -17,7 +17,11 @@ public class NurseServiceImpl implements NurseService<Nurse, Long> {
     @Override
     public void create(Nurse nurse) {
         if (nurse != null) {
-            nurseDAO.create(nurse);
+            try {
+                nurseDAO.create(nurse);
+            } catch (java.sql.SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Nurse cannot be null");
         }

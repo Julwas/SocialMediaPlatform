@@ -16,7 +16,11 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
     @Override
     public void create(Doctor doctor) {
         if (doctor != null) {
-            doctorDAO.create(doctor);
+            try {
+                doctorDAO.create(doctor);
+            } catch (SQLException throwables) {
+                throw new RuntimeException(throwables);
+            }
         } else {
             throw new IllegalArgumentException("Doctor cannot be null");
         }

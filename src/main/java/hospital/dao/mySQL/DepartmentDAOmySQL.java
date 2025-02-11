@@ -3,10 +3,7 @@ package hospital.dao.mySQL;
 import hospital.dao.AbstractDAO;
 import hospital.model.Department;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,21 +13,22 @@ import java.util.Optional;
 public class DepartmentDAOmySQL extends AbstractDAO<Department, Long> {
 
     @Override
-    public void create(Department department) {
-        String sql = "INSERT INTO departments (department_id, name, description) VALUES (?, ?)";
+    public Long create(Department department) throws SQLException {
+        String sql = "INSERT INTO departments (name, description) VALUES (?, ?)";
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, department.getId());
-            ps.setString(2, department.getName());
-            ps.setString(3, department.getDescription());
-            ps.executeUpdate();
-            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    department.setId(generatedKeys.getLong(1));
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, department.getName());
+            ps.setString(2, department.getDescription());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getLong(1); // Возвращаем сгенерированный ID
+                    }
                 }
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error creating department", e);
+            throw new SQLException("Creating department failed, no ID obtained.");
         }
     }
 

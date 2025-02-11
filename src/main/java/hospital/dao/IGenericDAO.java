@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IGenericDAO<T, ID> {
-    void create(T entity);
+    ID create(T entity) throws SQLException;
     Optional<T> read(ID id) throws SQLException;
     void update(T entity);
     void delete(ID id);
