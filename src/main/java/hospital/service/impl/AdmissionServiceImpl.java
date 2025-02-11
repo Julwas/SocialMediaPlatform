@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.AdmissionDAO;
+import hospital.dao.mySQL.AdmissionDAOmySQL;
 import hospital.model.Admission;
 import hospital.service.AdmissionService;
 
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
-    private final AdmissionDAO admissionDAO;
-    public AdmissionServiceImpl(AdmissionDAO admissionDAO) {
+    private final AdmissionDAOmySQL admissionDAO;
+    public AdmissionServiceImpl(AdmissionDAOmySQL admissionDAO) {
         this.admissionDAO = admissionDAO;
     }
 

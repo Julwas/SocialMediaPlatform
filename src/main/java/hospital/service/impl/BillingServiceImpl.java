@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.BillingDAO;
+import hospital.dao.mySQL.BillingDAOmySQL;
 import hospital.model.Billing;
 import hospital.service.BillingService;
 
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class BillingServiceImpl implements BillingService<Billing, Long> {
-    private final BillingDAO billingDAO;
+    private final BillingDAOmySQL billingDAO;
 
-    public BillingServiceImpl(BillingDAO billingDAO) {
+    public BillingServiceImpl(BillingDAOmySQL billingDAO) {
         this.billingDAO = billingDAO;
     }
 

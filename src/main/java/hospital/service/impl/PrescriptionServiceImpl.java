@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.PrescriptionDAO;
+import hospital.dao.mySQL.PrescriptionDAOmySQL;
 import hospital.model.Prescription;
 import hospital.service.PrescriptionService;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PrescriptionServiceImpl implements PrescriptionService<Prescription, Long> {
-    private final PrescriptionDAO prescriptionDAO = new PrescriptionDAO();
+    private final PrescriptionDAOmySQL prescriptionDAO = new PrescriptionDAOmySQL();
 
     @Override
     public void create(Prescription prescription) {

@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.MedicationsDAO;
+import hospital.dao.mySQL.MedicationsDAOmySQL;
 
 import hospital.model.Medication;
 import hospital.service.MedicationService;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class MedicationServiceImpl implements MedicationService<Medication, Long> {
-    private final MedicationsDAO medicationsDAO;
+    private final MedicationsDAOmySQL medicationsDAO;
 
-    public MedicationServiceImpl(MedicationsDAO medicationsDAO) {
+    public MedicationServiceImpl(MedicationsDAOmySQL medicationsDAO) {
         this.medicationsDAO = medicationsDAO;
     }
 

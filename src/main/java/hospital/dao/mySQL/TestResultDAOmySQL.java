@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class TestResultDAO extends AbstractDAO<TestResult, Long> {
+public class TestResultDAOmySQL extends AbstractDAO<TestResult, Long> {
 
     @Override
     public void create(TestResult testResult) {

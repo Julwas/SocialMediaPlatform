@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.DoctorDAO;
+import hospital.dao.mySQL.DoctorDAOmySQL;
 import hospital.model.Doctor;
 import hospital.service.DoctorService;
 
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
-    private final DoctorDAO doctorDAO;
-    public DoctorServiceImpl(DoctorDAO doctorDAO) {
+    private final DoctorDAOmySQL doctorDAO;
+    public DoctorServiceImpl(DoctorDAOmySQL doctorDAO) {
         this.doctorDAO = doctorDAO;
     }
     @Override

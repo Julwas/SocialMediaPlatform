@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static hospital.ConnectionPool.getConnection;
 
-public class AdmissionDAO implements IGenericDAO<Admission, Long> {
+public class AdmissionDAOmySQL implements IGenericDAO<Admission, Long> {
     @Override
     public void create(Admission admission) {
         String sql = "INSERT INTO admissions (admissions_id, patient_id_admissions, room_id_admissions, admission_date, " +

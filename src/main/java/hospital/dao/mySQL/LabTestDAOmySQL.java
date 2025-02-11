@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static hospital.ConnectionPool.getConnection;
 
-public class LabTestDAO implements IGenericDAO<LabTest, Long> {
+public class LabTestDAOmySQL implements IGenericDAO<LabTest, Long> {
     @Override
     public void create(LabTest labTest) {
         String sql = "INSERT INTO LabTest (labTest_id, name, description, cost) VALUES (?, ?, ?, ?)";

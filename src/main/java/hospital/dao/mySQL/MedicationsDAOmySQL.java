@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MedicationsDAO extends AbstractDAO<Medication, Long> {
+public class MedicationsDAOmySQL extends AbstractDAO<Medication, Long> {
     @Override
     public void create(Medication medication) {
         String sql = "INSERT INTO medication (medications_id, name, description, manufacturer) VALUES (?, ?, ?)";

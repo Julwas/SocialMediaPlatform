@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class NurseDAO extends AbstractDAO<Nurse, Long> {
+public class NurseDAOmySQL extends AbstractDAO<Nurse, Long> {
 
     @Override
     public void create(Nurse nurse) {

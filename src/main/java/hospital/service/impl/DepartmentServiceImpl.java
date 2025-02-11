@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.DepartmentDAO;
+import hospital.dao.mySQL.DepartmentDAOmySQL;
 import hospital.model.Department;
 import hospital.service.DepartmentService;
 
@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class DepartmentServiceImpl implements DepartmentService<Department , Long> {
-    private final DepartmentDAO departmentDAO;
+    private final DepartmentDAOmySQL departmentDAO;
 
-    public DepartmentServiceImpl(DepartmentDAO departmentDAO) {
+    public DepartmentServiceImpl(DepartmentDAOmySQL departmentDAO) {
         this.departmentDAO = departmentDAO;
     }
 

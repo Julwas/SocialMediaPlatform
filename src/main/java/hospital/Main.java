@@ -10,16 +10,20 @@ import hospital.utils.XMLParser;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 
+
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-       PatientService patientService = new PatientServiceImpl();
+      PatientService patientService = new PatientServiceImpl();
 
         Patient patient = new Patient(153L, "Jack", "Smith", LocalDate.of(1980, 5,
                 15), "Male", "123 Palm Street", 125454321L);
@@ -86,9 +90,13 @@ public class Main {
             /*
             objectMapper.writerWithDefaultPrettyPrinter()
                     .writeValue(new File("src/main/java/resources/output_hospital.json"), hospital);*/
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     }
 

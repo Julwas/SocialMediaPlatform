@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.LabTestDAO;
+import hospital.dao.mySQL.LabTestDAOmySQL;
 import hospital.model.LabTest;
 import hospital.service.LabTestService;
 
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class LabTestServiceImpl implements LabTestService<LabTest, Long> {
-    private final LabTestDAO labTestDAO;
+    private final LabTestDAOmySQL labTestDAO;
 
-    public LabTestServiceImpl(LabTestDAO labTestDAO) {
+    public LabTestServiceImpl(LabTestDAOmySQL labTestDAO) {
         this.labTestDAO = labTestDAO;
     }
 

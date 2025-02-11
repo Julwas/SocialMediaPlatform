@@ -13,7 +13,7 @@ import java.util.Optional;
 
 
 
-public class DepartmentDAO extends AbstractDAO<Department, Long> {
+public class DepartmentDAOmySQL extends AbstractDAO<Department, Long> {
 
     @Override
     public void create(Department department) {

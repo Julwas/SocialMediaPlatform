@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PatientDAO extends AbstractDAO<Patient, Long> {
+public class PatientDAOmySQL extends AbstractDAO<Patient, Long> {
 
   @Override
     public  void create(Patient patient) {

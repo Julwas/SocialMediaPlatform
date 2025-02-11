@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AppointmentDAO extends AbstractDAO<Appointment, Long>  {
+public class AppointmentDAOmySQL extends AbstractDAO<Appointment, Long>  {
 
     @Override
     public void create(Appointment appointment) {

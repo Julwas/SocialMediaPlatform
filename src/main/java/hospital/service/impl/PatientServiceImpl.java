@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.PatientDAO;
+import hospital.dao.mySQL.PatientDAOmySQL;
 import hospital.model.Patient;
 import hospital.service.PatientService;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 
 
 public class PatientServiceImpl implements PatientService <Patient, Long> {
-    private final PatientDAO patientDAO = new PatientDAO();
+    private final PatientDAOmySQL patientDAO = new PatientDAOmySQL();
 
 
     @Override

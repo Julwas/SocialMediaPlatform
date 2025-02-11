@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.AppointmentDAO;
+import hospital.dao.mySQL.AppointmentDAOmySQL;
 import hospital.model.Appointment;
 import hospital.service.AppointmentService;
 
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class AppointmentServiceImpl implements AppointmentService<Appointment, Long> {
-    private final AppointmentDAO appointmentDAO;
-    public AppointmentServiceImpl(AppointmentDAO appointmentDAO) {
+    private final AppointmentDAOmySQL appointmentDAO;
+    public AppointmentServiceImpl(AppointmentDAOmySQL appointmentDAO) {
         this.appointmentDAO = appointmentDAO;
     }
 

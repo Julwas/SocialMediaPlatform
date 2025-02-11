@@ -1,6 +1,6 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.TestResultDAO;
+import hospital.dao.mySQL.TestResultDAOmySQL;
 import hospital.model.TestResult;
 import hospital.service.TestResultService;
 
@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class TestResultServiceImpl implements TestResultService<TestResult, Long> {
-    private final TestResultDAO testResultDAO;
+    private final TestResultDAOmySQL testResultDAO;
 
-    public TestResultServiceImpl(TestResultDAO testResultDAO) {
+    public TestResultServiceImpl(TestResultDAOmySQL testResultDAO) {
         this.testResultDAO = testResultDAO;
     }
 

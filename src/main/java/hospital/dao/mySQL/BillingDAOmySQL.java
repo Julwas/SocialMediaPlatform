@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class BillingDAO  extends AbstractDAO<Billing, Long>{
+public class BillingDAOmySQL extends AbstractDAO<Billing, Long>{
     @Override
     public void create(Billing billing) {
         String sql = "INSERT INTO billing (billing_id, patient_id_billing, admission_id_billing, total_amount, paid_amount, " +
