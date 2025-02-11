@@ -18,7 +18,7 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-       PatientService patientService = new PatientServiceImpl();
+       /*PatientService patientService = new PatientServiceImpl();
 
         Patient patient = new Patient(153L, "Jack", "Smith", LocalDate.of(1980, 5,
                 15), "Male", "123 Palm Street", 125454321L);
@@ -70,14 +70,14 @@ public class Main {
             e.printStackTrace();
         }
 
-       //JASON
+       //JSON
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
             objectMapper.registerModule(new JavaTimeModule());
 
-            Hospital hospital = objectMapper.readValue(new File("src/main/java/resources/hospital.jason"),
+            Hospital hospital = objectMapper.readValue(new File("src/main/java/resources/hospital.json"),
                     Hospital.class);
 
             System.out.println(hospital);
@@ -85,7 +85,7 @@ public class Main {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
     }
 
