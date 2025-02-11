@@ -83,9 +83,7 @@ public class Main {
 
             System.out.println(hospital);
 
-            /*
-            objectMapper.writerWithDefaultPrettyPrinter()
-                    .writeValue(new File("src/main/java/resources/output_hospital.json"), hospital);*/
+        
         } catch (Exception e) {
             e.printStackTrace();
         }
