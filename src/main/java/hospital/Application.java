@@ -15,14 +15,13 @@ import java.time.LocalDate;
 public class Application {
     public static void main(String[] args) {
         try {
-            // Загружаем конфигурацию MyBatis mybatis-config.xml
+
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 
-            // Создаем сервис
             PatientServiceImpl patientService = new PatientServiceImpl(sqlSessionFactory);
 
-            // Пример работы
+            // Example of working with a Patient
             Patient patient = new Patient();
             patient.setFirstName("John");
             patient.setLastName("Doe");
