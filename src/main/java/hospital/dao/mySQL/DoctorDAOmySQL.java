@@ -86,7 +86,7 @@ public class DoctorDAOmySQL extends AbstractDAO<Doctor, Long>  {
     }
 
     @Override
-    public List<Doctor> findAll() {
+    public List<Doctor> getAll() {
         List<Doctor> doctors = new ArrayList<>();
         String sql = "SELECT * FROM doctors";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {

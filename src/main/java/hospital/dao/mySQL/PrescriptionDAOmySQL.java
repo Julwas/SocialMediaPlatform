@@ -93,7 +93,7 @@ public class PrescriptionDAOmySQL extends AbstractDAO<Prescription, Long> {
     }
 
     @Override
-    public List<Prescription> findAll() {
+    public List<Prescription> getAll() {
         List<Prescription> prescriptions = new ArrayList<>();
         String sql = "SELECT * FROM prescriptions";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {

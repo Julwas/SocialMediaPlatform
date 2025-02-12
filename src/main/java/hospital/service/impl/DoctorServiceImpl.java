@@ -1,15 +1,70 @@
 package hospital.service.impl;
 
+import hospital.dao.IDoctorDAO;
 import hospital.dao.mySQL.DoctorDAOmySQL;
 import hospital.model.Doctor;
 import hospital.service.DoctorService;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
-    private final DoctorDAOmySQL doctorDAO;
+    private final SqlSessionFactory sqlSessionFactory;
+
+    public DoctorServiceImpl(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    @Override
+    public void create(Doctor doctor) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IDoctorDAO doctorDAO = session.getMapper(IDoctorDAO.class);
+            doctorDAO.create(doctor);
+            session.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Optional<Doctor> read(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IDoctorDAO doctorDAO = session.getMapper(IDoctorDAO.class);
+            return doctorDAO.read(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(Doctor doctor) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IDoctorDAO doctorDAO = session.getMapper(IDoctorDAO.class);
+            doctorDAO.update(doctor);
+            session.commit();
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IDoctorDAO doctorDAO = session.getMapper(IDoctorDAO.class);
+            doctorDAO.delete(id);
+            session.commit();
+        }
+    }
+
+    @Override
+    public List<Doctor> getAll() {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IDoctorDAO doctorDAO = session.getMapper(IDoctorDAO.class);
+            return doctorDAO.getAll();
+        }
+    }
+    /* private final DoctorDAOmySQL doctorDAO;
     public DoctorServiceImpl(DoctorDAOmySQL doctorDAO) {
         this.doctorDAO = doctorDAO;
     }
@@ -60,5 +115,5 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
     @Override
     public List<Doctor> getAll() {
         return doctorDAO.findAll();
-    }
+    }*/
 }

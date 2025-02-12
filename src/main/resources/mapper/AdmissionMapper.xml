@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.IAdmissionDAODAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO admissions (patient_id_admissions, room_id_admissions, admission_date, discharge_date)
+        VALUES (#{patientId}, #{roomId}, #{admissionDate}, #{dischargeDate})
+    </insert>
+
+    <select id="read" resultType="hospital.model.Admission">
+        SELECT * FROM admissions WHERE admission_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE admissions
+        SET patient_id_admissions=#{patientId}, room_id_admissions=#{roomId},
+        admission_date=#{admissionDate}, discharge_date=#{dischargeDate}
+        WHERE admission_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM admissions WHERE admission_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.Admission">
+        SELECT * FROM admissions
+    </select>
+</mapper>

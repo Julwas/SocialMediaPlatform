@@ -90,7 +90,7 @@ public class AdmissionDAOmySQL implements IGenericDAO<Admission, Long> {
     }
 
     @Override
-    public List<Admission> findAll() {
+    public List<Admission> getAll() {
         String sql = "SELECT * FROM admissions";
         List<Admission> admissions = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {

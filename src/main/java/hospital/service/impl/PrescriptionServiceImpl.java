@@ -1,14 +1,71 @@
 package hospital.service.impl;
 
+import hospital.dao.IPrescriptionDAO;
 import hospital.dao.mySQL.PrescriptionDAOmySQL;
 import hospital.model.Prescription;
 import hospital.service.PrescriptionService;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public class PrescriptionServiceImpl implements PrescriptionService<Prescription, Long> {
-    private final PrescriptionDAOmySQL prescriptionDAO = new PrescriptionDAOmySQL();
+
+    private final SqlSessionFactory sqlSessionFactory;
+
+    public PrescriptionServiceImpl(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    @Override
+    public void create(Prescription prescription) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IPrescriptionDAO prescriptionDAO = session.getMapper(IPrescriptionDAO.class);
+            prescriptionDAO.create(prescription);
+            session.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Optional<Prescription> read(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IPrescriptionDAO prescriptionDAO = session.getMapper(IPrescriptionDAO.class);
+            return prescriptionDAO.read(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(Prescription prescription) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IPrescriptionDAO prescriptionDAO = session.getMapper(IPrescriptionDAO.class);
+            prescriptionDAO.update(prescription);
+            session.commit();
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IPrescriptionDAO prescriptionDAO = session.getMapper(IPrescriptionDAO.class);
+            prescriptionDAO.delete(id);
+            session.commit();
+        }
+    }
+
+    @Override
+    public List<Prescription> getAll() {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            IPrescriptionDAO prescriptionDAO = session.getMapper(IPrescriptionDAO.class);
+            return prescriptionDAO.getAll();
+        }
+    }
+    /*private final PrescriptionDAOmySQL prescriptionDAO = new PrescriptionDAOmySQL();
 
     @Override
     public void create(Prescription prescription) {
@@ -50,6 +107,6 @@ public class PrescriptionServiceImpl implements PrescriptionService<Prescription
     @Override
     public List<Prescription> getAll() {
         return prescriptionDAO.findAll();
-    }
+    }*/
 
 }

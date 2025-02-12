@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.IDoctorDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO doctors (first_name, last_name, specialization, department_id)
+        VALUES (#{firstName}, #{lastName}, #{specialization}, #{departmentId})
+    </insert>
+
+    <select id="read" resultType="hospital.model.Doctor">
+        SELECT * FROM doctors WHERE patients_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE doctors
+        SET first_name=#{firstName}, last_name=#{lastName}, specialization=#{specialization},
+        department_id=#{departmentId}
+        WHERE doctors_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM doctors WHERE doctors_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.Doctor">
+        SELECT * FROM doctors
+    </select>
+</mapper>

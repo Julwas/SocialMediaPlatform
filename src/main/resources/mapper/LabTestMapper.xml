@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.ILabTestDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO LabTest (name, description, cost)
+        VALUES (#{name}, #{description}, #{cost})
+    </insert>
+
+    <select id="read" resultType="hospital.model.LabTest">
+        SELECT * FROM TestResults WHERE lab_test_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE LabTest
+        SET name=#{name}, description=#{description}, cost=#{cost}
+        WHERE lab_test_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM LabTest WHERE lab_test_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.LabTest">
+        SELECT * FROM LabTest
+    </select>
+</mapper>

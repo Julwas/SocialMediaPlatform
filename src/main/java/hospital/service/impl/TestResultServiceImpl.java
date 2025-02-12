@@ -1,14 +1,71 @@
 package hospital.service.impl;
 
+import hospital.dao.ITestResultDAO;
 import hospital.dao.mySQL.TestResultDAOmySQL;
 import hospital.model.TestResult;
 import hospital.service.TestResultService;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public class TestResultServiceImpl implements TestResultService<TestResult, Long> {
-    private final TestResultDAOmySQL testResultDAO;
+    private final SqlSessionFactory sqlSessionFactory;
+
+    public TestResultServiceImpl(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    @Override
+    public void create(TestResult testResult) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            ITestResultDAO testResultDAO = session.getMapper(ITestResultDAO.class);
+            testResultDAO.create(testResult);
+            session.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Optional<TestResult> read(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            ITestResultDAO testResultDAO = session.getMapper(ITestResultDAO.class);
+            return testResultDAO.read(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(TestResult testResult) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            ITestResultDAO testResultDAO = session.getMapper(ITestResultDAO.class);
+            testResultDAO.update(testResult);
+            session.commit();
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            ITestResultDAO testResultDAO = session.getMapper(ITestResultDAO.class);
+            testResultDAO.delete(id);
+            session.commit();
+        }
+    }
+
+    @Override
+    public List<TestResult> getAll() {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            ITestResultDAO testResultDAO = session.getMapper(ITestResultDAO.class);
+            return testResultDAO.getAll();
+        }
+    }
+
+    /*private final TestResultDAOmySQL testResultDAO;
 
     public TestResultServiceImpl(TestResultDAOmySQL testResultDAO) {
         this.testResultDAO = testResultDAO;
@@ -57,5 +114,5 @@ public class TestResultServiceImpl implements TestResultService<TestResult, Long
     @Override
     public List<TestResult> getAll() {
         return testResultDAO.findAll();
-    }
+    }*/
 }

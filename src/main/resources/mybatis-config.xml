@@ -20,9 +20,16 @@
 
     <mappers>
         <mapper resource="mapper/PatientMapper.xml"/>
-        <!--mapper resource="mapper/NurseMapper.xml"/>
+        <mapper resource="mapper/NurseMapper.xml"/>
         <mapper resource="mapper/DepartmentMapper.xml"/>
         <mapper resource="mapper/MedicationMapper.xml"/>
-        <mapper resource="mapper/LabTestMapper.xml"/-->
+        <mapper resource="mapper/LabTestMapper.xml"/>
+        <mapper resource="mapper/DoctorMapper.xml"/>
+        <mapper resource="mapper/TestResultMapper.xml"/>
+        <mapper resource="mapper/PrescriptionMapper.xml"/>
+        <mapper resource="mapper/BillingMapper.xml"/>
+        <mapper resource="mapper/AppointmentMapper.xml"/>
+        <mapper resource="mapper/AdmissionMapper.xml"/>
+
     </mappers>
 </configuration>

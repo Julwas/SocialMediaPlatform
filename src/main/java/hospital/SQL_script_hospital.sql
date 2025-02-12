@@ -80,7 +80,8 @@ VALUES
 ('Amoxicillin', 'Antibiotic', 'GSK');
 
 INSERT INTO `Hospital`.`Prescriptions` 
-(`patient_id_prescriptions`, `doctor_id_prescriptions`, `medication_id_prescriptions`, `dosage`, ` frequency`, `start_date`, `end_date`) 
+(`patient_id_prescriptions`, `doctor_id_prescriptions`, `medication_id_prescriptions`, `dosage`, ` frequency`,
+ `start_date`, `end_date`)
 VALUES
 (11, 2001, 11, '500mg', 'Once Daily', '2025-01-01', '2025-01-10'),
 (12, 2002, 12, '1 tablet', 'Twice Daily', '2025-01-02', '2025-01-12'),

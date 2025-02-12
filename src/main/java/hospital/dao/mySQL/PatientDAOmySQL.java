@@ -93,7 +93,7 @@ public class PatientDAOmySQL extends AbstractDAO<Patient, Long> {
         }
     }
     @Override
-    public List<Patient> findAll() {
+    public List<Patient> getAll() {
         List<Patient> patients = new ArrayList<>();
         String sql = "SELECT * FROM patients";
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {

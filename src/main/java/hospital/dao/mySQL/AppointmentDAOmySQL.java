@@ -91,7 +91,7 @@ public class AppointmentDAOmySQL extends AbstractDAO<Appointment, Long>  {
     }
 
     @Override
-    public List<Appointment> findAll() {
+    public List<Appointment> getAll() {
         String sql = "SELECT * FROM appointments";
         List<Appointment> appointments = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql);

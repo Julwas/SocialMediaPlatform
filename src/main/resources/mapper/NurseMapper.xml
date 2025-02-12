@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.INurseDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO nurses (first_name, last_name, assigned_id_department)
+        VALUES (#{firstName}, #{lastName}, #{assignedIdDepartment})
+    </insert>
+
+    <select id="read" resultType="hospital.model.Nurse">
+        SELECT * FROM nurses WHERE nurses_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE nurses
+        SET first_name=#{firstName}, last_name=#{lastName}, assigned_id_department=#{assignedIdDepartment}
+        WHERE nurses_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM nurses WHERE nurses_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.Nurse">
+        SELECT * FROM nurses
+    </select>
+</mapper>

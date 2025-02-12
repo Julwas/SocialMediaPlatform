@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.IBillingDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Prescriptions (patient_id_billing, admission_id_billing, total_amount,
+        paid_amount, billing_date, payment_status, labtest_id_billing)
+        VALUES (#{patientId}, #{admissionId}, #{totalAmount}, #{paidAmount}, #{billingDate},
+        #{paymentStatus} , #{labtestId})
+    </insert>
+
+    <select id="read" resultType="hospital.model.Billing">
+        SELECT * FROM Billing WHERE billing_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE Billing
+        SET patient_id_billing=#{patientId}, admission_id_billing=#{admissionId},
+        total_amount=#{totalAmount}, paid_amount=#{paidAmount}, billing_date=#{billingDate},
+        payment_status=#{paymentStatus},
+        labtest_id_billing=#{labtestId}
+        WHERE billing_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM Billing WHERE billing_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.Billing">
+        SELECT * FROM Billing
+    </select>
+</mapper>

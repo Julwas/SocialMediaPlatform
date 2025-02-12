@@ -81,7 +81,7 @@ public class LabTestDAOmySQL implements IGenericDAO<LabTest, Long> {
     }
 
     @Override
-    public List<LabTest> findAll() {
+    public List<LabTest> getAll() {
         String sql = "SELECT * FROM LabTest";
         List<LabTest> labTests = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql);

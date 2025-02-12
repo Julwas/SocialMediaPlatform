@@ -93,7 +93,7 @@ public class BillingDAOmySQL extends AbstractDAO<Billing, Long>{
     }
 
     @Override
-    public List<Billing> findAll() {
+    public List<Billing> getAll() {
         String sql = "SELECT * FROM billing";
         List<Billing> billings = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {

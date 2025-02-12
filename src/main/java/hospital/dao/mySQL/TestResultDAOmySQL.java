@@ -85,7 +85,7 @@ public class TestResultDAOmySQL extends AbstractDAO<TestResult, Long> {
     }
 
     @Override
-    public List<TestResult> findAll() {
+    public List<TestResult> getAll() {
         String sql = "SELECT * FROM test_results";
         List<TestResult> testResults = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {

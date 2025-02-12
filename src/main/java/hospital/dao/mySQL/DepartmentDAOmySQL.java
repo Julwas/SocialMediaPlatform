@@ -80,7 +80,7 @@ public class DepartmentDAOmySQL extends AbstractDAO<Department, Long> {
     }
 
     @Override
-    public List<Department> findAll() {
+    public List<Department> getAll() {
         String sql = "SELECT * FROM departments";
         List<Department> departments = new ArrayList<>();
         try (Connection connection = getConnection();

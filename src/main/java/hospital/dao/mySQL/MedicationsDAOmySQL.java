@@ -77,7 +77,7 @@ public class MedicationsDAOmySQL extends AbstractDAO<Medication, Long> {
     }
 
     @Override
-    public List<Medication> findAll() {
+    public List<Medication> getAll() {
         String sql = "SELECT * FROM medications";
         List<Medication> medications = new ArrayList<>();
 

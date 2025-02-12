@@ -1,11 +1,13 @@
 package hospital.service.impl;
 
+import hospital.dao.IPatientDAO;
 import hospital.dao.PatientDAO;
 import hospital.model.Patient;
 import hospital.service.PatientService;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,25 +22,29 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
     @Override
     public void create(Patient patient) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            PatientDAO patientDAO = session.getMapper(PatientDAO.class);
-            patientDAO.insertPatient(patient);
+            IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+            patientDAO.create(patient);
             session.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public Optional<Patient> read(Long id) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            PatientDAO patientDAO = session.getMapper(PatientDAO.class);
-            return Optional.ofNullable(patientDAO.getPatientById(id));
+            IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+            return patientDAO.read(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public void update(Patient patient) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            PatientDAO patientDAO = session.getMapper(PatientDAO.class);
-            patientDAO.updatePatient(patient);
+            IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+            patientDAO.update(patient);
             session.commit();
         }
     }
@@ -46,8 +52,8 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
     @Override
     public void delete(Long id) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            PatientDAO patientDAO = session.getMapper(PatientDAO.class);
-            patientDAO.deletePatient(id);
+            IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+            patientDAO.delete(id);
             session.commit();
         }
     }
@@ -55,8 +61,8 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
     @Override
     public List<Patient> getAll() {
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            PatientDAO patientDAO = session.getMapper(PatientDAO.class);
-            return patientDAO.getAllPatients();
+            IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+            return patientDAO.getAll();
         }
     }
    /* private final PatientDAOmySQL patientDAO = new PatientDAOmySQL();

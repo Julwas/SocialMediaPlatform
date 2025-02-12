@@ -1,14 +1,96 @@
 package hospital.service.impl;
 
-import hospital.dao.mySQL.NurseDAOmySQL;
+import hospital.dao.INurseDAO;
+import hospital.dao.IPatientDAO;
 import hospital.model.Nurse;
+import hospital.model.Patient;
 import hospital.service.NurseService;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class NurseServiceImpl implements NurseService<Nurse, Long> {
-    private final NurseDAOmySQL nurseDAO;
+public class NurseServiceImpl implements NurseService<Nurse,Long> {
+    private final SqlSessionFactory sqlSessionFactory;
+
+    public NurseServiceImpl(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    @Override
+    public void create(Nurse nurse) {
+        try (SqlSession session = sqlSessionFactory.openSession()){
+            INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
+            nurseDAO.create(nurse);
+            session.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public Optional<Nurse> read(Long id)  {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
+            return nurseDAO.read(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        /*@Override
+        public void update(Nurse nurse){
+            try (SqlSession session = sqlSessionFactory.openSession()) {
+                INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
+                nurseDAO.update(nurse);
+                session.commit();
+            }
+        }
+
+        @Override
+        public void delete(Long id) {
+            try (SqlSession session = sqlSessionFactory.openSession()) {
+                IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+                patientDAO.delete(id);
+                session.commit();
+            }
+        }
+
+        @Override
+        public List<Patient> getAll() {
+            try (SqlSession session = sqlSessionFactory.openSession()) {
+                IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
+                return patientDAO.findAll();
+            }*/
+        }
+
+    @Override
+    public void update(Nurse nurse) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
+            nurseDAO.update(nurse);
+            session.commit();
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
+            nurseDAO.delete(id);
+            session.commit();
+        }
+    }
+
+    @Override
+    public List<Nurse> getAll() {
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
+            return nurseDAO.getAll();
+        }
+    }
+
+    /*private final NurseDAOmySQL nurseDAO;
 
     public NurseServiceImpl(NurseDAOmySQL nurseDAO) {
         this.nurseDAO = nurseDAO;
@@ -57,5 +139,5 @@ public class NurseServiceImpl implements NurseService<Nurse, Long> {
     @Override
     public List<Nurse> getAll() {
         return nurseDAO.findAll();
-    }
+    }*/
 }

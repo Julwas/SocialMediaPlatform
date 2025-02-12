@@ -4,7 +4,6 @@ package hospital.model;
 import java.sql.Date;
 
 public class TestResult {
-    //patient_id_test_result`, `lab_test_id_test_result`, `test_date`, `doctor_id_test_result`, `result
     private Long id;
     private Long labTestId;
     private Long patientId;

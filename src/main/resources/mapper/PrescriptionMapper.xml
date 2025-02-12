@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.IPrescriptionDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Prescriptions (patient_id_prescriptions, doctor_id_prescriptions, medication_id_prescriptions,
+        dosage, frequency, start_date, end_date)
+        VALUES (#{patientId}, #{doctorId}, #{medicationId}, #{dosage}, #{frequency}, #{startDate}, #{endDate})
+    </insert>
+
+    <select id="read" resultType="hospital.model.Prescription">
+        SELECT * FROM Prescriptions WHERE prescriptions_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE Prescriptions
+        SET patient_id_prescriptions=#{patientId}, doctor_id_prescriptions=#{doctorId},
+        medication_id_prescriptions=#{medicationId}, dosage=#{dosage}, frequency=#{frequency}, start_date=#{startDate},
+        end_date=#{endDate}
+        WHERE prescriptions_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM Prescriptions WHERE prescriptions_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.Prescription">
+        SELECT * FROM Prescriptions
+    </select>
+</mapper>

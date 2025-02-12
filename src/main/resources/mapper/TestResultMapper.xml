@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.ITestResultDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO TestResults (patient_id_test_result, lab_test_id_test_result, test_date,
+        doctor_id_test_result, result)
+        VALUES (#{patientId}, #{labTestId}, #{date}, #{doctorId}, #{resul})
+    </insert>
+
+    <select id="read" resultType="hospital.model.TestResult">
+        SELECT * FROM TestResults WHERE test_results_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE patients
+        SET patient_id_test_result=#{patientId}, lab_test_id_test_result=#{labTestId}, test_date=#{date},
+        doctor_id_test_result=#{doctorId}, result=#{resul}
+        WHERE test_results_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TestResults WHERE test_results_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.TestResult">
+        SELECT * FROM TestResults
+    </select>
+</mapper>
