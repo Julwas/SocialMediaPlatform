@@ -1,5 +1,7 @@
 package hospital.model;
 
+import hospital.patterns.Listener.AdmissionListener;
+import hospital.patterns.Listener.EntityListener;
 import hospital.utils.LocalDateAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -21,26 +23,29 @@ public class Admission {
     @XmlElement(name = "discharge_date")
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dischargeDate;
-
+    private EntityListener listener;
     public Admission(Long id, Long patientId, Long roomId, LocalDate admissionDate, LocalDate dischargeDate) {
         this.id = id;
         this.patientId = patientId;
         this.roomId = roomId;
         this.admissionDate = admissionDate;
         this.dischargeDate = dischargeDate;
+        this.listener = new AdmissionListener();
     }
 
     public Admission(Long patientId, Long roomId, LocalDate admissionDate, LocalDate dischargeDate) {
         this(null, patientId, roomId, admissionDate, dischargeDate);
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public Long getPatientId() {
@@ -49,6 +54,9 @@ public class Admission {
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public Long getRoomId() {
@@ -57,6 +65,9 @@ public class Admission {
 
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public LocalDate getAdmissionDate() {
@@ -65,6 +76,9 @@ public class Admission {
 
     public void setAdmissionDate(LocalDate admissionDate) {
         this.admissionDate = admissionDate;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public LocalDate getDischargeDate() {
@@ -73,6 +87,21 @@ public class Admission {
 
     public void setDischargeDate(LocalDate dischargeDate) {
         this.dischargeDate = dischargeDate;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
+    }
+
+    public void create() {
+        if (listener != null) {
+            listener.onCreate(this);
+        }
+    }
+
+    public void delete() {
+        if (listener != null) {
+            listener.onDelete(this);
+        }
     }
 
     @Override

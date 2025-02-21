@@ -34,7 +34,7 @@ public class Application {
             PatientService<Patient, Long> patientService = new PatientServiceImpl(sqlSessionFactory);
             AdmissionService<Admission, Long> admissionService = new AdmissionServiceImpl(sqlSessionFactory); // Добавил сервис для Admission
 
-            // Создание пациента
+
             Patient patient = new PatientBuilder()
                     .setFirstName("John")
                     .setLastName("Doe")
@@ -47,7 +47,7 @@ public class Application {
             patientService.create(patient);
             System.out.println("Added patient: " + patient);
 
-            // Создание Admission
+
             Admission admission = new AdmissionBuilder()
                     .setPatientId(patient.getId())
                     .setRoomId(2L) // Используем roomId вместо doctorName и diagnosis
@@ -58,16 +58,16 @@ public class Application {
             admissionService.create(admission);
             System.out.println("Added admission: " + admission);
 
-            // Чтение Admission
+
             Optional<Admission> fetchedAdmission = admissionService.read(admission.getId());
             fetchedAdmission.ifPresent(a -> System.out.println("Fetched admission: " + a));
 
-            // Обновление Admission
+
             fetchedAdmission.ifPresent(a -> {
                 Admission updatedAdmission = new AdmissionBuilder()
                         .setId(a.getId())
                         .setPatientId(a.getPatientId())
-                        .setRoomId(3L) // Обновление roomId
+                        .setRoomId(3L)
                         .setAdmissionDate(a.getAdmissionDate())
                         .setDischargeDate(LocalDate.parse("2025-03-05"))
                         .build();
@@ -81,17 +81,17 @@ public class Application {
                 }
             });
 
-            // Получение всех Admission
+
             List<Admission> allAdmissions = admissionService.getAll();
             System.out.println("All admissions: " + allAdmissions);
 
-            // Удаление Admission
+
             fetchedAdmission.ifPresent(a -> {
                 admissionService.delete(a.getId());
                 System.out.println("Deleted admission with ID: " + a.getId());
             });
 
-            // Все Admissions после удаления
+
             allAdmissions = admissionService.getAll();
             System.out.println("All admissions after deletion: " + allAdmissions);
 
