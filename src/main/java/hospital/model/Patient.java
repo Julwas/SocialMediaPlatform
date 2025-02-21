@@ -45,8 +45,7 @@ public class Patient {
     @XmlElement(name = "contact_number")
     private Long contactNumber;
 
-    public Patient() {
-    }
+
 
     public Patient(Long id, String firstName, String lastName, LocalDate dateOfBirth, String gender,
                    String address, Long contactNumber) {
@@ -57,6 +56,10 @@ public class Patient {
         this.gender = gender;
         this.address = address;
         this.contactNumber = contactNumber;
+    }
+
+    public Patient() {
+
     }
 
     public Long getId() {

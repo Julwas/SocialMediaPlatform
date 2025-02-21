@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IAppointmentDAO;
-import hospital.dao.mySQL.AppointmentDAOmySQL;
 import hospital.model.Appointment;
 import hospital.service.AppointmentService;
 import org.apache.ibatis.session.SqlSession;
@@ -19,11 +18,12 @@ public class AppointmentServiceImpl implements AppointmentService<Appointment, L
     }
 
     @Override
-    public void create(Appointment appointment) {
+    public Long create(Appointment appointment) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IAppointmentDAO appointmentDAO = session.getMapper(IAppointmentDAO.class);
             appointmentDAO.create(appointment);
             session.commit();
+            return appointment.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

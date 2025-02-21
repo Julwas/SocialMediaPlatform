@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IBillingDAO;
-import hospital.dao.mySQL.BillingDAOmySQL;
 import hospital.model.Billing;
 import hospital.service.BillingService;
 import org.apache.ibatis.session.SqlSession;
@@ -20,11 +19,12 @@ public class BillingServiceImpl implements BillingService<Billing, Long> {
     }
 
     @Override
-    public void create(Billing billing) {
+    public Long create(Billing billing) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IBillingDAO billingDAO = session.getMapper(IBillingDAO.class);
             billingDAO.create(billing);
             session.commit();
+            return billing.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

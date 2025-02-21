@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IDoctorDAO;
-import hospital.dao.mySQL.DoctorDAOmySQL;
 import hospital.model.Doctor;
 import hospital.service.DoctorService;
 import org.apache.ibatis.session.SqlSession;
@@ -19,11 +18,12 @@ public class DoctorServiceImpl implements DoctorService <Doctor, Long> {
     }
 
     @Override
-    public void create(Doctor doctor) {
+    public Long create(Doctor doctor) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IDoctorDAO doctorDAO = session.getMapper(IDoctorDAO.class);
             doctorDAO.create(doctor);
             session.commit();
+            return doctor.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

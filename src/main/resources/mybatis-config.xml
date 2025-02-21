@@ -2,6 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties resource="database.properties"/>
+
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
@@ -10,15 +12,16 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/hospital"/>
-                <property name="username" value="root"/>
-                <property name="password" value="12345"/>
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.user}"/>
+                <property name="password" value="${db.password}"/>
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
+
         <mapper resource="mapper/PatientMapper.xml"/>
         <mapper resource="mapper/NurseMapper.xml"/>
         <mapper resource="mapper/DepartmentMapper.xml"/>
@@ -28,8 +31,8 @@
         <mapper resource="mapper/TestResultMapper.xml"/>
         <mapper resource="mapper/PrescriptionMapper.xml"/>
         <mapper resource="mapper/BillingMapper.xml"/>
-        <mapper resource="mapper/AppointmentMapper.xml"/>
         <mapper resource="mapper/AdmissionMapper.xml"/>
-
+        <mapper resource="mapper/ApponitmentMapper.xml"/>
+        <mapper resource="mapper/RoomsMapper.xml"/>
     </mappers>
 </configuration>

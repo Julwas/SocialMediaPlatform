@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IPatientDAO;
-import hospital.dao.PatientDAO;
 import hospital.model.Patient;
 import hospital.service.PatientService;
 import org.apache.ibatis.session.SqlSession;
@@ -20,11 +19,12 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
     }
 
     @Override
-    public void create(Patient patient) {
+    public Long create(Patient patient) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IPatientDAO patientDAO = session.getMapper(IPatientDAO.class);
             patientDAO.create(patient);
             session.commit();
+            return patient.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -65,34 +65,4 @@ public class PatientServiceImpl implements PatientService <Patient, Long> {
             return patientDAO.getAll();
         }
     }
-   /* private final PatientDAOmySQL patientDAO = new PatientDAOmySQL();
-
-    @Override
-    public void create(Patient patient) {
-        try {
-            patientDAO.create(patient);
-        } catch (java.sql.SQLException throwables) {
-            throw new RuntimeException(throwables);
-        }
-    }
-
-    @Override
-    public Optional<Patient> read(Long id) {
-        return patientDAO.read(id);
-    }
-
-    @Override
-    public void update(Patient patient) {
-        patientDAO.update(patient);
-    }
-
-    @Override
-    public void delete(Long id) {
-        patientDAO.delete(id);
-    }
-
-    @Override
-    public List<Patient> getAll() {
-        return patientDAO.findAll();
-    }*/
 }

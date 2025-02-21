@@ -18,7 +18,8 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-       /*PatientService patientService = new PatientServiceImpl();
+
+      /* PatientService patientService = new PatientServiceImpl();
 
         Patient patient = new Patient(153L, "Jack", "Smith", LocalDate.of(1980, 5,
                 15), "Male", "123 Palm Street", 125454321L);

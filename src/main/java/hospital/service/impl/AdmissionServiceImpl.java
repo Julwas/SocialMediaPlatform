@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IAdmissionDAO;
-import hospital.dao.mySQL.AdmissionDAOmySQL;
 import hospital.model.Admission;
 import hospital.service.AdmissionService;
 import org.apache.ibatis.session.SqlSession;
@@ -20,15 +19,18 @@ public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
     }
 
     @Override
-    public void create(Admission admission) {
+    public Long create(Admission admission) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IAdmissionDAO admissionDAO = session.getMapper(IAdmissionDAO.class);
+            System.out.println("roomId before insertion: " + admission.getRoomId());
             admissionDAO.create(admission);
             session.commit();
+            return admission.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public Optional<Admission> read(Long id) {
@@ -65,6 +67,8 @@ public class AdmissionServiceImpl implements AdmissionService<Admission, Long> {
             return admissionDAO.getAll();
         }
     }
+
+
     /* private final AdmissionDAOmySQL admissionDAO;
     public AdmissionServiceImpl(AdmissionDAOmySQL admissionDAO) {
         this.admissionDAO = admissionDAO;

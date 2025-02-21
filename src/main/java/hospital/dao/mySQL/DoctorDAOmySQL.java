@@ -3,6 +3,7 @@ package hospital.dao.mySQL;
 import hospital.dao.AbstractDAO;
 
 import hospital.model.Doctor;
+import hospital.model.Rooms;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,9 +1,7 @@
 package hospital.service.impl;
 
 import hospital.dao.INurseDAO;
-import hospital.dao.IPatientDAO;
 import hospital.model.Nurse;
-import hospital.model.Patient;
 import hospital.service.NurseService;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -20,11 +18,12 @@ public class NurseServiceImpl implements NurseService<Nurse,Long> {
     }
 
     @Override
-    public void create(Nurse nurse) {
+    public Long create(Nurse nurse) {
         try (SqlSession session = sqlSessionFactory.openSession()){
             INurseDAO nurseDAO = session.getMapper(INurseDAO.class);
             nurseDAO.create(nurse);
             session.commit();
+            return nurse.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

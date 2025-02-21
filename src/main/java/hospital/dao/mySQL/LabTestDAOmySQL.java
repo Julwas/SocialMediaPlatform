@@ -2,6 +2,7 @@ package hospital.dao.mySQL;
 
 import hospital.dao.IGenericDAO;
 import hospital.model.LabTest;
+import hospital.model.Rooms;
 
 import java.sql.*;
 import java.util.ArrayList;

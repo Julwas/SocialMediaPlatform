@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IPrescriptionDAO;
-import hospital.dao.mySQL.PrescriptionDAOmySQL;
 import hospital.model.Prescription;
 import hospital.service.PrescriptionService;
 import org.apache.ibatis.session.SqlSession;
@@ -20,11 +19,12 @@ public class PrescriptionServiceImpl implements PrescriptionService<Prescription
     }
 
     @Override
-    public void create(Prescription prescription) {
+    public Long create(Prescription prescription) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IPrescriptionDAO prescriptionDAO = session.getMapper(IPrescriptionDAO.class);
             prescriptionDAO.create(prescription);
             session.commit();
+            return prescription.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

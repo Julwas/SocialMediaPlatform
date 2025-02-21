@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GenericService <T, ID>{
-   void create(T entity);
+   ID create(T entity);
      Optional<T> read(ID id) throws SQLException;
      void update(T entity);
      void delete(ID id);

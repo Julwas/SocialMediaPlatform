@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.ITestResultDAO;
-import hospital.dao.mySQL.TestResultDAOmySQL;
 import hospital.model.TestResult;
 import hospital.service.TestResultService;
 import org.apache.ibatis.session.SqlSession;
@@ -19,11 +18,12 @@ public class TestResultServiceImpl implements TestResultService<TestResult, Long
     }
 
     @Override
-    public void create(TestResult testResult) {
+    public Long create(TestResult testResult) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             ITestResultDAO testResultDAO = session.getMapper(ITestResultDAO.class);
             testResultDAO.create(testResult);
             session.commit();
+            return testResult.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

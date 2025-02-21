@@ -1,7 +1,6 @@
 package hospital.service.impl;
 
 import hospital.dao.IMedicationsDAO;
-import hospital.dao.mySQL.MedicationsDAOmySQL;
 
 import hospital.model.Medication;
 import hospital.service.MedicationService;
@@ -20,11 +19,12 @@ public class MedicationServiceImpl implements MedicationService<Medication, Long
     }
 
     @Override
-    public void create(Medication medication) {
+    public Long create(Medication medication) {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             IMedicationsDAO medicationDAO = session.getMapper(IMedicationsDAO.class);
             medicationDAO.create(medication);
             session.commit();
+            return medication.getId();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

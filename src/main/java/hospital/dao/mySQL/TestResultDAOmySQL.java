@@ -1,6 +1,7 @@
 package hospital.dao.mySQL;
 
 import hospital.dao.AbstractDAO;
+import hospital.model.Rooms;
 import hospital.model.TestResult;
 
 import java.sql.*;
