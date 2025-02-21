@@ -32,7 +32,7 @@ public class Application {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             PatientService<Patient, Long> patientService = new PatientServiceImpl(sqlSessionFactory);
-            AdmissionService<Admission, Long> admissionService = new AdmissionServiceImpl(sqlSessionFactory); // Добавил сервис для Admission
+            AdmissionService<Admission, Long> admissionService = new AdmissionServiceImpl(sqlSessionFactory);
 
 
             Patient patient = new PatientBuilder()
@@ -50,7 +50,7 @@ public class Application {
 
             Admission admission = new AdmissionBuilder()
                     .setPatientId(patient.getId())
-                    .setRoomId(2L) // Используем roomId вместо doctorName и diagnosis
+                    .setRoomId(2L)
                     .setAdmissionDate(LocalDate.parse("2025-02-21"))
                     .setDischargeDate(LocalDate.parse("2025-02-28"))
                     .build();
