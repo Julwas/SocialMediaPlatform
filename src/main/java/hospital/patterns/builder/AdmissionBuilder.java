@@ -1,4 +1,4 @@
-package hospital;
+package hospital.patterns.builder;
 
 import hospital.model.Admission;;
 
@@ -39,4 +39,6 @@ public class AdmissionBuilder {
     public Admission build() {
         return new Admission(id, patientId, roomId, admissionDate, dischargeDate);
     }
+
+
 }

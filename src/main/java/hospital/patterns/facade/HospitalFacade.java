@@ -20,7 +20,6 @@ public class HospitalFacade {
         this.admissionService = admissionService;
     }
 
-    // 1. Регистрация нового пациента
     public Patient registerPatient(String firstName, String lastName, LocalDate dateOfBirth, String gender, String address, Long contactNumber) {
         Patient patient = new Patient(null, firstName, lastName, dateOfBirth, gender, address, contactNumber);
         patientService.create(patient);
@@ -28,7 +27,7 @@ public class HospitalFacade {
         return patient;
     }
 
-    // 2. Госпитализация пациента
+
     public Admission admitPatient(Long patientId, Long roomId, LocalDate admissionDate) {
         Admission admission = new Admission(patientId, roomId, admissionDate, null);
         admissionService.create(admission);
@@ -36,7 +35,7 @@ public class HospitalFacade {
         return admission;
     }
 
-    // 3. Выписка пациента
+
     public void dischargePatient(Long admissionId, LocalDate dischargeDate) throws SQLException {
         Optional<Admission> admission = admissionService.read(admissionId);
         admission.ifPresent(a -> {
@@ -46,17 +45,14 @@ public class HospitalFacade {
         });
     }
 
-    // 4. Получение всех пациентов
     public List<Patient> getAllPatients() {
         return patientService.getAll();
     }
 
-    // 5. Получение всех госпитализаций
     public List<Admission> getAllAdmissions() {
         return admissionService.getAll();
     }
 
-    // 6. Удаление пациента
     public void removePatient(Long patientId) {
         patientService.delete(patientId);
         System.out.println("Patient removed with ID: " + patientId);

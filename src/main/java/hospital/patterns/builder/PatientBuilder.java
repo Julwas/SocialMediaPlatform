@@ -1,4 +1,4 @@
-package hospital;
+package hospital.patterns.builder;
 
 import hospital.model.Patient;
 

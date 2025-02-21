@@ -4,8 +4,12 @@ package hospital;
 import hospital.model.Admission;
 import hospital.model.Patient;
 
+import hospital.patterns.builder.AdmissionBuilder;
+import hospital.patterns.builder.PatientBuilder;
+import hospital.service.AdmissionService;
 import hospital.service.PatientService;
 
+import hospital.service.impl.AdmissionServiceImpl;
 import hospital.service.impl.PatientServiceImpl;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -28,8 +32,9 @@ public class Application {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             PatientService<Patient, Long> patientService = new PatientServiceImpl(sqlSessionFactory);
+            AdmissionService<Admission, Long> admissionService = new AdmissionServiceImpl(sqlSessionFactory); // Добавил сервис для Admission
 
-            //
+            // Создание пациента
             Patient patient = new PatientBuilder()
                     .setFirstName("John")
                     .setLastName("Doe")
@@ -42,48 +47,56 @@ public class Application {
             patientService.create(patient);
             System.out.println("Added patient: " + patient);
 
-            //
-            Optional<Patient> fetchedPatient = patientService.read(patient.getId());
-            fetchedPatient.ifPresent(p -> System.out.println("Fetched patient: " + p));
+            // Создание Admission
+            Admission admission = new AdmissionBuilder()
+                    .setPatientId(patient.getId())
+                    .setRoomId(2L) // Используем roomId вместо doctorName и diagnosis
+                    .setAdmissionDate(LocalDate.parse("2025-02-21"))
+                    .setDischargeDate(LocalDate.parse("2025-02-28"))
+                    .build();
 
-            //
-            fetchedPatient.ifPresent(p -> {
-                Patient updatedPatient = new PatientBuilder()
-                        .setId(p.getId())
-                        .setFirstName(p.getFirstName())
-                        .setLastName(p.getLastName())
-                        .setDateOfBirth(p.getDateOfBirth())
-                        .setGender(p.getGender())
-                        .setAddress("456 Elm St")
-                        .setContactNumber(987654321L)
+            admissionService.create(admission);
+            System.out.println("Added admission: " + admission);
+
+            // Чтение Admission
+            Optional<Admission> fetchedAdmission = admissionService.read(admission.getId());
+            fetchedAdmission.ifPresent(a -> System.out.println("Fetched admission: " + a));
+
+            // Обновление Admission
+            fetchedAdmission.ifPresent(a -> {
+                Admission updatedAdmission = new AdmissionBuilder()
+                        .setId(a.getId())
+                        .setPatientId(a.getPatientId())
+                        .setRoomId(3L) // Обновление roomId
+                        .setAdmissionDate(a.getAdmissionDate())
+                        .setDischargeDate(LocalDate.parse("2025-03-05"))
                         .build();
 
-                patientService.update(updatedPatient);
+                admissionService.update(updatedAdmission);
                 try {
-                    Optional<Patient> result = patientService.read(updatedPatient.getId());
-                    result.ifPresent(up -> System.out.println("Updated patient: " + up));
+                    Optional<Admission> result = admissionService.read(updatedAdmission.getId());
+                    result.ifPresent(up -> System.out.println("Updated admission: " + up));
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             });
 
-            //
-            List<Patient> allPatients = patientService.getAll();
-            System.out.println("All patients: " + allPatients);
+            // Получение всех Admission
+            List<Admission> allAdmissions = admissionService.getAll();
+            System.out.println("All admissions: " + allAdmissions);
 
-            //
-            fetchedPatient.ifPresent(p -> {
-                patientService.delete(p.getId());
-                System.out.println("Deleted patient with ID: " + p.getId());
+            // Удаление Admission
+            fetchedAdmission.ifPresent(a -> {
+                admissionService.delete(a.getId());
+                System.out.println("Deleted admission with ID: " + a.getId());
             });
 
-
-            allPatients = patientService.getAll();
-            System.out.println("All patients after deletion: " + allPatients);
+            // Все Admissions после удаления
+            allAdmissions = admissionService.getAll();
+            System.out.println("All admissions after deletion: " + allAdmissions);
 
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
 }
-
