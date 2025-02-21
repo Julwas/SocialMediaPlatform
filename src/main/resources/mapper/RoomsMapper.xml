@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hospital.dao.IRoomsDAO">
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Rooms (room_number, type, capacity)
+        VALUES (#{roomNumber}, #{type}, #{capacity})
+    </insert>
+
+    <select id="read" resultType="hospital.model.Rooms">
+        SELECT * FROM Rooms WHERE rooms_id = #{id}
+    </select>
+
+    <update id="update">
+        UPDATE Rooms
+        SET room_number=#{roomNumber}, type=#{type}, capacity=#{capacity}
+        WHERE rooms_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM Rooms WHERE rooms_id = #{id}
+    </delete>
+
+    <select id="getAll" resultType="hospital.model.Rooms">
+        SELECT * FROM Rooms
+    </select>
+</mapper>
