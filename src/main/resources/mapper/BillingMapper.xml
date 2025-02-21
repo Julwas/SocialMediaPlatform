@@ -4,7 +4,7 @@
 <mapper namespace="hospital.dao.IBillingDAO">
 
     <insert id="create" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO Prescriptions (patient_id_billing, admission_id_billing, total_amount,
+        INSERT INTO Billing (patient_id_billing, admission_id_billing, total_amount,
         paid_amount, billing_date, payment_status, labtest_id_billing)
         VALUES (#{patientId}, #{admissionId}, #{totalAmount}, #{paidAmount}, #{billingDate},
         #{paymentStatus} , #{labtestId})

@@ -6,7 +6,7 @@
     <insert id="create" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO TestResults (patient_id_test_result, lab_test_id_test_result, test_date,
         doctor_id_test_result, result)
-        VALUES (#{patientId}, #{labTestId}, #{date}, #{doctorId}, #{resul})
+        VALUES (#{patientId}, #{labTestId}, #{date}, #{doctorId}, #{result})
     </insert>
 
     <select id="read" resultType="hospital.model.TestResult">
@@ -14,9 +14,9 @@
     </select>
 
     <update id="update">
-        UPDATE patients
+        UPDATE TestResults
         SET patient_id_test_result=#{patientId}, lab_test_id_test_result=#{labTestId}, test_date=#{date},
-        doctor_id_test_result=#{doctorId}, result=#{resul}
+        doctor_id_test_result=#{doctorId}, result=#{result}
         WHERE test_results_id = #{id}
     </update>
 
