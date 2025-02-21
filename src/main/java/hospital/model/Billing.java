@@ -90,4 +90,18 @@ public class Billing {
     public void setLabtestId(Long labtestId) {
         this.labtestId = labtestId;
     }
+
+    @Override
+    public String toString() {
+        return "Billing{" +
+                "id=" + id +
+                ", patientId=" + patientId +
+                ", admissionId=" + admissionId +
+                ", totalAmount=" + totalAmount +
+                ", paidAmount=" + paidAmount +
+                ", billingDate=" + billingDate +
+                ", paymentStatus=" + paymentStatus +
+                ", labtestId=" + labtestId +
+                '}';
+    }
 }

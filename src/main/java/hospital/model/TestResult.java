@@ -71,4 +71,15 @@ public class TestResult {
     public void setDate(Date date) {
         this.date = date;
     }
+    @Override
+    public String toString() {
+        return "TestResult{" +
+                "id=" + id +
+                ", labTestId=" + labTestId +
+                ", patientId=" + patientId +
+                ", doctorId=" + doctorId +
+                ", result='" + result + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
