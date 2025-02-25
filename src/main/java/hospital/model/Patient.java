@@ -3,6 +3,8 @@ package hospital.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import hospital.patterns.Listener.EntityListener;
+import hospital.patterns.Listener.PatientListener;
 import hospital.utils.LocalDateAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -44,7 +46,7 @@ public class Patient {
     @JsonProperty("contact_number")
     @XmlElement(name = "contact_number")
     private Long contactNumber;
-
+    private EntityListener listener;
 
 
     public Patient(Long id, String firstName, String lastName, LocalDate dateOfBirth, String gender,
@@ -56,11 +58,14 @@ public class Patient {
         this.gender = gender;
         this.address = address;
         this.contactNumber = contactNumber;
+       this.listener = new PatientListener();
     }
+
 
     public Patient() {
 
     }
+
 
     public Long getId() {
         return id;
@@ -68,6 +73,9 @@ public class Patient {
 
     public void setId(Long id) {
         this.id = id;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public String getFirstName() {
@@ -76,6 +84,9 @@ public class Patient {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public String getLastName() {
@@ -84,6 +95,9 @@ public class Patient {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public LocalDate getDateOfBirth() {
@@ -92,6 +106,9 @@ public class Patient {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public String getGender() {
@@ -100,6 +117,9 @@ public class Patient {
 
     public void setGender(String gender) {
         this.gender = gender;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public String getAddress() {
@@ -108,6 +128,9 @@ public class Patient {
 
     public void setAddress(String address) {
         this.address = address;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
     }
 
     public Long getContactNumber() {
@@ -116,6 +139,20 @@ public class Patient {
 
     public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
+        if (listener != null) {
+            listener.onUpdate(this);
+        }
+    }
+    public void create() {
+        if (listener != null) {
+            listener.onCreate(this);
+        }
+    }
+
+    public void delete() {
+        if (listener != null) {
+            listener.onDelete(this);
+        }
     }
 
     @Override
